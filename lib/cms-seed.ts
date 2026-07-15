@@ -113,11 +113,15 @@ const pageSeeds: Array<Omit<CmsPage, "id" | "workspaceId" | "legacyProfileId" | 
   },
   {
     path: "/curator",
-    eyebrow: "Stewardship",
-    title: "About the curator",
-    description: "A page for the person or family team preserving the archive, including editorial principles and contact routes.",
-    body: "This section will share the family-approved curator profile, archive mission, and editorial policy.",
-    cards: []
+    eyebrow: "Flagship archive",
+    title: "About Baba Muyi Legacy and LegacyHub",
+    description: "Baba Muyi Legacy is the first flagship archive created with LegacyHub.",
+    body: "Baba Muyi Legacy is the first flagship archive created with LegacyHub, a platform designed to help families, communities and institutions preserve and share meaningful histories.",
+    cards: [
+      { id: "families", title: "Family histories", description: "LegacyHub supports family histories, parents, grandparents, and multi-generational memories." },
+      { id: "leaders", title: "Leaders and founders", description: "Archive community leaders, entrepreneurs, founders, veterans, and cultural contributors." },
+      { id: "institutions", title: "Institutions and organisations", description: "Support cultural institutions, organisations, and living or deceased legacy subjects." }
+    ]
   }
 ];
 

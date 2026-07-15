@@ -33,8 +33,8 @@ export default async function AdminPage() {
         <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3 text-archive-gold">
             <ShieldCheck aria-hidden="true" />
-            <p className="text-sm font-bold uppercase tracking-[0.18em]">Protected administration</p>
-          </div>
+          <p className="text-sm font-bold uppercase tracking-[0.18em]">LegacyHub administration</p>
+        </div>
           <h1 className="mt-4 font-serif text-5xl font-semibold">Archive control room</h1>
           <p className="mt-4 max-w-2xl text-white/72">
             Signed in as {profile.display_name ?? "an authorised user"} with the {profile.role} role.

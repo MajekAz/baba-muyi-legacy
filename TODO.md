@@ -3,6 +3,9 @@
 ## Foundation
 
 - Maintain the LegacyHub terminology and roadmap documents for milestone sequencing.
+- Replace the noindex `/legacyhub` route shell with a dedicated platform marketing site only after registration, pricing, billing and onboarding are approved.
+- Add editable workspace and legacy-profile theme settings that consume the reusable brand token boundaries.
+- Replace interim navigation mappings for `Audio` and `About the Legacy Project` when dedicated public routes are approved.
 - Keep generated `lib/database.types.ts` current after every remote schema migration.
 - Add formal remote RLS regression tests before production launch.
 - Replace admin dashboard placeholders with editable CRUD screens.

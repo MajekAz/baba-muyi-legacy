@@ -4,6 +4,14 @@ A Next.js App Router foundation for the public `babamuyilegacy.com` flagship arc
 
 The public website should continue using **Baba Muyi Legacy**. The reusable product, administrative system, documentation, and future commercial SaaS should use **LegacyHub**.
 
+Brand architecture:
+
+- **LegacyHub** is the commercial digital legacy platform.
+- **Baba Muyi Legacy** is the first workspace, first legacy profile, and flagship public archive powered by LegacyHub.
+- Public archive pages keep Baba Muyi Legacy as the primary brand.
+- Admin and authentication pages use LegacyHub with the tagline **Preserving Legacies. Connecting Generations.**
+- The public footer may show a subtle **Powered by LegacyHub** relationship without enabling public registration.
+
 ## Release Status
 
 **LegacyHub v0.1.0 - Foundation Complete** establishes the commercial SaaS foundation while preserving Baba Muyi Legacy as the flagship public archive.
@@ -31,6 +39,9 @@ This first implementation creates the application foundation and is being refact
 - Hostinger-oriented deployment notes
 - Workspace-aware local CMS fallback for development
 - Versioned Supabase migrations for workspace tenancy and Baba Muyi seed data
+- LegacyHub-branded admin/auth surfaces with Baba Muyi workspace and legacy-profile context
+- Minimal noindex `/legacyhub` future platform route shell
+- Data-driven public navigation grouped into His Story, Transport Legacy, Media, Legacy, and About menus
 
 ## LegacyHub Planning Documents
 

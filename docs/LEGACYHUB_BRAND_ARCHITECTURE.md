@@ -23,19 +23,39 @@
 | --- | --- | --- |
 | Public Baba Muyi archive | Baba Muyi Legacy | Keep accepted public identity. |
 | Public homepage/nav | Baba Muyi Legacy | Do not redesign or rename during this milestone. |
-| Admin dashboard | LegacyHub admin, with active workspace/profile context | Gradual terminology shift is acceptable later. |
+| Admin dashboard | LegacyHub, with active workspace/profile context | Display the current workspace and active legacy profile from tenant context. |
+| Authentication screens | LegacyHub | Use the tagline “Preserving Legacies. Connecting Generations.” and avoid Baba Muyi-only account language. |
 | Documentation | LegacyHub for platform; Baba Muyi Legacy for flagship archive | Current planning docs follow this rule. |
 | Emails | LegacyHub for platform/system emails; Baba Muyi Legacy for archive invitations when context-specific | Needs future templates. |
-| Footer | Baba Muyi Legacy on flagship site; LegacyHub on future product site | Do not change now. |
-| Metadata | Baba Muyi Legacy for public archive SEO; LegacyHub for SaaS product pages | `lib/site.ts` remains Baba Muyi-specific today. |
+| Footer | Baba Muyi Legacy primary, with “Powered by LegacyHub” | LegacyHub relationship is present but less prominent than the archive brand. |
+| Metadata | Baba Muyi Legacy for public archive SEO; LegacyHub for admin/auth/future platform pages | Do not replace public Baba Muyi titles indiscriminately. |
 | Future customer sites | Customer/archive brand name, powered by LegacyHub where appropriate | Custom domains later. |
-| Platform marketing website | LegacyHub | Separate future marketing surface. |
+| Platform marketing website | LegacyHub | `/legacyhub` is a minimal noindex route shell until a separate marketing surface is approved. |
+
+## Taglines And Relationship Copy
+
+- LegacyHub tagline: **Preserving Legacies. Connecting Generations.**
+- Public flagship relationship copy: **Powered by LegacyHub** or **A LegacyHub Digital Archive**.
+- Baba Muyi Legacy remains the public archive name and should be visually dominant on the public archive.
+- LegacyHub is the commercial digital legacy platform behind the archive, not a replacement name for the Baba Muyi site.
+- The public header uses grouped data-driven navigation and the subtitle **A LegacyHub Digital Archive**.
+
+## Brand Token Boundaries
+
+- Platform brand tokens live in `lib/brand.ts` as `platformBrand`.
+- Workspace brand tokens live in `lib/brand.ts` as `workspaceBrandTokens`.
+- Legacy-profile theme token defaults live in `lib/brand.ts` as `legacyProfileThemeTokens`.
+- The current Baba Muyi public archive keeps the existing navy, gold, and cream visual identity.
+- Future customer workspaces should read their own workspace and legacy-profile theme settings instead of reusing Baba Muyi-specific copy or visuals globally.
 
 ## Current Baba Muyi-Specific Code
 
-- `lib/site.ts` contains Baba Muyi public site metadata.
+- `lib/site.ts` contains Baba Muyi public site metadata with a subtle LegacyHub relationship.
+- `lib/brand.ts` contains reusable platform, workspace, and legacy-profile brand tokens.
 - `lib/cms-seed.ts` and `data/cms.json` contain Baba Muyi seed content.
 - `app/layout.tsx`, `components/mobile-navigation.tsx`, and public copy show Baba Muyi Legacy branding.
+- `app/admin/layout.tsx`, `components/admin/workspace-context-bar.tsx`, and auth routes use LegacyHub branding.
+- `app/legacyhub/page.tsx` is a minimal noindex future platform route shell.
 - `DEPLOYMENT_HOSTINGER.md` references `babamuyilegacy.com`.
 
 These are acceptable for the flagship public archive. They should not be globally reused for future customer workspaces.
