@@ -2,6 +2,23 @@
 
 ## Unreleased
 
+- No unreleased changes.
+
+## LegacyHub v0.1.0 - Foundation Complete - 2026-07-15
+
+- Completed the LegacyHub foundation release audit.
+- Confirmed Supabase migrations `0001` through `0005` are aligned between local and remote.
+- Split unsafe enum additions into a dedicated migration before dependent CMS/access/menu SQL.
+- Verified required Supabase Storage buckets: `legacy-images`, `legacy-documents`, `legacy-audio`, `legacy-video`, `profile-images`, and `tribute-uploads`.
+- Generated live Supabase database types in `lib/database.types.ts`.
+- Added an idempotent owner bootstrap script and verified reruns keep owner, workspace, and legacy-profile records unique.
+- Added production-safe admin fallback behavior so local CMS owner fallback is not used in production unless explicitly enabled.
+- Added `/about` public route alias for existing CMS-managed curator/about content.
+- Updated Hostinger deployment documentation for preview URLs, environment variables, and production fallback settings.
+- Added release notes for `v0.1.0`.
+- Added LegacyHub planning and architecture milestone documentation covering product terminology, PRD, architecture, data model, security/privacy, monetisation, roadmap, development workflow, brand architecture, and implementation status.
+- Documented the distinction between Baba Muyi Legacy as the flagship public archive and LegacyHub as the reusable SaaS platform.
+- Documented current deployment risk where Hostinger can detect `package.json` but fails until the complete app source is pushed to GitHub.
 - Added workspace SaaS migration with `workspaces`, `workspace_members`, `workspace_invitations`, `workspace_roles`, `legacy_profile_members`, workspace ownership columns, indexes, permission helpers, RLS policies, and idempotent Baba Muyi workspace/profile/menu seed data.
 - Added workspace-aware local CMS fallback metadata for the Baba Muyi Family Archive.
 - Added workspace/legacy-profile context bar to the protected admin shell.

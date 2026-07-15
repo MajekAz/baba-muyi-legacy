@@ -1,6 +1,21 @@
 # Baba Muyi Legacy
 
-A production-ready Next.js App Router foundation for `babamuyilegacy.com`, built as a reusable digital legacy-profile system with Supabase Auth, PostgreSQL, Storage, and Row Level Security.
+A Next.js App Router foundation for the public `babamuyilegacy.com` flagship archive, now being evolved into the reusable commercial digital legacy SaaS platform called **LegacyHub**.
+
+The public website should continue using **Baba Muyi Legacy**. The reusable product, administrative system, documentation, and future commercial SaaS should use **LegacyHub**.
+
+## Release Status
+
+**LegacyHub v0.1.0 - Foundation Complete** establishes the commercial SaaS foundation while preserving Baba Muyi Legacy as the flagship public archive.
+
+Verified release foundation:
+
+- Full Next.js application source is present at the repository root for GitHub and Hostinger.
+- Supabase migrations `0001` through `0005` are versioned and applied to the linked Supabase project.
+- Live Supabase database types are generated in `lib/database.types.ts`.
+- Owner bootstrap is idempotent through `pnpm bootstrap:owner`.
+- Required storage buckets are present in Supabase Storage.
+- Local validation passes: lint, TypeScript check, and production build.
 
 ## Current Phase
 
@@ -12,10 +27,38 @@ This first implementation creates the application foundation and is being refact
 - Supabase client/server helpers
 - Zod validation for public tribute and waiting-list forms
 - Health-check route at `/api/health`
-- Supabase schema, storage buckets, seed profile, and RLS policies in `supabase/schema.sql`
+- Supabase schema, storage buckets, seed profile, and RLS policies in versioned migrations under `supabase/migrations/`
 - Hostinger-oriented deployment notes
 - Workspace-aware local CMS fallback for development
 - Versioned Supabase migrations for workspace tenancy and Baba Muyi seed data
+
+## LegacyHub Planning Documents
+
+This repository now includes a planning and architecture milestone for LegacyHub:
+
+```text
+docs/LEGACYHUB_GLOSSARY.md
+docs/LEGACYHUB_PRD.md
+docs/LEGACYHUB_ARCHITECTURE.md
+docs/LEGACYHUB_DATA_MODEL.md
+docs/LEGACYHUB_SECURITY_AND_PRIVACY.md
+docs/LEGACYHUB_MONETISATION.md
+docs/LEGACYHUB_ROADMAP.md
+docs/DEVELOPMENT_WORKFLOW.md
+docs/LEGACYHUB_BRAND_ARCHITECTURE.md
+docs/LEGACYHUB_IMPLEMENTATION_STATUS.md
+```
+
+The product hierarchy is:
+
+```text
+LegacyHub Platform
+-> Workspace
+-> Legacy Profile
+-> Legacy Content
+```
+
+The Baba Muyi Family Archive is the first workspace. Alhaji Tioluwalase "Baba Muyi" Majekodunmi is the first legacy profile and flagship demonstration.
 
 ## Commands
 
@@ -25,6 +68,7 @@ pnpm dev
 pnpm build
 pnpm start
 pnpm typecheck
+pnpm bootstrap:owner
 ```
 
 Production build command:
@@ -48,6 +92,16 @@ NEXT_PUBLIC_SITE_URL=https://babamuyilegacy.com
 NEXT_PUBLIC_SUPABASE_URL=
 NEXT_PUBLIC_SUPABASE_ANON_KEY=
 SUPABASE_SERVICE_ROLE_KEY=
+NEXT_PUBLIC_AUTH_REDIRECT_URL=http://localhost:3000/auth/callback
+LEGACYHUB_ENABLE_LOCAL_FALLBACK=false
+LEGACYHUB_OWNER_EMAIL=
+LEGACYHUB_OWNER_PASSWORD=
+LEGACYHUB_OWNER_NAME=
+LEGACYHUB_WORKSPACE_SLUG=baba-muyi-family-archive
+LEGACYHUB_WORKSPACE_NAME=Baba Muyi Family Archive
+LEGACYHUB_LEGACY_PROFILE_SLUG=baba-muyi
+LEGACYHUB_LEGACY_PROFILE_DISPLAY_NAME=Baba Muyi
+LEGACYHUB_LEGACY_PROFILE_FULL_NAME=
 ```
 
 Never expose `SUPABASE_SERVICE_ROLE_KEY` to client components. Use it only in server-only code for trusted administrative tasks.
@@ -63,6 +117,8 @@ Use Node.js hosting, not static export.
 - Required environment variables: see `.env.example`
 - Health check: `/api/health`
 
+Hostinger requires the GitHub repository root to contain `package.json` and the Next.js `app/` directory. If GitHub only shows `PROJECT_AUDIT.md` and `package.json`, the complete local app has not been pushed yet and Hostinger will fail with a missing `app` directory error.
+
 ## Supabase Setup
 
 See `SUPABASE_SETUP.md`.
@@ -71,11 +127,13 @@ The versioned migrations are:
 
 ```text
 supabase/migrations/0001_initial_foundation.sql
-supabase/migrations/0002_cms_access_media_documentary_menu.sql
-supabase/migrations/0003_workspace_saas_foundation.sql
+supabase/migrations/0002_cms_enum_additions.sql
+supabase/migrations/0003_cms_access_media_documentary_menu.sql
+supabase/migrations/0004_workspace_saas_foundation.sql
+supabase/migrations/0005_required_storage_buckets.sql
 ```
 
-Do not claim remote migrations are applied until this SQL has been run against a real Supabase project.
+For v0.1.0, these migrations have been applied to the linked Supabase project. Do not edit applied migrations; add a new migration for future schema changes.
 
 ## SaaS Architecture
 

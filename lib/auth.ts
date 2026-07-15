@@ -1,10 +1,14 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
-import { hasSupabasePublicEnv } from "@/lib/env";
+import { allowsLocalFallback, hasSupabasePublicEnv } from "@/lib/env";
 import { roleHasPermission, type Permission, type UserRole } from "@/lib/permissions";
 
 export async function requireAdminRole(allowed: UserRole[] = ["owner", "editor"]) {
   if (!hasSupabasePublicEnv()) {
+    if (!allowsLocalFallback()) {
+      return null;
+    }
+
     const localProfile = {
       id: "local-owner",
       role: "owner" as UserRole,

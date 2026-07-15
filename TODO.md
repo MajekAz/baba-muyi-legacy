@@ -2,10 +2,9 @@
 
 ## Foundation
 
-- Apply all migrations through `supabase/migrations/0003_workspace_saas_foundation.sql` to a real Supabase project.
-- Create first owner user in Supabase Auth.
-- Insert owner membership for the `baba-muyi-family-archive` workspace and `baba-muyi` legacy profile.
-- Replace hand-maintained `lib/database.types.ts` with generated Supabase TypeScript types after remote schema is available.
+- Maintain the LegacyHub terminology and roadmap documents for milestone sequencing.
+- Keep generated `lib/database.types.ts` current after every remote schema migration.
+- Add formal remote RLS regression tests before production launch.
 - Replace admin dashboard placeholders with editable CRUD screens.
 - Add rate limiting for public forms.
 - Add upload validation endpoints and signed URL helpers.
@@ -26,6 +25,6 @@
 
 ## Deployment
 
-- Configure Hostinger Node.js Web App.
-- Configure production Supabase Auth redirect URLs.
+- Complete Hostinger production deployment from the v0.1.0 GitHub release tag.
+- Configure production Supabase Auth redirect URLs for the final domain.
 - Run production smoke tests after deployment.

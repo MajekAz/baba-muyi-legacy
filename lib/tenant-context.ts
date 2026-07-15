@@ -1,7 +1,7 @@
 import "server-only";
 
 import { redirect } from "next/navigation";
-import { hasSupabasePublicEnv } from "@/lib/env";
+import { allowsLocalFallback, hasSupabasePublicEnv } from "@/lib/env";
 import { createClient } from "@/lib/supabase/server";
 import { getActiveCmsWorkspaceContext } from "@/lib/cms-store";
 import { roleHasPermission, type Permission, type UserRole } from "@/lib/permissions";
@@ -19,6 +19,10 @@ export type TenantContext = {
 
 export async function getActiveTenantContext(): Promise<TenantContext> {
   if (!hasSupabasePublicEnv()) {
+    if (!allowsLocalFallback()) {
+      redirect("/login?setup=supabase-required");
+    }
+
     const { workspace, legacyProfile } = await getActiveCmsWorkspaceContext();
     return {
       workspaceId: workspace.id,

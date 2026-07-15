@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
+    "bootstrap:owner": "node scripts/bootstrap-owner.mjs",
     "content:import": "node scripts/import-approved-content.mjs",
     "verify:foundation": "node scripts/verify-foundation.mjs"
   },

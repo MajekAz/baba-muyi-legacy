@@ -42,6 +42,10 @@ export function hasSupabasePublicEnv() {
   return Boolean(env.NEXT_PUBLIC_SUPABASE_URL && env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
 }
 
+export function allowsLocalFallback() {
+  return process.env.NODE_ENV !== "production" || process.env.LEGACYHUB_ENABLE_LOCAL_FALLBACK === "true";
+}
+
 export function requireSupabasePublicEnv() {
   const env = getPublicEnv();
 

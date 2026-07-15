@@ -1,17 +1,4 @@
 do $$ begin
-  alter type public.user_role_key add value if not exists 'administrator';
-  alter type public.user_role_key add value if not exists 'reviewer';
-  alter type public.user_role_key add value if not exists 'viewer';
-end $$;
-
-do $$ begin
-  alter type public.privacy_state add value if not exists 'registered';
-  alter type public.privacy_state add value if not exists 'invited';
-  alter type public.privacy_state add value if not exists 'specific_users';
-  alter type public.privacy_state add value if not exists 'password_protected';
-end $$;
-
-do $$ begin
   create type public.invitation_status as enum ('pending', 'accepted', 'expired', 'revoked');
 exception when duplicate_object then null;
 end $$;

@@ -26,7 +26,12 @@ NEXT_PUBLIC_SUPABASE_URL=your-supabase-project-url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
 SUPABASE_SERVICE_ROLE_KEY=your-server-only-service-role-key
 NEXT_PUBLIC_AUTH_REDIRECT_URL=https://babamuyilegacy.com/auth/callback
+LEGACYHUB_ENABLE_LOCAL_FALLBACK=false
 ```
+
+For a Hostinger preview deployment, set `NEXT_PUBLIC_SITE_URL` to the Hostinger preview URL and
+`NEXT_PUBLIC_AUTH_REDIRECT_URL` to the matching `/auth/callback` URL. Switch both values to the
+final custom domain after DNS is live.
 
 ## Health Check
 
@@ -61,3 +66,4 @@ https://babamuyilegacy.com/api/health
 - Keep Supabase Auth redirect URLs in sync with the final domain.
 - Ensure production builds run after environment variables are set.
 - Public signup remains disabled for first launch; create the owner manually in Supabase Auth.
+- Keep `LEGACYHUB_ENABLE_LOCAL_FALLBACK=false` in Hostinger. The local owner fallback is for local development only and must not protect production admin routes.
