@@ -7,7 +7,7 @@
       "eyebrow": "Digital legacy archive",
       "title": "Alhaji Tioluwalase \"Baba Muyi\" Majekodunmi",
       "description": "A living archive for family history, enterprise, transport heritage, public memories, documentary material, and the values Baba Muyi carried through his life.",
-      "body": "This homepage is now powered by the CMS. Editors can update the hero, archive principles, featured sections, and timeline preview from the administration panel.",
+      "body": "This homepage introduces the archive’s purpose, principles, featured sections, and timeline preview for visitors.",
       "cards": [
         {
           "id": "family-stewardship",
@@ -42,7 +42,7 @@
       "eyebrow": "Life story",
       "title": "Full biography",
       "description": "A chapter-led biography prepared for family-approved writing, photographs, source notes, and documentary references.",
-      "body": "Biography chapters are managed as CMS records. Add source notes, verification status, media, and publication state before public release.",
+      "body": "Biography chapters are being carefully prepared for publication with source notes, family review, and appropriate permissions.",
       "cards": [
         {
           "id": "early-life",
@@ -75,7 +75,7 @@
       "eyebrow": "Chronology",
       "title": "Interactive timeline",
       "description": "Milestones support dates, locations, categories, media attachments, source notes, and publication state.",
-      "body": "Timeline events are CMS records. Add each event once and reuse it across biography, documentary, and archive pages.",
+      "body": "Verified milestones from Baba Muyi’s life will appear here as the archive develops.",
       "cards": [],
       "id": "page-timeline",
       "slug": "timeline",
@@ -89,7 +89,7 @@
       "eyebrow": "Film archive",
       "title": "Documentary centre",
       "description": "Manage documentaries, episodes, trailers, transcripts, subtitles, chapters, and streaming-provider playback IDs.",
-      "body": "Full documentaries should be hosted by a video platform such as YouTube, Vimeo, Cloudflare Stream, or Mux. The CMS stores metadata and playback references.",
+      "body": "Documentary material will be organised here with episodes, transcripts, viewing notes, and approved playback references.",
       "cards": [
         {
           "id": "episodes",
@@ -154,7 +154,7 @@
       "eyebrow": "Lineage",
       "title": "Family tree",
       "description": "A private-first family graph for relationships, photos, life dates, notes, and publication permissions.",
-      "body": "Family-member details are CMS records with public visibility disabled by default for living people.",
+      "body": "Family records will be handled carefully with privacy, consent, and special protection for living people.",
       "cards": [],
       "id": "page-family-tree",
       "slug": "family-tree",
@@ -182,7 +182,7 @@
       "eyebrow": "Editorial",
       "title": "Blog",
       "description": "Archive notes, curator updates, essays, documentary announcements, and historical context.",
-      "body": "Blog posts are managed in the CMS with categories, SEO metadata, scheduled publishing, and article-ready summaries.",
+      "body": "Legacy articles and historical reflections will be published here.",
       "cards": [],
       "id": "page-blog",
       "slug": "blog",
@@ -224,7 +224,7 @@
       "eyebrow": "Contact",
       "title": "Contact the archive",
       "description": "A route for family, contributors, documentary participants, and future platform enquiries.",
-      "body": "Contact submissions will later be stored with moderation and spam controls. For now this page is editable through the CMS.",
+      "body": "Contact routes will support family, contributors, documentary participants, and archive enquiries.",
       "cards": [],
       "id": "page-contact",
       "slug": "contact",
@@ -238,7 +238,7 @@
       "eyebrow": "Stewardship",
       "title": "About the curator",
       "description": "A page for the person or family team preserving the archive, including editorial principles and contact routes.",
-      "body": "Use this CMS page for the family-approved curator profile, archive mission, and editorial policy.",
+      "body": "This section will share the family-approved curator profile, archive mission, and editorial policy.",
       "cards": [],
       "id": "page-curator",
       "slug": "curator",
@@ -252,12 +252,12 @@
       "eyebrow": "His Life",
       "title": "Early Life",
       "description": "A dedicated section for approved early-life material once family-reviewed content is supplied.",
-      "body": "This page is editable from the CMS. Replace this placeholder with approved text, source notes, images, and related records.",
+      "body": "Approved material for this section is being prepared for publication.",
       "cards": [
         {
           "id": "early-life-cms-ready",
-          "title": "CMS-managed page",
-          "description": "Update this page from Administration > CMS Pages. Publish only approved content."
+          "title": "Content in preparation",
+          "description": "Family-reviewed material will appear here when it is ready."
         }
       ],
       "id": "page-early-life",
@@ -272,12 +272,12 @@
       "eyebrow": "His Life",
       "title": "Journey to Bariga",
       "description": "A reusable biography landing page for the Bariga journey chapter.",
-      "body": "This page is editable from the CMS. Replace this placeholder with approved text, source notes, images, and related records.",
+      "body": "Approved material for this section is being prepared for publication.",
       "cards": [
         {
           "id": "journey-to-bariga-cms-ready",
-          "title": "CMS-managed page",
-          "description": "Update this page from Administration > CMS Pages. Publish only approved content."
+          "title": "Content in preparation",
+          "description": "Family-reviewed material will appear here when it is ready."
         }
       ],
       "id": "page-journey-to-bariga",
@@ -292,12 +292,12 @@
       "eyebrow": "His Life",
       "title": "Community Leadership",
       "description": "Approved stories about service, leadership, and community memory.",
-      "body": "This page is editable from the CMS. Replace this placeholder with approved text, source notes, images, and related records.",
+      "body": "Approved material for this section is being prepared for publication.",
       "cards": [
         {
           "id": "community-leadership-cms-ready",
-          "title": "CMS-managed page",
-          "description": "Update this page from Administration > CMS Pages. Publish only approved content."
+          "title": "Content in preparation",
+          "description": "Family-reviewed material will appear here when it is ready."
         }
       ],
       "id": "page-community-leadership",
@@ -312,12 +312,12 @@
       "eyebrow": "Transport history",
       "title": "Bolekaja transport history",
       "description": "Oral history, vehicles, routes, staff, photographs, and the social context of Bolekaja transport.",
-      "body": "This page is editable from the CMS. Replace this placeholder with approved text, source notes, images, and related records.",
+      "body": "Approved material for this section is being prepared for publication.",
       "cards": [
         {
           "id": "bolekaja-cms-ready",
-          "title": "CMS-managed page",
-          "description": "Update this page from Administration > CMS Pages. Publish only approved content."
+          "title": "Content in preparation",
+          "description": "Family-reviewed material will appear here when it is ready."
         }
       ],
       "id": "page-bolekaja",
@@ -332,12 +332,12 @@
       "eyebrow": "Enterprise",
       "title": "TIOLUWA LASE Molue history",
       "description": "The TIOLUWA LASE Molue story, business operations, people, and memories from the road.",
-      "body": "This page is editable from the CMS. Replace this placeholder with approved text, source notes, images, and related records.",
+      "body": "Approved material for this section is being prepared for publication.",
       "cards": [
         {
           "id": "tioluwa-lase-molue-cms-ready",
-          "title": "CMS-managed page",
-          "description": "Update this page from Administration > CMS Pages. Publish only approved content."
+          "title": "Content in preparation",
+          "description": "Family-reviewed material will appear here when it is ready."
         }
       ],
       "id": "page-tioluwa-lase-molue",
@@ -352,12 +352,12 @@
       "eyebrow": "Transport Legacy",
       "title": "Routes and Locations",
       "description": "A route-focused section for approved transport locations.",
-      "body": "This page is editable from the CMS. Replace this placeholder with approved text, source notes, images, and related records.",
+      "body": "Approved material for this section is being prepared for publication.",
       "cards": [
         {
           "id": "routes-and-locations-cms-ready",
-          "title": "CMS-managed page",
-          "description": "Update this page from Administration > CMS Pages. Publish only approved content."
+          "title": "Content in preparation",
+          "description": "Family-reviewed material will appear here when it is ready."
         }
       ],
       "id": "page-routes-and-locations",
@@ -372,12 +372,12 @@
       "eyebrow": "Transport Legacy",
       "title": "Transport Gallery",
       "description": "A gallery landing page for Bolekaja, Molue, route, and vehicle images.",
-      "body": "This page is editable from the CMS. Replace this placeholder with approved text, source notes, images, and related records.",
+      "body": "Approved material for this section is being prepared for publication.",
       "cards": [
         {
           "id": "transport-gallery-cms-ready",
-          "title": "CMS-managed page",
-          "description": "Update this page from Administration > CMS Pages. Publish only approved content."
+          "title": "Content in preparation",
+          "description": "Family-reviewed material will appear here when it is ready."
         }
       ],
       "id": "page-transport-gallery",
@@ -392,12 +392,12 @@
       "eyebrow": "Documentaries",
       "title": "English Documentary",
       "description": "A dedicated page for the approved English documentary record and playback details.",
-      "body": "This page is editable from the CMS. Replace this placeholder with approved text, source notes, images, and related records.",
+      "body": "Approved material for this section is being prepared for publication.",
       "cards": [
         {
           "id": "english-documentary-cms-ready",
-          "title": "CMS-managed page",
-          "description": "Update this page from Administration > CMS Pages. Publish only approved content."
+          "title": "Content in preparation",
+          "description": "Family-reviewed material will appear here when it is ready."
         }
       ],
       "id": "page-english-documentary",
@@ -412,12 +412,12 @@
       "eyebrow": "Documentaries",
       "title": "Episodes",
       "description": "A structured listing for documentary series episodes and chapters.",
-      "body": "This page is editable from the CMS. Replace this placeholder with approved text, source notes, images, and related records.",
+      "body": "Approved material for this section is being prepared for publication.",
       "cards": [
         {
           "id": "documentary-episodes-cms-ready",
-          "title": "CMS-managed page",
-          "description": "Update this page from Administration > CMS Pages. Publish only approved content."
+          "title": "Content in preparation",
+          "description": "Family-reviewed material will appear here when it is ready."
         }
       ],
       "id": "page-documentary-episodes",
@@ -432,12 +432,12 @@
       "eyebrow": "Documentaries",
       "title": "Trailers and Clips",
       "description": "A page for trailers, short clips, and supporting video material.",
-      "body": "This page is editable from the CMS. Replace this placeholder with approved text, source notes, images, and related records.",
+      "body": "Approved material for this section is being prepared for publication.",
       "cards": [
         {
           "id": "trailer-clips-cms-ready",
-          "title": "CMS-managed page",
-          "description": "Update this page from Administration > CMS Pages. Publish only approved content."
+          "title": "Content in preparation",
+          "description": "Family-reviewed material will appear here when it is ready."
         }
       ],
       "id": "page-trailer-clips",
@@ -452,12 +452,12 @@
       "eyebrow": "Documentaries",
       "title": "Transcripts",
       "description": "A searchable home for documentary transcripts and subtitles.",
-      "body": "This page is editable from the CMS. Replace this placeholder with approved text, source notes, images, and related records.",
+      "body": "Approved material for this section is being prepared for publication.",
       "cards": [
         {
           "id": "transcripts-cms-ready",
-          "title": "CMS-managed page",
-          "description": "Update this page from Administration > CMS Pages. Publish only approved content."
+          "title": "Content in preparation",
+          "description": "Family-reviewed material will appear here when it is ready."
         }
       ],
       "id": "page-transcripts",
@@ -472,12 +472,12 @@
       "eyebrow": "Gallery",
       "title": "Portraits",
       "description": "A focused gallery for approved portraits.",
-      "body": "This page is editable from the CMS. Replace this placeholder with approved text, source notes, images, and related records.",
+      "body": "Approved material for this section is being prepared for publication.",
       "cards": [
         {
           "id": "portraits-cms-ready",
-          "title": "CMS-managed page",
-          "description": "Update this page from Administration > CMS Pages. Publish only approved content."
+          "title": "Content in preparation",
+          "description": "Family-reviewed material will appear here when it is ready."
         }
       ],
       "id": "page-portraits",
@@ -492,12 +492,12 @@
       "eyebrow": "Gallery",
       "title": "Family",
       "description": "A private-first gallery area for approved family photographs.",
-      "body": "This page is editable from the CMS. Replace this placeholder with approved text, source notes, images, and related records.",
+      "body": "Approved material for this section is being prepared for publication.",
       "cards": [
         {
           "id": "family-cms-ready",
-          "title": "CMS-managed page",
-          "description": "Update this page from Administration > CMS Pages. Publish only approved content."
+          "title": "Content in preparation",
+          "description": "Family-reviewed material will appear here when it is ready."
         }
       ],
       "id": "page-family",
@@ -512,12 +512,12 @@
       "eyebrow": "Gallery",
       "title": "Bolekaja",
       "description": "A gallery for approved Bolekaja era photographs and captions.",
-      "body": "This page is editable from the CMS. Replace this placeholder with approved text, source notes, images, and related records.",
+      "body": "Approved material for this section is being prepared for publication.",
       "cards": [
         {
           "id": "bolekaja-gallery-cms-ready",
-          "title": "CMS-managed page",
-          "description": "Update this page from Administration > CMS Pages. Publish only approved content."
+          "title": "Content in preparation",
+          "description": "Family-reviewed material will appear here when it is ready."
         }
       ],
       "id": "page-bolekaja-gallery",
@@ -532,12 +532,12 @@
       "eyebrow": "Gallery",
       "title": "Molue",
       "description": "A gallery for TIOLUWA LASE Molue era photographs and transport memories.",
-      "body": "This page is editable from the CMS. Replace this placeholder with approved text, source notes, images, and related records.",
+      "body": "Approved material for this section is being prepared for publication.",
       "cards": [
         {
           "id": "molue-gallery-cms-ready",
-          "title": "CMS-managed page",
-          "description": "Update this page from Administration > CMS Pages. Publish only approved content."
+          "title": "Content in preparation",
+          "description": "Family-reviewed material will appear here when it is ready."
         }
       ],
       "id": "page-molue-gallery",
@@ -552,12 +552,12 @@
       "eyebrow": "Gallery",
       "title": "Community",
       "description": "A gallery for approved community and leadership photographs.",
-      "body": "This page is editable from the CMS. Replace this placeholder with approved text, source notes, images, and related records.",
+      "body": "Approved material for this section is being prepared for publication.",
       "cards": [
         {
           "id": "community-gallery-cms-ready",
-          "title": "CMS-managed page",
-          "description": "Update this page from Administration > CMS Pages. Publish only approved content."
+          "title": "Content in preparation",
+          "description": "Family-reviewed material will appear here when it is ready."
         }
       ],
       "id": "page-community-gallery",
@@ -572,12 +572,12 @@
       "eyebrow": "Gallery",
       "title": "Restored Images",
       "description": "Restored archive photographs, always linked to archival originals.",
-      "body": "This page is editable from the CMS. Replace this placeholder with approved text, source notes, images, and related records.",
+      "body": "Approved material for this section is being prepared for publication.",
       "cards": [
         {
           "id": "restored-images-cms-ready",
-          "title": "CMS-managed page",
-          "description": "Update this page from Administration > CMS Pages. Publish only approved content."
+          "title": "Content in preparation",
+          "description": "Family-reviewed material will appear here when it is ready."
         }
       ],
       "id": "page-restored-images",
@@ -592,12 +592,12 @@
       "eyebrow": "Family Legacy",
       "title": "Children",
       "description": "A privacy-protected section for approved family-member records.",
-      "body": "This page is editable from the CMS. Replace this placeholder with approved text, source notes, images, and related records.",
+      "body": "Approved material for this section is being prepared for publication.",
       "cards": [
         {
           "id": "children-cms-ready",
-          "title": "CMS-managed page",
-          "description": "Update this page from Administration > CMS Pages. Publish only approved content."
+          "title": "Content in preparation",
+          "description": "Family-reviewed material will appear here when it is ready."
         }
       ],
       "id": "page-children",
@@ -612,12 +612,12 @@
       "eyebrow": "Family Legacy",
       "title": "Grandchildren",
       "description": "A family section governed by visibility and consent settings.",
-      "body": "This page is editable from the CMS. Replace this placeholder with approved text, source notes, images, and related records.",
+      "body": "Approved material for this section is being prepared for publication.",
       "cards": [
         {
           "id": "grandchildren-cms-ready",
-          "title": "CMS-managed page",
-          "description": "Update this page from Administration > CMS Pages. Publish only approved content."
+          "title": "Content in preparation",
+          "description": "Family-reviewed material will appear here when it is ready."
         }
       ],
       "id": "page-grandchildren",
@@ -632,12 +632,12 @@
       "eyebrow": "Family Legacy",
       "title": "Family Memories",
       "description": "Reviewed family stories, audio, photographs, and recollections.",
-      "body": "This page is editable from the CMS. Replace this placeholder with approved text, source notes, images, and related records.",
+      "body": "Approved material for this section is being prepared for publication.",
       "cards": [
         {
           "id": "family-memories-cms-ready",
-          "title": "CMS-managed page",
-          "description": "Update this page from Administration > CMS Pages. Publish only approved content."
+          "title": "Content in preparation",
+          "description": "Family-reviewed material will appear here when it is ready."
         }
       ],
       "id": "page-family-memories",
@@ -652,12 +652,12 @@
       "eyebrow": "Routes",
       "title": "Interactive journey and route map",
       "description": "Journeys, routes, stops, landmarks, and transport memories.",
-      "body": "This page is editable from the CMS. Replace this placeholder with approved text, source notes, images, and related records.",
+      "body": "Approved material for this section is being prepared for publication.",
       "cards": [
         {
           "id": "journey-map-cms-ready",
-          "title": "CMS-managed page",
-          "description": "Update this page from Administration > CMS Pages. Publish only approved content."
+          "title": "Content in preparation",
+          "description": "Family-reviewed material will appear here when it is ready."
         }
       ],
       "id": "page-journey-map",
@@ -672,12 +672,12 @@
       "eyebrow": "Sources",
       "title": "Historical documents",
       "description": "A controlled document archive for scans, letters, certificates, business records, and references.",
-      "body": "This page is editable from the CMS. Replace this placeholder with approved text, source notes, images, and related records.",
+      "body": "Approved material for this section is being prepared for publication.",
       "cards": [
         {
           "id": "documents-cms-ready",
-          "title": "CMS-managed page",
-          "description": "Update this page from Administration > CMS Pages. Publish only approved content."
+          "title": "Content in preparation",
+          "description": "Family-reviewed material will appear here when it is ready."
         }
       ],
       "id": "page-documents",
@@ -692,12 +692,12 @@
       "eyebrow": "Legal",
       "title": "Privacy policy",
       "description": "Draft privacy policy for the Baba Muyi Legacy archive.",
-      "body": "This page is editable from the CMS. Replace this placeholder with approved text, source notes, images, and related records.",
+      "body": "Approved material for this section is being prepared for publication.",
       "cards": [
         {
           "id": "privacy-cms-ready",
-          "title": "CMS-managed page",
-          "description": "Update this page from Administration > CMS Pages. Publish only approved content."
+          "title": "Content in preparation",
+          "description": "Family-reviewed material will appear here when it is ready."
         }
       ],
       "id": "page-privacy",
@@ -712,12 +712,12 @@
       "eyebrow": "Legal",
       "title": "Terms",
       "description": "Draft terms for contributors and visitors.",
-      "body": "This page is editable from the CMS. Replace this placeholder with approved text, source notes, images, and related records.",
+      "body": "Approved material for this section is being prepared for publication.",
       "cards": [
         {
           "id": "terms-cms-ready",
-          "title": "CMS-managed page",
-          "description": "Update this page from Administration > CMS Pages. Publish only approved content."
+          "title": "Content in preparation",
+          "description": "Family-reviewed material will appear here when it is ready."
         }
       ],
       "id": "page-terms",
@@ -732,12 +732,12 @@
       "eyebrow": "Future SaaS",
       "title": "Legacy platform waiting list",
       "description": "The Baba Muyi archive is the proof of concept for a future family legacy platform.",
-      "body": "This page is editable from the CMS. Replace this placeholder with approved text, source notes, images, and related records.",
+      "body": "Approved material for this section is being prepared for publication.",
       "cards": [
         {
           "id": "waiting-list-cms-ready",
-          "title": "CMS-managed page",
-          "description": "Update this page from Administration > CMS Pages. Publish only approved content."
+          "title": "Content in preparation",
+          "description": "Family-reviewed material will appear here when it is ready."
         }
       ],
       "id": "page-waiting-list",
@@ -755,7 +755,7 @@
       "title": "Family roots and formation",
       "slug": "family-roots",
       "summary": "A curated chapter for childhood, family lineage, education, early influences, and the people who shaped his character.",
-      "body": "Add approved timeline details, sources, images, and locations from the CMS.",
+      "body": "Approved timeline details, sources, images, and locations will be added as the archive develops.",
       "status": "published",
       "visibility": "public",
       "verificationStatus": "unverified",
@@ -799,10 +799,10 @@
     {
       "id": "blog-cms-first",
       "kind": "blog_post",
-      "title": "Building the Baba Muyi archive CMS-first",
+      "title": "Building the Baba Muyi archive carefully",
       "slug": "cms-first",
-      "summary": "A curator note explaining that public pages now read from managed CMS records.",
-      "body": "This post can be edited, scheduled, archived, and later synced to Supabase.",
+      "summary": "A curator note about preparing public archive pages with care and review.",
+      "body": "Legacy articles and historical reflections will be published here when approved.",
       "status": "draft",
       "visibility": "public",
       "verificationStatus": "unverified",

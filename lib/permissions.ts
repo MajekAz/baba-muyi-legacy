@@ -45,8 +45,8 @@ export const rolePermissions: Record<UserRole, Permission[]> = {
     "access_documentaries"
   ],
   editor: ["edit_assigned_content", "upload_media", "access_media_library", "access_documentaries"],
-  contributor: ["upload_media"],
-  reviewer: ["review_submissions"],
+  contributor: ["edit_assigned_content", "upload_media"],
+  reviewer: ["edit_assigned_content", "review_submissions"],
   viewer: ["grant_private_viewing"]
 };
 

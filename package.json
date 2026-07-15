@@ -10,6 +10,8 @@
     "typecheck": "tsc --noEmit",
     "bootstrap:owner": "node scripts/bootstrap-owner.mjs",
     "content:import": "node scripts/import-approved-content.mjs",
+    "test:cms-core": "node scripts/test-cms-core.mjs",
+    "test:cms-remote-roles": "node scripts/test-cms-remote-roles.mjs",
     "verify:foundation": "node scripts/verify-foundation.mjs"
   },
   "dependencies": {

@@ -1,6 +1,8 @@
 import { ShieldCheck } from "lucide-react";
+import Link from "next/link";
 import { requireAdminRole } from "@/lib/auth";
-import { getCmsCollectionSummaries } from "@/lib/cms-store";
+import { cmsCoreCollections, getCmsCoreRecords, type CmsCoreCollection } from "@/lib/cms-core";
+import { requireLegacyProfilePermission } from "@/lib/tenant-context";
 
 export default async function AdminPage() {
   const session = await requireAdminRole(["owner", "administrator", "editor", "contributor", "reviewer", "viewer"]);
@@ -10,7 +12,20 @@ export default async function AdminPage() {
   }
 
   const { profile } = session;
-  const collections = await getCmsCollectionSummaries();
+  const context = await requireLegacyProfilePermission("edit_assigned_content");
+  const collections = Object.keys(cmsCoreCollections) as CmsCoreCollection[];
+  const recordsByCollection = await Promise.all(collections.map(async (collection) => getCmsCoreRecords(collection, context)));
+  const records = recordsByCollection.flat();
+  const recent = records
+    .slice()
+    .sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime())
+    .slice(0, 6);
+  const counts = {
+    draft: records.filter((record) => record.status === "draft").length,
+    inReview: records.filter((record) => record.status === "in_review").length,
+    published: records.filter((record) => record.status === "published").length,
+    archived: records.filter((record) => record.status === "archived").length
+  };
 
   return (
     <main className="min-h-screen bg-archive-cream">
@@ -27,20 +42,50 @@ export default async function AdminPage() {
         </div>
       </section>
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {collections.map((collection) => (
-            <article className="rounded border border-archive-navy/12 bg-white p-6 shadow-sm" key={collection.kind}>
-              <h2 className="font-serif text-2xl text-archive-navy">{collection.label}</h2>
-              <p className="mt-3 text-sm leading-6 text-slate-700">
-                {collection.description}
-              </p>
-              <div className="mt-5 grid grid-cols-3 gap-2 text-center text-xs font-semibold text-slate-600">
-                <span className="rounded bg-archive-cream px-2 py-2">{collection.count} total</span>
-                <span className="rounded bg-green-50 px-2 py-2 text-green-800">{collection.published} live</span>
-                <span className="rounded bg-amber-50 px-2 py-2 text-amber-800">{collection.drafts} drafts</span>
-              </div>
-            </article>
-          ))}
+        <div className="grid gap-5 md:grid-cols-4">
+          <article className="rounded border border-archive-navy/12 bg-white p-5 shadow-sm">
+            <p className="text-xs font-bold uppercase tracking-[0.14em] text-archive-brown">Drafts</p>
+            <p className="mt-2 font-serif text-4xl text-archive-navy">{counts.draft}</p>
+          </article>
+          <article className="rounded border border-archive-navy/12 bg-white p-5 shadow-sm">
+            <p className="text-xs font-bold uppercase tracking-[0.14em] text-archive-brown">In review</p>
+            <p className="mt-2 font-serif text-4xl text-archive-navy">{counts.inReview}</p>
+          </article>
+          <article className="rounded border border-archive-navy/12 bg-white p-5 shadow-sm">
+            <p className="text-xs font-bold uppercase tracking-[0.14em] text-archive-brown">Published</p>
+            <p className="mt-2 font-serif text-4xl text-archive-navy">{counts.published}</p>
+          </article>
+          <article className="rounded border border-archive-navy/12 bg-white p-5 shadow-sm">
+            <p className="text-xs font-bold uppercase tracking-[0.14em] text-archive-brown">Archived</p>
+            <p className="mt-2 font-serif text-4xl text-archive-navy">{counts.archived}</p>
+          </article>
+        </div>
+
+        <div className="mt-8 grid gap-5 lg:grid-cols-[1fr_22rem]">
+          <section className="rounded border border-archive-navy/12 bg-white p-6 shadow-sm">
+            <h2 className="font-serif text-2xl text-archive-navy">Recent content</h2>
+            <div className="mt-4 divide-y divide-slate-200">
+              {recent.length ? recent.map((record) => (
+                <Link className="block py-4" href={`/admin/content/${record.collection}/${record.id}`} key={record.id}>
+                  <p className="text-xs font-bold uppercase tracking-[0.14em] text-archive-brown">{cmsCoreCollections[record.collection as CmsCoreCollection].label} · {record.status}</p>
+                  <h3 className="mt-1 font-serif text-xl text-archive-navy">{record.title}</h3>
+                  <p className="mt-1 text-sm text-slate-600">{record.summary || "No summary yet."}</p>
+                </Link>
+              )) : (
+                <p className="py-4 text-sm text-slate-600">No written content records have been created yet.</p>
+              )}
+            </div>
+          </section>
+          <aside className="rounded border border-archive-navy/12 bg-white p-6 shadow-sm">
+            <h2 className="font-serif text-2xl text-archive-navy">Quick create</h2>
+            <div className="mt-4 grid gap-2">
+              {collections.map((collection) => (
+                <Link className="rounded border border-slate-200 px-4 py-3 text-sm font-semibold text-archive-navy hover:bg-archive-cream" href={`/admin/content/${collection}/new`} key={collection}>
+                  {cmsCoreCollections[collection].label}
+                </Link>
+              ))}
+            </div>
+          </aside>
         </div>
       </section>
     </main>

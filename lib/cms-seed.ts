@@ -11,7 +11,7 @@ const pageSeeds: Array<Omit<CmsPage, "id" | "workspaceId" | "legacyProfileId" | 
     eyebrow: "Digital legacy archive",
     title: "Alhaji Tioluwalase \"Baba Muyi\" Majekodunmi",
     description: "A living archive for family history, enterprise, transport heritage, public memories, documentary material, and the values Baba Muyi carried through his life.",
-    body: "This homepage is now powered by the CMS. Editors can update the hero, archive principles, featured sections, and timeline preview from the administration panel.",
+    body: "This homepage introduces the archive’s purpose, principles, featured sections, and timeline preview for visitors.",
     cards: [
       { id: "family-stewardship", title: "Family stewardship", description: "Preserving family memory with care, consent, and context." },
       { id: "enterprise", title: "Enterprise", description: "Documenting the work, transport ventures, and people connected to the business." },
@@ -24,7 +24,7 @@ const pageSeeds: Array<Omit<CmsPage, "id" | "workspaceId" | "legacyProfileId" | 
     eyebrow: "Life story",
     title: "Full biography",
     description: "A chapter-led biography prepared for family-approved writing, photographs, source notes, and documentary references.",
-    body: "Biography chapters are managed as CMS records. Add source notes, verification status, media, and publication state before public release.",
+    body: "Biography chapters are being carefully prepared for publication with source notes, family review, and appropriate permissions.",
     cards: [
       { id: "early-life", title: "Early life and family roots", description: "Birthplace, lineage, education, childhood stories, and formative influences.", href: "/early-life" },
       { id: "enterprise", title: "Enterprise and transport work", description: "Bolekaja, Molue history, routes, staff, and community impact.", href: "/bolekaja" },
@@ -36,7 +36,7 @@ const pageSeeds: Array<Omit<CmsPage, "id" | "workspaceId" | "legacyProfileId" | 
     eyebrow: "Chronology",
     title: "Interactive timeline",
     description: "Milestones support dates, locations, categories, media attachments, source notes, and publication state.",
-    body: "Timeline events are CMS records. Add each event once and reuse it across biography, documentary, and archive pages.",
+    body: "Verified milestones from Baba Muyi’s life will appear here as the archive develops.",
     cards: []
   },
   {
@@ -44,7 +44,7 @@ const pageSeeds: Array<Omit<CmsPage, "id" | "workspaceId" | "legacyProfileId" | 
     eyebrow: "Film archive",
     title: "Documentary centre",
     description: "Manage documentaries, episodes, trailers, transcripts, subtitles, chapters, and streaming-provider playback IDs.",
-    body: "Full documentaries should be hosted by a video platform such as YouTube, Vimeo, Cloudflare Stream, or Mux. The CMS stores metadata and playback references.",
+    body: "Documentary material will be organised here with episodes, transcripts, viewing notes, and approved playback references.",
     cards: [
       { id: "episodes", title: "Episodes", description: "Episode metadata, chapters, release status, thumbnails, and playback IDs.", href: "/documentary-episodes" },
       { id: "transcripts", title: "Transcripts", description: "Searchable transcripts with timestamps and family-approved corrections.", href: "/transcripts" },
@@ -68,7 +68,7 @@ const pageSeeds: Array<Omit<CmsPage, "id" | "workspaceId" | "legacyProfileId" | 
     eyebrow: "Lineage",
     title: "Family tree",
     description: "A private-first family graph for relationships, photos, life dates, notes, and publication permissions.",
-    body: "Family-member details are CMS records with public visibility disabled by default for living people.",
+    body: "Family records will be handled carefully with privacy, consent, and special protection for living people.",
     cards: []
   },
   {
@@ -84,7 +84,7 @@ const pageSeeds: Array<Omit<CmsPage, "id" | "workspaceId" | "legacyProfileId" | 
     eyebrow: "Editorial",
     title: "Blog",
     description: "Archive notes, curator updates, essays, documentary announcements, and historical context.",
-    body: "Blog posts are managed in the CMS with categories, SEO metadata, scheduled publishing, and article-ready summaries.",
+    body: "Legacy articles and historical reflections will be published here.",
     cards: []
   },
   {
@@ -108,7 +108,7 @@ const pageSeeds: Array<Omit<CmsPage, "id" | "workspaceId" | "legacyProfileId" | 
     eyebrow: "Contact",
     title: "Contact the archive",
     description: "A route for family, contributors, documentary participants, and future platform enquiries.",
-    body: "Contact submissions will later be stored with moderation and spam controls. For now this page is editable through the CMS.",
+    body: "Contact routes will support family, contributors, documentary participants, and archive enquiries.",
     cards: []
   },
   {
@@ -116,7 +116,7 @@ const pageSeeds: Array<Omit<CmsPage, "id" | "workspaceId" | "legacyProfileId" | 
     eyebrow: "Stewardship",
     title: "About the curator",
     description: "A page for the person or family team preserving the archive, including editorial principles and contact routes.",
-    body: "Use this CMS page for the family-approved curator profile, archive mission, and editorial policy.",
+    body: "This section will share the family-approved curator profile, archive mission, and editorial policy.",
     cards: []
   }
 ];
@@ -160,12 +160,12 @@ const pages: CmsPage[] = [
     eyebrow,
     title,
     description,
-    body: "This page is editable from the CMS. Replace this placeholder with approved text, source notes, images, and related records.",
+    body: "Approved material for this section is being prepared for publication.",
     cards: [
       {
         id: `${slugFromPath(path)}-cms-ready`,
-        title: "CMS-managed page",
-        description: "Update this page from Administration > CMS Pages. Publish only approved content."
+        title: "Content in preparation",
+        description: "Family-reviewed material will appear here when it is ready."
       }
     ]
   }))
@@ -190,7 +190,7 @@ const content: CmsContentRecord[] = [
     title: "Family roots and formation",
     slug: "family-roots",
     summary: "A curated chapter for childhood, family lineage, education, early influences, and the people who shaped his character.",
-    body: "Add approved timeline details, sources, images, and locations from the CMS.",
+    body: "Approved timeline details, sources, images, and locations will be added as the archive develops.",
     status: "published",
     visibility: "public",
     verificationStatus: "unverified",
@@ -243,10 +243,10 @@ const content: CmsContentRecord[] = [
     workspaceId: defaultWorkspaceId,
     legacyProfileId: defaultLegacyProfileId,
     kind: "blog_post",
-    title: "Building the Baba Muyi archive CMS-first",
+    title: "Building the Baba Muyi archive carefully",
     slug: "cms-first",
-    summary: "A curator note explaining that public pages now read from managed CMS records.",
-    body: "This post can be edited, scheduled, archived, and later synced to Supabase.",
+    summary: "A curator note about preparing public archive pages with care and review.",
+    body: "Legacy articles and historical reflections will be published here when approved.",
     status: "draft",
     visibility: "public",
     verificationStatus: "unverified",

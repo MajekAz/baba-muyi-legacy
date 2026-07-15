@@ -16,6 +16,13 @@
 - Add drag-and-drop persistence for menu item reordering.
 - Add route-level smoke tests with a formal test runner.
 
+## Milestone 2 Deferred Items
+
+- Add rate limiting for CMS mutations in Milestone 3 Security Hardening.
+- Add the full content revision-history browser in Milestone 3 or Milestone 4, after revision capture is stable.
+- Add complete category management in Milestone 4 Content Organisation.
+- Add complete tag management in Milestone 4 Content Organisation.
+
 ## Content
 
 - Add approved files to `content-source/`.

@@ -203,3 +203,14 @@ These are acceptable for the flagship archive but must be isolated from reusable
 - Hostinger will fail until `app/` reaches `origin/main`.
 - Production Supabase env vars are not configured/tested.
 - Remote migrations are not confirmed.
+
+## Milestone 2 Deferred Scope
+
+These items are intentionally not considered complete for Milestone 2 remediation:
+
+| Item | Status | Proposed ownership | Notes |
+| --- | --- | --- | --- |
+| CMS mutation rate limiting | Deferred | Milestone 3 Security Hardening | Server actions and RLS protect access, but abuse throttling is not implemented. |
+| Full revision-history browser | Deferred | Milestone 3 or Milestone 4 | Audit logs exist; a user-facing revision comparison/restoration interface is not complete. |
+| Complete category management | Deferred | Milestone 4 Content Organisation | Category text can be saved on core content, but full CRUD/taxonomy workflows are not complete. |
+| Complete tag management | Deferred | Milestone 4 Content Organisation | Source-note/tag text can be saved; full reusable tags, filtering and governance remain future work. |
