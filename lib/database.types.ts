@@ -196,10 +196,13 @@ export type Database = {
       }
       biography_chapters: {
         Row: {
+          author_id: string | null
           body: Json
           created_at: string
+          created_by: string | null
           excerpt: string | null
           id: string
+          last_editor_id: string | null
           legacy_profile_id: string
           privacy_state: Database["public"]["Enums"]["privacy_state"]
           publish_state: Database["public"]["Enums"]["publish_state"]
@@ -215,10 +218,13 @@ export type Database = {
           workspace_id: string | null
         }
         Insert: {
+          author_id?: string | null
           body?: Json
           created_at?: string
+          created_by?: string | null
           excerpt?: string | null
           id?: string
+          last_editor_id?: string | null
           legacy_profile_id: string
           privacy_state?: Database["public"]["Enums"]["privacy_state"]
           publish_state?: Database["public"]["Enums"]["publish_state"]
@@ -234,10 +240,13 @@ export type Database = {
           workspace_id?: string | null
         }
         Update: {
+          author_id?: string | null
           body?: Json
           created_at?: string
+          created_by?: string | null
           excerpt?: string | null
           id?: string
+          last_editor_id?: string | null
           legacy_profile_id?: string
           privacy_state?: Database["public"]["Enums"]["privacy_state"]
           publish_state?: Database["public"]["Enums"]["publish_state"]
@@ -253,6 +262,27 @@ export type Database = {
           workspace_id?: string | null
         }
         Relationships: [
+          {
+            foreignKeyName: "biography_chapters_author_id_fkey"
+            columns: ["author_id"]
+            isOneToOne: false
+            referencedRelation: "user_profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "biography_chapters_created_by_fkey"
+            columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "user_profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "biography_chapters_last_editor_id_fkey"
+            columns: ["last_editor_id"]
+            isOneToOne: false
+            referencedRelation: "user_profiles"
+            referencedColumns: ["id"]
+          },
           {
             foreignKeyName: "biography_chapters_legacy_profile_id_fkey"
             columns: ["legacy_profile_id"]
@@ -272,12 +302,15 @@ export type Database = {
       blog_posts: {
         Row: {
           author: string | null
+          author_id: string | null
           body: Json
           category_id: string | null
           created_at: string
+          created_by: string | null
           excerpt: string | null
           featured_media_id: string | null
           id: string
+          last_editor_id: string | null
           legacy_profile_id: string
           privacy_state: Database["public"]["Enums"]["privacy_state"]
           publish_state: Database["public"]["Enums"]["publish_state"]
@@ -294,12 +327,15 @@ export type Database = {
         }
         Insert: {
           author?: string | null
+          author_id?: string | null
           body?: Json
           category_id?: string | null
           created_at?: string
+          created_by?: string | null
           excerpt?: string | null
           featured_media_id?: string | null
           id?: string
+          last_editor_id?: string | null
           legacy_profile_id: string
           privacy_state?: Database["public"]["Enums"]["privacy_state"]
           publish_state?: Database["public"]["Enums"]["publish_state"]
@@ -316,12 +352,15 @@ export type Database = {
         }
         Update: {
           author?: string | null
+          author_id?: string | null
           body?: Json
           category_id?: string | null
           created_at?: string
+          created_by?: string | null
           excerpt?: string | null
           featured_media_id?: string | null
           id?: string
+          last_editor_id?: string | null
           legacy_profile_id?: string
           privacy_state?: Database["public"]["Enums"]["privacy_state"]
           publish_state?: Database["public"]["Enums"]["publish_state"]
@@ -338,6 +377,13 @@ export type Database = {
         }
         Relationships: [
           {
+            foreignKeyName: "blog_posts_author_id_fkey"
+            columns: ["author_id"]
+            isOneToOne: false
+            referencedRelation: "user_profiles"
+            referencedColumns: ["id"]
+          },
+          {
             foreignKeyName: "blog_posts_category_id_fkey"
             columns: ["category_id"]
             isOneToOne: false
@@ -345,10 +391,24 @@ export type Database = {
             referencedColumns: ["id"]
           },
           {
+            foreignKeyName: "blog_posts_created_by_fkey"
+            columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "user_profiles"
+            referencedColumns: ["id"]
+          },
+          {
             foreignKeyName: "blog_posts_featured_media_id_fkey"
             columns: ["featured_media_id"]
             isOneToOne: false
             referencedRelation: "media_items"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "blog_posts_last_editor_id_fkey"
+            columns: ["last_editor_id"]
+            isOneToOne: false
+            referencedRelation: "user_profiles"
             referencedColumns: ["id"]
           },
           {
@@ -1381,12 +1441,15 @@ export type Database = {
       lessons: {
         Row: {
           author: string | null
+          author_id: string | null
           body: string
           category_id: string | null
           created_at: string
+          created_by: string | null
           english_interpretation: string | null
           id: string
           introduction: string | null
+          last_editor_id: string | null
           legacy_profile_id: string
           privacy_state: Database["public"]["Enums"]["privacy_state"]
           publish_state: Database["public"]["Enums"]["publish_state"]
@@ -1402,12 +1465,15 @@ export type Database = {
         }
         Insert: {
           author?: string | null
+          author_id?: string | null
           body: string
           category_id?: string | null
           created_at?: string
+          created_by?: string | null
           english_interpretation?: string | null
           id?: string
           introduction?: string | null
+          last_editor_id?: string | null
           legacy_profile_id: string
           privacy_state?: Database["public"]["Enums"]["privacy_state"]
           publish_state?: Database["public"]["Enums"]["publish_state"]
@@ -1423,12 +1489,15 @@ export type Database = {
         }
         Update: {
           author?: string | null
+          author_id?: string | null
           body?: string
           category_id?: string | null
           created_at?: string
+          created_by?: string | null
           english_interpretation?: string | null
           id?: string
           introduction?: string | null
+          last_editor_id?: string | null
           legacy_profile_id?: string
           privacy_state?: Database["public"]["Enums"]["privacy_state"]
           publish_state?: Database["public"]["Enums"]["publish_state"]
@@ -1444,10 +1513,31 @@ export type Database = {
         }
         Relationships: [
           {
+            foreignKeyName: "lessons_author_id_fkey"
+            columns: ["author_id"]
+            isOneToOne: false
+            referencedRelation: "user_profiles"
+            referencedColumns: ["id"]
+          },
+          {
             foreignKeyName: "lessons_category_id_fkey"
             columns: ["category_id"]
             isOneToOne: false
             referencedRelation: "categories"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "lessons_created_by_fkey"
+            columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "user_profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "lessons_last_editor_id_fkey"
+            columns: ["last_editor_id"]
+            isOneToOne: false
+            referencedRelation: "user_profiles"
             referencedColumns: ["id"]
           },
           {
@@ -1979,11 +2069,14 @@ export type Database = {
       }
       stories: {
         Row: {
+          author_id: string | null
           body: string
           contributor_email: string | null
           contributor_name: string | null
           created_at: string
+          created_by: string | null
           id: string
+          last_editor_id: string | null
           legacy_profile_id: string
           moderation_state: Database["public"]["Enums"]["moderation_state"]
           privacy_state: Database["public"]["Enums"]["privacy_state"]
@@ -1996,11 +2089,14 @@ export type Database = {
           workspace_id: string | null
         }
         Insert: {
+          author_id?: string | null
           body: string
           contributor_email?: string | null
           contributor_name?: string | null
           created_at?: string
+          created_by?: string | null
           id?: string
+          last_editor_id?: string | null
           legacy_profile_id: string
           moderation_state?: Database["public"]["Enums"]["moderation_state"]
           privacy_state?: Database["public"]["Enums"]["privacy_state"]
@@ -2013,11 +2109,14 @@ export type Database = {
           workspace_id?: string | null
         }
         Update: {
+          author_id?: string | null
           body?: string
           contributor_email?: string | null
           contributor_name?: string | null
           created_at?: string
+          created_by?: string | null
           id?: string
+          last_editor_id?: string | null
           legacy_profile_id?: string
           moderation_state?: Database["public"]["Enums"]["moderation_state"]
           privacy_state?: Database["public"]["Enums"]["privacy_state"]
@@ -2030,6 +2129,27 @@ export type Database = {
           workspace_id?: string | null
         }
         Relationships: [
+          {
+            foreignKeyName: "stories_author_id_fkey"
+            columns: ["author_id"]
+            isOneToOne: false
+            referencedRelation: "user_profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "stories_created_by_fkey"
+            columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "user_profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "stories_last_editor_id_fkey"
+            columns: ["last_editor_id"]
+            isOneToOne: false
+            referencedRelation: "user_profiles"
+            referencedColumns: ["id"]
+          },
           {
             foreignKeyName: "stories_legacy_profile_id_fkey"
             columns: ["legacy_profile_id"]
@@ -2090,12 +2210,15 @@ export type Database = {
       }
       timeline_events: {
         Row: {
+          author_id: string | null
           category: string | null
           created_at: string
+          created_by: string | null
           date_label: string | null
           description: string | null
           event_date: string | null
           id: string
+          last_editor_id: string | null
           legacy_profile_id: string
           location: string | null
           privacy_state: Database["public"]["Enums"]["privacy_state"]
@@ -2109,12 +2232,15 @@ export type Database = {
           workspace_id: string | null
         }
         Insert: {
+          author_id?: string | null
           category?: string | null
           created_at?: string
+          created_by?: string | null
           date_label?: string | null
           description?: string | null
           event_date?: string | null
           id?: string
+          last_editor_id?: string | null
           legacy_profile_id: string
           location?: string | null
           privacy_state?: Database["public"]["Enums"]["privacy_state"]
@@ -2128,12 +2254,15 @@ export type Database = {
           workspace_id?: string | null
         }
         Update: {
+          author_id?: string | null
           category?: string | null
           created_at?: string
+          created_by?: string | null
           date_label?: string | null
           description?: string | null
           event_date?: string | null
           id?: string
+          last_editor_id?: string | null
           legacy_profile_id?: string
           location?: string | null
           privacy_state?: Database["public"]["Enums"]["privacy_state"]
@@ -2147,6 +2276,27 @@ export type Database = {
           workspace_id?: string | null
         }
         Relationships: [
+          {
+            foreignKeyName: "timeline_events_author_id_fkey"
+            columns: ["author_id"]
+            isOneToOne: false
+            referencedRelation: "user_profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "timeline_events_created_by_fkey"
+            columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "user_profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "timeline_events_last_editor_id_fkey"
+            columns: ["last_editor_id"]
+            isOneToOne: false
+            referencedRelation: "user_profiles"
+            referencedColumns: ["id"]
+          },
           {
             foreignKeyName: "timeline_events_legacy_profile_id_fkey"
             columns: ["legacy_profile_id"]
@@ -2597,6 +2747,14 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      can_create_cms_content: {
+        Args: {
+          creator_id: string
+          new_state: Database["public"]["Enums"]["publish_state"]
+          profile_id: string
+        }
+        Returns: boolean
+      }
       can_manage_profile_content: {
         Args: { profile_id: string }
         Returns: boolean
@@ -2609,8 +2767,26 @@ export type Database = {
         Args: { workspace_uuid: string }
         Returns: boolean
       }
+      can_read_cms_content: {
+        Args: {
+          content_table_name: string
+          content_uuid: string
+          current_privacy: Database["public"]["Enums"]["privacy_state"]
+          current_state: Database["public"]["Enums"]["publish_state"]
+          profile_id: string
+        }
+        Returns: boolean
+      }
       can_read_private_profile: {
         Args: { profile_id: string }
+        Returns: boolean
+      }
+      can_update_cms_content: {
+        Args: {
+          creator_id: string
+          new_state: Database["public"]["Enums"]["publish_state"]
+          profile_id: string
+        }
         Returns: boolean
       }
       current_user_role_for_profile: {
@@ -2692,7 +2868,12 @@ export type Database = {
         | "invited"
         | "specific_users"
         | "password_protected"
-      publish_state: "draft" | "scheduled" | "published" | "archived"
+      publish_state:
+        | "draft"
+        | "scheduled"
+        | "published"
+        | "archived"
+        | "in_review"
       user_role_key:
         | "owner"
         | "editor"
@@ -2889,7 +3070,13 @@ export const Constants = {
         "specific_users",
         "password_protected",
       ],
-      publish_state: ["draft", "scheduled", "published", "archived"],
+      publish_state: [
+        "draft",
+        "scheduled",
+        "published",
+        "archived",
+        "in_review",
+      ],
       user_role_key: [
         "owner",
         "editor",

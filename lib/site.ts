@@ -1,11 +1,12 @@
 import { z } from "zod";
+import { flagshipArchiveBrand } from "@/lib/brand";
 
 export const siteConfig = {
-  name: "Baba Muyi Legacy",
+  name: flagshipArchiveBrand.name,
   domain: "babamuyilegacy.com",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://babamuyilegacy.com",
   description:
-    "A premium digital legacy, documentary archive, and family-history website preserving the life and values of Alhaji Tioluwalase \"Baba Muyi\" Majekodunmi.",
+    "A premium digital legacy, documentary archive, and family-history website preserving the life and values of Alhaji Tioluwalase \"Baba Muyi\" Majekodunmi. Powered by LegacyHub.",
   curator: "The Majekodunmi Family"
 };
 

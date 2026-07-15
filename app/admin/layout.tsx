@@ -2,7 +2,17 @@ import { signOut } from "@/lib/auth-actions";
 import { AdminNavigation } from "@/components/admin-navigation";
 import { WorkspaceContextBar } from "@/components/admin/workspace-context-bar";
 import { requireAdminRole } from "@/lib/auth";
+import { platformBrand } from "@/lib/brand";
 import type { UserRole } from "@/lib/permissions";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: {
+    default: platformBrand.name,
+    template: `%s | ${platformBrand.name}`
+  },
+  description: platformBrand.tagline
+};
 
 export default async function AdminLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const session = await requireAdminRole(["owner", "administrator", "editor", "contributor", "reviewer", "viewer"]);

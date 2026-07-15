@@ -3,6 +3,9 @@
 ## Foundation
 
 - Maintain the LegacyHub terminology and roadmap documents for milestone sequencing.
+- Replace the noindex `/legacyhub` route shell with a dedicated platform marketing site only after registration, pricing, billing and onboarding are approved.
+- Add editable workspace and legacy-profile theme settings that consume the reusable brand token boundaries.
+- Replace interim navigation mappings for `Audio` and `About the Legacy Project` when dedicated public routes are approved.
 - Keep generated `lib/database.types.ts` current after every remote schema migration.
 - Add formal remote RLS regression tests before production launch.
 - Replace admin dashboard placeholders with editable CRUD screens.
@@ -15,6 +18,13 @@
 - Wire admin menu form controls to Supabase `menus` and `menu_items` CRUD actions.
 - Add drag-and-drop persistence for menu item reordering.
 - Add route-level smoke tests with a formal test runner.
+
+## Milestone 2 Deferred Items
+
+- Add rate limiting for CMS mutations in Milestone 3 Security Hardening.
+- Add the full content revision-history browser in Milestone 3 or Milestone 4, after revision capture is stable.
+- Add complete category management in Milestone 4 Content Organisation.
+- Add complete tag management in Milestone 4 Content Organisation.
 
 ## Content
 

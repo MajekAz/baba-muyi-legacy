@@ -61,9 +61,9 @@ export default async function HomePage() {
               href={feature.href}
               key={feature.href}
             >
-              <p className="text-xs font-bold uppercase tracking-[0.16em] text-archive-brown">CMS section</p>
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-archive-brown">Archive section</p>
               <h2 className="mt-3 font-serif text-2xl font-semibold text-archive-navy">{feature.label}</h2>
-              <p className="mt-3 text-sm leading-6 text-slate-700">{feature.description ?? "Managed in the CMS menu and page records."}</p>
+              <p className="mt-3 text-sm leading-6 text-slate-700">{feature.description ?? "Family-reviewed material will appear here when it is ready."}</p>
             </Link>
           ))}
         </div>

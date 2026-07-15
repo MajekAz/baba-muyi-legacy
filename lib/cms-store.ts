@@ -5,6 +5,8 @@ import path from "node:path";
 import { unstable_noStore as noStore } from "next/cache";
 import type { CmsCollectionSummary, CmsContentKind, CmsContentRecord, CmsMenuItem, CmsPage, CmsStore } from "@/lib/cms-types";
 import { defaultLegacyProfileId, defaultWorkspaceId, initialCmsStore } from "@/lib/cms-seed";
+import { allowsLocalFallback, hasSupabasePublicEnv } from "@/lib/env";
+import { createClient } from "@/lib/supabase/server";
 
 const storePath = path.join(process.cwd(), "data", "cms.json");
 
@@ -86,11 +88,77 @@ export async function getPublishedCmsContent(kind?: CmsContentKind, relatedPath?
 }
 
 export async function getCmsMenus(location: CmsMenuItem["location"]) {
+  if (hasSupabasePublicEnv()) {
+    const remoteMenus = await getSupabaseCmsMenus(location);
+    if (remoteMenus.length || !allowsLocalFallback()) {
+      return remoteMenus;
+    }
+  }
+
   const store = await getCmsStore();
   const items = store.menuItems
     .filter((item) => item.workspaceId === store.activeWorkspaceId && item.legacyProfileId === store.activeLegacyProfileId)
     .filter((item) => item.location === location && item.status === "published" && !item.hidden)
     .sort((a, b) => a.sortOrder - b.sortOrder || a.label.localeCompare(b.label));
+
+  const parents = items.filter((item) => !item.parentId);
+  return parents.map((parent) => ({
+    ...parent,
+    children: items.filter((item) => item.parentId === parent.id)
+  }));
+}
+
+async function getSupabaseCmsMenus(location: CmsMenuItem["location"]) {
+  const supabase = await createClient();
+  const { data: menus, error: menuError } = await supabase
+    .from("menus")
+    .select("id, workspace_id, legacy_profile_id")
+    .eq("location", location)
+    .eq("publish_state", "published")
+    .order("updated_at", { ascending: false })
+    .limit(1);
+
+  if (menuError) {
+    if (allowsLocalFallback()) return [];
+    throw new Error(`Unable to load ${location} menu.`);
+  }
+
+  const menu = menus?.[0];
+  if (!menu) return [];
+
+  const { data: rows, error: itemError } = await supabase
+    .from("menu_items")
+    .select("id, label, slug, url, link_type, parent_item_id, sort_order, publish_state, visibility, required_role, open_in_new_tab, icon, badge, description")
+    .eq("menu_id", menu.id)
+    .eq("publish_state", "published")
+    .eq("visibility", "public")
+    .order("sort_order", { ascending: true });
+
+  if (itemError) {
+    if (allowsLocalFallback()) return [];
+    throw new Error(`Unable to load ${location} menu items.`);
+  }
+
+  const items: CmsMenuItem[] = (rows ?? []).map((item) => ({
+    id: item.id,
+    workspaceId: menu.workspace_id ?? defaultWorkspaceId,
+    legacyProfileId: menu.legacy_profile_id ?? defaultLegacyProfileId,
+    label: item.label,
+    href: item.url ?? "#",
+    slug: item.slug,
+    location,
+    parentId: item.parent_item_id ?? undefined,
+    sortOrder: item.sort_order,
+    status: item.publish_state,
+    visibility: item.visibility,
+    requiredRole: item.required_role ?? undefined,
+    linkType: item.link_type,
+    openInNewTab: item.open_in_new_tab,
+    hidden: false,
+    icon: item.icon ?? undefined,
+    badge: item.badge ?? undefined,
+    description: item.description ?? undefined
+  }));
 
   const parents = items.filter((item) => !item.parentId);
   return parents.map((parent) => ({

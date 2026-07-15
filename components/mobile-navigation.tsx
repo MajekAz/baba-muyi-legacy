@@ -1,16 +1,20 @@
 "use client";
 
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import { flagshipArchiveBrand } from "@/lib/brand";
 import type { NavItem } from "@/lib/navigation";
 
 export function MobileNavigation({ items }: { items: NavItem[] }) {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [expanded, setExpanded] = useState<string[]>([]);
   const panelRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -24,6 +28,26 @@ export function MobileNavigation({ items }: { items: NavItem[] }) {
     function onKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") {
         setOpen(false);
+        triggerRef.current?.focus();
+        return;
+      }
+
+      if (event.key === "Tab" && panelRef.current) {
+        const focusable = Array.from(
+          panelRef.current.querySelectorAll<HTMLElement>(
+            "a[href], button:not([disabled]), [tabindex]:not([tabindex='-1'])"
+          )
+        ).filter((element) => !element.hasAttribute("disabled"));
+        if (!focusable.length) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
       }
     }
 
@@ -43,6 +67,10 @@ export function MobileNavigation({ items }: { items: NavItem[] }) {
     );
   }
 
+  function isActive(item: NavItem) {
+    return item.href === pathname || item.children?.some((child) => child.href === pathname);
+  }
+
   const drawer = open && mounted ? createPortal(
     <div
       className="fixed inset-0 z-[9999] bg-archive-navy text-white"
@@ -53,8 +81,8 @@ export function MobileNavigation({ items }: { items: NavItem[] }) {
       <div ref={panelRef} className="flex h-dvh flex-col">
         <div className="flex items-center justify-between border-b border-white/10 px-4 py-4">
           <div className="grid gap-0.5">
-            <p className="font-serif text-3xl font-semibold leading-none text-archive-gold">Baba Muyi Legacy</p>
-            <p className="text-xs text-white/70">Digital museum and family archive</p>
+            <p className="font-serif text-3xl font-semibold leading-none text-archive-gold">{flagshipArchiveBrand.name}</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.12em] text-white/70">{flagshipArchiveBrand.descriptor}</p>
           </div>
           <button
             aria-label="Close navigation menu"
@@ -65,14 +93,17 @@ export function MobileNavigation({ items }: { items: NavItem[] }) {
             <X aria-hidden="true" />
           </button>
         </div>
-        <nav className="grid flex-1 gap-2 overflow-y-auto px-4 py-5 pb-28" aria-label="Mobile navigation">
+        <nav className="grid flex-1 content-start gap-2 overflow-y-auto px-4 py-5 pb-36" aria-label="Mobile navigation">
           {items.map((item) => {
             const isExpanded = expanded.includes(item.label);
+            const active = isActive(item);
+            const submenuId = `mobile-submenu-${item.label.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
             return (
               <div className="rounded border border-white/10 bg-white/[0.03]" key={item.label}>
                 <div className="flex items-center gap-2">
                   <Link
-                    className="flex min-h-12 flex-1 items-center rounded px-4 text-base font-semibold hover:bg-white/10"
+                    aria-current={active ? "page" : undefined}
+                    className={`flex min-h-14 flex-1 items-center rounded px-4 text-base font-semibold hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-archive-gold ${active ? "text-archive-gold" : ""}`}
                     href={item.href}
                     onClick={() => setOpen(false)}
                   >
@@ -80,21 +111,23 @@ export function MobileNavigation({ items }: { items: NavItem[] }) {
                   </Link>
                   {item.children ? (
                     <button
+                      aria-controls={submenuId}
                       aria-expanded={isExpanded}
                       aria-label={`${isExpanded ? "Collapse" : "Expand"} ${item.label}`}
-                      className="mr-2 min-h-10 rounded border border-white/15 px-3 text-sm"
+                      className="mr-2 inline-flex min-h-11 min-w-11 items-center justify-center rounded border border-white/15 text-white/85 hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-archive-gold"
                       onClick={() => toggle(item.label)}
                       type="button"
                     >
-                      {isExpanded ? "Hide" : "Show"}
+                      <ChevronDown aria-hidden="true" className={`size-5 transition-transform motion-reduce:transition-none ${isExpanded ? "rotate-180" : ""}`} />
                     </button>
                   ) : null}
                 </div>
                 {item.children && isExpanded ? (
-                  <div className="grid gap-1 border-t border-white/10 px-3 py-2">
+                  <div className="grid gap-1 border-t border-white/10 px-3 py-2" id={submenuId}>
                     {item.children.map((child) => (
                       <Link
-                        className="min-h-11 rounded px-4 py-2 text-sm font-medium text-white/78 hover:bg-white/10 hover:text-white"
+                        aria-current={child.href === pathname ? "page" : undefined}
+                        className={`min-h-11 rounded px-4 py-2.5 text-sm font-medium hover:bg-white/10 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-archive-gold ${child.href === pathname ? "text-archive-gold" : "text-white/78"}`}
                         href={child.href}
                         key={child.href}
                         onClick={() => setOpen(false)}
@@ -114,7 +147,7 @@ export function MobileNavigation({ items }: { items: NavItem[] }) {
             href="/documentaries"
             onClick={() => setOpen(false)}
           >
-            Watch the Documentary
+            Watch Film
           </Link>
           <Link
             className="rounded border border-archive-gold/70 px-4 py-3 text-center text-sm font-bold text-archive-gold"
@@ -130,11 +163,12 @@ export function MobileNavigation({ items }: { items: NavItem[] }) {
   ) : null;
 
   return (
-    <div className="lg:hidden">
+    <div className="min-[1080px]:hidden">
       <button
+        ref={triggerRef}
         aria-expanded={open}
         aria-label="Open navigation menu"
-        className="inline-flex min-h-11 min-w-11 items-center justify-center rounded border border-white/15 text-white"
+        className="inline-flex min-h-11 min-w-11 items-center justify-center rounded border border-white/15 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-archive-gold"
         onClick={() => setOpen(true)}
         type="button"
       >

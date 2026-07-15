@@ -27,6 +27,29 @@ Status key:
 | Media/documentary workflows | Partial | Schema and UI foundations exist; production upload and documentary workflows remain future work. |
 | Billing, public registration, AI, marketplace, native mobile | Deferred | Explicitly excluded from current MVP. |
 
+## Brand Integration Status
+
+| Area | Status | Evidence | Notes |
+| --- | --- | --- | --- |
+| Public archive identity | Complete but locally tested only | `app/layout.tsx`, `components/mobile-navigation.tsx`, `lib/site.ts` | Baba Muyi Legacy remains the public archive name and visual identity. |
+| Platform relationship | Complete but locally tested only | `app/layout.tsx`, `data/cms.json`, `lib/cms-seed.ts` | Footer and About content explain that Baba Muyi Legacy is powered by LegacyHub. |
+| Admin branding | Complete but locally tested only | `app/admin/layout.tsx`, `components/admin/workspace-context-bar.tsx` | Admin displays LegacyHub plus data-driven workspace/profile context. |
+| Auth branding | Complete but locally tested only | `app/login/page.tsx`, `app/reset-password/page.tsx`, `app/update-password/page.tsx` | Auth pages use LegacyHub and the platform tagline. |
+| Brand tokens | Partial | `lib/brand.ts` | Platform/workspace/profile token boundaries exist; full theme editing is future work. |
+| Future platform route | Placeholder | `app/legacyhub/page.tsx` | Noindex route shell only; pricing, billing and registration are not built. |
+| Public navigation refinement | Complete but locally tested only | `components/public-header-client.tsx`, `components/mobile-navigation.tsx`, `lib/navigation.ts`, `data/cms.json` | Header/menu hierarchy is data-driven; desktop dropdown and mobile overlay behaviour need final browser QA before merge. |
+
+## Public Navigation Route Mapping
+
+| Menu label | Route used | Notes |
+| --- | --- | --- |
+| Documentary | `/documentaries` | Existing documentary landing route. |
+| Photo Archive | `/gallery` | Existing gallery landing route. |
+| Audio | `/archive` | Interim mapping until a dedicated audio archive route is approved. |
+| Historical Documents | `/documents` | Existing document archive route. |
+| About the Legacy Project | `/about` | Existing alias for the curator/about page until a dedicated project page is approved. |
+| About LegacyHub | `/legacyhub` | Minimal noindex future platform route shell. |
+
 ## Executive Status Matrix
 
 | Area | Status | Evidence | Notes |
@@ -203,3 +226,14 @@ These are acceptable for the flagship archive but must be isolated from reusable
 - Hostinger will fail until `app/` reaches `origin/main`.
 - Production Supabase env vars are not configured/tested.
 - Remote migrations are not confirmed.
+
+## Milestone 2 Deferred Scope
+
+These items are intentionally not considered complete for Milestone 2 remediation:
+
+| Item | Status | Proposed ownership | Notes |
+| --- | --- | --- | --- |
+| CMS mutation rate limiting | Deferred | Milestone 3 Security Hardening | Server actions and RLS protect access, but abuse throttling is not implemented. |
+| Full revision-history browser | Deferred | Milestone 3 or Milestone 4 | Audit logs exist; a user-facing revision comparison/restoration interface is not complete. |
+| Complete category management | Deferred | Milestone 4 Content Organisation | Category text can be saved on core content, but full CRUD/taxonomy workflows are not complete. |
+| Complete tag management | Deferred | Milestone 4 Content Organisation | Source-note/tag text can be saved; full reusable tags, filtering and governance remain future work. |

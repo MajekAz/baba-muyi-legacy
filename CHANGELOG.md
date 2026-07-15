@@ -2,7 +2,11 @@
 
 ## Unreleased
 
-- No unreleased changes.
+- Added LegacyHub brand integration for admin and authentication surfaces while preserving Baba Muyi Legacy as the public flagship archive.
+- Added subtle public “Powered by LegacyHub” footer relationship copy and a future-facing disabled “Create a Legacy” placeholder.
+- Added a minimal noindex `/legacyhub` future platform route shell.
+- Added reusable platform, workspace, and legacy-profile brand token boundaries.
+- Refined the public header into a calmer data-driven grouped navigation with accessible desktop dropdowns and a full-screen mobile menu.
 
 ## LegacyHub v0.1.0 - Foundation Complete - 2026-07-15
 

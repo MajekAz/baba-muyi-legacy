@@ -1,13 +1,13 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-14T12:17:04.035Z",
+  "updatedAt": "2026-07-15T23:04:53.825Z",
   "pages": [
     {
       "path": "/",
       "eyebrow": "Digital legacy archive",
       "title": "Alhaji Tioluwalase \"Baba Muyi\" Majekodunmi",
       "description": "A living archive for family history, enterprise, transport heritage, public memories, documentary material, and the values Baba Muyi carried through his life.",
-      "body": "This homepage is now powered by the CMS. Editors can update the hero, archive principles, featured sections, and timeline preview from the administration panel.",
+      "body": "This homepage introduces the archive’s purpose, principles, featured sections, and timeline preview for visitors.",
       "cards": [
         {
           "id": "family-stewardship",
@@ -42,7 +42,7 @@
       "eyebrow": "Life story",
       "title": "Full biography",
       "description": "A chapter-led biography prepared for family-approved writing, photographs, source notes, and documentary references.",
-      "body": "Biography chapters are managed as CMS records. Add source notes, verification status, media, and publication state before public release.",
+      "body": "Biography chapters are being carefully prepared for publication with source notes, family review, and appropriate permissions.",
       "cards": [
         {
           "id": "early-life",
@@ -75,7 +75,7 @@
       "eyebrow": "Chronology",
       "title": "Interactive timeline",
       "description": "Milestones support dates, locations, categories, media attachments, source notes, and publication state.",
-      "body": "Timeline events are CMS records. Add each event once and reuse it across biography, documentary, and archive pages.",
+      "body": "Verified milestones from Baba Muyi’s life will appear here as the archive develops.",
       "cards": [],
       "id": "page-timeline",
       "slug": "timeline",
@@ -89,7 +89,7 @@
       "eyebrow": "Film archive",
       "title": "Documentary centre",
       "description": "Manage documentaries, episodes, trailers, transcripts, subtitles, chapters, and streaming-provider playback IDs.",
-      "body": "Full documentaries should be hosted by a video platform such as YouTube, Vimeo, Cloudflare Stream, or Mux. The CMS stores metadata and playback references.",
+      "body": "Documentary material will be organised here with episodes, transcripts, viewing notes, and approved playback references.",
       "cards": [
         {
           "id": "episodes",
@@ -154,7 +154,7 @@
       "eyebrow": "Lineage",
       "title": "Family tree",
       "description": "A private-first family graph for relationships, photos, life dates, notes, and publication permissions.",
-      "body": "Family-member details are CMS records with public visibility disabled by default for living people.",
+      "body": "Family records will be handled carefully with privacy, consent, and special protection for living people.",
       "cards": [],
       "id": "page-family-tree",
       "slug": "family-tree",
@@ -182,7 +182,7 @@
       "eyebrow": "Editorial",
       "title": "Blog",
       "description": "Archive notes, curator updates, essays, documentary announcements, and historical context.",
-      "body": "Blog posts are managed in the CMS with categories, SEO metadata, scheduled publishing, and article-ready summaries.",
+      "body": "Legacy articles and historical reflections will be published here.",
       "cards": [],
       "id": "page-blog",
       "slug": "blog",
@@ -224,7 +224,7 @@
       "eyebrow": "Contact",
       "title": "Contact the archive",
       "description": "A route for family, contributors, documentary participants, and future platform enquiries.",
-      "body": "Contact submissions will later be stored with moderation and spam controls. For now this page is editable through the CMS.",
+      "body": "Contact routes will support family, contributors, documentary participants, and archive enquiries.",
       "cards": [],
       "id": "page-contact",
       "slug": "contact",
@@ -235,11 +235,27 @@
     },
     {
       "path": "/curator",
-      "eyebrow": "Stewardship",
-      "title": "About the curator",
-      "description": "A page for the person or family team preserving the archive, including editorial principles and contact routes.",
-      "body": "Use this CMS page for the family-approved curator profile, archive mission, and editorial policy.",
-      "cards": [],
+      "eyebrow": "Flagship archive",
+      "title": "About Baba Muyi Legacy and LegacyHub",
+      "description": "Baba Muyi Legacy is the first flagship archive created with LegacyHub.",
+      "body": "Baba Muyi Legacy is the first flagship archive created with LegacyHub, a platform designed to help families, communities and institutions preserve and share meaningful histories.",
+      "cards": [
+        {
+          "id": "families",
+          "title": "Family histories",
+          "description": "LegacyHub supports family histories, parents, grandparents, and multi-generational memories."
+        },
+        {
+          "id": "leaders",
+          "title": "Leaders and founders",
+          "description": "Archive community leaders, entrepreneurs, founders, veterans, and cultural contributors."
+        },
+        {
+          "id": "institutions",
+          "title": "Institutions and organisations",
+          "description": "Support cultural institutions, organisations, and living or deceased legacy subjects."
+        }
+      ],
       "id": "page-curator",
       "slug": "curator",
       "status": "published",
@@ -252,12 +268,12 @@
       "eyebrow": "His Life",
       "title": "Early Life",
       "description": "A dedicated section for approved early-life material once family-reviewed content is supplied.",
-      "body": "This page is editable from the CMS. Replace this placeholder with approved text, source notes, images, and related records.",
+      "body": "Approved material for this section is being prepared for publication.",
       "cards": [
         {
           "id": "early-life-cms-ready",
-          "title": "CMS-managed page",
-          "description": "Update this page from Administration > CMS Pages. Publish only approved content."
+          "title": "Content in preparation",
+          "description": "Family-reviewed material will appear here when it is ready."
         }
       ],
       "id": "page-early-life",
@@ -272,12 +288,12 @@
       "eyebrow": "His Life",
       "title": "Journey to Bariga",
       "description": "A reusable biography landing page for the Bariga journey chapter.",
-      "body": "This page is editable from the CMS. Replace this placeholder with approved text, source notes, images, and related records.",
+      "body": "Approved material for this section is being prepared for publication.",
       "cards": [
         {
           "id": "journey-to-bariga-cms-ready",
-          "title": "CMS-managed page",
-          "description": "Update this page from Administration > CMS Pages. Publish only approved content."
+          "title": "Content in preparation",
+          "description": "Family-reviewed material will appear here when it is ready."
         }
       ],
       "id": "page-journey-to-bariga",
@@ -292,12 +308,12 @@
       "eyebrow": "His Life",
       "title": "Community Leadership",
       "description": "Approved stories about service, leadership, and community memory.",
-      "body": "This page is editable from the CMS. Replace this placeholder with approved text, source notes, images, and related records.",
+      "body": "Approved material for this section is being prepared for publication.",
       "cards": [
         {
           "id": "community-leadership-cms-ready",
-          "title": "CMS-managed page",
-          "description": "Update this page from Administration > CMS Pages. Publish only approved content."
+          "title": "Content in preparation",
+          "description": "Family-reviewed material will appear here when it is ready."
         }
       ],
       "id": "page-community-leadership",
@@ -312,12 +328,12 @@
       "eyebrow": "Transport history",
       "title": "Bolekaja transport history",
       "description": "Oral history, vehicles, routes, staff, photographs, and the social context of Bolekaja transport.",
-      "body": "This page is editable from the CMS. Replace this placeholder with approved text, source notes, images, and related records.",
+      "body": "Approved material for this section is being prepared for publication.",
       "cards": [
         {
           "id": "bolekaja-cms-ready",
-          "title": "CMS-managed page",
-          "description": "Update this page from Administration > CMS Pages. Publish only approved content."
+          "title": "Content in preparation",
+          "description": "Family-reviewed material will appear here when it is ready."
         }
       ],
       "id": "page-bolekaja",
@@ -332,12 +348,12 @@
       "eyebrow": "Enterprise",
       "title": "TIOLUWA LASE Molue history",
       "description": "The TIOLUWA LASE Molue story, business operations, people, and memories from the road.",
-      "body": "This page is editable from the CMS. Replace this placeholder with approved text, source notes, images, and related records.",
+      "body": "Approved material for this section is being prepared for publication.",
       "cards": [
         {
           "id": "tioluwa-lase-molue-cms-ready",
-          "title": "CMS-managed page",
-          "description": "Update this page from Administration > CMS Pages. Publish only approved content."
+          "title": "Content in preparation",
+          "description": "Family-reviewed material will appear here when it is ready."
         }
       ],
       "id": "page-tioluwa-lase-molue",
@@ -352,12 +368,12 @@
       "eyebrow": "Transport Legacy",
       "title": "Routes and Locations",
       "description": "A route-focused section for approved transport locations.",
-      "body": "This page is editable from the CMS. Replace this placeholder with approved text, source notes, images, and related records.",
+      "body": "Approved material for this section is being prepared for publication.",
       "cards": [
         {
           "id": "routes-and-locations-cms-ready",
-          "title": "CMS-managed page",
-          "description": "Update this page from Administration > CMS Pages. Publish only approved content."
+          "title": "Content in preparation",
+          "description": "Family-reviewed material will appear here when it is ready."
         }
       ],
       "id": "page-routes-and-locations",
@@ -372,12 +388,12 @@
       "eyebrow": "Transport Legacy",
       "title": "Transport Gallery",
       "description": "A gallery landing page for Bolekaja, Molue, route, and vehicle images.",
-      "body": "This page is editable from the CMS. Replace this placeholder with approved text, source notes, images, and related records.",
+      "body": "Approved material for this section is being prepared for publication.",
       "cards": [
         {
           "id": "transport-gallery-cms-ready",
-          "title": "CMS-managed page",
-          "description": "Update this page from Administration > CMS Pages. Publish only approved content."
+          "title": "Content in preparation",
+          "description": "Family-reviewed material will appear here when it is ready."
         }
       ],
       "id": "page-transport-gallery",
@@ -392,12 +408,12 @@
       "eyebrow": "Documentaries",
       "title": "English Documentary",
       "description": "A dedicated page for the approved English documentary record and playback details.",
-      "body": "This page is editable from the CMS. Replace this placeholder with approved text, source notes, images, and related records.",
+      "body": "Approved material for this section is being prepared for publication.",
       "cards": [
         {
           "id": "english-documentary-cms-ready",
-          "title": "CMS-managed page",
-          "description": "Update this page from Administration > CMS Pages. Publish only approved content."
+          "title": "Content in preparation",
+          "description": "Family-reviewed material will appear here when it is ready."
         }
       ],
       "id": "page-english-documentary",
@@ -412,12 +428,12 @@
       "eyebrow": "Documentaries",
       "title": "Episodes",
       "description": "A structured listing for documentary series episodes and chapters.",
-      "body": "This page is editable from the CMS. Replace this placeholder with approved text, source notes, images, and related records.",
+      "body": "Approved material for this section is being prepared for publication.",
       "cards": [
         {
           "id": "documentary-episodes-cms-ready",
-          "title": "CMS-managed page",
-          "description": "Update this page from Administration > CMS Pages. Publish only approved content."
+          "title": "Content in preparation",
+          "description": "Family-reviewed material will appear here when it is ready."
         }
       ],
       "id": "page-documentary-episodes",
@@ -432,12 +448,12 @@
       "eyebrow": "Documentaries",
       "title": "Trailers and Clips",
       "description": "A page for trailers, short clips, and supporting video material.",
-      "body": "This page is editable from the CMS. Replace this placeholder with approved text, source notes, images, and related records.",
+      "body": "Approved material for this section is being prepared for publication.",
       "cards": [
         {
           "id": "trailer-clips-cms-ready",
-          "title": "CMS-managed page",
-          "description": "Update this page from Administration > CMS Pages. Publish only approved content."
+          "title": "Content in preparation",
+          "description": "Family-reviewed material will appear here when it is ready."
         }
       ],
       "id": "page-trailer-clips",
@@ -452,12 +468,12 @@
       "eyebrow": "Documentaries",
       "title": "Transcripts",
       "description": "A searchable home for documentary transcripts and subtitles.",
-      "body": "This page is editable from the CMS. Replace this placeholder with approved text, source notes, images, and related records.",
+      "body": "Approved material for this section is being prepared for publication.",
       "cards": [
         {
           "id": "transcripts-cms-ready",
-          "title": "CMS-managed page",
-          "description": "Update this page from Administration > CMS Pages. Publish only approved content."
+          "title": "Content in preparation",
+          "description": "Family-reviewed material will appear here when it is ready."
         }
       ],
       "id": "page-transcripts",
@@ -472,12 +488,12 @@
       "eyebrow": "Gallery",
       "title": "Portraits",
       "description": "A focused gallery for approved portraits.",
-      "body": "This page is editable from the CMS. Replace this placeholder with approved text, source notes, images, and related records.",
+      "body": "Approved material for this section is being prepared for publication.",
       "cards": [
         {
           "id": "portraits-cms-ready",
-          "title": "CMS-managed page",
-          "description": "Update this page from Administration > CMS Pages. Publish only approved content."
+          "title": "Content in preparation",
+          "description": "Family-reviewed material will appear here when it is ready."
         }
       ],
       "id": "page-portraits",
@@ -492,12 +508,12 @@
       "eyebrow": "Gallery",
       "title": "Family",
       "description": "A private-first gallery area for approved family photographs.",
-      "body": "This page is editable from the CMS. Replace this placeholder with approved text, source notes, images, and related records.",
+      "body": "Approved material for this section is being prepared for publication.",
       "cards": [
         {
           "id": "family-cms-ready",
-          "title": "CMS-managed page",
-          "description": "Update this page from Administration > CMS Pages. Publish only approved content."
+          "title": "Content in preparation",
+          "description": "Family-reviewed material will appear here when it is ready."
         }
       ],
       "id": "page-family",
@@ -512,12 +528,12 @@
       "eyebrow": "Gallery",
       "title": "Bolekaja",
       "description": "A gallery for approved Bolekaja era photographs and captions.",
-      "body": "This page is editable from the CMS. Replace this placeholder with approved text, source notes, images, and related records.",
+      "body": "Approved material for this section is being prepared for publication.",
       "cards": [
         {
           "id": "bolekaja-gallery-cms-ready",
-          "title": "CMS-managed page",
-          "description": "Update this page from Administration > CMS Pages. Publish only approved content."
+          "title": "Content in preparation",
+          "description": "Family-reviewed material will appear here when it is ready."
         }
       ],
       "id": "page-bolekaja-gallery",
@@ -532,12 +548,12 @@
       "eyebrow": "Gallery",
       "title": "Molue",
       "description": "A gallery for TIOLUWA LASE Molue era photographs and transport memories.",
-      "body": "This page is editable from the CMS. Replace this placeholder with approved text, source notes, images, and related records.",
+      "body": "Approved material for this section is being prepared for publication.",
       "cards": [
         {
           "id": "molue-gallery-cms-ready",
-          "title": "CMS-managed page",
-          "description": "Update this page from Administration > CMS Pages. Publish only approved content."
+          "title": "Content in preparation",
+          "description": "Family-reviewed material will appear here when it is ready."
         }
       ],
       "id": "page-molue-gallery",
@@ -552,12 +568,12 @@
       "eyebrow": "Gallery",
       "title": "Community",
       "description": "A gallery for approved community and leadership photographs.",
-      "body": "This page is editable from the CMS. Replace this placeholder with approved text, source notes, images, and related records.",
+      "body": "Approved material for this section is being prepared for publication.",
       "cards": [
         {
           "id": "community-gallery-cms-ready",
-          "title": "CMS-managed page",
-          "description": "Update this page from Administration > CMS Pages. Publish only approved content."
+          "title": "Content in preparation",
+          "description": "Family-reviewed material will appear here when it is ready."
         }
       ],
       "id": "page-community-gallery",
@@ -572,12 +588,12 @@
       "eyebrow": "Gallery",
       "title": "Restored Images",
       "description": "Restored archive photographs, always linked to archival originals.",
-      "body": "This page is editable from the CMS. Replace this placeholder with approved text, source notes, images, and related records.",
+      "body": "Approved material for this section is being prepared for publication.",
       "cards": [
         {
           "id": "restored-images-cms-ready",
-          "title": "CMS-managed page",
-          "description": "Update this page from Administration > CMS Pages. Publish only approved content."
+          "title": "Content in preparation",
+          "description": "Family-reviewed material will appear here when it is ready."
         }
       ],
       "id": "page-restored-images",
@@ -592,12 +608,12 @@
       "eyebrow": "Family Legacy",
       "title": "Children",
       "description": "A privacy-protected section for approved family-member records.",
-      "body": "This page is editable from the CMS. Replace this placeholder with approved text, source notes, images, and related records.",
+      "body": "Approved material for this section is being prepared for publication.",
       "cards": [
         {
           "id": "children-cms-ready",
-          "title": "CMS-managed page",
-          "description": "Update this page from Administration > CMS Pages. Publish only approved content."
+          "title": "Content in preparation",
+          "description": "Family-reviewed material will appear here when it is ready."
         }
       ],
       "id": "page-children",
@@ -612,12 +628,12 @@
       "eyebrow": "Family Legacy",
       "title": "Grandchildren",
       "description": "A family section governed by visibility and consent settings.",
-      "body": "This page is editable from the CMS. Replace this placeholder with approved text, source notes, images, and related records.",
+      "body": "Approved material for this section is being prepared for publication.",
       "cards": [
         {
           "id": "grandchildren-cms-ready",
-          "title": "CMS-managed page",
-          "description": "Update this page from Administration > CMS Pages. Publish only approved content."
+          "title": "Content in preparation",
+          "description": "Family-reviewed material will appear here when it is ready."
         }
       ],
       "id": "page-grandchildren",
@@ -632,12 +648,12 @@
       "eyebrow": "Family Legacy",
       "title": "Family Memories",
       "description": "Reviewed family stories, audio, photographs, and recollections.",
-      "body": "This page is editable from the CMS. Replace this placeholder with approved text, source notes, images, and related records.",
+      "body": "Approved material for this section is being prepared for publication.",
       "cards": [
         {
           "id": "family-memories-cms-ready",
-          "title": "CMS-managed page",
-          "description": "Update this page from Administration > CMS Pages. Publish only approved content."
+          "title": "Content in preparation",
+          "description": "Family-reviewed material will appear here when it is ready."
         }
       ],
       "id": "page-family-memories",
@@ -652,12 +668,12 @@
       "eyebrow": "Routes",
       "title": "Interactive journey and route map",
       "description": "Journeys, routes, stops, landmarks, and transport memories.",
-      "body": "This page is editable from the CMS. Replace this placeholder with approved text, source notes, images, and related records.",
+      "body": "Approved material for this section is being prepared for publication.",
       "cards": [
         {
           "id": "journey-map-cms-ready",
-          "title": "CMS-managed page",
-          "description": "Update this page from Administration > CMS Pages. Publish only approved content."
+          "title": "Content in preparation",
+          "description": "Family-reviewed material will appear here when it is ready."
         }
       ],
       "id": "page-journey-map",
@@ -672,12 +688,12 @@
       "eyebrow": "Sources",
       "title": "Historical documents",
       "description": "A controlled document archive for scans, letters, certificates, business records, and references.",
-      "body": "This page is editable from the CMS. Replace this placeholder with approved text, source notes, images, and related records.",
+      "body": "Approved material for this section is being prepared for publication.",
       "cards": [
         {
           "id": "documents-cms-ready",
-          "title": "CMS-managed page",
-          "description": "Update this page from Administration > CMS Pages. Publish only approved content."
+          "title": "Content in preparation",
+          "description": "Family-reviewed material will appear here when it is ready."
         }
       ],
       "id": "page-documents",
@@ -692,12 +708,12 @@
       "eyebrow": "Legal",
       "title": "Privacy policy",
       "description": "Draft privacy policy for the Baba Muyi Legacy archive.",
-      "body": "This page is editable from the CMS. Replace this placeholder with approved text, source notes, images, and related records.",
+      "body": "Approved material for this section is being prepared for publication.",
       "cards": [
         {
           "id": "privacy-cms-ready",
-          "title": "CMS-managed page",
-          "description": "Update this page from Administration > CMS Pages. Publish only approved content."
+          "title": "Content in preparation",
+          "description": "Family-reviewed material will appear here when it is ready."
         }
       ],
       "id": "page-privacy",
@@ -712,12 +728,12 @@
       "eyebrow": "Legal",
       "title": "Terms",
       "description": "Draft terms for contributors and visitors.",
-      "body": "This page is editable from the CMS. Replace this placeholder with approved text, source notes, images, and related records.",
+      "body": "Approved material for this section is being prepared for publication.",
       "cards": [
         {
           "id": "terms-cms-ready",
-          "title": "CMS-managed page",
-          "description": "Update this page from Administration > CMS Pages. Publish only approved content."
+          "title": "Content in preparation",
+          "description": "Family-reviewed material will appear here when it is ready."
         }
       ],
       "id": "page-terms",
@@ -732,12 +748,12 @@
       "eyebrow": "Future SaaS",
       "title": "Legacy platform waiting list",
       "description": "The Baba Muyi archive is the proof of concept for a future family legacy platform.",
-      "body": "This page is editable from the CMS. Replace this placeholder with approved text, source notes, images, and related records.",
+      "body": "Approved material for this section is being prepared for publication.",
       "cards": [
         {
           "id": "waiting-list-cms-ready",
-          "title": "CMS-managed page",
-          "description": "Update this page from Administration > CMS Pages. Publish only approved content."
+          "title": "Content in preparation",
+          "description": "Family-reviewed material will appear here when it is ready."
         }
       ],
       "id": "page-waiting-list",
@@ -755,7 +771,7 @@
       "title": "Family roots and formation",
       "slug": "family-roots",
       "summary": "A curated chapter for childhood, family lineage, education, early influences, and the people who shaped his character.",
-      "body": "Add approved timeline details, sources, images, and locations from the CMS.",
+      "body": "Approved timeline details, sources, images, and locations will be added as the archive develops.",
       "status": "published",
       "visibility": "public",
       "verificationStatus": "unverified",
@@ -799,10 +815,10 @@
     {
       "id": "blog-cms-first",
       "kind": "blog_post",
-      "title": "Building the Baba Muyi archive CMS-first",
+      "title": "Building the Baba Muyi archive carefully",
       "slug": "cms-first",
-      "summary": "A curator note explaining that public pages now read from managed CMS records.",
-      "body": "This post can be edited, scheduled, archived, and later synced to Supabase.",
+      "summary": "A curator note about preparing public archive pages with care and review.",
+      "body": "Legacy articles and historical reflections will be published here when approved.",
       "status": "draft",
       "visibility": "public",
       "verificationStatus": "unverified",
@@ -828,7 +844,7 @@
     },
     {
       "id": "header-biography",
-      "label": "His Life",
+      "label": "His Story",
       "href": "/biography",
       "slug": "biography",
       "location": "header",
@@ -840,7 +856,7 @@
       "hidden": false
     },
     {
-      "id": "header-biography-biography",
+      "id": "header-biography-biography-1",
       "parentId": "header-biography",
       "label": "Biography",
       "href": "/biography",
@@ -854,7 +870,7 @@
       "hidden": false
     },
     {
-      "id": "header-biography-timeline",
+      "id": "header-biography-timeline-2",
       "parentId": "header-biography",
       "label": "Timeline",
       "href": "/timeline",
@@ -868,7 +884,7 @@
       "hidden": false
     },
     {
-      "id": "header-biography-early-life",
+      "id": "header-biography-early-life-3",
       "parentId": "header-biography",
       "label": "Early Life",
       "href": "/early-life",
@@ -882,7 +898,7 @@
       "hidden": false
     },
     {
-      "id": "header-biography-journey-to-bariga",
+      "id": "header-biography-journey-to-bariga-4",
       "parentId": "header-biography",
       "label": "Journey to Bariga",
       "href": "/journey-to-bariga",
@@ -896,7 +912,7 @@
       "hidden": false
     },
     {
-      "id": "header-biography-community-leadership",
+      "id": "header-biography-community-leadership-5",
       "parentId": "header-biography",
       "label": "Community Leadership",
       "href": "/community-leadership",
@@ -923,7 +939,7 @@
       "hidden": false
     },
     {
-      "id": "header-bolekaja-bolekaja",
+      "id": "header-bolekaja-bolekaja-1",
       "parentId": "header-bolekaja",
       "label": "Bolekaja Era",
       "href": "/bolekaja",
@@ -937,7 +953,7 @@
       "hidden": false
     },
     {
-      "id": "header-bolekaja-tioluwa-lase-molue",
+      "id": "header-bolekaja-tioluwa-lase-molue-2",
       "parentId": "header-bolekaja",
       "label": "TIOLUWA LASE Molue Era",
       "href": "/tioluwa-lase-molue",
@@ -951,7 +967,7 @@
       "hidden": false
     },
     {
-      "id": "header-bolekaja-routes-and-locations",
+      "id": "header-bolekaja-routes-and-locations-3",
       "parentId": "header-bolekaja",
       "label": "Routes and Locations",
       "href": "/routes-and-locations",
@@ -965,7 +981,7 @@
       "hidden": false
     },
     {
-      "id": "header-bolekaja-transport-gallery",
+      "id": "header-bolekaja-transport-gallery-4",
       "parentId": "header-bolekaja",
       "label": "Transport Gallery",
       "href": "/transport-gallery",
@@ -980,7 +996,7 @@
     },
     {
       "id": "header-documentaries",
-      "label": "Documentaries",
+      "label": "Media",
       "href": "/documentaries",
       "slug": "documentaries",
       "location": "header",
@@ -992,11 +1008,11 @@
       "hidden": false
     },
     {
-      "id": "header-documentaries-english-documentary",
+      "id": "header-documentaries-documentaries-1",
       "parentId": "header-documentaries",
-      "label": "English Documentary",
-      "href": "/english-documentary",
-      "slug": "english-documentary",
+      "label": "Documentary",
+      "href": "/documentaries",
+      "slug": "documentaries",
       "location": "header",
       "sortOrder": 1,
       "status": "published",
@@ -1006,81 +1022,12 @@
       "hidden": false
     },
     {
-      "id": "header-documentaries-documentary-episodes",
+      "id": "header-documentaries-gallery-2",
       "parentId": "header-documentaries",
-      "label": "Episodes",
-      "href": "/documentary-episodes",
-      "slug": "documentary-episodes",
-      "location": "header",
-      "sortOrder": 2,
-      "status": "published",
-      "visibility": "public",
-      "linkType": "internal",
-      "openInNewTab": false,
-      "hidden": false
-    },
-    {
-      "id": "header-documentaries-trailer-clips",
-      "parentId": "header-documentaries",
-      "label": "Trailers and Clips",
-      "href": "/trailer-clips",
-      "slug": "trailer-clips",
-      "location": "header",
-      "sortOrder": 3,
-      "status": "published",
-      "visibility": "public",
-      "linkType": "internal",
-      "openInNewTab": false,
-      "hidden": false
-    },
-    {
-      "id": "header-documentaries-transcripts",
-      "parentId": "header-documentaries",
-      "label": "Transcripts",
-      "href": "/transcripts",
-      "slug": "transcripts",
-      "location": "header",
-      "sortOrder": 4,
-      "status": "published",
-      "visibility": "public",
-      "linkType": "internal",
-      "openInNewTab": false,
-      "hidden": false
-    },
-    {
-      "id": "header-gallery",
-      "label": "Gallery",
+      "label": "Photo Archive",
       "href": "/gallery",
       "slug": "gallery",
       "location": "header",
-      "sortOrder": 5,
-      "status": "published",
-      "visibility": "public",
-      "linkType": "internal",
-      "openInNewTab": false,
-      "hidden": false
-    },
-    {
-      "id": "header-gallery-portraits",
-      "parentId": "header-gallery",
-      "label": "Portraits",
-      "href": "/portraits",
-      "slug": "portraits",
-      "location": "header",
-      "sortOrder": 1,
-      "status": "published",
-      "visibility": "public",
-      "linkType": "internal",
-      "openInNewTab": false,
-      "hidden": false
-    },
-    {
-      "id": "header-gallery-family",
-      "parentId": "header-gallery",
-      "label": "Family",
-      "href": "/family",
-      "slug": "family",
-      "location": "header",
       "sortOrder": 2,
       "status": "published",
       "visibility": "public",
@@ -1089,11 +1036,11 @@
       "hidden": false
     },
     {
-      "id": "header-gallery-bolekaja-gallery",
-      "parentId": "header-gallery",
-      "label": "Bolekaja",
-      "href": "/bolekaja-gallery",
-      "slug": "bolekaja-gallery",
+      "id": "header-documentaries-archive-3",
+      "parentId": "header-documentaries",
+      "label": "Audio",
+      "href": "/archive",
+      "slug": "archive",
       "location": "header",
       "sortOrder": 3,
       "status": "published",
@@ -1103,41 +1050,13 @@
       "hidden": false
     },
     {
-      "id": "header-gallery-molue-gallery",
-      "parentId": "header-gallery",
-      "label": "Molue",
-      "href": "/molue-gallery",
-      "slug": "molue-gallery",
+      "id": "header-documentaries-documents-4",
+      "parentId": "header-documentaries",
+      "label": "Historical Documents",
+      "href": "/documents",
+      "slug": "documents",
       "location": "header",
       "sortOrder": 4,
-      "status": "published",
-      "visibility": "public",
-      "linkType": "internal",
-      "openInNewTab": false,
-      "hidden": false
-    },
-    {
-      "id": "header-gallery-community-gallery",
-      "parentId": "header-gallery",
-      "label": "Community",
-      "href": "/community-gallery",
-      "slug": "community-gallery",
-      "location": "header",
-      "sortOrder": 5,
-      "status": "published",
-      "visibility": "public",
-      "linkType": "internal",
-      "openInNewTab": false,
-      "hidden": false
-    },
-    {
-      "id": "header-gallery-restored-images",
-      "parentId": "header-gallery",
-      "label": "Restored Images",
-      "href": "/restored-images",
-      "slug": "restored-images",
-      "location": "header",
-      "sortOrder": 6,
       "status": "published",
       "visibility": "public",
       "linkType": "internal",
@@ -1146,11 +1065,11 @@
     },
     {
       "id": "header-family-tree",
-      "label": "Family Legacy",
+      "label": "Legacy",
       "href": "/family-tree",
       "slug": "family-tree",
       "location": "header",
-      "sortOrder": 6,
+      "sortOrder": 5,
       "status": "published",
       "visibility": "public",
       "linkType": "internal",
@@ -1158,9 +1077,9 @@
       "hidden": false
     },
     {
-      "id": "header-family-tree-family-tree",
+      "id": "header-family-tree-family-tree-1",
       "parentId": "header-family-tree",
-      "label": "Family Tree",
+      "label": "Family Legacy",
       "href": "/family-tree",
       "slug": "family-tree",
       "location": "header",
@@ -1172,11 +1091,11 @@
       "hidden": false
     },
     {
-      "id": "header-family-tree-children",
+      "id": "header-family-tree-lessons-2",
       "parentId": "header-family-tree",
-      "label": "Children",
-      "href": "/children",
-      "slug": "children",
+      "label": "Lessons",
+      "href": "/lessons",
+      "slug": "lessons",
       "location": "header",
       "sortOrder": 2,
       "status": "published",
@@ -1186,11 +1105,11 @@
       "hidden": false
     },
     {
-      "id": "header-family-tree-grandchildren",
+      "id": "header-family-tree-family-memories-3",
       "parentId": "header-family-tree",
-      "label": "Grandchildren",
-      "href": "/grandchildren",
-      "slug": "grandchildren",
+      "label": "Community Memories",
+      "href": "/family-memories",
+      "slug": "family-memories",
       "location": "header",
       "sortOrder": 3,
       "status": "published",
@@ -1200,65 +1119,13 @@
       "hidden": false
     },
     {
-      "id": "header-family-tree-family-memories",
+      "id": "header-family-tree-archive-4",
       "parentId": "header-family-tree",
-      "label": "Family Memories",
-      "href": "/family-memories",
-      "slug": "family-memories",
-      "location": "header",
-      "sortOrder": 4,
-      "status": "published",
-      "visibility": "public",
-      "linkType": "internal",
-      "openInNewTab": false,
-      "hidden": false
-    },
-    {
-      "id": "header-lessons",
-      "label": "Lessons",
-      "href": "/lessons",
-      "slug": "lessons",
-      "location": "header",
-      "sortOrder": 7,
-      "status": "published",
-      "visibility": "public",
-      "linkType": "internal",
-      "openInNewTab": false,
-      "hidden": false
-    },
-    {
-      "id": "header-archive",
-      "label": "Archive",
+      "label": "Digital Archive",
       "href": "/archive",
       "slug": "archive",
       "location": "header",
-      "sortOrder": 8,
-      "status": "published",
-      "visibility": "public",
-      "linkType": "internal",
-      "openInNewTab": false,
-      "hidden": false
-    },
-    {
-      "id": "header-blog",
-      "label": "Blog",
-      "href": "/blog",
-      "slug": "blog",
-      "location": "header",
-      "sortOrder": 9,
-      "status": "published",
-      "visibility": "public",
-      "linkType": "internal",
-      "openInNewTab": false,
-      "hidden": false
-    },
-    {
-      "id": "header-tributes",
-      "label": "Share a Memory",
-      "href": "/tributes",
-      "slug": "tributes",
-      "location": "header",
-      "sortOrder": 10,
+      "sortOrder": 4,
       "status": "published",
       "visibility": "public",
       "linkType": "internal",
@@ -1271,7 +1138,7 @@
       "href": "/curator",
       "slug": "curator",
       "location": "header",
-      "sortOrder": 11,
+      "sortOrder": 6,
       "status": "published",
       "visibility": "public",
       "linkType": "internal",
@@ -1279,12 +1146,55 @@
       "hidden": false
     },
     {
-      "id": "header-contact",
-      "label": "Contact",
-      "href": "/contact",
-      "slug": "contact",
+      "id": "header-curator-biography-1",
+      "parentId": "header-curator",
+      "label": "About Baba Muyi",
+      "href": "/biography",
+      "slug": "biography",
       "location": "header",
-      "sortOrder": 12,
+      "sortOrder": 1,
+      "status": "published",
+      "visibility": "public",
+      "linkType": "internal",
+      "openInNewTab": false,
+      "hidden": false
+    },
+    {
+      "id": "header-curator-curator-2",
+      "parentId": "header-curator",
+      "label": "About the Curator",
+      "href": "/curator",
+      "slug": "curator",
+      "location": "header",
+      "sortOrder": 2,
+      "status": "published",
+      "visibility": "public",
+      "linkType": "internal",
+      "openInNewTab": false,
+      "hidden": false
+    },
+    {
+      "id": "header-curator-about-3",
+      "parentId": "header-curator",
+      "label": "About the Legacy Project",
+      "href": "/about",
+      "slug": "about",
+      "location": "header",
+      "sortOrder": 3,
+      "status": "published",
+      "visibility": "public",
+      "linkType": "internal",
+      "openInNewTab": false,
+      "hidden": false
+    },
+    {
+      "id": "header-curator-legacyhub-4",
+      "parentId": "header-curator",
+      "label": "About LegacyHub",
+      "href": "/legacyhub",
+      "slug": "legacyhub",
+      "location": "header",
+      "sortOrder": 4,
       "status": "published",
       "visibility": "public",
       "linkType": "internal",
@@ -1306,7 +1216,7 @@
     },
     {
       "id": "mobile-biography",
-      "label": "His Life",
+      "label": "His Story",
       "href": "/biography",
       "slug": "biography",
       "location": "mobile",
@@ -1318,7 +1228,7 @@
       "hidden": false
     },
     {
-      "id": "mobile-biography-biography",
+      "id": "mobile-biography-biography-1",
       "parentId": "mobile-biography",
       "label": "Biography",
       "href": "/biography",
@@ -1332,7 +1242,7 @@
       "hidden": false
     },
     {
-      "id": "mobile-biography-timeline",
+      "id": "mobile-biography-timeline-2",
       "parentId": "mobile-biography",
       "label": "Timeline",
       "href": "/timeline",
@@ -1346,7 +1256,7 @@
       "hidden": false
     },
     {
-      "id": "mobile-biography-early-life",
+      "id": "mobile-biography-early-life-3",
       "parentId": "mobile-biography",
       "label": "Early Life",
       "href": "/early-life",
@@ -1360,7 +1270,7 @@
       "hidden": false
     },
     {
-      "id": "mobile-biography-journey-to-bariga",
+      "id": "mobile-biography-journey-to-bariga-4",
       "parentId": "mobile-biography",
       "label": "Journey to Bariga",
       "href": "/journey-to-bariga",
@@ -1374,7 +1284,7 @@
       "hidden": false
     },
     {
-      "id": "mobile-biography-community-leadership",
+      "id": "mobile-biography-community-leadership-5",
       "parentId": "mobile-biography",
       "label": "Community Leadership",
       "href": "/community-leadership",
@@ -1401,7 +1311,7 @@
       "hidden": false
     },
     {
-      "id": "mobile-bolekaja-bolekaja",
+      "id": "mobile-bolekaja-bolekaja-1",
       "parentId": "mobile-bolekaja",
       "label": "Bolekaja Era",
       "href": "/bolekaja",
@@ -1415,7 +1325,7 @@
       "hidden": false
     },
     {
-      "id": "mobile-bolekaja-tioluwa-lase-molue",
+      "id": "mobile-bolekaja-tioluwa-lase-molue-2",
       "parentId": "mobile-bolekaja",
       "label": "TIOLUWA LASE Molue Era",
       "href": "/tioluwa-lase-molue",
@@ -1429,7 +1339,7 @@
       "hidden": false
     },
     {
-      "id": "mobile-bolekaja-routes-and-locations",
+      "id": "mobile-bolekaja-routes-and-locations-3",
       "parentId": "mobile-bolekaja",
       "label": "Routes and Locations",
       "href": "/routes-and-locations",
@@ -1443,7 +1353,7 @@
       "hidden": false
     },
     {
-      "id": "mobile-bolekaja-transport-gallery",
+      "id": "mobile-bolekaja-transport-gallery-4",
       "parentId": "mobile-bolekaja",
       "label": "Transport Gallery",
       "href": "/transport-gallery",
@@ -1458,7 +1368,7 @@
     },
     {
       "id": "mobile-documentaries",
-      "label": "Documentaries",
+      "label": "Media",
       "href": "/documentaries",
       "slug": "documentaries",
       "location": "mobile",
@@ -1470,11 +1380,11 @@
       "hidden": false
     },
     {
-      "id": "mobile-documentaries-english-documentary",
+      "id": "mobile-documentaries-documentaries-1",
       "parentId": "mobile-documentaries",
-      "label": "English Documentary",
-      "href": "/english-documentary",
-      "slug": "english-documentary",
+      "label": "Documentary",
+      "href": "/documentaries",
+      "slug": "documentaries",
       "location": "mobile",
       "sortOrder": 1,
       "status": "published",
@@ -1484,81 +1394,12 @@
       "hidden": false
     },
     {
-      "id": "mobile-documentaries-documentary-episodes",
+      "id": "mobile-documentaries-gallery-2",
       "parentId": "mobile-documentaries",
-      "label": "Episodes",
-      "href": "/documentary-episodes",
-      "slug": "documentary-episodes",
-      "location": "mobile",
-      "sortOrder": 2,
-      "status": "published",
-      "visibility": "public",
-      "linkType": "internal",
-      "openInNewTab": false,
-      "hidden": false
-    },
-    {
-      "id": "mobile-documentaries-trailer-clips",
-      "parentId": "mobile-documentaries",
-      "label": "Trailers and Clips",
-      "href": "/trailer-clips",
-      "slug": "trailer-clips",
-      "location": "mobile",
-      "sortOrder": 3,
-      "status": "published",
-      "visibility": "public",
-      "linkType": "internal",
-      "openInNewTab": false,
-      "hidden": false
-    },
-    {
-      "id": "mobile-documentaries-transcripts",
-      "parentId": "mobile-documentaries",
-      "label": "Transcripts",
-      "href": "/transcripts",
-      "slug": "transcripts",
-      "location": "mobile",
-      "sortOrder": 4,
-      "status": "published",
-      "visibility": "public",
-      "linkType": "internal",
-      "openInNewTab": false,
-      "hidden": false
-    },
-    {
-      "id": "mobile-gallery",
-      "label": "Gallery",
+      "label": "Photo Archive",
       "href": "/gallery",
       "slug": "gallery",
       "location": "mobile",
-      "sortOrder": 5,
-      "status": "published",
-      "visibility": "public",
-      "linkType": "internal",
-      "openInNewTab": false,
-      "hidden": false
-    },
-    {
-      "id": "mobile-gallery-portraits",
-      "parentId": "mobile-gallery",
-      "label": "Portraits",
-      "href": "/portraits",
-      "slug": "portraits",
-      "location": "mobile",
-      "sortOrder": 1,
-      "status": "published",
-      "visibility": "public",
-      "linkType": "internal",
-      "openInNewTab": false,
-      "hidden": false
-    },
-    {
-      "id": "mobile-gallery-family",
-      "parentId": "mobile-gallery",
-      "label": "Family",
-      "href": "/family",
-      "slug": "family",
-      "location": "mobile",
       "sortOrder": 2,
       "status": "published",
       "visibility": "public",
@@ -1567,11 +1408,11 @@
       "hidden": false
     },
     {
-      "id": "mobile-gallery-bolekaja-gallery",
-      "parentId": "mobile-gallery",
-      "label": "Bolekaja",
-      "href": "/bolekaja-gallery",
-      "slug": "bolekaja-gallery",
+      "id": "mobile-documentaries-archive-3",
+      "parentId": "mobile-documentaries",
+      "label": "Audio",
+      "href": "/archive",
+      "slug": "archive",
       "location": "mobile",
       "sortOrder": 3,
       "status": "published",
@@ -1581,41 +1422,13 @@
       "hidden": false
     },
     {
-      "id": "mobile-gallery-molue-gallery",
-      "parentId": "mobile-gallery",
-      "label": "Molue",
-      "href": "/molue-gallery",
-      "slug": "molue-gallery",
+      "id": "mobile-documentaries-documents-4",
+      "parentId": "mobile-documentaries",
+      "label": "Historical Documents",
+      "href": "/documents",
+      "slug": "documents",
       "location": "mobile",
       "sortOrder": 4,
-      "status": "published",
-      "visibility": "public",
-      "linkType": "internal",
-      "openInNewTab": false,
-      "hidden": false
-    },
-    {
-      "id": "mobile-gallery-community-gallery",
-      "parentId": "mobile-gallery",
-      "label": "Community",
-      "href": "/community-gallery",
-      "slug": "community-gallery",
-      "location": "mobile",
-      "sortOrder": 5,
-      "status": "published",
-      "visibility": "public",
-      "linkType": "internal",
-      "openInNewTab": false,
-      "hidden": false
-    },
-    {
-      "id": "mobile-gallery-restored-images",
-      "parentId": "mobile-gallery",
-      "label": "Restored Images",
-      "href": "/restored-images",
-      "slug": "restored-images",
-      "location": "mobile",
-      "sortOrder": 6,
       "status": "published",
       "visibility": "public",
       "linkType": "internal",
@@ -1624,11 +1437,11 @@
     },
     {
       "id": "mobile-family-tree",
-      "label": "Family Legacy",
+      "label": "Legacy",
       "href": "/family-tree",
       "slug": "family-tree",
       "location": "mobile",
-      "sortOrder": 6,
+      "sortOrder": 5,
       "status": "published",
       "visibility": "public",
       "linkType": "internal",
@@ -1636,9 +1449,9 @@
       "hidden": false
     },
     {
-      "id": "mobile-family-tree-family-tree",
+      "id": "mobile-family-tree-family-tree-1",
       "parentId": "mobile-family-tree",
-      "label": "Family Tree",
+      "label": "Family Legacy",
       "href": "/family-tree",
       "slug": "family-tree",
       "location": "mobile",
@@ -1650,11 +1463,11 @@
       "hidden": false
     },
     {
-      "id": "mobile-family-tree-children",
+      "id": "mobile-family-tree-lessons-2",
       "parentId": "mobile-family-tree",
-      "label": "Children",
-      "href": "/children",
-      "slug": "children",
+      "label": "Lessons",
+      "href": "/lessons",
+      "slug": "lessons",
       "location": "mobile",
       "sortOrder": 2,
       "status": "published",
@@ -1664,11 +1477,11 @@
       "hidden": false
     },
     {
-      "id": "mobile-family-tree-grandchildren",
+      "id": "mobile-family-tree-family-memories-3",
       "parentId": "mobile-family-tree",
-      "label": "Grandchildren",
-      "href": "/grandchildren",
-      "slug": "grandchildren",
+      "label": "Community Memories",
+      "href": "/family-memories",
+      "slug": "family-memories",
       "location": "mobile",
       "sortOrder": 3,
       "status": "published",
@@ -1678,65 +1491,13 @@
       "hidden": false
     },
     {
-      "id": "mobile-family-tree-family-memories",
+      "id": "mobile-family-tree-archive-4",
       "parentId": "mobile-family-tree",
-      "label": "Family Memories",
-      "href": "/family-memories",
-      "slug": "family-memories",
-      "location": "mobile",
-      "sortOrder": 4,
-      "status": "published",
-      "visibility": "public",
-      "linkType": "internal",
-      "openInNewTab": false,
-      "hidden": false
-    },
-    {
-      "id": "mobile-lessons",
-      "label": "Lessons",
-      "href": "/lessons",
-      "slug": "lessons",
-      "location": "mobile",
-      "sortOrder": 7,
-      "status": "published",
-      "visibility": "public",
-      "linkType": "internal",
-      "openInNewTab": false,
-      "hidden": false
-    },
-    {
-      "id": "mobile-archive",
-      "label": "Archive",
+      "label": "Digital Archive",
       "href": "/archive",
       "slug": "archive",
       "location": "mobile",
-      "sortOrder": 8,
-      "status": "published",
-      "visibility": "public",
-      "linkType": "internal",
-      "openInNewTab": false,
-      "hidden": false
-    },
-    {
-      "id": "mobile-blog",
-      "label": "Blog",
-      "href": "/blog",
-      "slug": "blog",
-      "location": "mobile",
-      "sortOrder": 9,
-      "status": "published",
-      "visibility": "public",
-      "linkType": "internal",
-      "openInNewTab": false,
-      "hidden": false
-    },
-    {
-      "id": "mobile-tributes",
-      "label": "Share a Memory",
-      "href": "/tributes",
-      "slug": "tributes",
-      "location": "mobile",
-      "sortOrder": 10,
+      "sortOrder": 4,
       "status": "published",
       "visibility": "public",
       "linkType": "internal",
@@ -1749,7 +1510,7 @@
       "href": "/curator",
       "slug": "curator",
       "location": "mobile",
-      "sortOrder": 11,
+      "sortOrder": 6,
       "status": "published",
       "visibility": "public",
       "linkType": "internal",
@@ -1757,12 +1518,55 @@
       "hidden": false
     },
     {
-      "id": "mobile-contact",
-      "label": "Contact",
-      "href": "/contact",
-      "slug": "contact",
+      "id": "mobile-curator-biography-1",
+      "parentId": "mobile-curator",
+      "label": "About Baba Muyi",
+      "href": "/biography",
+      "slug": "biography",
       "location": "mobile",
-      "sortOrder": 12,
+      "sortOrder": 1,
+      "status": "published",
+      "visibility": "public",
+      "linkType": "internal",
+      "openInNewTab": false,
+      "hidden": false
+    },
+    {
+      "id": "mobile-curator-curator-2",
+      "parentId": "mobile-curator",
+      "label": "About the Curator",
+      "href": "/curator",
+      "slug": "curator",
+      "location": "mobile",
+      "sortOrder": 2,
+      "status": "published",
+      "visibility": "public",
+      "linkType": "internal",
+      "openInNewTab": false,
+      "hidden": false
+    },
+    {
+      "id": "mobile-curator-about-3",
+      "parentId": "mobile-curator",
+      "label": "About the Legacy Project",
+      "href": "/about",
+      "slug": "about",
+      "location": "mobile",
+      "sortOrder": 3,
+      "status": "published",
+      "visibility": "public",
+      "linkType": "internal",
+      "openInNewTab": false,
+      "hidden": false
+    },
+    {
+      "id": "mobile-curator-legacyhub-4",
+      "parentId": "mobile-curator",
+      "label": "About LegacyHub",
+      "href": "/legacyhub",
+      "slug": "legacyhub",
+      "location": "mobile",
+      "sortOrder": 4,
       "status": "published",
       "visibility": "public",
       "linkType": "internal",
@@ -1784,7 +1588,7 @@
     },
     {
       "id": "footer-biography",
-      "label": "His Life",
+      "label": "His Story",
       "href": "/biography",
       "slug": "biography",
       "location": "footer",
@@ -1796,7 +1600,7 @@
       "hidden": false
     },
     {
-      "id": "footer-biography-biography",
+      "id": "footer-biography-biography-1",
       "parentId": "footer-biography",
       "label": "Biography",
       "href": "/biography",
@@ -1810,7 +1614,7 @@
       "hidden": false
     },
     {
-      "id": "footer-biography-timeline",
+      "id": "footer-biography-timeline-2",
       "parentId": "footer-biography",
       "label": "Timeline",
       "href": "/timeline",
@@ -1824,7 +1628,7 @@
       "hidden": false
     },
     {
-      "id": "footer-biography-early-life",
+      "id": "footer-biography-early-life-3",
       "parentId": "footer-biography",
       "label": "Early Life",
       "href": "/early-life",
@@ -1838,7 +1642,7 @@
       "hidden": false
     },
     {
-      "id": "footer-biography-journey-to-bariga",
+      "id": "footer-biography-journey-to-bariga-4",
       "parentId": "footer-biography",
       "label": "Journey to Bariga",
       "href": "/journey-to-bariga",
@@ -1852,7 +1656,7 @@
       "hidden": false
     },
     {
-      "id": "footer-biography-community-leadership",
+      "id": "footer-biography-community-leadership-5",
       "parentId": "footer-biography",
       "label": "Community Leadership",
       "href": "/community-leadership",
@@ -1879,7 +1683,7 @@
       "hidden": false
     },
     {
-      "id": "footer-bolekaja-bolekaja",
+      "id": "footer-bolekaja-bolekaja-1",
       "parentId": "footer-bolekaja",
       "label": "Bolekaja Era",
       "href": "/bolekaja",
@@ -1893,7 +1697,7 @@
       "hidden": false
     },
     {
-      "id": "footer-bolekaja-tioluwa-lase-molue",
+      "id": "footer-bolekaja-tioluwa-lase-molue-2",
       "parentId": "footer-bolekaja",
       "label": "TIOLUWA LASE Molue Era",
       "href": "/tioluwa-lase-molue",
@@ -1907,7 +1711,7 @@
       "hidden": false
     },
     {
-      "id": "footer-bolekaja-routes-and-locations",
+      "id": "footer-bolekaja-routes-and-locations-3",
       "parentId": "footer-bolekaja",
       "label": "Routes and Locations",
       "href": "/routes-and-locations",
@@ -1921,7 +1725,7 @@
       "hidden": false
     },
     {
-      "id": "footer-bolekaja-transport-gallery",
+      "id": "footer-bolekaja-transport-gallery-4",
       "parentId": "footer-bolekaja",
       "label": "Transport Gallery",
       "href": "/transport-gallery",
@@ -1936,7 +1740,7 @@
     },
     {
       "id": "footer-documentaries",
-      "label": "Documentaries",
+      "label": "Media",
       "href": "/documentaries",
       "slug": "documentaries",
       "location": "footer",
@@ -1948,11 +1752,11 @@
       "hidden": false
     },
     {
-      "id": "footer-documentaries-english-documentary",
+      "id": "footer-documentaries-documentaries-1",
       "parentId": "footer-documentaries",
-      "label": "English Documentary",
-      "href": "/english-documentary",
-      "slug": "english-documentary",
+      "label": "Documentary",
+      "href": "/documentaries",
+      "slug": "documentaries",
       "location": "footer",
       "sortOrder": 1,
       "status": "published",
@@ -1962,81 +1766,12 @@
       "hidden": false
     },
     {
-      "id": "footer-documentaries-documentary-episodes",
+      "id": "footer-documentaries-gallery-2",
       "parentId": "footer-documentaries",
-      "label": "Episodes",
-      "href": "/documentary-episodes",
-      "slug": "documentary-episodes",
-      "location": "footer",
-      "sortOrder": 2,
-      "status": "published",
-      "visibility": "public",
-      "linkType": "internal",
-      "openInNewTab": false,
-      "hidden": false
-    },
-    {
-      "id": "footer-documentaries-trailer-clips",
-      "parentId": "footer-documentaries",
-      "label": "Trailers and Clips",
-      "href": "/trailer-clips",
-      "slug": "trailer-clips",
-      "location": "footer",
-      "sortOrder": 3,
-      "status": "published",
-      "visibility": "public",
-      "linkType": "internal",
-      "openInNewTab": false,
-      "hidden": false
-    },
-    {
-      "id": "footer-documentaries-transcripts",
-      "parentId": "footer-documentaries",
-      "label": "Transcripts",
-      "href": "/transcripts",
-      "slug": "transcripts",
-      "location": "footer",
-      "sortOrder": 4,
-      "status": "published",
-      "visibility": "public",
-      "linkType": "internal",
-      "openInNewTab": false,
-      "hidden": false
-    },
-    {
-      "id": "footer-gallery",
-      "label": "Gallery",
+      "label": "Photo Archive",
       "href": "/gallery",
       "slug": "gallery",
       "location": "footer",
-      "sortOrder": 5,
-      "status": "published",
-      "visibility": "public",
-      "linkType": "internal",
-      "openInNewTab": false,
-      "hidden": false
-    },
-    {
-      "id": "footer-gallery-portraits",
-      "parentId": "footer-gallery",
-      "label": "Portraits",
-      "href": "/portraits",
-      "slug": "portraits",
-      "location": "footer",
-      "sortOrder": 1,
-      "status": "published",
-      "visibility": "public",
-      "linkType": "internal",
-      "openInNewTab": false,
-      "hidden": false
-    },
-    {
-      "id": "footer-gallery-family",
-      "parentId": "footer-gallery",
-      "label": "Family",
-      "href": "/family",
-      "slug": "family",
-      "location": "footer",
       "sortOrder": 2,
       "status": "published",
       "visibility": "public",
@@ -2045,11 +1780,11 @@
       "hidden": false
     },
     {
-      "id": "footer-gallery-bolekaja-gallery",
-      "parentId": "footer-gallery",
-      "label": "Bolekaja",
-      "href": "/bolekaja-gallery",
-      "slug": "bolekaja-gallery",
+      "id": "footer-documentaries-archive-3",
+      "parentId": "footer-documentaries",
+      "label": "Audio",
+      "href": "/archive",
+      "slug": "archive",
       "location": "footer",
       "sortOrder": 3,
       "status": "published",
@@ -2059,41 +1794,13 @@
       "hidden": false
     },
     {
-      "id": "footer-gallery-molue-gallery",
-      "parentId": "footer-gallery",
-      "label": "Molue",
-      "href": "/molue-gallery",
-      "slug": "molue-gallery",
+      "id": "footer-documentaries-documents-4",
+      "parentId": "footer-documentaries",
+      "label": "Historical Documents",
+      "href": "/documents",
+      "slug": "documents",
       "location": "footer",
       "sortOrder": 4,
-      "status": "published",
-      "visibility": "public",
-      "linkType": "internal",
-      "openInNewTab": false,
-      "hidden": false
-    },
-    {
-      "id": "footer-gallery-community-gallery",
-      "parentId": "footer-gallery",
-      "label": "Community",
-      "href": "/community-gallery",
-      "slug": "community-gallery",
-      "location": "footer",
-      "sortOrder": 5,
-      "status": "published",
-      "visibility": "public",
-      "linkType": "internal",
-      "openInNewTab": false,
-      "hidden": false
-    },
-    {
-      "id": "footer-gallery-restored-images",
-      "parentId": "footer-gallery",
-      "label": "Restored Images",
-      "href": "/restored-images",
-      "slug": "restored-images",
-      "location": "footer",
-      "sortOrder": 6,
       "status": "published",
       "visibility": "public",
       "linkType": "internal",
@@ -2102,11 +1809,11 @@
     },
     {
       "id": "footer-family-tree",
-      "label": "Family Legacy",
+      "label": "Legacy",
       "href": "/family-tree",
       "slug": "family-tree",
       "location": "footer",
-      "sortOrder": 6,
+      "sortOrder": 5,
       "status": "published",
       "visibility": "public",
       "linkType": "internal",
@@ -2114,9 +1821,9 @@
       "hidden": false
     },
     {
-      "id": "footer-family-tree-family-tree",
+      "id": "footer-family-tree-family-tree-1",
       "parentId": "footer-family-tree",
-      "label": "Family Tree",
+      "label": "Family Legacy",
       "href": "/family-tree",
       "slug": "family-tree",
       "location": "footer",
@@ -2128,11 +1835,11 @@
       "hidden": false
     },
     {
-      "id": "footer-family-tree-children",
+      "id": "footer-family-tree-lessons-2",
       "parentId": "footer-family-tree",
-      "label": "Children",
-      "href": "/children",
-      "slug": "children",
+      "label": "Lessons",
+      "href": "/lessons",
+      "slug": "lessons",
       "location": "footer",
       "sortOrder": 2,
       "status": "published",
@@ -2142,11 +1849,11 @@
       "hidden": false
     },
     {
-      "id": "footer-family-tree-grandchildren",
+      "id": "footer-family-tree-family-memories-3",
       "parentId": "footer-family-tree",
-      "label": "Grandchildren",
-      "href": "/grandchildren",
-      "slug": "grandchildren",
+      "label": "Community Memories",
+      "href": "/family-memories",
+      "slug": "family-memories",
       "location": "footer",
       "sortOrder": 3,
       "status": "published",
@@ -2156,65 +1863,13 @@
       "hidden": false
     },
     {
-      "id": "footer-family-tree-family-memories",
+      "id": "footer-family-tree-archive-4",
       "parentId": "footer-family-tree",
-      "label": "Family Memories",
-      "href": "/family-memories",
-      "slug": "family-memories",
-      "location": "footer",
-      "sortOrder": 4,
-      "status": "published",
-      "visibility": "public",
-      "linkType": "internal",
-      "openInNewTab": false,
-      "hidden": false
-    },
-    {
-      "id": "footer-lessons",
-      "label": "Lessons",
-      "href": "/lessons",
-      "slug": "lessons",
-      "location": "footer",
-      "sortOrder": 7,
-      "status": "published",
-      "visibility": "public",
-      "linkType": "internal",
-      "openInNewTab": false,
-      "hidden": false
-    },
-    {
-      "id": "footer-archive",
-      "label": "Archive",
+      "label": "Digital Archive",
       "href": "/archive",
       "slug": "archive",
       "location": "footer",
-      "sortOrder": 8,
-      "status": "published",
-      "visibility": "public",
-      "linkType": "internal",
-      "openInNewTab": false,
-      "hidden": false
-    },
-    {
-      "id": "footer-blog",
-      "label": "Blog",
-      "href": "/blog",
-      "slug": "blog",
-      "location": "footer",
-      "sortOrder": 9,
-      "status": "published",
-      "visibility": "public",
-      "linkType": "internal",
-      "openInNewTab": false,
-      "hidden": false
-    },
-    {
-      "id": "footer-tributes",
-      "label": "Share a Memory",
-      "href": "/tributes",
-      "slug": "tributes",
-      "location": "footer",
-      "sortOrder": 10,
+      "sortOrder": 4,
       "status": "published",
       "visibility": "public",
       "linkType": "internal",
@@ -2227,7 +1882,7 @@
       "href": "/curator",
       "slug": "curator",
       "location": "footer",
-      "sortOrder": 11,
+      "sortOrder": 6,
       "status": "published",
       "visibility": "public",
       "linkType": "internal",
@@ -2235,12 +1890,55 @@
       "hidden": false
     },
     {
-      "id": "footer-contact",
-      "label": "Contact",
-      "href": "/contact",
-      "slug": "contact",
+      "id": "footer-curator-biography-1",
+      "parentId": "footer-curator",
+      "label": "About Baba Muyi",
+      "href": "/biography",
+      "slug": "biography",
       "location": "footer",
-      "sortOrder": 12,
+      "sortOrder": 1,
+      "status": "published",
+      "visibility": "public",
+      "linkType": "internal",
+      "openInNewTab": false,
+      "hidden": false
+    },
+    {
+      "id": "footer-curator-curator-2",
+      "parentId": "footer-curator",
+      "label": "About the Curator",
+      "href": "/curator",
+      "slug": "curator",
+      "location": "footer",
+      "sortOrder": 2,
+      "status": "published",
+      "visibility": "public",
+      "linkType": "internal",
+      "openInNewTab": false,
+      "hidden": false
+    },
+    {
+      "id": "footer-curator-about-3",
+      "parentId": "footer-curator",
+      "label": "About the Legacy Project",
+      "href": "/about",
+      "slug": "about",
+      "location": "footer",
+      "sortOrder": 3,
+      "status": "published",
+      "visibility": "public",
+      "linkType": "internal",
+      "openInNewTab": false,
+      "hidden": false
+    },
+    {
+      "id": "footer-curator-legacyhub-4",
+      "parentId": "footer-curator",
+      "label": "About LegacyHub",
+      "href": "/legacyhub",
+      "slug": "legacyhub",
+      "location": "footer",
+      "sortOrder": 4,
       "status": "published",
       "visibility": "public",
       "linkType": "internal",

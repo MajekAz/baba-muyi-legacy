@@ -13,7 +13,7 @@ export const publicNavigation: NavItem[] = [
     href: "/"
   },
   {
-    label: "His Life",
+    label: "His Story",
     href: "/biography",
     children: [
       { label: "Biography", href: "/biography" },
@@ -34,43 +34,35 @@ export const publicNavigation: NavItem[] = [
     ]
   },
   {
-    label: "Documentaries",
+    label: "Media",
     href: "/documentaries",
     children: [
-      { label: "English Documentary", href: "/english-documentary" },
-      { label: "Episodes", href: "/documentary-episodes" },
-      { label: "Trailers and Clips", href: "/trailer-clips" },
-      { label: "Transcripts", href: "/transcripts" }
+      { label: "Documentary", href: "/documentaries" },
+      { label: "Photo Archive", href: "/gallery" },
+      { label: "Audio", href: "/archive" },
+      { label: "Historical Documents", href: "/documents" }
     ]
   },
   {
-    label: "Gallery",
-    href: "/gallery",
-    children: [
-      { label: "Portraits", href: "/portraits" },
-      { label: "Family", href: "/family" },
-      { label: "Bolekaja", href: "/bolekaja-gallery" },
-      { label: "Molue", href: "/molue-gallery" },
-      { label: "Community", href: "/community-gallery" },
-      { label: "Restored Images", href: "/restored-images" }
-    ]
-  },
-  {
-    label: "Family Legacy",
+    label: "Legacy",
     href: "/family-tree",
     children: [
-      { label: "Family Tree", href: "/family-tree" },
-      { label: "Children", href: "/children" },
-      { label: "Grandchildren", href: "/grandchildren" },
-      { label: "Family Memories", href: "/family-memories" }
+      { label: "Family Legacy", href: "/family-tree" },
+      { label: "Lessons", href: "/lessons" },
+      { label: "Community Memories", href: "/family-memories" },
+      { label: "Digital Archive", href: "/archive" }
     ]
   },
-  { label: "Lessons", href: "/lessons" },
-  { label: "Archive", href: "/archive" },
-  { label: "Blog", href: "/blog" },
-  { label: "Share a Memory", href: "/tributes" },
-  { label: "About", href: "/curator" },
-  { label: "Contact", href: "/contact" }
+  {
+    label: "About",
+    href: "/curator",
+    children: [
+      { label: "About Baba Muyi", href: "/biography" },
+      { label: "About the Curator", href: "/curator" },
+      { label: "About the Legacy Project", href: "/about" },
+      { label: "About LegacyHub", href: "/legacyhub" }
+    ]
+  }
 ];
 
 export const adminNavigation: NavItem[] = [
