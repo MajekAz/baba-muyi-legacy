@@ -7,14 +7,14 @@ export default async function AdminSectionPage({ params }: { params: Promise<{ s
   return (
     <main>
       <AdminPageHeader
-        eyebrow="Admin module"
+        eyebrow="Planned admin module"
         title={title}
-        description="This module route is reserved for the reusable CMS workflow. It will use the same role, revision, audit, privacy, and publishing controls as the primary admin sections."
+        description="This area is planned for a later milestone and is not enabled as an active workflow yet."
       />
       <section className="p-4 sm:p-6 lg:p-8">
         <div className="rounded border border-archive-navy/12 bg-white p-6 shadow-sm">
           <p className="text-sm leading-6 text-slate-700">
-            The route exists so admin navigation can be tested end to end while the detailed CRUD screen is implemented.
+            Use the available dashboard, content, media, user access, and menu screens for current production work.
           </p>
         </div>
       </section>

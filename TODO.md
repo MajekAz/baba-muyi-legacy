@@ -2,6 +2,8 @@
 
 ## Foundation
 
+- Complete Milestone 3.5 manual owner acceptance for the polished admin shell before commit and PR.
+- Add browser-level accessibility and viewport regression tests for the admin shell after the visual baseline is accepted.
 - Apply and verify `0011_media_library_foundation.sql` against the remote Supabase project before production media use.
 - Complete manual browser acceptance testing for media uploads with real images, PDFs, audio, and short video clips.
 - Maintain the LegacyHub terminology and roadmap documents for milestone sequencing.
@@ -18,6 +20,13 @@
 - Wire admin menu form controls to Supabase `menus` and `menu_items` CRUD actions.
 - Add drag-and-drop persistence for menu item reordering.
 - Add route-level smoke tests with a formal test runner.
+
+## Milestone 3.5 Deferred Items
+
+- Add full persisted user preferences for admin sidebar density and table layouts.
+- Add richer dashboard activity feeds after audit-log query surfaces are finalised.
+- Add a formal Playwright suite for mobile drawer focus return and horizontal overflow checks.
+- Replace planned admin modules with full CRUD screens in their approved milestones.
 
 ## Milestone 2 Deferred Items
 

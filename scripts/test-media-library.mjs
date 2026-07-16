@@ -10,6 +10,7 @@ const validation = readFileSync("lib/media/validation.ts", "utf8");
 const storage = readFileSync("lib/media/storage.ts", "utf8");
 const config = readFileSync("lib/media/config.ts", "utf8");
 const uploader = readFileSync("components/admin/media-uploader.tsx", "utf8");
+const mediaEditor = readFileSync("components/admin/media-edit-form.tsx", "utf8");
 const publicGrid = readFileSync("components/media/public-media-grid.tsx", "utf8");
 const signedPreviewRoute = readFileSync("app/admin/media/[id]/view/route.ts", "utf8");
 
@@ -65,6 +66,23 @@ assert.match(actions, /media_upload_failed/);
 assert.match(actions, /media_published|media_edited/);
 assert.match(actions, /media_archived/);
 pass("media audit events are recorded without signed URLs or file contents");
+
+assert.match(mediaEditor, /Approve & Publish/);
+assert.match(mediaEditor, /Unpublish/);
+assert.match(mediaEditor, /Restore/);
+assert.match(mediaEditor, /workflowInputRef/);
+assert.match(actions, /mediaWorkflowActionSchema/);
+assert.match(actions, /approve_publish/);
+assert.match(actions, /visibility: "public"/);
+assert.match(actions, /verificationStatus: "verified"/);
+assert.match(actions, /storageObjectExists/);
+assert.match(actions, /alt-text-required/);
+pass("media editor exposes explicit owner workflow actions");
+
+assert.match(mediaEditor, /Pending approval/);
+assert.match(mediaEditor, /This media is awaiting approval/);
+assert.doesNotMatch(mediaEditor, /Save media metadata/);
+pass("media editor uses friendly state labels and workflow-first copy");
 
 assert.match(uploader, /aria-live/);
 assert.match(uploader, /Drop files here or choose files/);

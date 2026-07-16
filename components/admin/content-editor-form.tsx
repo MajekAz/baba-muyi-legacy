@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useActionState, useEffect, useId, useRef, useState } from "react";
 import { saveCmsCoreContent } from "@/lib/cms-core-actions";
 import { cmsCoreCollections, type CmsCoreCollection, type CmsCoreRecord } from "@/lib/cms-core-config";
+import { ConfirmSubmitButton } from "@/components/admin/confirm-submit-button";
 import { RichTextEditor } from "@/components/admin/rich-text-editor";
 import type { MediaRelationOption, MediaRelationState } from "@/lib/media/types";
 
@@ -26,16 +27,134 @@ const initialState: EditorActionState = {
   message: ""
 };
 
+type WorkflowAction = {
+  label: string;
+  value: string;
+  style: "primary" | "secondary" | "danger";
+  confirm?: {
+    title: string;
+    description: string;
+    confirmLabel: string;
+  };
+};
+
+function workflowActions(status: CmsCoreRecord["status"], canPublish: boolean, hasRecord: boolean): WorkflowAction[] {
+  if (status === "archived") {
+    return [
+      ...(canPublish ? [{ label: "Restore to draft", value: "restore_draft", style: "secondary" as const }] : []),
+      ...(hasRecord ? [] : [{ label: "Save draft", value: "save_draft", style: "secondary" as const }])
+    ];
+  }
+
+  if (status === "published") {
+    return [
+      { label: "Save changes", value: "save_changes", style: "secondary" },
+      ...(canPublish ? [
+        {
+          label: "Unpublish",
+          value: "unpublish",
+          style: "secondary" as const,
+          confirm: {
+            title: "Unpublish this content?",
+            description: "This will move the content back to draft and remove it from public archive pages.",
+            confirmLabel: "Unpublish"
+          }
+        },
+        {
+          label: "Archive",
+          value: "archive",
+          style: "danger" as const,
+          confirm: {
+            title: "Archive this content?",
+            description: "Archived content is removed from public archive pages and ordinary editorial lists.",
+            confirmLabel: "Archive"
+          }
+        }
+      ] : [])
+    ];
+  }
+
+  if (status === "scheduled") {
+    return [
+      { label: "Save changes", value: "save_changes", style: "secondary" },
+      ...(canPublish ? [
+        {
+          label: "Publish now",
+          value: "publish_now",
+          style: "primary" as const,
+          confirm: {
+            title: "Publish now?",
+            description: "This will publish the content immediately if visibility and verification checks pass.",
+            confirmLabel: "Publish now"
+          }
+        },
+        { label: "Unschedule", value: "unschedule", style: "secondary" as const }
+      ] : [])
+    ];
+  }
+
+  if (status === "in_review") {
+    return [
+      { label: "Return to draft", value: "return_draft", style: "secondary" },
+      ...(canPublish ? [{
+        label: "Publish",
+        value: "publish",
+        style: "primary" as const,
+        confirm: {
+          title: "Publish this content?",
+          description: "This will make the content visible on public archive pages when visibility is Public.",
+          confirmLabel: "Publish"
+        }
+      }] : [])
+    ];
+  }
+
+  return [
+    { label: "Save draft", value: "save_draft", style: "secondary" },
+    { label: "Submit for review", value: "submit_review", style: "secondary" },
+    ...(canPublish ? [
+      {
+        label: "Publish",
+        value: "publish",
+        style: "primary" as const,
+        confirm: {
+          title: "Publish this content?",
+          description: "This will make the content visible on public archive pages when visibility is Public.",
+          confirmLabel: "Publish"
+        }
+      },
+      { label: "Schedule", value: "schedule", style: "secondary" as const }
+    ] : [])
+  ];
+}
+
+function actionClass(style: WorkflowAction["style"]) {
+  if (style === "primary") return "rounded bg-archive-gold px-5 py-3 text-sm font-semibold text-archive-navy shadow-sm disabled:opacity-50";
+  if (style === "danger") return "rounded border border-red-200 bg-red-50 px-5 py-3 text-sm font-semibold text-red-800 disabled:opacity-50";
+  return "rounded border border-archive-navy/20 px-5 py-3 text-sm font-semibold text-archive-navy disabled:opacity-50";
+}
+
 export function ContentEditorForm({ collection, record, canPublish = false, mediaOptions = [], mediaRelations = { featuredMediaId: "", relatedMediaIds: [] } }: ContentEditorFormProps) {
   const [state, formAction, pending] = useActionState(saveCmsCoreContent, initialState);
   const [isDirty, setIsDirty] = useState(false);
+  const [workflowAction, setWorkflowAction] = useState("save_changes");
   const wasDirtyRef = useRef(false);
   const isSubmittingRef = useRef(false);
+  const workflowInputRef = useRef<HTMLInputElement>(null);
   const formId = useId().replace(/:/g, "");
   const config = cmsCoreCollections[collection];
+  const currentStatus = record?.status ?? "draft";
+  const actions = workflowActions(currentStatus, canPublish, Boolean(record));
   const markDirty = () => {
     wasDirtyRef.current = true;
     setIsDirty(true);
+  };
+
+  const chooseWorkflowAction = (value: string) => {
+    if (workflowInputRef.current) {
+      workflowInputRef.current.value = value;
+    }
+    setWorkflowAction(value);
   };
 
   useEffect(() => {
@@ -107,8 +226,15 @@ export function ContentEditorForm({ collection, record, canPublish = false, medi
     >
       <input name="id" type="hidden" value={record?.id ?? ""} />
       <input name="collection" type="hidden" value={collection} />
+      <input name="currentStatus" type="hidden" value={currentStatus} />
+      <input name="workflowAction" ref={workflowInputRef} type="hidden" value={workflowAction} readOnly />
       {!state.ok ? (
         <div aria-live="polite" className="rounded border border-red-200 bg-red-50 px-4 py-3 text-sm font-semibold text-red-800" role="alert">
+          {state.message}
+        </div>
+      ) : null}
+      {state.ok && state.message ? (
+        <div aria-live="polite" className="rounded border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-semibold text-emerald-800" role="status">
           {state.message}
         </div>
       ) : null}
@@ -127,13 +253,14 @@ export function ContentEditorForm({ collection, record, canPublish = false, medi
         </div>
         <div className="grid gap-2">
           <label className="text-sm font-semibold text-archive-navy" htmlFor={`${formId}-status`}>Status <span className="text-red-700">(required)</span></label>
-          <select className="rounded border border-slate-300 px-3 py-2" defaultValue={record?.status ?? "draft"} id={`${formId}-status`} name="status">
+          <select aria-describedby={`${formId}-status-help`} className="rounded border border-slate-300 px-3 py-2" defaultValue={record?.status ?? "draft"} id={`${formId}-status`} name="status">
             <option value="draft">Draft</option>
             <option value="in_review">In review</option>
-            <option value="scheduled">Scheduled</option>
-            <option disabled={!canPublish} value="published">Published</option>
-            <option disabled={!canPublish} value="archived">Archived</option>
+            {canPublish ? <option value="scheduled">Scheduled</option> : null}
+            {canPublish ? <option value="published">Published</option> : null}
+            {canPublish ? <option value="archived">Archived</option> : null}
           </select>
+          <p className="text-xs text-slate-600" id={`${formId}-status-help`}>Use the workflow buttons below for publishing actions.</p>
         </div>
       </div>
       <div className="grid gap-2 md:grid-cols-3">
@@ -254,10 +381,27 @@ export function ContentEditorForm({ collection, record, canPublish = false, medi
       <p aria-live="polite" className="text-xs font-semibold text-slate-600">
         {isDirty ? "Unsaved changes" : "No unsaved changes"}
       </p>
-      <div className="flex flex-wrap gap-3">
-        <button className="rounded bg-archive-navy px-5 py-3 text-sm font-semibold text-white disabled:opacity-50" disabled={pending} type="submit">
-          {pending ? "Saving..." : "Save"}
-        </button>
+      <div aria-label="Editorial workflow actions" className="flex flex-wrap items-center gap-3">
+        {actions.map((action) => action.confirm ? (
+          <ConfirmSubmitButton
+            className={actionClass(action.style)}
+            confirmLabel={action.confirm.confirmLabel}
+            description={action.confirm.description}
+            disabled={pending}
+            key={action.value}
+            name="workflowAction"
+            onConfirm={() => chooseWorkflowAction(action.value)}
+            pendingLabel="Working..."
+            title={action.confirm.title}
+            value={action.value}
+          >
+            {pending ? "Working..." : action.label}
+          </ConfirmSubmitButton>
+        ) : (
+          <button className={actionClass(action.style)} disabled={pending} key={action.value} name="workflowAction" onClick={() => chooseWorkflowAction(action.value)} type="submit" value={action.value}>
+            {pending ? "Saving..." : action.label}
+          </button>
+        ))}
         {record ? (
           <Link className="rounded border border-archive-navy/20 px-5 py-3 text-sm font-semibold text-archive-navy" href={`/admin/content/${collection}/${record.id}/preview`}>
             Preview
