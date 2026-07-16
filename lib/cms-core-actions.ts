@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import { canSaveContentAs, cmsCoreCollections, cmsCoreFormSchema, slugifyCms, toTablePayload, type CmsCoreCollection, type CmsWorkflowStatus } from "@/lib/cms-core";
+import { roleHasPermission } from "@/lib/permissions";
 import { createClient } from "@/lib/supabase/server";
 import { requireLegacyProfilePermission } from "@/lib/tenant-context";
 
@@ -14,6 +15,20 @@ type ActionState = {
 };
 
 const collectionSchema = z.enum(["biography", "timeline", "stories", "lessons", "blog"]);
+const statusSchema = z.enum(["draft", "in_review", "scheduled", "published", "archived"]);
+const workflowActionSchema = z.enum([
+  "save_changes",
+  "save_draft",
+  "submit_review",
+  "return_draft",
+  "publish",
+  "publish_now",
+  "schedule",
+  "unschedule",
+  "unpublish",
+  "archive",
+  "restore_draft"
+]);
 
 function text(formData: FormData, key: string) {
   return String(formData.get(key) ?? "").trim();
@@ -22,6 +37,46 @@ function text(formData: FormData, key: string) {
 function normaliseSlug(formData: FormData) {
   const slug = text(formData, "slug") || slugifyCms(text(formData, "title"));
   formData.set("slug", slug);
+}
+
+function workflowStatusFromAction(action: z.infer<typeof workflowActionSchema>, selectedStatus: string): CmsWorkflowStatus {
+  if (action === "save_changes") return selectedStatus as CmsWorkflowStatus;
+  if (action === "save_draft" || action === "return_draft" || action === "unschedule" || action === "unpublish" || action === "restore_draft") return "draft";
+  if (action === "submit_review") return "in_review";
+  if (action === "schedule") return "scheduled";
+  if (action === "publish" || action === "publish_now") return "published";
+  if (action === "archive") return "archived";
+  return selectedStatus as CmsWorkflowStatus;
+}
+
+function validatePublicationGuardrails(input: z.infer<typeof cmsCoreFormSchema>, workflowAction: z.infer<typeof workflowActionSchema>): ActionState | null {
+  if (input.status === "scheduled" && !input.scheduledPublicationDate) {
+    return { ok: false, message: "Add a scheduled publication date before scheduling this content." };
+  }
+
+  if (input.status !== "published") {
+    return null;
+  }
+
+  const textContent = String(input.contentHtml ?? "").replace(/<[^>]+>/g, "").trim();
+  const hasRequiredContent = input.collection === "timeline" ? Boolean(input.summary || input.eventDate || textContent) : Boolean(input.summary || textContent);
+  if (!input.title || !input.slug) {
+    return { ok: false, message: "Add a title and valid slug before publishing." };
+  }
+  if (!hasRequiredContent) {
+    return { ok: false, message: "Add content or a clear summary before publishing." };
+  }
+  if (input.visibility !== "public") {
+    return { ok: false, message: "Set visibility to Public before publishing to the public archive." };
+  }
+  if (input.verificationStatus === "unverified") {
+    return { ok: false, message: "Choose a verification status before publishing. Use Family memory, Partially verified, or Verified." };
+  }
+  if (workflowAction === "publish_now" && input.scheduledPublicationDate) {
+    input.scheduledPublicationDate = "";
+  }
+
+  return null;
 }
 
 async function insertAuditLog(action: string, collection: CmsCoreCollection, entityId: string, metadata: Record<string, unknown>) {
@@ -61,6 +116,10 @@ export async function saveCmsCoreContent(_: ActionState, formData: FormData): Pr
     return { ok: false, message: "Sign in again before saving content." };
   }
   normaliseSlug(formData);
+  const workflowAction = workflowActionSchema.catch("save_changes").parse(text(formData, "workflowAction"));
+  const currentStatus = statusSchema.catch("draft").parse(text(formData, "currentStatus"));
+  const requestedStatus = workflowStatusFromAction(workflowAction, text(formData, "status"));
+  formData.set("status", requestedStatus);
 
   const parsed = cmsCoreFormSchema.safeParse({
     id: text(formData, "id"),
@@ -69,7 +128,7 @@ export async function saveCmsCoreContent(_: ActionState, formData: FormData): Pr
     slug: text(formData, "slug"),
     summary: text(formData, "summary"),
     contentHtml: text(formData, "contentHtml"),
-    status: text(formData, "status"),
+    status: requestedStatus,
     visibility: text(formData, "visibility"),
     verificationStatus: text(formData, "verificationStatus"),
     sortOrder: text(formData, "sortOrder") || "0",
@@ -100,6 +159,25 @@ export async function saveCmsCoreContent(_: ActionState, formData: FormData): Pr
       ok: false,
       message: "Your role can save drafts or review changes, but it cannot publish or archive this content."
     };
+  }
+
+  if (["publish", "publish_now", "schedule", "archive", "unpublish", "restore_draft"].includes(workflowAction) && !roleHasPermission(context.role, "publish_content")) {
+    return {
+      ok: false,
+      message: "Your role cannot publish, schedule, unpublish, restore, or archive content."
+    };
+  }
+
+  if (workflowAction === "save_changes" && currentStatus !== parsed.data.status && (parsed.data.status === "published" || parsed.data.status === "archived" || parsed.data.status === "scheduled")) {
+    return {
+      ok: false,
+      message: "Use the Publish, Schedule, or Archive workflow button for that status change."
+    };
+  }
+
+  const guardrailError = validatePublicationGuardrails(parsed.data, workflowAction);
+  if (guardrailError) {
+    return guardrailError;
   }
 
   const config = cmsCoreCollections[parsed.data.collection];
@@ -146,6 +224,7 @@ export async function saveCmsCoreContent(_: ActionState, formData: FormData): Pr
 
   await insertAuditLog(actionForStatus(parsed.data.status, isNew), parsed.data.collection, data.id, {
     title: parsed.data.title,
+    workflowAction,
     status: parsed.data.status,
     visibility: parsed.data.visibility,
     actorUserId: user.id

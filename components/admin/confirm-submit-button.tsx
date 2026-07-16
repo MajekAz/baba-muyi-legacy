@@ -9,6 +9,11 @@ type ConfirmSubmitButtonProps = {
   description: string;
   confirmLabel?: string;
   className?: string;
+  disabled?: boolean;
+  name?: string;
+  onConfirm?: () => void;
+  pendingLabel?: string;
+  value?: string;
 };
 
 export function ConfirmSubmitButton({
@@ -16,7 +21,12 @@ export function ConfirmSubmitButton({
   title,
   description,
   confirmLabel = "Confirm",
-  className
+  className,
+  disabled = false,
+  name = "confirmed",
+  onConfirm,
+  pendingLabel,
+  value = "true"
 }: ConfirmSubmitButtonProps) {
   const [open, setOpen] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
@@ -50,7 +60,7 @@ export function ConfirmSubmitButton({
 
   return (
     <>
-      <button className={className} onClick={() => setOpen(true)} ref={triggerRef} type="button">
+      <button className={className} disabled={disabled} onClick={() => setOpen(true)} ref={triggerRef} type="button">
         {children}
       </button>
       {open ? (
@@ -70,8 +80,8 @@ export function ConfirmSubmitButton({
               >
                 Cancel
               </button>
-              <button className="min-h-11 rounded bg-red-700 px-4 text-sm font-semibold text-white" name="confirmed" type="submit" value="true">
-                {confirmLabel}
+              <button className="min-h-11 rounded bg-red-700 px-4 text-sm font-semibold text-white disabled:opacity-50" disabled={disabled} name={name} onClick={onConfirm} type="submit" value={value}>
+                {disabled && pendingLabel ? pendingLabel : confirmLabel}
               </button>
             </div>
           </div>
