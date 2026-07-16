@@ -1,8 +1,10 @@
 import Link from "next/link";
+import Image from "next/image";
 import { PageShell } from "@/components/page-shell";
 import { StatusCard } from "@/components/status-card";
 import { getPublicCmsCoreRecords, type CmsCoreCollection } from "@/lib/cms-core";
 import { getCmsPageByPath, getPublishedCmsContent } from "@/lib/cms-store";
+import { getPublicFeaturedMediaForContent } from "@/lib/media/queries";
 import type { CmsContentKind } from "@/lib/cms-types";
 
 const relatedKindsByPath: Record<string, CmsContentKind[]> = {
@@ -51,6 +53,9 @@ export async function CmsPublicPage({ path, children }: { path: string; children
 
   const coreCollection = coreCollectionByPath[path];
   const coreRecords = coreCollection ? await getPublicCmsCoreRecords(coreCollection) : [];
+  const featuredMedia = coreCollection && coreRecords.length
+    ? await getPublicFeaturedMediaForContent(coreRecords[0].table, coreRecords.map((record) => record.id))
+    : new Map();
   const relatedKinds = coreCollection ? [] : relatedKindsByPath[path] ?? [];
   const related = coreRecords.length ? [] : (await Promise.all(relatedKinds.map((kind) => getPublishedCmsContent(kind, path)))).flat();
 
@@ -74,8 +79,17 @@ export async function CmsPublicPage({ path, children }: { path: string; children
 
         {coreCollection ? (
           <div className="grid gap-4">
-            {coreRecords.length ? coreRecords.map((record) => (
+            {coreRecords.length ? coreRecords.map((record) => {
+              const featured = featuredMedia.get(record.id);
+              return (
               <article className="rounded border border-archive-navy/12 bg-white/80 p-6 shadow-sm" key={record.id}>
+                {featured?.mediaType === "image" && featured.signedUrl ? (
+                  <Image className="mb-5 aspect-[16/9] rounded object-cover" src={featured.signedUrl} alt={featured.altText || featured.title} width={1200} height={675} sizes="(min-width: 768px) 70vw, 100vw" />
+                ) : null}
+                {featured?.mediaType === "audio" && featured.signedUrl ? <audio className="mb-5 w-full" controls src={featured.signedUrl} /> : null}
+                {featured?.mediaType === "document" && featured.signedUrl ? (
+                  <Link className="mb-5 inline-flex rounded bg-archive-navy px-4 py-2 text-sm font-semibold text-white" href={featured.signedUrl}>Open featured document</Link>
+                ) : null}
                 <p className="text-xs font-bold uppercase tracking-[0.16em] text-archive-brown">
                   {record.dateLabel || record.category || record.publishedAt ? (record.dateLabel || record.category || new Date(record.publishedAt).toLocaleDateString()) : "Published record"}
                 </p>
@@ -88,7 +102,8 @@ export async function CmsPublicPage({ path, children }: { path: string; children
                   </Link>
                 ) : null}
               </article>
-            )) : (
+              );
+            }) : (
               <StatusCard title="No public records yet" description="Approved public records will appear here after the family archive team publishes them." />
             )}
           </div>

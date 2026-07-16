@@ -82,7 +82,9 @@ export async function saveCmsCoreContent(_: ActionState, formData: FormData): Pr
     seoTitle: text(formData, "seoTitle"),
     metaDescription: text(formData, "metaDescription"),
     scheduledPublicationDate: text(formData, "scheduledPublicationDate"),
-    publishedAt: text(formData, "publishedAt")
+    publishedAt: text(formData, "publishedAt"),
+    featuredMediaId: text(formData, "featuredMediaId"),
+    relatedMediaIds: formData.getAll("relatedMediaIds").map((value) => String(value)).filter(Boolean)
   });
 
   if (!parsed.success) {
@@ -134,6 +136,14 @@ export async function saveCmsCoreContent(_: ActionState, formData: FormData): Pr
     return { ok: false, message: "The content could not be saved. Check your permissions and try again." };
   }
 
+  await syncMediaRelations({
+    collection: parsed.data.collection,
+    contentId: data.id,
+    featuredMediaId: parsed.data.featuredMediaId,
+    relatedMediaIds: parsed.data.relatedMediaIds,
+    actorUserId: user.id
+  });
+
   await insertAuditLog(actionForStatus(parsed.data.status, isNew), parsed.data.collection, data.id, {
     title: parsed.data.title,
     status: parsed.data.status,
@@ -147,6 +157,66 @@ export async function saveCmsCoreContent(_: ActionState, formData: FormData): Pr
   revalidatePath(config.publicPath);
 
   redirect(`/admin/content/${parsed.data.collection}/${data.id}?saved=1`);
+}
+
+async function syncMediaRelations({
+  collection,
+  contentId,
+  featuredMediaId,
+  relatedMediaIds,
+  actorUserId
+}: {
+  collection: CmsCoreCollection;
+  contentId: string;
+  featuredMediaId?: string;
+  relatedMediaIds: string[];
+  actorUserId: string;
+}) {
+  const context = await requireLegacyProfilePermission("edit_assigned_content");
+  const supabase = await createClient();
+  const relatedTable = cmsCoreCollections[collection].table;
+
+  await supabase
+    .from("media_relations")
+    .delete()
+    .eq("workspace_id", context.workspaceId)
+    .eq("legacy_profile_id", context.legacyProfileId)
+    .eq("related_table", relatedTable)
+    .eq("related_id", contentId)
+    .in("relation_type", ["featured", "related"]);
+
+  const uniqueRelatedIds = [...new Set(relatedMediaIds.filter((id) => id !== featuredMediaId))];
+  const rows = [
+    ...(featuredMediaId ? [{
+      workspace_id: context.workspaceId,
+      legacy_profile_id: context.legacyProfileId,
+      media_item_id: featuredMediaId,
+      related_table: relatedTable,
+      related_id: contentId,
+      relation_type: "featured",
+      sort_order: 0,
+      created_by: actorUserId
+    }] : []),
+    ...uniqueRelatedIds.map((mediaItemId, index) => ({
+      workspace_id: context.workspaceId,
+      legacy_profile_id: context.legacyProfileId,
+      media_item_id: mediaItemId,
+      related_table: relatedTable,
+      related_id: contentId,
+      relation_type: "related",
+      sort_order: index,
+      created_by: actorUserId
+    }))
+  ];
+
+  if (rows.length) {
+    await supabase.from("media_relations").insert(rows);
+  }
+
+  await insertAuditLog("media_linked_to_content", collection, contentId, {
+    featuredMediaLinked: Boolean(featuredMediaId),
+    relatedMediaCount: uniqueRelatedIds.length
+  });
 }
 
 export async function archiveCmsCoreContent(formData: FormData) {

@@ -107,10 +107,10 @@ Storage buckets are defined in `supabase/migrations/0001_initial_foundation.sql`
 - `profile-images`
 - `legacy-documents`
 - `legacy-audio`
-- `legacy-video-clips`
+- `legacy-video`
 - `tribute-uploads`
 
-Helpers in `lib/media/storage.ts` create safe filenames, storage paths, signed read URLs, and deletion calls. Actual upload workflow remains partial.
+Helpers in `lib/media/storage.ts`, `lib/media/validation.ts`, `lib/media/actions.ts`, and `lib/media/queries.ts` create safe filenames, storage paths, upload validation, signed read URLs, admin mutations, and public published-media reads. Milestone 3 adds media versions and relations while preserving archival originals.
 
 ## Public And Private Delivery
 

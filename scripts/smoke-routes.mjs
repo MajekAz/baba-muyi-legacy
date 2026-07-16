@@ -13,6 +13,9 @@ const routes = [
   "/trailer-clips",
   "/transcripts",
   "/gallery",
+  "/archive/images",
+  "/archive/audio",
+  "/archive/documents",
   "/portraits",
   "/family",
   "/bolekaja-gallery",
@@ -46,6 +49,12 @@ const routes = [
   "/admin",
   "/admin/content",
   "/admin/media",
+  "/admin/media/upload",
+  "/admin/media/images",
+  "/admin/media/video",
+  "/admin/media/audio",
+  "/admin/media/documents",
+  "/admin/media/albums",
   "/admin/documentaries",
   "/admin/access",
   "/admin/menus",
@@ -55,7 +64,6 @@ const routes = [
   "/admin/menus/secondary",
   "/admin/menus/admin",
   "/admin/content/biography",
-  "/admin/media/albums",
   "/api/health"
 ];
 

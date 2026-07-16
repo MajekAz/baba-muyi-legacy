@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Began Milestone 3 media library with upload actions, media albums, archival version metadata, public gallery/archive reads, and media documentation.
 - Added LegacyHub brand integration for admin and authentication surfaces while preserving Baba Muyi Legacy as the public flagship archive.
 - Added subtle public “Powered by LegacyHub” footer relationship copy and a future-facing disabled “Create a Legacy” placeholder.
 - Added a minimal noindex `/legacyhub` future platform route shell.

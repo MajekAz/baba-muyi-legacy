@@ -72,7 +72,7 @@ Public self-registration is intentionally not implemented for the first release.
 | `profile-images` | Yes | 10 MB | JPEG, PNG, WebP |
 | `legacy-documents` | No | 50 MB | PDF, JPEG, PNG |
 | `legacy-audio` | No | 100 MB | MP3, MP4 audio, WAV, WebM audio |
-| `legacy-video-clips` | No | 250 MB | MP4, WebM, QuickTime |
+| `legacy-video` | No | 250 MB | MP4, WebM |
 | `tribute-uploads` | No | 50 MB | JPEG, PNG, WebP, PDF, MP3, MP4 |
 
 Large documentary video should use YouTube, Cloudflare Stream, or Mux. Store only provider and playback identifiers in the database.

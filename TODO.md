@@ -2,6 +2,8 @@
 
 ## Foundation
 
+- Apply and verify `0011_media_library_foundation.sql` against the remote Supabase project before production media use.
+- Complete manual browser acceptance testing for media uploads with real images, PDFs, audio, and short video clips.
 - Maintain the LegacyHub terminology and roadmap documents for milestone sequencing.
 - Replace the noindex `/legacyhub` route shell with a dedicated platform marketing site only after registration, pricing, billing and onboarding are approved.
 - Add editable workspace and legacy-profile theme settings that consume the reusable brand token boundaries.
@@ -10,9 +12,7 @@
 - Add formal remote RLS regression tests before production launch.
 - Replace admin dashboard placeholders with editable CRUD screens.
 - Add rate limiting for public forms.
-- Add upload validation endpoints and signed URL helpers.
-- Connect the media uploader to Supabase signed upload URLs.
-- Add server actions that combine media metadata writes with the storage helper functions.
+- Add upload rate limiting and malware scanning before public production upload intake.
 - Connect invitation records to an email delivery provider.
 - Add real CRUD actions for menus, documentaries, content records, access grants, and media metadata.
 - Wire admin menu form controls to Supabase `menus` and `menu_items` CRUD actions.

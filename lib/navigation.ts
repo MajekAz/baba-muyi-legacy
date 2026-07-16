@@ -85,10 +85,11 @@ export const adminNavigation: NavItem[] = [
     href: "/admin/media",
     requiredPermission: "access_media_library",
     children: [
-      { label: "Images", href: "/admin/media?type=images" },
-      { label: "Videos", href: "/admin/media?type=videos" },
+      { label: "Upload", href: "/admin/media/upload" },
+      { label: "Images", href: "/admin/media?type=image" },
+      { label: "Videos", href: "/admin/media?type=video_clip" },
       { label: "Audio", href: "/admin/media?type=audio" },
-      { label: "Documents", href: "/admin/media?type=documents" },
+      { label: "Documents", href: "/admin/media?type=document" },
       { label: "Albums", href: "/admin/media/albums" }
     ]
   },

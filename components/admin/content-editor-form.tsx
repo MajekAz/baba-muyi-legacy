@@ -5,11 +5,14 @@ import { useActionState, useEffect, useId, useRef, useState } from "react";
 import { saveCmsCoreContent } from "@/lib/cms-core-actions";
 import { cmsCoreCollections, type CmsCoreCollection, type CmsCoreRecord } from "@/lib/cms-core-config";
 import { RichTextEditor } from "@/components/admin/rich-text-editor";
+import type { MediaRelationOption, MediaRelationState } from "@/lib/media/types";
 
 type ContentEditorFormProps = {
   collection: CmsCoreCollection;
   record?: CmsCoreRecord | null;
   canPublish?: boolean;
+  mediaOptions?: MediaRelationOption[];
+  mediaRelations?: MediaRelationState;
 };
 
 type EditorActionState = {
@@ -23,7 +26,7 @@ const initialState: EditorActionState = {
   message: ""
 };
 
-export function ContentEditorForm({ collection, record, canPublish = false }: ContentEditorFormProps) {
+export function ContentEditorForm({ collection, record, canPublish = false, mediaOptions = [], mediaRelations = { featuredMediaId: "", relatedMediaIds: [] } }: ContentEditorFormProps) {
   const [state, formAction, pending] = useActionState(saveCmsCoreContent, initialState);
   const [isDirty, setIsDirty] = useState(false);
   const wasDirtyRef = useRef(false);
@@ -203,6 +206,29 @@ export function ContentEditorForm({ collection, record, canPublish = false }: Co
         {fieldError("summary") ? <p className="text-xs font-semibold text-red-700" id={`${formId}-summary-error`}>{fieldError("summary")}</p> : null}
       </div>
       <RichTextEditor initialContent={record?.contentHtml ?? ""} name="contentHtml" onDirty={markDirty} />
+      <fieldset className="grid gap-3 rounded border border-archive-navy/12 bg-archive-cream/35 p-4">
+        <legend className="px-1 text-sm font-semibold text-archive-navy">Media relationships</legend>
+        <label className="grid gap-2 text-sm font-semibold text-archive-navy" htmlFor={`${formId}-featuredMediaId`}>
+          Featured media <span className="text-slate-500">(optional)</span>
+          <select className="rounded border border-slate-300 px-3 py-2 font-normal text-slate-900" defaultValue={mediaRelations.featuredMediaId} id={`${formId}-featuredMediaId`} name="featuredMediaId">
+            <option value="">No featured media</option>
+            {mediaOptions.map((media) => (
+              <option key={media.id} value={media.id}>{media.title} ({media.mediaType.replace("_", " ")})</option>
+            ))}
+          </select>
+        </label>
+        <label className="grid gap-2 text-sm font-semibold text-archive-navy" htmlFor={`${formId}-relatedMediaIds`}>
+          Related media <span className="text-slate-500">(optional)</span>
+          <select className="min-h-32 rounded border border-slate-300 px-3 py-2 font-normal text-slate-900" defaultValue={mediaRelations.relatedMediaIds} id={`${formId}-relatedMediaIds`} multiple name="relatedMediaIds">
+            {mediaOptions.map((media) => (
+              <option key={media.id} value={media.id}>{media.title} ({media.mediaType.replace("_", " ")})</option>
+            ))}
+          </select>
+        </label>
+        <p className="text-xs leading-5 text-slate-600">
+          Linked media is reused from the library. Removing a relationship does not delete the file.
+        </p>
+      </fieldset>
       <div className="grid gap-2 md:grid-cols-2">
         <label className="grid gap-2 text-sm font-semibold text-archive-navy" htmlFor={`${formId}-seoTitle`}>
           SEO title <span className="text-slate-500">(optional)</span>
