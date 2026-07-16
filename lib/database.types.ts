@@ -1624,7 +1624,9 @@ export type Database = {
       }
       media_albums: {
         Row: {
+          archived_at: string | null
           copyright_status: string | null
+          cover_media_id: string | null
           created_at: string
           description: string | null
           id: string
@@ -1632,6 +1634,7 @@ export type Database = {
           privacy_state: Database["public"]["Enums"]["privacy_state"]
           publish_state: Database["public"]["Enums"]["publish_state"]
           slug: string
+          sort_order: number
           source_reference: string | null
           title: string
           updated_at: string
@@ -1639,7 +1642,9 @@ export type Database = {
           workspace_id: string | null
         }
         Insert: {
+          archived_at?: string | null
           copyright_status?: string | null
+          cover_media_id?: string | null
           created_at?: string
           description?: string | null
           id?: string
@@ -1647,6 +1652,7 @@ export type Database = {
           privacy_state?: Database["public"]["Enums"]["privacy_state"]
           publish_state?: Database["public"]["Enums"]["publish_state"]
           slug: string
+          sort_order?: number
           source_reference?: string | null
           title: string
           updated_at?: string
@@ -1654,7 +1660,9 @@ export type Database = {
           workspace_id?: string | null
         }
         Update: {
+          archived_at?: string | null
           copyright_status?: string | null
+          cover_media_id?: string | null
           created_at?: string
           description?: string | null
           id?: string
@@ -1662,6 +1670,7 @@ export type Database = {
           privacy_state?: Database["public"]["Enums"]["privacy_state"]
           publish_state?: Database["public"]["Enums"]["publish_state"]
           slug?: string
+          sort_order?: number
           source_reference?: string | null
           title?: string
           updated_at?: string
@@ -1669,6 +1678,13 @@ export type Database = {
           workspace_id?: string | null
         }
         Relationships: [
+          {
+            foreignKeyName: "media_albums_cover_media_id_fkey"
+            columns: ["cover_media_id"]
+            isOneToOne: false
+            referencedRelation: "media_items"
+            referencedColumns: ["id"]
+          },
           {
             foreignKeyName: "media_albums_legacy_profile_id_fkey"
             columns: ["legacy_profile_id"]
@@ -1691,40 +1707,59 @@ export type Database = {
           alt_text: string | null
           approximate_date: string | null
           archival_storage_path: string | null
+          archived_at: string | null
           bucket: string | null
           caption: string | null
           copyright_owner: string | null
           copyright_status: string | null
           created_at: string
+          date_precision: string
           deleted_at: string | null
           description: string | null
+          duration: number | null
           duration_seconds: number | null
           external_id: string | null
           external_provider: string | null
+          file_size: number | null
           file_size_bytes: number | null
           generated_filename: string | null
           height: number | null
           id: string
           kind: Database["public"]["Enums"]["media_kind"]
+          last_editor_id: string | null
           legacy_profile_id: string
+          licence: string | null
           location: string | null
+          media_type: Database["public"]["Enums"]["media_kind"]
           mime_type: string | null
           moderation_state: Database["public"]["Enums"]["moderation_state"]
+          original_checksum: string | null
           original_filename: string | null
           owner_user_id: string | null
           people_shown: string[]
           privacy_state: Database["public"]["Enums"]["privacy_state"]
+          publication_status: Database["public"]["Enums"]["publish_state"]
           publish_state: Database["public"]["Enums"]["publish_state"]
+          published_at: string | null
           related_content_id: string | null
           related_content_table: string | null
           replaced_by_media_id: string | null
+          restoration_date: string | null
+          restoration_notes: string | null
+          restored_by: string | null
+          restored_storage_path: string | null
+          scan_status: string
+          source: string | null
           source_reference: string | null
           stable_id: string | null
+          storage_bucket: string | null
           storage_path: string | null
+          thumbnail_storage_path: string | null
           title: string
           updated_at: string
           uploaded_by: string | null
           verification_state: Database["public"]["Enums"]["verification_state"]
+          visibility: Database["public"]["Enums"]["privacy_state"]
           web_storage_path: string | null
           width: number | null
           workspace_id: string | null
@@ -1734,40 +1769,59 @@ export type Database = {
           alt_text?: string | null
           approximate_date?: string | null
           archival_storage_path?: string | null
+          archived_at?: string | null
           bucket?: string | null
           caption?: string | null
           copyright_owner?: string | null
           copyright_status?: string | null
           created_at?: string
+          date_precision?: string
           deleted_at?: string | null
           description?: string | null
+          duration?: number | null
           duration_seconds?: number | null
           external_id?: string | null
           external_provider?: string | null
+          file_size?: number | null
           file_size_bytes?: number | null
           generated_filename?: string | null
           height?: number | null
           id?: string
           kind: Database["public"]["Enums"]["media_kind"]
+          last_editor_id?: string | null
           legacy_profile_id: string
+          licence?: string | null
           location?: string | null
+          media_type: Database["public"]["Enums"]["media_kind"]
           mime_type?: string | null
           moderation_state?: Database["public"]["Enums"]["moderation_state"]
+          original_checksum?: string | null
           original_filename?: string | null
           owner_user_id?: string | null
           people_shown?: string[]
           privacy_state?: Database["public"]["Enums"]["privacy_state"]
+          publication_status: Database["public"]["Enums"]["publish_state"]
           publish_state?: Database["public"]["Enums"]["publish_state"]
+          published_at?: string | null
           related_content_id?: string | null
           related_content_table?: string | null
           replaced_by_media_id?: string | null
+          restoration_date?: string | null
+          restoration_notes?: string | null
+          restored_by?: string | null
+          restored_storage_path?: string | null
+          scan_status?: string
+          source?: string | null
           source_reference?: string | null
           stable_id?: string | null
+          storage_bucket?: string | null
           storage_path?: string | null
+          thumbnail_storage_path?: string | null
           title: string
           updated_at?: string
           uploaded_by?: string | null
           verification_state?: Database["public"]["Enums"]["verification_state"]
+          visibility: Database["public"]["Enums"]["privacy_state"]
           web_storage_path?: string | null
           width?: number | null
           workspace_id?: string | null
@@ -1777,40 +1831,59 @@ export type Database = {
           alt_text?: string | null
           approximate_date?: string | null
           archival_storage_path?: string | null
+          archived_at?: string | null
           bucket?: string | null
           caption?: string | null
           copyright_owner?: string | null
           copyright_status?: string | null
           created_at?: string
+          date_precision?: string
           deleted_at?: string | null
           description?: string | null
+          duration?: number | null
           duration_seconds?: number | null
           external_id?: string | null
           external_provider?: string | null
+          file_size?: number | null
           file_size_bytes?: number | null
           generated_filename?: string | null
           height?: number | null
           id?: string
           kind?: Database["public"]["Enums"]["media_kind"]
+          last_editor_id?: string | null
           legacy_profile_id?: string
+          licence?: string | null
           location?: string | null
+          media_type?: Database["public"]["Enums"]["media_kind"]
           mime_type?: string | null
           moderation_state?: Database["public"]["Enums"]["moderation_state"]
+          original_checksum?: string | null
           original_filename?: string | null
           owner_user_id?: string | null
           people_shown?: string[]
           privacy_state?: Database["public"]["Enums"]["privacy_state"]
+          publication_status?: Database["public"]["Enums"]["publish_state"]
           publish_state?: Database["public"]["Enums"]["publish_state"]
+          published_at?: string | null
           related_content_id?: string | null
           related_content_table?: string | null
           replaced_by_media_id?: string | null
+          restoration_date?: string | null
+          restoration_notes?: string | null
+          restored_by?: string | null
+          restored_storage_path?: string | null
+          scan_status?: string
+          source?: string | null
           source_reference?: string | null
           stable_id?: string | null
+          storage_bucket?: string | null
           storage_path?: string | null
+          thumbnail_storage_path?: string | null
           title?: string
           updated_at?: string
           uploaded_by?: string | null
           verification_state?: Database["public"]["Enums"]["verification_state"]
+          visibility?: Database["public"]["Enums"]["privacy_state"]
           web_storage_path?: string | null
           width?: number | null
           workspace_id?: string | null
@@ -1821,6 +1894,13 @@ export type Database = {
             columns: ["album_id"]
             isOneToOne: false
             referencedRelation: "media_albums"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "media_items_last_editor_id_fkey"
+            columns: ["last_editor_id"]
+            isOneToOne: false
+            referencedRelation: "user_profiles"
             referencedColumns: ["id"]
           },
           {
@@ -1845,6 +1925,13 @@ export type Database = {
             referencedColumns: ["id"]
           },
           {
+            foreignKeyName: "media_items_restored_by_fkey"
+            columns: ["restored_by"]
+            isOneToOne: false
+            referencedRelation: "user_profiles"
+            referencedColumns: ["id"]
+          },
+          {
             foreignKeyName: "media_items_uploaded_by_fkey"
             columns: ["uploaded_by"]
             isOneToOne: false
@@ -1853,6 +1940,173 @@ export type Database = {
           },
           {
             foreignKeyName: "media_items_workspace_id_fkey"
+            columns: ["workspace_id"]
+            isOneToOne: false
+            referencedRelation: "workspaces"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      media_relations: {
+        Row: {
+          created_at: string
+          created_by: string | null
+          id: string
+          legacy_profile_id: string
+          media_item_id: string
+          related_id: string
+          related_table: string
+          relation_type: string
+          sort_order: number
+          workspace_id: string
+        }
+        Insert: {
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          legacy_profile_id: string
+          media_item_id: string
+          related_id: string
+          related_table: string
+          relation_type?: string
+          sort_order?: number
+          workspace_id: string
+        }
+        Update: {
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          legacy_profile_id?: string
+          media_item_id?: string
+          related_id?: string
+          related_table?: string
+          relation_type?: string
+          sort_order?: number
+          workspace_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "media_relations_created_by_fkey"
+            columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "user_profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "media_relations_legacy_profile_id_fkey"
+            columns: ["legacy_profile_id"]
+            isOneToOne: false
+            referencedRelation: "legacy_profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "media_relations_media_item_id_fkey"
+            columns: ["media_item_id"]
+            isOneToOne: false
+            referencedRelation: "media_items"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "media_relations_workspace_id_fkey"
+            columns: ["workspace_id"]
+            isOneToOne: false
+            referencedRelation: "workspaces"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      media_versions: {
+        Row: {
+          checksum: string | null
+          created_at: string
+          created_by: string | null
+          duration: number | null
+          file_size: number | null
+          height: number | null
+          id: string
+          legacy_profile_id: string
+          media_item_id: string
+          mime_type: string | null
+          restoration_date: string | null
+          restoration_notes: string | null
+          restored_by: string | null
+          storage_bucket: string
+          storage_path: string
+          version_type: string
+          width: number | null
+          workspace_id: string
+        }
+        Insert: {
+          checksum?: string | null
+          created_at?: string
+          created_by?: string | null
+          duration?: number | null
+          file_size?: number | null
+          height?: number | null
+          id?: string
+          legacy_profile_id: string
+          media_item_id: string
+          mime_type?: string | null
+          restoration_date?: string | null
+          restoration_notes?: string | null
+          restored_by?: string | null
+          storage_bucket: string
+          storage_path: string
+          version_type: string
+          width?: number | null
+          workspace_id: string
+        }
+        Update: {
+          checksum?: string | null
+          created_at?: string
+          created_by?: string | null
+          duration?: number | null
+          file_size?: number | null
+          height?: number | null
+          id?: string
+          legacy_profile_id?: string
+          media_item_id?: string
+          mime_type?: string | null
+          restoration_date?: string | null
+          restoration_notes?: string | null
+          restored_by?: string | null
+          storage_bucket?: string
+          storage_path?: string
+          version_type?: string
+          width?: number | null
+          workspace_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "media_versions_created_by_fkey"
+            columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "user_profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "media_versions_legacy_profile_id_fkey"
+            columns: ["legacy_profile_id"]
+            isOneToOne: false
+            referencedRelation: "legacy_profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "media_versions_media_item_id_fkey"
+            columns: ["media_item_id"]
+            isOneToOne: false
+            referencedRelation: "media_items"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "media_versions_restored_by_fkey"
+            columns: ["restored_by"]
+            isOneToOne: false
+            referencedRelation: "user_profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "media_versions_workspace_id_fkey"
             columns: ["workspace_id"]
             isOneToOne: false
             referencedRelation: "workspaces"
@@ -2800,6 +3054,10 @@ export type Database = {
       is_workspace_member: {
         Args: { workspace_uuid: string }
         Returns: boolean
+      }
+      storage_path_legacy_profile_id: {
+        Args: { object_name: string }
+        Returns: string
       }
       user_has_permission: {
         Args: {

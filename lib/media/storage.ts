@@ -1,10 +1,11 @@
 import "server-only";
 import { createClient } from "@/lib/supabase/server";
+import { mediaBuckets, type UploadableMediaType } from "@/lib/media/config";
 
 const bucketByMimePrefix = [
-  { prefix: "image/", bucket: "legacy-images" },
-  { prefix: "audio/", bucket: "legacy-audio" },
-  { prefix: "video/", bucket: "legacy-video-clips" }
+  { prefix: "image/", bucket: mediaBuckets.image },
+  { prefix: "audio/", bucket: mediaBuckets.audio },
+  { prefix: "video/", bucket: mediaBuckets.video_clip }
 ] as const;
 
 export function safeFilename(filename: string) {
@@ -23,10 +24,14 @@ export function safeFilename(filename: string) {
 
 export function bucketForMimeType(mimeType: string) {
   if (mimeType === "application/pdf") {
-    return "legacy-documents";
+    return mediaBuckets.document;
   }
 
   return bucketByMimePrefix.find((item) => mimeType.startsWith(item.prefix))?.bucket ?? "tribute-uploads";
+}
+
+export function bucketForMediaType(mediaType: UploadableMediaType) {
+  return mediaBuckets[mediaType];
 }
 
 export function createStoragePath({
@@ -38,7 +43,7 @@ export function createStoragePath({
   mediaKind: string;
   filename: string;
 }) {
-  return `${legacyProfileId}/${mediaKind}/${crypto.randomUUID()}-${safeFilename(filename)}`;
+  return `${legacyProfileId}/${mediaKind}/${new Date().toISOString().slice(0, 10)}/${crypto.randomUUID()}-${safeFilename(filename)}`;
 }
 
 export async function createSignedReadUrl(bucket: string, path: string, expiresInSeconds = 60 * 10) {

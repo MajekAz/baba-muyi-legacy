@@ -24,7 +24,8 @@ Status key:
 | Validation | Complete | `pnpm lint`, `pnpm typecheck`, and `pnpm build` pass locally. |
 | Hostinger | Ready for deployment | Deployment documentation is present; production redeploy is the next manual hosting step. |
 | CMS implementation | Partial | Admin shells and local CMS fallback exist; full Supabase-backed CRUD is Milestone 2 work. |
-| Media/documentary workflows | Partial | Schema and UI foundations exist; production upload and documentary workflows remain future work. |
+| Media workflows | Partial but materially implemented | Media upload actions, album UI, metadata editing, archival version schema, and public gallery/archive reads exist. Remote upload acceptance remains required. |
+| Documentary workflows | Partial | Schema and route foundations exist; documentary-series management remains future work. |
 | Billing, public registration, AI, marketplace, native mobile | Deferred | Explicitly excluded from current MVP. |
 
 ## Brand Integration Status
@@ -63,7 +64,7 @@ Status key:
 | Legacy profiles | Partial | `legacy_profiles`, `legacy_profile_members`, `lib/cms-seed.ts` | Baba Muyi seeded; reusable profile management UI missing. |
 | RLS | Partial | `supabase/migrations/*` | SQL policies exist; remote verification missing. |
 | CMS | Partial | `data/cms.json`, `lib/cms-store.ts`, `lib/cms-actions.ts` | Local JSON CRUD exists; Supabase-backed CMS missing. |
-| Media | Partial | `components/admin/media-uploader.tsx`, `lib/media/storage.ts` | Validation/preview/helpers exist; real upload incomplete. |
+| Media | Partial but materially implemented | `app/admin/media/*`, `components/admin/media-uploader.tsx`, `lib/media/*`, `supabase/migrations/0011_media_library_foundation.sql` | Upload actions, metadata editing, album creation, public gallery/archive reads and archival version schema exist; remote upload acceptance still required. |
 | Documentaries | Placeholder | `app/admin/documentaries/page.tsx`, documentary tables | Generic admin shell and schema; full workflow missing. |
 | Family tree | Placeholder | `app/family-tree/page.tsx`, family tables | Public route/schema exist; admin workflow missing. |
 | Contributions | Partial | `components/tribute-form.tsx`, `stories`, `tributes` tables | Submission foundations exist; moderation workflow incomplete. |
@@ -137,7 +138,8 @@ Routes include `/admin`, `/admin/content`, `/admin/media`, `/admin/documentaries
 
 - Media uploader UI and validation exist.
 - Storage helper functions exist.
-- Actual Supabase upload, progress, privacy display, signed delivery UI, and album management remain incomplete.
+- Supabase upload actions, progress messaging, privacy metadata, signed public delivery helpers, and album management are implemented for Milestone 3.
+- Upload rate limiting, malware scanning, image optimisation workers, and destructive file deletion workflows remain incomplete.
 
 ### Existing Documentary Functionality
 

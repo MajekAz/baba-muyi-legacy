@@ -12,6 +12,7 @@ const config = [
   {
     ignores: [
       ".next/**",
+      ".next-*/**",
       ".next-corrupt-*/**",
       "node_modules/**",
       "content-source/**",

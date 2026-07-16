@@ -42,6 +42,7 @@ This first implementation creates the application foundation and is being refact
 - LegacyHub-branded admin/auth surfaces with Baba Muyi workspace and legacy-profile context
 - Minimal noindex `/legacyhub` future platform route shell
 - Data-driven public navigation grouped into His Story, Transport Legacy, Media, Legacy, and About menus
+- Workspace-scoped media library foundations for uploads, albums, archival versions, metadata, and public gallery/archive reads
 
 ## LegacyHub Planning Documents
 
@@ -58,6 +59,9 @@ docs/LEGACYHUB_ROADMAP.md
 docs/DEVELOPMENT_WORKFLOW.md
 docs/LEGACYHUB_BRAND_ARCHITECTURE.md
 docs/LEGACYHUB_IMPLEMENTATION_STATUS.md
+docs/MEDIA_LIBRARY_GUIDE.md
+docs/ARCHIVAL_MEDIA_POLICY.md
+docs/MEDIA_PERMISSION_MATRIX.md
 ```
 
 The product hierarchy is:

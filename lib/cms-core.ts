@@ -37,7 +37,9 @@ export const cmsCoreFormSchema = z.object({
   seoTitle: z.string().trim().max(180).optional(),
   metaDescription: z.string().trim().max(240).optional(),
   scheduledPublicationDate: z.string().trim().optional(),
-  publishedAt: z.string().trim().optional()
+  publishedAt: z.string().trim().optional(),
+  featuredMediaId: z.string().uuid().optional().or(z.literal("")),
+  relatedMediaIds: z.array(z.string().uuid()).default([])
 });
 
 export type CmsCoreFormInput = z.infer<typeof cmsCoreFormSchema>;
@@ -319,6 +321,7 @@ export function toTablePayload(input: CmsCoreFormInput, context: Pick<TenantCont
       author: input.author || null,
       seo_title: input.seoTitle || null,
       seo_description: input.metaDescription || null,
+      featured_media_id: input.featuredMediaId || null,
       published_at: input.status === "published" ? input.publishedAt || new Date().toISOString() : input.scheduledPublicationDate || null
     };
   }

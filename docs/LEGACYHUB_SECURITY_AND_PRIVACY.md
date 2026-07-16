@@ -74,7 +74,7 @@ Media and written submissions should record source, contributor, rights holder, 
 
 ## Private Storage And Signed URLs
 
-Private media should be stored in private buckets and delivered through signed URLs after permission checks. Public images can live in public buckets only after editorial approval. Current helpers exist, but admin upload and display workflows remain partial.
+Private media should be stored in private buckets and delivered through signed URLs after permission checks. Public records must be published, public and approved before public display. Milestone 3 adds server-side upload validation, workspace/profile scoped mutations, signed public delivery helpers and archival version records. Malware scanning and upload rate limiting remain future security work.
 
 ## Account Deletion, Export, And Backups
 

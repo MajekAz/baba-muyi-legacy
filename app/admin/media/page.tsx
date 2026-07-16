@@ -1,28 +1,40 @@
+import Link from "next/link";
 import { AdminPageHeader } from "@/components/admin/admin-page-header";
-import { CmsContentForm } from "@/components/admin/cms-content-form";
-import { MediaUploader } from "@/components/admin/media-uploader";
-import { getCmsContent } from "@/lib/cms-store";
+import { MediaFilters, MediaLibraryGrid } from "@/components/admin/media-library";
+import { getAdminMediaRecords, getMediaAlbums } from "@/lib/media/queries";
+import { requireLegacyProfilePermission } from "@/lib/tenant-context";
 
-export default async function AdminMediaPage() {
-  const media = await getCmsContent("media_item");
-  const albums = await getCmsContent("gallery_album");
+type AdminMediaPageProps = {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+};
+
+function value(input: string | string[] | undefined) {
+  return Array.isArray(input) ? input[0] : input;
+}
+
+export default async function AdminMediaPage({ searchParams }: AdminMediaPageProps) {
+  const context = await requireLegacyProfilePermission("access_media_library");
+  const params = await searchParams;
+  const albums = await getMediaAlbums(context);
+  const media = await getAdminMediaRecords(context, {
+    type: value(params.type),
+    search: value(params.search),
+    visibility: value(params.visibility),
+    status: value(params.status),
+    verification: value(params.verification),
+    albumId: value(params.albumId)
+  });
 
   return (
     <main>
-      <AdminPageHeader eyebrow="Media Library" title="Upload and organise media" description="Validate files, preview uploads, and prepare metadata before saving to Supabase Storage. Private and unreviewed files stay private by default." />
+      <AdminPageHeader eyebrow="Media Library" title="Digital archive media" description="Upload, review, organise, publish, and preserve archive images, documents, audio, and short clips." />
       <section className="grid gap-6 p-4 sm:p-6 lg:p-8">
-        <MediaUploader />
-        <CmsContentForm kind="media_item" />
-        <div className="grid gap-3 rounded border border-archive-navy/12 bg-white p-6 shadow-sm">
-          <h2 className="font-serif text-2xl text-archive-navy">Media and album records</h2>
-          {[...albums, ...media].map((record) => (
-            <article className="rounded border border-slate-200 p-4" key={record.id}>
-              <p className="text-xs font-bold uppercase tracking-[0.14em] text-archive-brown">{record.kind} · {record.status}</p>
-              <h3 className="mt-1 font-serif text-xl text-archive-navy">{record.title}</h3>
-              <p className="mt-1 text-sm text-slate-600">{record.summary}</p>
-            </article>
-          ))}
+        <div className="flex flex-wrap gap-3">
+          <Link className="rounded bg-archive-navy px-4 py-2 text-sm font-semibold text-white" href="/admin/media/upload">Upload media</Link>
+          <Link className="rounded border border-archive-navy/20 px-4 py-2 text-sm font-semibold text-archive-navy" href="/admin/media/albums">Manage albums</Link>
         </div>
+        <MediaFilters albums={albums} />
+        <MediaLibraryGrid records={media} />
       </section>
     </main>
   );
