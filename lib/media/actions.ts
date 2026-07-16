@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { createHash } from "node:crypto";
 import { z } from "zod";
+import { createAdminClient } from "@/lib/supabase/admin";
 import { createClient } from "@/lib/supabase/server";
 import { requireLegacyProfilePermission } from "@/lib/tenant-context";
 import { roleHasPermission, type UserRole } from "@/lib/permissions";
@@ -53,6 +54,19 @@ const albumItemSchema = z.object({
   sortOrder: z.coerce.number().int().min(0).max(100000).default(0)
 });
 
+const mediaWorkflowActionSchema = z.enum([
+  "save_changes",
+  "save_draft",
+  "submit_review",
+  "approve",
+  "approve_publish",
+  "publish",
+  "unpublish",
+  "archive",
+  "restore",
+  "return_draft"
+]);
+
 function text(formData: FormData, key: string) {
   return String(formData.get(key) ?? "").trim();
 }
@@ -89,6 +103,95 @@ function workflowForRole(role: UserRole, requestedPublicationStatus: string, req
     moderationStatus: "pending",
     publishedAt: null
   };
+}
+
+function mediaWorkflowForAction({
+  action,
+  currentPublicationStatus,
+  requestedPublicationStatus,
+  requestedModerationStatus,
+  requestedVisibility,
+  requestedVerificationStatus
+}: {
+  action: z.infer<typeof mediaWorkflowActionSchema>;
+  currentPublicationStatus: string;
+  requestedPublicationStatus: string;
+  requestedModerationStatus: string;
+  requestedVisibility: string;
+  requestedVerificationStatus: string;
+}) {
+  const now = new Date().toISOString();
+  if (action === "save_changes") {
+    return {
+      publicationStatus: currentPublicationStatus,
+      moderationStatus: requestedModerationStatus,
+      visibility: requestedVisibility,
+      verificationStatus: requestedVerificationStatus,
+      publishedAt: currentPublicationStatus === "published" ? undefined : null,
+      archivedAt: currentPublicationStatus === "archived" ? undefined : null,
+      auditAction: "media_edited"
+    };
+  }
+  if (action === "save_draft" || action === "return_draft" || action === "unpublish" || action === "restore") {
+    return {
+      publicationStatus: "draft",
+      moderationStatus: action === "unpublish" ? requestedModerationStatus : "pending",
+      visibility: "private",
+      verificationStatus: requestedVerificationStatus,
+      publishedAt: null,
+      archivedAt: null,
+      auditAction: action === "unpublish" ? "media_unpublished" : action === "restore" ? "media_restored" : "media_edited"
+    };
+  }
+  if (action === "submit_review") {
+    return {
+      publicationStatus: "in_review",
+      moderationStatus: "pending",
+      visibility: "private",
+      verificationStatus: requestedVerificationStatus,
+      publishedAt: null,
+      archivedAt: null,
+      auditAction: "media_submitted_for_review"
+    };
+  }
+  if (action === "approve") {
+    return {
+      publicationStatus: "in_review",
+      moderationStatus: "approved",
+      visibility: requestedVisibility === "public" ? "private" : requestedVisibility,
+      verificationStatus: requestedVerificationStatus === "unverified" ? "verified" : requestedVerificationStatus,
+      publishedAt: null,
+      archivedAt: null,
+      auditAction: "media_approved"
+    };
+  }
+  if (action === "publish" || action === "approve_publish") {
+    return {
+      publicationStatus: "published",
+      moderationStatus: "approved",
+      visibility: "public",
+      verificationStatus: "verified",
+      publishedAt: now,
+      archivedAt: null,
+      auditAction: "media_published"
+    };
+  }
+  return {
+    publicationStatus: "archived",
+    moderationStatus: requestedModerationStatus,
+    visibility: "private",
+    verificationStatus: requestedVerificationStatus,
+    publishedAt: null,
+    archivedAt: now,
+    auditAction: "media_archived"
+  };
+}
+
+async function storageObjectExists(bucket: string, storagePath: string) {
+  if (!bucket || !storagePath) return false;
+  const admin = createAdminClient();
+  const { data, error } = await admin.storage.from(bucket).createSignedUrl(storagePath, 60);
+  return !error && Boolean(data?.signedUrl);
 }
 
 async function writeMediaAudit(action: string, entityId: string | null, metadata: Record<string, unknown>, entityTable = "media_items") {
@@ -221,6 +324,8 @@ export async function uploadMediaFiles(_: ActionState, formData: FormData): Prom
 export async function updateMediaItem(formData: FormData) {
   const context = await requireLegacyProfilePermission("edit_assigned_content");
   const id = text(formData, "id");
+  const workflowAction = mediaWorkflowActionSchema.catch("save_changes").parse(text(formData, "workflowAction"));
+  const currentPublicationStatus = text(formData, "currentPublicationStatus") || "draft";
   const parsed = metadataSchema.safeParse({
     title: text(formData, "title"),
     slug: text(formData, "slug") || slugifyMedia(text(formData, "title")),
@@ -241,7 +346,10 @@ export async function updateMediaItem(formData: FormData) {
     albumId: text(formData, "albumId")
   });
 
-  if (!parsed.success) return;
+  if (!parsed.success) redirect(`/admin/media/${id}?toast=check-required-fields`);
+  if (["approve", "approve_publish", "publish", "unpublish", "archive", "restore"].includes(workflowAction) && !canPublish(context.role)) {
+    redirect(`/admin/media/${id}?toast=denied`);
+  }
 
   const supabase = await createClient();
   const {
@@ -249,13 +357,32 @@ export async function updateMediaItem(formData: FormData) {
   } = await supabase.auth.getUser();
   const { data: existing } = await supabase
     .from("media_items")
-    .select("visibility, publication_status")
+    .select("visibility, publication_status, storage_bucket, bucket, storage_path")
     .eq("id", id)
     .eq("workspace_id", context.workspaceId)
     .eq("legacy_profile_id", context.legacyProfileId)
     .maybeSingle();
-  const workflow = workflowForRole(context.role, parsed.data.publicationStatus, parsed.data.moderationStatus);
-  const publishedAt = workflow.publishedAt ?? (parsed.data.publicationStatus === "published" ? new Date().toISOString() : null);
+  if (!existing) redirect(`/admin/media/${id}?toast=media-not-found`);
+
+  const workflow = mediaWorkflowForAction({
+    action: workflowAction,
+    currentPublicationStatus,
+    requestedPublicationStatus: parsed.data.publicationStatus,
+    requestedModerationStatus: parsed.data.moderationStatus,
+    requestedVisibility: parsed.data.visibility,
+    requestedVerificationStatus: parsed.data.verificationStatus
+  });
+
+  if (workflow.publicationStatus === "published") {
+    if (!parsed.data.title) redirect(`/admin/media/${id}?toast=title-required`);
+    if (!parsed.data.altText) redirect(`/admin/media/${id}?toast=alt-text-required`);
+    const exists = await storageObjectExists(existing.storage_bucket ?? existing.bucket ?? "", existing.storage_path ?? "");
+    if (!exists) redirect(`/admin/media/${id}?toast=storage-object-missing`);
+  }
+
+  if (workflowAction === "save_changes" && currentPublicationStatus !== parsed.data.publicationStatus && ["published", "archived"].includes(parsed.data.publicationStatus)) {
+    redirect(`/admin/media/${id}?toast=use-workflow-button`);
+  }
 
   await supabase
     .from("media_items")
@@ -274,37 +401,33 @@ export async function updateMediaItem(formData: FormData) {
       copyright_owner: parsed.data.copyrightOwner,
       licence: parsed.data.licence,
       copyright_status: parsed.data.licence,
-      verification_state: parsed.data.verificationStatus,
-      privacy_state: parsed.data.visibility,
-      visibility: parsed.data.visibility,
+      verification_state: workflow.verificationStatus,
+      privacy_state: workflow.visibility,
+      visibility: workflow.visibility,
       publish_state: workflow.publicationStatus,
       publication_status: workflow.publicationStatus,
       moderation_state: workflow.moderationStatus,
       album_id: parsed.data.albumId || null,
-      published_at: publishedAt,
-      archived_at: workflow.publicationStatus === "archived" ? new Date().toISOString() : null,
+      ...(workflow.publishedAt !== undefined ? { published_at: workflow.publishedAt } : {}),
+      ...(workflow.archivedAt !== undefined ? { archived_at: workflow.archivedAt } : {}),
       last_editor_id: user?.id ?? null
     })
     .eq("id", id)
     .eq("workspace_id", context.workspaceId)
     .eq("legacy_profile_id", context.legacyProfileId);
 
-  const auditAction = workflow.publicationStatus === "archived"
-    ? "media_archived"
-    : workflow.publicationStatus === "published"
-      ? "media_published"
-      : "media_edited";
-
-  await writeMediaAudit(auditAction, id, {
+  await writeMediaAudit(workflow.auditAction, id, {
     title: parsed.data.title,
-    visibility: parsed.data.visibility,
-    publicationStatus: workflow.publicationStatus
+    workflowAction,
+    visibility: workflow.visibility,
+    publicationStatus: workflow.publicationStatus,
+    moderationStatus: workflow.moderationStatus
   });
 
-  if (existing?.visibility && existing.visibility !== parsed.data.visibility) {
+  if (existing?.visibility && existing.visibility !== workflow.visibility) {
     await writeMediaAudit("media_visibility_changed", id, {
       from: existing.visibility,
-      to: parsed.data.visibility
+      to: workflow.visibility
     });
   }
 
@@ -312,7 +435,10 @@ export async function updateMediaItem(formData: FormData) {
   revalidatePath(`/admin/media/${id}`);
   revalidatePath("/gallery");
   revalidatePath("/archive");
-  redirect(`/admin/media/${id}?saved=1`);
+  revalidatePath("/archive/images");
+  revalidatePath("/archive/audio");
+  revalidatePath("/archive/documents");
+  redirect(`/admin/media/${id}?saved=1&toast=${workflow.auditAction === "media_published" ? "published" : workflow.auditAction === "media_archived" ? "archived" : "saved"}`);
 }
 
 export async function createMediaAlbum(formData: FormData) {
