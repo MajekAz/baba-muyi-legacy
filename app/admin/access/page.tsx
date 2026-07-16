@@ -8,13 +8,25 @@ export default function AdminAccessPage() {
       <AdminPageHeader eyebrow="Users and Access" title="Invitations and permissions" description="Invite users, assign roles, grant scoped permissions, set expiry dates, and revoke access. All access must also be enforced server-side and by RLS." />
       <section className="grid gap-6 p-4 sm:p-6 lg:grid-cols-[1fr_.8fr] lg:p-8">
         <form action={createInvitation} className="grid gap-5 rounded border border-archive-navy/12 bg-white p-6 shadow-sm">
-          <input className="rounded border border-slate-300 px-3 py-2" name="email" placeholder="Invitee email" type="email" />
-          <select className="rounded border border-slate-300 px-3 py-2" name="role" aria-label="Role">
-            {roles.map((role) => <option key={role} value={role}>{role}</option>)}
-          </select>
-          <input className="rounded border border-slate-300 px-3 py-2" name="expiresAt" type="datetime-local" />
-          <textarea className="min-h-28 rounded border border-slate-300 px-3 py-2" name="personalMessage" placeholder="Optional personal message" />
-          <button className="rounded bg-archive-navy px-5 py-3 text-sm font-semibold text-white" type="submit">Create invitation</button>
+          <label className="grid gap-2 text-sm font-semibold text-archive-navy">
+            Invitee email
+            <input className="rounded border border-slate-300 px-3 py-2 font-normal text-slate-900" name="email" placeholder="name@example.com" type="email" />
+          </label>
+          <label className="grid gap-2 text-sm font-semibold text-archive-navy">
+            Role
+            <select className="rounded border border-slate-300 px-3 py-2 font-normal text-slate-900" name="role">
+              {roles.map((role) => <option key={role} value={role}>{role}</option>)}
+            </select>
+          </label>
+          <label className="grid gap-2 text-sm font-semibold text-archive-navy">
+            Access expiry
+            <input className="rounded border border-slate-300 px-3 py-2 font-normal text-slate-900" name="expiresAt" type="datetime-local" />
+          </label>
+          <label className="grid gap-2 text-sm font-semibold text-archive-navy">
+            Personal message
+            <textarea className="min-h-28 rounded border border-slate-300 px-3 py-2 font-normal text-slate-900" name="personalMessage" placeholder="Optional note for the invited user" />
+          </label>
+          <button className="min-h-11 rounded bg-archive-navy px-5 py-3 text-sm font-semibold text-white" type="submit">Create invitation</button>
         </form>
         <div className="rounded border border-archive-navy/12 bg-white p-6 shadow-sm">
           <h2 className="font-serif text-2xl text-archive-navy">Available permissions</h2>

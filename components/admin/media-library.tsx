@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { Archive, FileAudio, FileText, ImageIcon, Video } from "lucide-react";
+import { AdminEmptyState } from "@/components/admin/admin-empty-state";
+import { ConfirmSubmitButton } from "@/components/admin/confirm-submit-button";
 import { addMediaToAlbum, archiveMediaAlbum, archiveMediaItem, createMediaAlbum, removeMediaFromAlbum, updateMediaAlbum } from "@/lib/media/actions";
 import { mediaTypeLabels } from "@/lib/media/config";
 import type { MediaAlbum, MediaAlbumItem, MediaRecord } from "@/lib/media/types";
@@ -62,10 +64,12 @@ export function MediaFilters({ albums }: { albums: MediaAlbum[] }) {
 export function MediaLibraryGrid({ records }: { records: MediaRecord[] }) {
   if (!records.length) {
     return (
-      <div className="rounded border border-dashed border-archive-navy/20 bg-white p-8 text-center">
-        <p className="font-serif text-2xl text-archive-navy">No media yet</p>
-        <p className="mt-2 text-sm text-slate-600">Upload images, documents, audio, or short clips to start building the archive.</p>
-      </div>
+      <AdminEmptyState
+        actionHref="/admin/media/upload"
+        actionLabel="Upload media"
+        description="Upload photographs, documents, audio, or short clips to start building the digital archive."
+        title="No media uploaded yet"
+      />
     );
   }
 
@@ -93,10 +97,15 @@ export function MediaLibraryGrid({ records }: { records: MediaRecord[] }) {
             <Link className="rounded bg-archive-navy px-3 py-2 text-sm font-semibold text-white" href={`/admin/media/${record.id}`}>Edit</Link>
             <form action={archiveMediaItem}>
               <input type="hidden" name="id" value={record.id} />
-              <button className="inline-flex items-center gap-1 rounded border border-archive-navy/20 px-3 py-2 text-sm font-semibold text-archive-navy" type="submit">
+              <ConfirmSubmitButton
+                className="inline-flex items-center gap-1 rounded border border-archive-navy/20 px-3 py-2 text-sm font-semibold text-archive-navy"
+                confirmLabel="Archive media"
+                description={`Archive "${record.title}" and remove it from published public views. The preserved file remains in the archive library.`}
+                title="Archive media?"
+              >
                 <Archive aria-hidden="true" className="size-4" />
                 Archive
-              </button>
+              </ConfirmSubmitButton>
             </form>
           </div>
         </article>
@@ -151,19 +160,38 @@ export function AlbumManager({ albums, media, albumItemsByAlbumId = {} }: { albu
                     <input name="id" type="hidden" value={item.id} />
                     <input name="mediaItemId" type="hidden" value={item.mediaItemId} />
                     <span><strong className="text-archive-navy">{item.sortOrder}</strong> · {item.title} ({item.mediaType.replace("_", " ")})</span>
-                    <button className="text-sm font-semibold text-red-700" type="submit">Remove</button>
-                  </form>
-                )) : <p className="text-sm text-slate-600">No media assigned yet.</p>}
+                <ConfirmSubmitButton
+                  className="text-sm font-semibold text-red-700"
+                  confirmLabel="Remove link"
+                  description="Remove this media item from the album. The media file itself will remain in the library."
+                  title="Remove media from album?"
+                >
+                  Remove
+                </ConfirmSubmitButton>
+              </form>
+            )) : <p className="text-sm text-slate-600">No media assigned yet.</p>}
               </div>
               <form action={archiveMediaAlbum}>
                 <input name="id" type="hidden" value={album.id} />
-                <button className="inline-flex items-center gap-1 rounded border border-red-200 px-3 py-2 text-sm font-semibold text-red-700" type="submit">
+                <ConfirmSubmitButton
+                  className="inline-flex items-center gap-1 rounded border border-red-200 px-3 py-2 text-sm font-semibold text-red-700"
+                  confirmLabel="Archive album"
+                  description={`Archive "${album.title}" so it is no longer available as an active album.`}
+                  title="Archive album?"
+                >
                   <Archive aria-hidden="true" className="size-4" />
                   Archive album
-                </button>
+                </ConfirmSubmitButton>
               </form>
             </article>
-          )) : <p className="text-sm text-slate-600">No albums have been created yet.</p>}
+          )) : (
+            <AdminEmptyState
+              actionHref="/admin/media/albums"
+              actionLabel="Create album"
+              description="Group related media into albums for review, publishing, and public presentation."
+              title="No albums created yet"
+            />
+          )}
         </div>
       </section>
       <form action={createMediaAlbum} className="grid gap-3 rounded border border-archive-navy/12 bg-white p-6 shadow-sm">

@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Began Milestone 3.5 administration production polish with a dedicated LegacyHub admin shell, separate public/admin chrome, responsive sidebar, breadcrumbs, accessible confirmation dialogs, shared empty states, and admin UX documentation.
 - Began Milestone 3 media library with upload actions, media albums, archival version metadata, public gallery/archive reads, and media documentation.
 - Added LegacyHub brand integration for admin and authentication surfaces while preserving Baba Muyi Legacy as the public flagship archive.
 - Added subtle public “Powered by LegacyHub” footer relationship copy and a future-facing disabled “Create a Legacy” placeholder.

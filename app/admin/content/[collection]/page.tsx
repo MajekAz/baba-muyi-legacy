@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { AdminEmptyState } from "@/components/admin/admin-empty-state";
 import { AdminPageHeader } from "@/components/admin/admin-page-header";
+import { ConfirmSubmitButton } from "@/components/admin/confirm-submit-button";
 import { archiveCmsCoreContent } from "@/lib/cms-core-actions";
 import { cmsCoreCollections, getCmsCoreRecords, type CmsCoreCollection } from "@/lib/cms-core";
 import { roleHasPermission } from "@/lib/permissions";
@@ -60,9 +62,14 @@ export default async function CmsCollectionPage({ params }: { params: Promise<{ 
                       <form action={archiveCmsCoreContent}>
                         <input name="collection" type="hidden" value={collectionParam} />
                         <input name="id" type="hidden" value={record.id} />
-                        <button className="rounded border border-red-200 px-3 py-2 text-xs font-semibold text-red-700" type="submit">
+                        <ConfirmSubmitButton
+                          className="rounded border border-red-200 px-3 py-2 text-xs font-semibold text-red-700"
+                          confirmLabel="Archive"
+                          description={`Archive "${record.title}" so it no longer appears in published archive views.`}
+                          title={`Archive ${config.label.toLowerCase()}?`}
+                        >
                           Archive
-                        </button>
+                        </ConfirmSubmitButton>
                       </form>
                     ) : null}
                   </div>
@@ -70,8 +77,13 @@ export default async function CmsCollectionPage({ params }: { params: Promise<{ 
               ))}
             </div>
           ) : (
-            <div className="p-8 text-sm leading-6 text-slate-600">
-              No {config.pluralLabel.toLowerCase()} have been added yet.
+            <div className="p-6">
+              <AdminEmptyState
+                actionHref={`/admin/content/${collectionParam}/new`}
+                actionLabel={`Create ${config.label.toLowerCase()}`}
+                description={`Begin documenting this part of the legacy profile with carefully reviewed, workspace-scoped content.`}
+                title={`No ${config.pluralLabel.toLowerCase()} yet`}
+              />
             </div>
           )}
         </div>

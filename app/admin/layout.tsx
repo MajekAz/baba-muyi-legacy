@@ -1,9 +1,9 @@
 import { signOut } from "@/lib/auth-actions";
-import { AdminNavigation } from "@/components/admin-navigation";
-import { WorkspaceContextBar } from "@/components/admin/workspace-context-bar";
+import { AdminShell } from "@/components/admin/admin-shell";
 import { requireAdminRole } from "@/lib/auth";
 import { platformBrand } from "@/lib/brand";
 import type { UserRole } from "@/lib/permissions";
+import { getActiveTenantContext } from "@/lib/tenant-context";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -16,7 +16,6 @@ export const metadata: Metadata = {
 
 export default async function AdminLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const session = await requireAdminRole(["owner", "administrator", "editor", "contributor", "reviewer", "viewer"]);
-  const role = session ? (session.profile.role as UserRole) : null;
 
   if (!session) {
     return (
@@ -33,18 +32,17 @@ export default async function AdminLayout({ children }: Readonly<{ children: Rea
     );
   }
 
+  const context = await getActiveTenantContext();
+  const adminRole = session.profile.role as UserRole;
+
   return (
-    <div className="lg:flex">
-      <AdminNavigation role={role} />
-      <form action={signOut} className="fixed bottom-4 right-4 z-50">
-        <button className="rounded bg-archive-charcoal px-4 py-2 text-sm font-semibold text-white shadow-museum" type="submit">
-          Sign out
-        </button>
-      </form>
-      <div className="min-w-0 flex-1">
-        <WorkspaceContextBar />
-        {children}
-      </div>
-    </div>
+    <AdminShell
+      context={context}
+      role={adminRole}
+      signOutAction={signOut}
+      userName={session.profile.display_name ?? session.user.email ?? "LegacyHub user"}
+    >
+      {children}
+    </AdminShell>
   );
 }

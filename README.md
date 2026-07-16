@@ -43,6 +43,7 @@ This first implementation creates the application foundation and is being refact
 - Minimal noindex `/legacyhub` future platform route shell
 - Data-driven public navigation grouped into His Story, Transport Legacy, Media, Legacy, and About menus
 - Workspace-scoped media library foundations for uploads, albums, archival versions, metadata, and public gallery/archive reads
+- Dedicated LegacyHub administration shell that keeps public Baba Muyi archive navigation out of authenticated admin routes
 
 ## LegacyHub Planning Documents
 
@@ -59,6 +60,8 @@ docs/LEGACYHUB_ROADMAP.md
 docs/DEVELOPMENT_WORKFLOW.md
 docs/LEGACYHUB_BRAND_ARCHITECTURE.md
 docs/LEGACYHUB_IMPLEMENTATION_STATUS.md
+docs/PRODUCT_DECISIONS.md
+docs/ADMIN_UX_GUIDE.md
 docs/MEDIA_LIBRARY_GUIDE.md
 docs/ARCHIVAL_MEDIA_POLICY.md
 docs/MEDIA_PERMISSION_MATRIX.md
@@ -84,6 +87,7 @@ pnpm build
 pnpm start
 pnpm typecheck
 pnpm bootstrap:owner
+pnpm test:admin-polish
 ```
 
 Production build command:

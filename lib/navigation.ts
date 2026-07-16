@@ -5,6 +5,7 @@ export type NavItem = {
   href: string;
   children?: NavItem[];
   requiredPermission?: Permission;
+  planned?: boolean;
 };
 
 export const publicNavigation: NavItem[] = [
@@ -67,7 +68,7 @@ export const publicNavigation: NavItem[] = [
 
 export const adminNavigation: NavItem[] = [
   { label: "Dashboard", href: "/admin" },
-  { label: "Legacy Profiles", href: "/admin/legacy-profiles", requiredPermission: "manage_legacy_profiles" },
+  { label: "Legacy Profiles", href: "/admin/legacy-profiles", requiredPermission: "manage_legacy_profiles", planned: true },
   {
     label: "Content",
     href: "/admin/content",
@@ -85,24 +86,25 @@ export const adminNavigation: NavItem[] = [
     href: "/admin/media",
     requiredPermission: "access_media_library",
     children: [
+      { label: "All Media", href: "/admin/media" },
       { label: "Upload", href: "/admin/media/upload" },
-      { label: "Images", href: "/admin/media?type=image" },
-      { label: "Videos", href: "/admin/media?type=video_clip" },
-      { label: "Audio", href: "/admin/media?type=audio" },
-      { label: "Documents", href: "/admin/media?type=document" },
+      { label: "Images", href: "/admin/media/images" },
+      { label: "Video", href: "/admin/media/video" },
+      { label: "Audio", href: "/admin/media/audio" },
+      { label: "Documents", href: "/admin/media/documents" },
       { label: "Albums", href: "/admin/media/albums" }
     ]
   },
   {
     label: "Documentaries",
     href: "/admin/documentaries",
-    requiredPermission: "access_documentaries"
+    requiredPermission: "access_documentaries",
+    planned: true
   },
-  { label: "Family", href: "/admin/family", requiredPermission: "edit_assigned_content" },
-  { label: "Contributions", href: "/admin/contributions", requiredPermission: "review_submissions" },
+  { label: "Family", href: "/admin/family", requiredPermission: "edit_assigned_content", planned: true },
+  { label: "Contributions", href: "/admin/contributions", requiredPermission: "review_submissions", planned: true },
   { label: "Users and Access", href: "/admin/access", requiredPermission: "manage_users" },
   { label: "Menus", href: "/admin/menus", requiredPermission: "manage_menus" },
-  { label: "SEO", href: "/admin/seo", requiredPermission: "manage_all_content" },
-  { label: "Site Settings", href: "/admin/settings", requiredPermission: "change_site_settings" },
-  { label: "Audit Logs", href: "/admin/audit-logs", requiredPermission: "view_audit_logs" }
+  { label: "Settings", href: "/admin/settings", requiredPermission: "change_site_settings", planned: true },
+  { label: "Audit Activity", href: "/admin/audit-logs", requiredPermission: "view_audit_logs", planned: true }
 ];

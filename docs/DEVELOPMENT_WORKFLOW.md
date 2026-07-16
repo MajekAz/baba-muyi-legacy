@@ -41,6 +41,14 @@ pnpm build
 
 Add feature-specific tests as milestones introduce testable code paths.
 
+For administration UX changes, also run:
+
+```bash
+pnpm test:admin-polish
+```
+
+Before approval, manually verify the admin shell at desktop and mobile widths, including sidebar collapse, mobile drawer close with Escape, breadcrumbs, toasts, destructive-action confirmation, and public archive link behaviour.
+
 ## Deployment Rules
 
 - Do not deploy if `pnpm build` fails from the repository root.

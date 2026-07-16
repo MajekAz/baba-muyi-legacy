@@ -51,7 +51,7 @@ export function CmsPageForm({ page }: { page: CmsPage }) {
         <input className="rounded border border-slate-300 px-3 py-2" name="metaDescription" defaultValue={page.metaDescription} placeholder="Meta description" />
       </div>
       <button className="justify-self-start rounded bg-archive-navy px-5 py-3 text-sm font-semibold text-white" type="submit">
-        Save CMS page
+        Save page
       </button>
     </form>
   );

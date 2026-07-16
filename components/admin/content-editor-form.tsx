@@ -112,6 +112,11 @@ export function ContentEditorForm({ collection, record, canPublish = false, medi
           {state.message}
         </div>
       ) : null}
+      {state.ok && state.message ? (
+        <div aria-live="polite" className="rounded border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-semibold text-emerald-800" role="status">
+          {state.message}
+        </div>
+      ) : null}
       <div className="grid gap-2">
         <label className="text-sm font-semibold text-archive-navy" htmlFor={`${formId}-title`}>Title <span className="text-red-700">(required)</span></label>
         <input aria-describedby={describedBy("title")} aria-invalid={Boolean(fieldError("title"))} className="rounded border border-slate-300 px-3 py-2" defaultValue={record?.title ?? ""} id={`${formId}-title`} name="title" placeholder={`${config.label} title`} required />
@@ -256,7 +261,7 @@ export function ContentEditorForm({ collection, record, canPublish = false, medi
       </p>
       <div className="flex flex-wrap gap-3">
         <button className="rounded bg-archive-navy px-5 py-3 text-sm font-semibold text-white disabled:opacity-50" disabled={pending} type="submit">
-          {pending ? "Saving..." : "Save"}
+          {pending ? "Saving changes..." : "Save changes"}
         </button>
         {record ? (
           <Link className="rounded border border-archive-navy/20 px-5 py-3 text-sm font-semibold text-archive-navy" href={`/admin/content/${collection}/${record.id}/preview`}>

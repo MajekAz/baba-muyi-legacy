@@ -23,9 +23,10 @@ flowchart TD
 
 - App Router routes live in `app/`.
 - Public CMS-driven pages use `components/cms/cms-public-page.tsx` and local data from `lib/cms-store.ts`.
-- Public layout/navigation lives in `app/layout.tsx`, `components/public-navigation.tsx`, and `components/mobile-navigation.tsx`.
+- Public layout/navigation lives in the public route group at `app/(public)/layout.tsx`, plus `components/public-navigation.tsx` and `components/mobile-navigation.tsx`.
 - Admin routes live in `app/admin/*`.
-- Admin navigation and workspace context live in `components/admin-navigation.tsx` and `components/admin/workspace-context-bar.tsx`.
+- Admin navigation, header, breadcrumbs, account controls, and workspace/profile context live in the dedicated LegacyHub shell at `components/admin/admin-shell.tsx`.
+- Public Baba Muyi archive chrome is intentionally not rendered on `/admin` routes.
 - Server actions for CMS and admin workflows live in `lib/cms-actions.ts`, `lib/admin-actions.ts`, and `lib/auth-actions.ts`.
 
 ## Supabase Architecture
@@ -61,6 +62,10 @@ The intended workflow is:
 5. Deploy from Hostinger after `origin/main` contains the complete app.
 
 Current blocker: local Git push requires GitHub authentication.
+
+## Admin UX Architecture
+
+Milestone 3.5 separates the public archive shell from the authenticated admin shell. Admin pages must use the shared LegacyHub shell and shared admin UX conventions documented in `docs/ADMIN_UX_GUIDE.md`. Planned modules are marked disabled until their workflows are implemented, and sidebar visibility remains a convenience layer rather than the source of authorisation.
 
 ## Multi-Tenant Workspace Model
 

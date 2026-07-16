@@ -40,6 +40,19 @@ Status key:
 | Future platform route | Placeholder | `app/legacyhub/page.tsx` | Noindex route shell only; pricing, billing and registration are not built. |
 | Public navigation refinement | Complete but locally tested only | `components/public-header-client.tsx`, `components/mobile-navigation.tsx`, `lib/navigation.ts`, `data/cms.json` | Header/menu hierarchy is data-driven; desktop dropdown and mobile overlay behaviour need final browser QA before merge. |
 
+## Milestone 3.5 Administration Production Polish
+
+| Area | Status | Evidence | Notes |
+| --- | --- | --- | --- |
+| Separate admin shell | Partial, in progress | `app/layout.tsx`, `app/(public)/layout.tsx`, `app/admin/layout.tsx`, `components/admin/admin-shell.tsx` | Public chrome is isolated in the public route group and admin routes render only the LegacyHub shell. |
+| Header | Partial, in progress | `components/admin/admin-shell.tsx` | Header shows LegacyHub, active workspace, active legacy profile, user name, role, public archive link, and sign-out. |
+| Sidebar | Partial, in progress | `components/admin/admin-shell.tsx`, `lib/navigation.ts` | Sidebar is role-aware, collapsible on desktop, drawer-based on mobile, and marks unfinished modules planned. |
+| Breadcrumbs | Partial, in progress | `components/admin/admin-shell.tsx` | Route-derived breadcrumbs are present; record-title breadcrumbs remain future refinement. |
+| Dashboard | Partial, in progress | `app/admin/page.tsx` | Uses real CMS/media records for counts, recent content, recent media, and pending review lists where available. |
+| Toasts and feedback | Partial, in progress | `components/admin/admin-shell.tsx`, `components/admin/content-editor-form.tsx` | Accessible feedback regions exist; more server-action redirects can adopt URL toasts later. |
+| Confirmation dialogs | Partial, in progress | `components/admin/confirm-submit-button.tsx`, CMS/media list screens | Archive and remove-link flows have confirmation UI without changing archive semantics. |
+| Documentation | Partial, in progress | `docs/PRODUCT_DECISIONS.md`, `docs/ADMIN_UX_GUIDE.md` | Brand and admin UX rules documented for future modules. |
+
 ## Public Navigation Route Mapping
 
 | Menu label | Route used | Notes |
