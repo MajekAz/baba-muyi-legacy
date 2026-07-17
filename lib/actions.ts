@@ -1,7 +1,8 @@
 "use server";
 
 import { headers } from "next/headers";
-import { tributeFormSchema, waitingListSchema } from "@/lib/validation/forms";
+import { createAdminClient } from "@/lib/supabase/admin";
+import { legacyHubInterestSchema, tributeFormSchema, waitingListSchema } from "@/lib/validation/forms";
 
 export async function submitTribute(_: unknown, formData: FormData) {
   const parsed = tributeFormSchema.safeParse({
@@ -46,4 +47,73 @@ export async function joinWaitingList(_: unknown, formData: FormData) {
   });
 
   return { ok: true, message: "You are on the list. We will share early platform updates." };
+}
+
+export async function submitLegacyHubInterest(_: unknown, formData: FormData) {
+  const parsed = legacyHubInterestSchema.safeParse({
+    name: formData.get("name"),
+    email: formData.get("email"),
+    organisation: formData.get("organisation"),
+    archiveType: formData.get("archiveType"),
+    description: formData.get("description"),
+    country: formData.get("country"),
+    consent: formData.get("consent") === "on",
+    website: formData.get("website")
+  });
+
+  if (!parsed.success) {
+    return { ok: false, message: "Please check the early-access form and try again." };
+  }
+
+  const headersList = await headers();
+  const ip = headersList.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
+  const userAgent = headersList.get("user-agent") ?? "unknown";
+  const supabase = createAdminClient();
+  const email = parsed.data.email.toLowerCase();
+  const interest = `legacyhub:${parsed.data.archiveType}`;
+  const cutoff = new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString();
+
+  const existing = await supabase
+    .from("waiting_list")
+    .select("id")
+    .eq("email", email)
+    .eq("interest", interest)
+    .gte("created_at", cutoff)
+    .limit(1);
+
+  if (existing.error) {
+    return { ok: false, message: "We could not save your interest right now. Please try again later." };
+  }
+
+  if (existing.data.length > 0) {
+    return { ok: true, message: "Your interest is already recorded for review. This has not created an account or workspace." };
+  }
+
+  const note = JSON.stringify({
+    source: "legacyhub_phase_2_landing_page",
+    organisation: parsed.data.organisation,
+    archiveType: parsed.data.archiveType,
+    country: parsed.data.country,
+    description: parsed.data.description,
+    consent: true,
+    reviewStatus: "new",
+    receivedIp: ip,
+    userAgent
+  });
+
+  const inserted = await supabase.from("waiting_list").insert({
+    name: parsed.data.name,
+    email,
+    interest,
+    note
+  });
+
+  if (inserted.error) {
+    return { ok: false, message: "We could not save your interest right now. Please try again later." };
+  }
+
+  return {
+    ok: true,
+    message: "Thank you. Your interest has been securely recorded for review. This has not created an account or workspace."
+  };
 }

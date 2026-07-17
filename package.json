@@ -14,6 +14,7 @@
     "test:media-library": "node scripts/test-media-library.mjs",
     "test:media-remote": "node scripts/test-media-remote-acceptance.mjs",
     "test:admin-polish": "node scripts/test-admin-polish.mjs",
+    "test:phase2-landing": "node scripts/test-phase-2-landing.mjs",
     "test:cms-remote-roles": "node scripts/test-cms-remote-roles.mjs",
     "verify:foundation": "node scripts/verify-foundation.mjs"
   },

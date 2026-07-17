@@ -28,3 +28,12 @@
 ## Public Registration
 
 - Public registration, billing, AI generation, marketplace features, family-tree functionality, and documentary management remain outside the current MVP.
+
+## Phase 2 Platform Landing Page
+
+- `/legacyhub` is the product-facing LegacyHub platform page.
+- The route must use LegacyHub navigation and footer, not Baba Muyi archive chrome.
+- The route remains noindex until public launch approval.
+- The early-access form is a reviewed interest workflow only.
+- The page must distinguish current foundation features from planned capabilities.
+- The page must not claim pricing, public registration, subscription plans, AI tools, or self-service onboarding are available.

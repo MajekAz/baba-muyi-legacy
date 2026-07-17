@@ -2,12 +2,14 @@
 
 ## Foundation
 
+- Complete visual, accessibility, and responsive acceptance review for the Phase 2 `/legacyhub` platform landing page before commit and PR.
+- Decide when `/legacyhub` should become indexable and whether it should later move to a dedicated LegacyHub marketing domain.
 - Complete Milestone 3.5 manual owner acceptance for the polished admin shell before commit and PR.
 - Add browser-level accessibility and viewport regression tests for the admin shell after the visual baseline is accepted.
 - Apply and verify `0011_media_library_foundation.sql` against the remote Supabase project before production media use.
 - Complete manual browser acceptance testing for media uploads with real images, PDFs, audio, and short video clips.
 - Maintain the LegacyHub terminology and roadmap documents for milestone sequencing.
-- Replace the noindex `/legacyhub` route shell with a dedicated platform marketing site only after registration, pricing, billing and onboarding are approved.
+- Keep `/legacyhub` noindex until public launch approval; registration, pricing, billing, and onboarding remain disabled.
 - Add editable workspace and legacy-profile theme settings that consume the reusable brand token boundaries.
 - Replace interim navigation mappings for `Audio` and `About the Legacy Project` when dedicated public routes are approved.
 - Keep generated `lib/database.types.ts` current after every remote schema migration.
