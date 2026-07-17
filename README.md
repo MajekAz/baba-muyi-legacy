@@ -164,6 +164,17 @@ The production hierarchy is `User -> Workspace -> Workspace Membership -> Legacy
 
 See `DEPLOYMENT_HOSTINGER.md`.
 
+## LegacyHub Platform Landing Page
+
+The `/legacyhub` route is the Phase 2 platform landing page for LegacyHub. It is separate from the Baba Muyi Legacy public archive chrome and remains `noindex` until launch approval.
+
+- LegacyHub is the commercial digital legacy platform.
+- Baba Muyi Legacy remains the flagship public archive.
+- The early-access form is a reviewed interest workflow stored in Supabase `waiting_list`.
+- Public registration, billing, self-service onboarding, automatic workspace creation, family-tree functionality, and AI features are not enabled.
+
+See `docs/LEGACYHUB_PHASE_2_LANDING_PAGE.md`.
+
 ## Local Setup
 
 See `SETUP.md`.

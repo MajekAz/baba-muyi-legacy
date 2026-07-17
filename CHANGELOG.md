@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Began LegacyHub Phase 2 with a standalone noindex `/legacyhub` platform landing page, separate platform navigation/footer, early-access interest form, and documentation for current versus planned capabilities.
 - Began Milestone 3.5 administration production polish with a dedicated LegacyHub admin shell, separate public/admin chrome, responsive sidebar, breadcrumbs, accessible confirmation dialogs, shared empty states, and admin UX documentation.
 - Began Milestone 3 media library with upload actions, media albums, archival version metadata, public gallery/archive reads, and media documentation.
 - Added LegacyHub brand integration for admin and authentication surfaces while preserving Baba Muyi Legacy as the public flagship archive.

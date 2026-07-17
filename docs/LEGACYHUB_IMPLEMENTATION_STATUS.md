@@ -252,3 +252,14 @@ These items are intentionally not considered complete for Milestone 2 remediatio
 | Full revision-history browser | Deferred | Milestone 3 or Milestone 4 | Audit logs exist; a user-facing revision comparison/restoration interface is not complete. |
 | Complete category management | Deferred | Milestone 4 Content Organisation | Category text can be saved on core content, but full CRUD/taxonomy workflows are not complete. |
 | Complete tag management | Deferred | Milestone 4 Content Organisation | Source-note/tag text can be saved; full reusable tags, filtering and governance remain future work. |
+
+## Phase 2 Platform Landing Page Status
+
+| Area | Status | Notes |
+| --- | --- | --- |
+| `/legacyhub` platform route | Implemented locally | Standalone route group with LegacyHub navigation and footer, no Baba Muyi public chrome. |
+| SEO metadata | Implemented locally | Platform metadata and structured data added; robots remains noindex until launch approval. |
+| Brand separation | Implemented locally | Baba Muyi Legacy remains the flagship archive; LegacyHub is presented as the platform. |
+| Early-access form | Implemented locally | Server-side validation, honeypot protection, duplicate check, and Supabase `waiting_list` storage; no registration, billing, or workspace creation. |
+| Current/planned feature labels | Implemented locally | Current foundation and planned capabilities are visually separated. |
+| Responsive and accessibility review | Pending manual acceptance | Static checks are present; browser/device review is still required before PR acceptance. |

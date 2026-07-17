@@ -30,7 +30,7 @@
 | Footer | Baba Muyi Legacy primary, with “Powered by LegacyHub” | LegacyHub relationship is present but less prominent than the archive brand. |
 | Metadata | Baba Muyi Legacy for public archive SEO; LegacyHub for admin/auth/future platform pages | Do not replace public Baba Muyi titles indiscriminately. |
 | Future customer sites | Customer/archive brand name, powered by LegacyHub where appropriate | Custom domains later. |
-| Platform marketing website | LegacyHub | `/legacyhub` is a minimal noindex route shell until a separate marketing surface is approved. |
+| Platform marketing website | LegacyHub | `/legacyhub` is the Phase 2 noindex platform landing page until public launch approval or a separate marketing domain is approved. |
 
 ## Taglines And Relationship Copy
 
@@ -55,7 +55,7 @@
 - `lib/cms-seed.ts` and `data/cms.json` contain Baba Muyi seed content.
 - `app/layout.tsx`, `components/mobile-navigation.tsx`, and public copy show Baba Muyi Legacy branding.
 - `app/admin/layout.tsx`, `components/admin/workspace-context-bar.tsx`, and auth routes use LegacyHub branding.
-- `app/legacyhub/page.tsx` is a minimal noindex future platform route shell.
+- `app/(platform)/legacyhub/page.tsx` is the noindex Phase 2 platform landing page with separate LegacyHub navigation and footer.
 - `DEPLOYMENT_HOSTINGER.md` references `babamuyilegacy.com`.
 
 These are acceptable for the flagship public archive. They should not be globally reused for future customer workspaces.
