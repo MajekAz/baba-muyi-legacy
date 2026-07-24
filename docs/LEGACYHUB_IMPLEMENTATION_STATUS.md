@@ -257,9 +257,9 @@ These items are intentionally not considered complete for Milestone 2 remediatio
 
 | Area | Status | Notes |
 | --- | --- | --- |
-| `/legacyhub` platform route | Implemented locally | Standalone route group with LegacyHub navigation and footer, no Baba Muyi public chrome. |
+| `/legacyhub` platform routes | Implemented locally | Multi-page platform route group with LegacyHub navigation, mobile menu, breadcrumbs, footer, and no Baba Muyi public chrome. |
 | SEO metadata | Implemented locally | Platform metadata and structured data added; robots remains noindex until launch approval. |
 | Brand separation | Implemented locally | Baba Muyi Legacy remains the flagship archive; LegacyHub is presented as the platform. |
-| Early-access form | Implemented locally | Server-side validation, honeypot protection, duplicate check, and Supabase `waiting_list` storage; no registration, billing, or workspace creation. |
+| Early-access form | Implemented locally | Full form lives at `/legacyhub/early-access` with server-side validation, honeypot protection, duplicate check, and Supabase `waiting_list` storage; no registration, billing, or workspace creation. |
 | Current/planned feature labels | Implemented locally | Current foundation and planned capabilities are visually separated. |
 | Responsive and accessibility review | Pending manual acceptance | Static checks are present; browser/device review is still required before PR acceptance. |

@@ -2,7 +2,7 @@
 
 ## Foundation
 
-- Complete visual, accessibility, and responsive acceptance review for the Phase 2 `/legacyhub` platform landing page before commit and PR.
+- Complete visual, accessibility, and responsive acceptance review for the Phase 2 `/legacyhub` multi-page platform website before commit and PR.
 - Decide when `/legacyhub` should become indexable and whether it should later move to a dedicated LegacyHub marketing domain.
 - Complete Milestone 3.5 manual owner acceptance for the polished admin shell before commit and PR.
 - Add browser-level accessibility and viewport regression tests for the admin shell after the visual baseline is accepted.

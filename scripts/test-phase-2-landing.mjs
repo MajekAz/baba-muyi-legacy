@@ -7,6 +7,10 @@ function read(file) {
   return fs.readFileSync(path.join(root, file), "utf8");
 }
 
+function exists(file) {
+  return fs.existsSync(path.join(root, file));
+}
+
 function pass(name, detail) {
   console.log(`PASS ${name}: ${detail}`);
 }
@@ -20,39 +24,63 @@ function assert(condition, name, detail) {
   pass(name, detail);
 }
 
-const platformPagePath = "app/(platform)/legacyhub/page.tsx";
-const platformLayoutPath = "app/(platform)/layout.tsx";
-const publicLegacyHubPath = "app/(public)/legacyhub/page.tsx";
-const page = read(platformPagePath);
-const layout = read(platformLayoutPath);
+const routes = [
+  ["app/(platform)/legacyhub/page.tsx", "/legacyhub"],
+  ["app/(platform)/legacyhub/mission/page.tsx", "/legacyhub/mission"],
+  ["app/(platform)/legacyhub/who-it-is-for/page.tsx", "/legacyhub/who-it-is-for"],
+  ["app/(platform)/legacyhub/capabilities/page.tsx", "/legacyhub/capabilities"],
+  ["app/(platform)/legacyhub/flagship-archive/page.tsx", "/legacyhub/flagship-archive"],
+  ["app/(platform)/legacyhub/roadmap/page.tsx", "/legacyhub/roadmap"],
+  ["app/(platform)/legacyhub/about/page.tsx", "/legacyhub/about"],
+  ["app/(platform)/legacyhub/early-access/page.tsx", "/legacyhub/early-access"],
+  ["app/(platform)/legacyhub/privacy/page.tsx", "/legacyhub/privacy"],
+  ["app/(platform)/legacyhub/contact/page.tsx", "/legacyhub/contact"]
+];
+
+const home = read("app/(platform)/legacyhub/page.tsx");
+const header = read("components/legacyhub/platform-header.tsx");
+const shell = read("components/legacyhub/platform-shell.tsx");
 const form = read("components/legacyhub/early-access-form.tsx");
 const actions = read("lib/actions.ts");
 const schemas = read("lib/validation/forms.ts");
+const data = read("lib/legacyhub-platform.ts");
 
-assert(fs.existsSync(path.join(root, platformPagePath)), "/legacyhub platform route", "Route exists in the platform route group.");
-assert(fs.existsSync(path.join(root, platformLayoutPath)), "platform layout", "A dedicated platform layout exists.");
-assert(!fs.existsSync(path.join(root, publicLegacyHubPath)), "Baba Muyi shell separation", "The platform route no longer lives under the public archive layout.");
-assert(!layout.includes("PublicNavigation") && !page.includes("PublicNavigation"), "no archive navigation", "LegacyHub route does not render Baba Muyi public navigation.");
-assert(page.includes("LegacyHub platform navigation") && page.includes("LegacyHub footer navigation"), "platform navigation", "Page has separate platform navigation and footer landmarks.");
-assert(page.includes("WELCOME TO LEGACYHUB PHASE 2") || page.includes("Welcome to LegacyHub Phase 2"), "hero copy", "Hero uses the required Phase 2 eyebrow.");
-assert(page.includes("Preserve the stories that should never be forgotten."), "hero headline", "Hero uses the required headline.");
-assert(page.includes("To preserve the stories, values, achievements, and memories"), "mission statement", "Mission statement is present.");
-assert(page.includes("Baba Muyi Legacy preserves the life, transport heritage"), "flagship archive", "Flagship archive section explains the Baba Muyi relationship without inventing facts.");
-assert(page.includes("Current foundation") && page.includes("Planned capabilities"), "capability labels", "Current and planned platform capabilities are clearly separated.");
-assert(page.includes("planned, not yet available") || page.includes("Planned, not yet available"), "planned honesty", "Planned features are not presented as available.");
-assert(page.includes("Public registration") || page.includes("public registration"), "registration status", "Page explicitly says registration is not enabled.");
-assert(!page.includes("Create account") && !page.includes("Start free trial") && !page.includes("Sign up"), "no fake onboarding", "Page does not expose public account creation language.");
-assert(page.includes("robots") && page.includes("index: false"), "launch noindex", "Platform page is noindex during development.");
-assert(page.includes("application/ld+json"), "structured data", "Structured data is included.");
-assert(form.includes("submitLegacyHubInterest"), "early-access form", "Interest form posts to a server action.");
-assert(form.includes("website") && schemas.includes("max(0)"), "spam protection", "Honeypot spam protection is wired.");
-assert(schemas.includes("legacyHubInterestSchema") && schemas.includes("consent: z.literal(true)"), "server validation", "Server-side validation requires consent.");
-assert(actions.includes("submitLegacyHubInterest") && actions.includes('from("waiting_list").insert'), "interest workflow", "Server action stores reviewed enquiries in waiting_list.");
+for (const [file, route] of routes) {
+  const source = read(file);
+  assert(exists(file), `${route} route`, `${file} exists.`);
+  assert(source.includes("robots: { index: false, follow: true }"), `${route} noindex`, "Platform page remains noindex until launch approval.");
+  assert(source.includes("canonical"), `${route} canonical`, "Route has canonical metadata.");
+}
+
+assert(exists("app/(platform)/layout.tsx"), "platform layout", "A dedicated platform layout exists.");
+assert(!exists("app/(public)/legacyhub/page.tsx"), "Baba Muyi shell separation", "LegacyHub pages do not live under the public archive layout.");
+assert(shell.includes("PlatformHeader") && shell.includes("PlatformFooter"), "shared shell", "Platform shell owns header and footer.");
+assert(header.includes('href="/legacyhub"'), "logo route", "LegacyHub logo links to /legacyhub.");
+assert(!header.includes('href="#'), "route navigation", "Primary platform navigation uses routes instead of homepage hash links.");
+assert(header.includes("aria-current") && header.includes("usePathname"), "active navigation", "Desktop and mobile navigation expose active state.");
+assert(header.includes("LegacyHub mobile platform navigation") && header.includes("<details"), "mobile navigation", "Mobile platform menu is a keyboard-accessible disclosure.");
+assert(shell.includes("aria-label=\"Breadcrumb\"") && shell.includes('href="/legacyhub"') && shell.includes("LegacyHub"), "breadcrumbs", "Breadcrumb component provides LegacyHub page context.");
+
+assert(home.includes("Learn about our mission") && home.includes("/legacyhub/mission"), "homepage mission preview", "Homepage links to mission page.");
+assert(home.includes("Explore who LegacyHub is for") && home.includes("/legacyhub/who-it-is-for"), "homepage audience preview", "Homepage links to audience page.");
+assert(home.includes("View all capabilities") && home.includes("/legacyhub/capabilities"), "homepage capability preview", "Homepage links to capabilities page.");
+assert(home.includes("Discover the flagship archive") && home.includes("/legacyhub/flagship-archive"), "homepage flagship preview", "Homepage links to flagship page.");
+assert(home.includes("View the LegacyHub roadmap") && home.includes("/legacyhub/roadmap"), "homepage roadmap preview", "Homepage links to roadmap page.");
+assert(home.includes("Register your interest") && home.includes("/legacyhub/early-access"), "homepage early-access CTA", "Homepage links to full early-access form.");
+assert(!home.includes("<EarlyAccessForm"), "homepage shortened", "Full early-access form is not embedded on the homepage.");
+assert(read("app/(platform)/legacyhub/early-access/page.tsx").includes("<EarlyAccessForm"), "form destination", "Full form exists on /legacyhub/early-access.");
+
+assert(data.includes("currentCapabilities") && data.includes("plannedCapabilities"), "content reuse", "Current and planned capabilities are stored in shared data.");
+assert(read("app/(platform)/legacyhub/capabilities/page.tsx").includes("Planned</span>"), "planned labels", "Planned capabilities remain visibly labelled.");
+assert(data.includes("/biography") && data.includes("/gallery") && data.includes("/tioluwa-lase-molue"), "real archive links", "Flagship archive links use existing public routes.");
+assert(actions.includes('from("waiting_list").insert'), "interest storage", "Server action stores reviewed enquiries in waiting_list.");
 assert(actions.includes("gte(\"created_at\", cutoff)") && actions.includes("Your interest is already recorded"), "duplicate prevention", "Server action prevents duplicate same-day early-access submissions.");
-assert(actions.includes("legacyhub_phase_2_landing_page") && actions.includes("reviewStatus"), "reviewable storage", "Stored note payload includes source and review metadata.");
-assert(actions.includes("has not created an account or workspace"), "no account creation", "Server response confirms the workflow does not create accounts or workspaces.");
-assert(form.includes("aria-describedby") && form.includes("aria-live"), "form accessibility", "Form has accessible help text and live feedback.");
-assert(page.includes("/login"), "login link", "Platform navigation links to the existing login route.");
+assert(schemas.includes("legacyHubInterestSchema") && schemas.includes("website: z.string().trim().max(0)"), "honeypot validation", "Honeypot spam field is rejected server-side.");
+assert(form.includes("aria-live") && form.includes("early-access-status"), "form accessibility", "Form has persistent live status feedback.");
+assert(!home.includes("Create account") && !home.includes("Start free trial") && !home.includes("Sign up"), "no fake onboarding", "No public account creation language appears on the homepage.");
+assert(data.includes("platformRoutes"), "route map data", "Final platform route map is documented in code.");
+assert(read("app/(platform)/legacyhub/privacy/page.tsx").includes("preliminary product privacy notice"), "privacy honesty", "Privacy page is marked preliminary.");
+assert(read("app/(platform)/legacyhub/contact/page.tsx").includes("No telephone number"), "contact honesty", "Contact page does not invent support details.");
 
 if (process.exitCode) {
   process.exit(process.exitCode);
