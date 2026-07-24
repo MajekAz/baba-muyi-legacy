@@ -1,8 +1,8 @@
-# LegacyHub Phase 2 Landing Page
+# LegacyHub Phase 2 Platform Website
 
 ## Purpose
 
-The `/legacyhub` route is the public product experience for LegacyHub as a platform. It explains what LegacyHub is, who it is for, what the current foundation supports, what is planned, and how Baba Muyi Legacy demonstrates the platform.
+The LegacyHub Phase 2 public product experience has changed from a single long landing page into a multi-page platform website. It explains what LegacyHub is, who it is for, what the current foundation supports, what is planned, and how Baba Muyi Legacy demonstrates the platform.
 
 This milestone does not redesign Baba Muyi Legacy. The flagship archive remains Baba Muyi-focused, with LegacyHub shown only as the supporting platform relationship.
 
@@ -13,14 +13,23 @@ This milestone does not redesign Baba Muyi Legacy. The flagship archive remains 
 - `/legacyhub` uses separate platform navigation and footer.
 - Baba Muyi public archive routes keep the Baba Muyi header, navigation, footer, and visual identity.
 
-## Route Status
+## Route Map
 
-- Route: `/legacyhub`
-- Status: noindex during development until launch approval.
-- Registration: not enabled.
-- Billing: not enabled.
-- Self-service onboarding: not enabled.
-- Automatic workspace creation: not enabled.
+- `/legacyhub`
+- `/legacyhub/mission`
+- `/legacyhub/who-it-is-for`
+- `/legacyhub/capabilities`
+- `/legacyhub/flagship-archive`
+- `/legacyhub/roadmap`
+- `/legacyhub/about`
+- `/legacyhub/early-access`
+- `/legacyhub/privacy`
+- `/legacyhub/contact`
+- `/login` is preserved for authentication.
+
+All LegacyHub platform pages remain noindex during development until launch approval. The noindex setting can be removed later by changing each platform route metadata `robots` value after a launch review.
+
+Registration, billing, self-service onboarding, and automatic workspace creation are not enabled.
 
 ## Current Capabilities Shown
 
@@ -53,7 +62,7 @@ The page labels these clearly as planned:
 
 ## Early Access Workflow
 
-The early-access form is a reviewed interest workflow. It collects:
+The full early-access form now lives at `/legacyhub/early-access`. It is a reviewed interest workflow. It collects:
 
 - Name
 - Email

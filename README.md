@@ -166,7 +166,7 @@ See `DEPLOYMENT_HOSTINGER.md`.
 
 ## LegacyHub Platform Landing Page
 
-The `/legacyhub` route is the Phase 2 platform landing page for LegacyHub. It is separate from the Baba Muyi Legacy public archive chrome and remains `noindex` until launch approval.
+The `/legacyhub` route group is the Phase 2 multi-page platform website for LegacyHub. It is separate from the Baba Muyi Legacy public archive chrome and remains `noindex` until launch approval.
 
 - LegacyHub is the commercial digital legacy platform.
 - Baba Muyi Legacy remains the flagship public archive.
