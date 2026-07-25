@@ -32,9 +32,12 @@
 ## Phase 2 Platform Landing Page
 
 - `/legacyhub` and its child routes form the product-facing LegacyHub platform website.
+- `/legacyhub` is a concise overview hub. It must link to dedicated child routes and must not duplicate the full content of every platform page.
 - Platform routes must use LegacyHub navigation and footer, not Baba Muyi archive chrome.
+- Primary platform navigation must use route paths such as `/legacyhub/mission`, not homepage hash anchors such as `#mission`.
 - Platform routes remain noindex until public launch approval.
 - The early-access form lives at `/legacyhub/early-access` and is a reviewed interest workflow only.
+- The homepage may include an early-access CTA, but the full early-access form belongs on `/legacyhub/early-access`.
 - Platform pages must distinguish current foundation features from planned capabilities.
 - The page must not claim pricing, public registration, subscription plans, AI tools, or self-service onboarding are available.
 

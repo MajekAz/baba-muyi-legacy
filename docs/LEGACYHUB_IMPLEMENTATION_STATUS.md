@@ -18,6 +18,14 @@ Status key:
 | Supply-chain policy | Complete and tested | `pnpm install --lockfile-only`, `pnpm install --frozen-lockfile` | Both commands reported that the lockfile passes supply-chain policies. |
 | Production build after dependency updates | Complete and tested | `pnpm build` | Build passes on Next.js `15.5.21`; the existing Supabase Edge Runtime warning remains unrelated. |
 
+## Platform Multi-Page Regression Status
+
+| Area | Status | Evidence | Notes |
+| --- | --- | --- | --- |
+| LegacyHub platform IA | Complete and locally tested | `app/(platform)/legacyhub/page.tsx`, `app/(platform)/legacyhub/*/page.tsx`, `scripts/test-legacyhub-multipage.mjs` | `/legacyhub` is a concise overview hub. Full mission, audience, capability, flagship, roadmap, about, early-access, privacy, and contact content remains on dedicated routes. |
+| Platform navigation | Complete and locally tested | `lib/legacyhub-platform.ts`, `components/legacyhub/platform-header.tsx` | Primary desktop and mobile navigation use route paths, not homepage hash anchors. |
+| Shell separation | Complete and locally tested | `app/(platform)/layout.tsx`, `app/(public)/layout.tsx`, `app/admin/layout.tsx`, `app/login/page.tsx` | Platform, public archive, admin, and auth surfaces remain separate. |
+
 ## v0.1.0 Release Status
 
 **LegacyHub v0.1.0 - Foundation Complete** verifies the platform foundation and does not start Milestone 2.
