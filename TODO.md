@@ -2,6 +2,8 @@
 
 ## Foundation
 
+- Keep Baba Muyi public archive pages noindex until explicit launch approval.
+- Plan Milestone 4 Phase 2 interactive biography using existing published biography records and media relations.
 - Complete visual, accessibility, and responsive acceptance review for the Phase 2 `/legacyhub` multi-page platform website before commit and PR.
 - Decide when `/legacyhub` should become indexable and whether it should later move to a dedicated LegacyHub marketing domain.
 - Complete Milestone 3.5 manual owner acceptance for the polished admin shell before commit and PR.
@@ -39,6 +41,7 @@
 
 ## Content
 
+- Supply approved Baba Muyi portrait/media records with alt text, captions, source notes, copyright metadata, and public publication status.
 - Add approved files to `content-source/`.
 - Run content inventory again after source files are supplied.
 - Run `pnpm content:import -- --dry-run`.

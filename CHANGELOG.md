@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Completed LegacyHub Milestone 4 Phase 1 with a cinematic Baba Muyi public archive homepage, scoped published-content integration, approved-media hero fallback, public route-map documentation, focused public homepage validation, server-side Supabase test-client alignment, and passing remote media acceptance when `.env.local` is the source of truth.
 - Began LegacyHub Phase 2 with a noindex multi-page `/legacyhub` platform website, separate platform navigation/footer, dedicated mission/audience/capabilities/flagship/roadmap/about/early-access/privacy/contact pages, early-access interest storage, and documentation for current versus planned capabilities.
 - Began Milestone 3.5 administration production polish with a dedicated LegacyHub admin shell, separate public/admin chrome, responsive sidebar, breadcrumbs, accessible confirmation dialogs, shared empty states, and admin UX documentation.
 - Began Milestone 3 media library with upload actions, media albums, archival version metadata, public gallery/archive reads, and media documentation.

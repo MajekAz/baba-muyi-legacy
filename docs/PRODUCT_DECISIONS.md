@@ -37,3 +37,12 @@
 - The early-access form lives at `/legacyhub/early-access` and is a reviewed interest workflow only.
 - Platform pages must distinguish current foundation features from planned capabilities.
 - The page must not claim pricing, public registration, subscription plans, AI tools, or self-service onboarding are available.
+
+## Milestone 4 Public Archive Experience
+
+- Milestone 4 focuses on the Baba Muyi Legacy public archive, not the LegacyHub platform website.
+- The public archive keeps `Baba Muyi Legacy` as the primary wordmark with LegacyHub as a subtle platform relationship.
+- The public archive homepage may use cinematic archive storytelling, but must not invent dates, quotations, business claims, image captions, or family interpretations.
+- Published CMS records and approved public Media Library records are the source of truth.
+- Public archive pages remain noindex until explicit launch approval.
+- Public memory submission, family tree, documentary centre playback, advanced search, and digital museum collections are deferred to later Milestone 4 phases.
