@@ -263,3 +263,18 @@ These items are intentionally not considered complete for Milestone 2 remediatio
 | Early-access form | Implemented locally | Full form lives at `/legacyhub/early-access` with server-side validation, honeypot protection, duplicate check, and Supabase `waiting_list` storage; no registration, billing, or workspace creation. |
 | Current/planned feature labels | Implemented locally | Current foundation and planned capabilities are visually separated. |
 | Responsive and accessibility review | Pending manual acceptance | Static checks are present; browser/device review is still required before PR acceptance. |
+
+## Milestone 4 Phase 1 Public Archive Status
+
+| Area | Status | Notes |
+| --- | --- | --- |
+| Existing public archive audit | Implemented locally | Route inventory and shell/data-source audit documented in `docs/LEGACYHUB_MILESTONE_4_PUBLIC_EXPERIENCE.md` and `docs/BABA_MUYI_PUBLIC_ROUTE_MAP.md`. |
+| Cinematic homepage | Implemented locally | `/` now uses `BabaMuyiCinematicHome` with archive hero, journey preview, transport feature, documentary preview, collections, lessons, memories, and closing statement. |
+| Public archive shell separation | Implemented locally | Public, platform, and admin shells remain separate. |
+| CMS integration | Implemented locally | Homepage loads scoped published CMS records through active workspace and legacy-profile context. |
+| Media integration | Implemented locally | Hero uses approved public image records when available and a safe non-photographic fallback otherwise. |
+| Homepage fallback | Implemented locally | Optional preview query failures render empty visitor-facing sections instead of crashing the homepage; private/unpublished content remains excluded. |
+| Noindex | Implemented locally | Public archive layout includes `robots: { index: false, follow: true }` until launch approval. |
+| Remote media acceptance | Passed | `pnpm test:media-remote` passes when inherited Supabase shell variables are cleared and the script loads the current `.env.local` configuration. |
+| Branch status | Ready for pull request | Milestone 4 Phase 1 work is on `feature/legacyhub-milestone-4-phase-1-public-home`. |
+| Future public modules | Deferred | Interactive biography, advanced timeline, documentary centre, family tree, moderated memories, museum collections, and search are documented future phases. |

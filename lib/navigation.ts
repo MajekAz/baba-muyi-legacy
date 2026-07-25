@@ -14,15 +14,17 @@ export const publicNavigation: NavItem[] = [
     href: "/"
   },
   {
-    label: "His Story",
+    label: "Biography",
     href: "/biography",
     children: [
-      { label: "Biography", href: "/biography" },
-      { label: "Timeline", href: "/timeline" },
       { label: "Early Life", href: "/early-life" },
       { label: "Journey to Bariga", href: "/journey-to-bariga" },
       { label: "Community Leadership", href: "/community-leadership" }
     ]
+  },
+  {
+    label: "Timeline",
+    href: "/timeline"
   },
   {
     label: "Transport Legacy",
@@ -35,33 +37,40 @@ export const publicNavigation: NavItem[] = [
     ]
   },
   {
-    label: "Media",
+    label: "Documentary",
     href: "/documentaries",
     children: [
-      { label: "Documentary", href: "/documentaries" },
-      { label: "Photo Archive", href: "/gallery" },
-      { label: "Audio", href: "/archive" },
-      { label: "Historical Documents", href: "/documents" }
+      { label: "English Documentary", href: "/english-documentary" },
+      { label: "Episodes", href: "/documentary-episodes" },
+      { label: "Trailers and Clips", href: "/trailer-clips" },
+      { label: "Transcripts", href: "/transcripts" }
     ]
   },
   {
-    label: "Legacy",
-    href: "/family-tree",
+    label: "Gallery",
+    href: "/gallery",
     children: [
-      { label: "Family Legacy", href: "/family-tree" },
-      { label: "Lessons", href: "/lessons" },
-      { label: "Community Memories", href: "/family-memories" },
-      { label: "Digital Archive", href: "/archive" }
+      { label: "Photo Archive", href: "/gallery" },
+      { label: "Portraits", href: "/portraits" },
+      { label: "Transport Gallery", href: "/transport-gallery" },
+      { label: "Documents", href: "/documents" }
     ]
   },
   {
-    label: "About",
-    href: "/curator",
+    label: "Stories and Memories",
+    href: "/stories"
+  },
+  {
+    label: "Life Lessons",
+    href: "/lessons"
+  },
+  {
+    label: "About the Archive",
+    href: "/about",
     children: [
       { label: "About Baba Muyi", href: "/biography" },
       { label: "About the Curator", href: "/curator" },
-      { label: "About the Legacy Project", href: "/about" },
-      { label: "About LegacyHub", href: "/legacyhub" }
+      { label: "About the Legacy Project", href: "/about" }
     ]
   }
 ];

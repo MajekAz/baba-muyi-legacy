@@ -17,6 +17,10 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     title: siteConfig.name,
     description: siteConfig.description
+  },
+  robots: {
+    index: false,
+    follow: true
   }
 };
 
