@@ -10,6 +10,14 @@ Status key:
 - Blocked
 - Deferred
 
+## Security Maintenance Status - July 2026
+
+| Area | Status | Evidence | Notes |
+| --- | --- | --- | --- |
+| Hostinger dependency remediation | Complete pending owner deployment-runtime check | `docs/SECURITY_DEPENDENCY_REMEDIATION_2026_07.md`, `pnpm audit` | `brace-expansion`, `postcss`, `sharp`, and related Next.js audit findings resolve with no known vulnerabilities remaining. Owner-verified remote media acceptance passed in a fresh local Terminal; this Codex runner could not reproduce the Auth Admin step because of an isolated ES256 credential-environment limitation. Hostinger must run Node.js `20.9.0` or newer for `sharp@0.35.0`. |
+| Supply-chain policy | Complete and tested | `pnpm install --lockfile-only`, `pnpm install --frozen-lockfile` | Both commands reported that the lockfile passes supply-chain policies. |
+| Production build after dependency updates | Complete and tested | `pnpm build` | Build passes on Next.js `15.5.21`; the existing Supabase Edge Runtime warning remains unrelated. |
+
 ## v0.1.0 Release Status
 
 **LegacyHub v0.1.0 - Foundation Complete** verifies the platform foundation and does not start Milestone 2.
