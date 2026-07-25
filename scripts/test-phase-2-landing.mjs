@@ -61,11 +61,11 @@ assert(header.includes("aria-current") && header.includes("usePathname"), "activ
 assert(header.includes("LegacyHub mobile platform navigation") && header.includes("<details"), "mobile navigation", "Mobile platform menu is a keyboard-accessible disclosure.");
 assert(shell.includes("aria-label=\"Breadcrumb\"") && shell.includes('href="/legacyhub"') && shell.includes("LegacyHub"), "breadcrumbs", "Breadcrumb component provides LegacyHub page context.");
 
-assert(home.includes("Learn about our mission") && home.includes("/legacyhub/mission"), "homepage mission preview", "Homepage links to mission page.");
-assert(home.includes("Explore who LegacyHub is for") && home.includes("/legacyhub/who-it-is-for"), "homepage audience preview", "Homepage links to audience page.");
-assert(home.includes("View all capabilities") && home.includes("/legacyhub/capabilities"), "homepage capability preview", "Homepage links to capabilities page.");
-assert(home.includes("Discover the flagship archive") && home.includes("/legacyhub/flagship-archive"), "homepage flagship preview", "Homepage links to flagship page.");
-assert(home.includes("View the LegacyHub roadmap") && home.includes("/legacyhub/roadmap"), "homepage roadmap preview", "Homepage links to roadmap page.");
+assert(home.includes('title: "Mission"') && home.includes("/legacyhub/mission"), "homepage mission preview", "Homepage links to mission page.");
+assert(home.includes('title: "Who It Is For"') && home.includes("/legacyhub/who-it-is-for"), "homepage audience preview", "Homepage links to audience page.");
+assert(home.includes('title: "Capabilities"') && home.includes("/legacyhub/capabilities"), "homepage capability preview", "Homepage links to capabilities page.");
+assert(home.includes('title: "Flagship Archive"') && home.includes("/legacyhub/flagship-archive"), "homepage flagship preview", "Homepage links to flagship page.");
+assert(home.includes('title: "Roadmap"') && home.includes("/legacyhub/roadmap"), "homepage roadmap preview", "Homepage links to roadmap page.");
 assert(home.includes("Register your interest") && home.includes("/legacyhub/early-access"), "homepage early-access CTA", "Homepage links to full early-access form.");
 assert(!home.includes("<EarlyAccessForm"), "homepage shortened", "Full early-access form is not embedded on the homepage.");
 assert(read("app/(platform)/legacyhub/early-access/page.tsx").includes("<EarlyAccessForm"), "form destination", "Full form exists on /legacyhub/early-access.");

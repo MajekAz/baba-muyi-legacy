@@ -15,6 +15,7 @@
     "test:media-remote": "node scripts/test-media-remote-acceptance.mjs",
     "test:admin-polish": "node scripts/test-admin-polish.mjs",
     "test:phase2-landing": "node scripts/test-phase-2-landing.mjs",
+    "test:legacyhub-multipage": "node scripts/test-legacyhub-multipage.mjs",
     "test:milestone4-public-home": "node scripts/test-milestone4-public-home.mjs",
     "test:cms-remote-roles": "node scripts/test-cms-remote-roles.mjs",
     "verify:foundation": "node scripts/verify-foundation.mjs"

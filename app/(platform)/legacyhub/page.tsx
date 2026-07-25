@@ -1,21 +1,52 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Archive, CheckCircle2, Sparkles, UsersRound } from "lucide-react";
+import { ArrowRight, BookOpen, Compass, Layers, Map, ShieldCheck, UsersRound } from "lucide-react";
 import { PlatformCTA, PlatformSection } from "@/components/legacyhub/platform-shell";
 import { flagshipArchiveBrand } from "@/lib/brand";
-import {
-  currentCapabilities,
-  missionStatement,
-  milestoneFourAreas,
-  plannedCapabilities,
-  processSteps,
-  audienceGroups
-} from "@/lib/legacyhub-platform";
 import { siteConfig } from "@/lib/site";
 
 const title = "LegacyHub - Preserve Family, Community and Cultural Legacies";
 const description =
   "LegacyHub helps families, communities, institutions and organisations preserve stories, photographs, documents, audio, video and historical memories through secure collaborative digital archives.";
+
+const overviewCards = [
+  {
+    title: "Mission",
+    href: "/legacyhub/mission",
+    body: "A responsible preservation platform for stories, values, memories, media and historical records.",
+    icon: Compass
+  },
+  {
+    title: "Who It Is For",
+    href: "/legacyhub/who-it-is-for",
+    body: "Families, communities, founders, faith groups, schools, museums and heritage custodians.",
+    icon: UsersRound
+  },
+  {
+    title: "Capabilities",
+    href: "/legacyhub/capabilities",
+    body: "Workspace-aware CMS, media library, roles, review workflows, privacy controls and planned platform growth.",
+    icon: Layers
+  },
+  {
+    title: "Flagship Archive",
+    href: "/legacyhub/flagship-archive",
+    body: "Baba Muyi Legacy is the first public archive demonstrating the LegacyHub platform foundation.",
+    icon: BookOpen
+  },
+  {
+    title: "Roadmap",
+    href: "/legacyhub/roadmap",
+    body: "A milestone-led product path from foundation, CMS and media toward richer public archive experiences.",
+    icon: Map
+  },
+  {
+    title: "Early Access",
+    href: "/legacyhub/early-access",
+    body: "Register interest for review without creating an account, workspace, subscription or public archive.",
+    icon: ShieldCheck
+  }
+] as const;
 
 export const metadata: Metadata = {
   title: { absolute: title },
@@ -69,68 +100,23 @@ export default function LegacyHubHomePage() {
         </div>
       </section>
 
-      <PlatformSection eyebrow="Mission preview" title="Technology in service of memory.">
-        <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
-          <p className="max-w-3xl text-lg leading-8 text-slate-700">{missionStatement}</p>
-          <PlatformCTA href="/legacyhub/mission" secondary>Learn about our mission</PlatformCTA>
-        </div>
-      </PlatformSection>
-
-      <PlatformSection eyebrow="Who LegacyHub is for" title="Archives for families, communities and institutions.">
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-          {audienceGroups.slice(0, 4).map(([title, description]) => (
-            <article className="rounded border border-stone-300 bg-white p-5" key={title}>
-              <UsersRound aria-hidden="true" className="size-6 text-amber-800" />
-              <h2 className="mt-4 font-bold">{title}</h2>
-              <p className="mt-3 text-sm leading-6 text-slate-700">{description}</p>
-            </article>
+      <PlatformSection eyebrow="Platform overview" title="Choose the part of LegacyHub you want to understand.">
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {overviewCards.map(({ title, href, body, icon: Icon }) => (
+            <Link
+              className="group rounded border border-stone-300 bg-white p-5 transition hover:border-amber-700 hover:shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-700"
+              href={href}
+              key={href}
+            >
+              <Icon aria-hidden="true" className="size-6 text-amber-800" />
+              <h2 className="mt-4 font-serif text-2xl font-semibold">{title}</h2>
+              <p className="mt-3 text-sm leading-6 text-slate-700">{body}</p>
+              <span className="mt-5 inline-flex items-center gap-2 text-sm font-black text-amber-800 group-hover:text-slate-950">
+                Open {title}
+                <ArrowRight aria-hidden="true" className="size-4" />
+              </span>
+            </Link>
           ))}
-        </div>
-        <div className="mt-8">
-          <PlatformCTA href="/legacyhub/who-it-is-for" secondary>Explore who LegacyHub is for</PlatformCTA>
-        </div>
-      </PlatformSection>
-
-      <PlatformSection dark eyebrow="How LegacyHub works" title="A moderated collaboration model.">
-        <ol className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {processSteps.map((step, index) => (
-            <li className="rounded border border-white/14 bg-white/[0.05] p-4" key={step}>
-              <span className="text-xs font-black uppercase tracking-[0.16em] text-amber-300">Step {index + 1}</span>
-              <p className="mt-2 font-bold text-white">{step}</p>
-            </li>
-          ))}
-        </ol>
-      </PlatformSection>
-
-      <PlatformSection eyebrow="Capability preview" title="A foundation now, a wider platform over time.">
-        <div className="grid gap-6 lg:grid-cols-2">
-          <CapabilityPreview title="Current foundation" items={currentCapabilities.slice(0, 5)} current />
-          <CapabilityPreview title="Planned capabilities" items={plannedCapabilities.slice(0, 5)} />
-        </div>
-        <div className="mt-8">
-          <PlatformCTA href="/legacyhub/capabilities" secondary>View all capabilities</PlatformCTA>
-        </div>
-      </PlatformSection>
-
-      <PlatformSection dark eyebrow="Flagship archive preview" title="Baba Muyi Legacy demonstrates the platform.">
-        <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
-          <p className="max-w-3xl text-lg leading-8 text-white/74">
-            Baba Muyi Legacy preserves the life, transport heritage, family history, public memories, values, and documentary material connected to Alhaji Tioluwalase &quot;Baba Muyi&quot; Majekodunmi.
-          </p>
-          <Link className="rounded border border-white/28 px-5 py-3 text-center text-sm font-black text-white transition hover:bg-white hover:text-slate-950" href="/legacyhub/flagship-archive">
-            Discover the flagship archive
-          </Link>
-        </div>
-      </PlatformSection>
-
-      <PlatformSection eyebrow="Roadmap preview" title="Milestone 4 will focus on the public experience.">
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-          {milestoneFourAreas.slice(0, 4).map((item) => (
-            <div className="rounded border border-stone-300 bg-white p-4 font-bold text-slate-800" key={item}>{item}</div>
-          ))}
-        </div>
-        <div className="mt-8">
-          <PlatformCTA href="/legacyhub/roadmap" secondary>View the LegacyHub roadmap</PlatformCTA>
         </div>
       </PlatformSection>
 
@@ -147,27 +133,5 @@ export default function LegacyHubHomePage() {
         </div>
       </section>
     </main>
-  );
-}
-
-function CapabilityPreview({ title, items, current = false }: { title: string; items: readonly string[]; current?: boolean }) {
-  return (
-    <article className="rounded border border-stone-300 bg-white p-6">
-      <div className="flex items-start gap-3">
-        {current ? <CheckCircle2 aria-hidden="true" className="mt-1 size-6 text-emerald-700" /> : <Sparkles aria-hidden="true" className="mt-1 size-6 text-amber-700" />}
-        <div>
-          <p className="text-xs font-black uppercase tracking-[0.18em] text-amber-800">{current ? "Available foundation" : "Planned, not yet available"}</p>
-          <h2 className="mt-2 font-serif text-3xl font-semibold">{title}</h2>
-        </div>
-      </div>
-      <ul className="mt-6 grid gap-3">
-        {items.map((item) => (
-          <li className="flex gap-3 text-sm leading-6 text-slate-700" key={item}>
-            <Archive aria-hidden="true" className="mt-0.5 size-5 shrink-0 text-amber-800" />
-            <span>{item}{current ? null : <span className="font-bold text-slate-950"> - Planned</span>}</span>
-          </li>
-        ))}
-      </ul>
-    </article>
   );
 }
