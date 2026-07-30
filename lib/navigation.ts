@@ -17,61 +17,45 @@ export const publicNavigation: NavItem[] = [
     label: "Biography",
     href: "/biography",
     children: [
+      { label: "Biography", href: "/biography" },
       { label: "Early Life", href: "/early-life" },
-      { label: "Journey to Bariga", href: "/journey-to-bariga" },
       { label: "Community Leadership", href: "/community-leadership" }
     ]
   },
   {
     label: "Timeline",
-    href: "/timeline"
-  },
-  {
-    label: "Transport Legacy",
-    href: "/bolekaja",
+    href: "/timeline",
     children: [
-      { label: "Bolekaja Era", href: "/bolekaja" },
-      { label: "TIOLUWA LASE Molue Era", href: "/tioluwa-lase-molue" },
-      { label: "Routes and Locations", href: "/routes-and-locations" },
-      { label: "Transport Gallery", href: "/transport-gallery" }
-    ]
-  },
-  {
-    label: "Documentary",
-    href: "/documentaries",
-    children: [
-      { label: "English Documentary", href: "/english-documentary" },
-      { label: "Episodes", href: "/documentary-episodes" },
-      { label: "Trailers and Clips", href: "/trailer-clips" },
-      { label: "Transcripts", href: "/transcripts" }
+      { label: "Timeline", href: "/timeline" },
+      { label: "Bolekaja", href: "/bolekaja" },
+      { label: "TIOLUWA LASE", href: "/tioluwa-lase-molue" }
     ]
   },
   {
     label: "Gallery",
     href: "/gallery",
     children: [
-      { label: "Photo Archive", href: "/gallery" },
-      { label: "Portraits", href: "/portraits" },
-      { label: "Transport Gallery", href: "/transport-gallery" },
+      { label: "Family", href: "/family" },
+      { label: "Transport", href: "/transport-gallery" },
       { label: "Documents", href: "/documents" }
     ]
   },
   {
-    label: "Stories and Memories",
-    href: "/stories"
+    label: "Documentary",
+    href: "/documentaries"
   },
   {
-    label: "Life Lessons",
-    href: "/lessons"
-  },
-  {
-    label: "About the Archive",
-    href: "/about",
+    label: "Legacy",
+    href: "/lessons",
     children: [
-      { label: "About Baba Muyi", href: "/biography" },
-      { label: "About the Curator", href: "/curator" },
-      { label: "About the Legacy Project", href: "/about" }
+      { label: "Lessons", href: "/lessons" },
+      { label: "Stories", href: "/stories" },
+      { label: "Tributes", href: "/tributes" }
     ]
+  },
+  {
+    label: "About",
+    href: "/about"
   }
 ];
 

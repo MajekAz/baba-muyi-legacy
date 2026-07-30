@@ -125,7 +125,7 @@ export function PublicHeaderClient({ items, mobileItems }: { items: NavItem[]; m
 
         <div className="hidden items-center justify-end gap-2 min-[1080px]:flex">
           <Link className="whitespace-nowrap rounded bg-archive-gold px-3.5 py-2 text-sm font-bold text-archive-navy transition hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-archive-gold" href="/documentaries">
-            Watch Film
+            Watch Documentary
           </Link>
           <Link className="whitespace-nowrap rounded border border-archive-gold/70 px-3.5 py-2 text-sm font-bold text-archive-gold transition hover:bg-archive-gold hover:text-archive-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-archive-gold" href="/tributes">
             Share a Memory

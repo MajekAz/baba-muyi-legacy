@@ -56,7 +56,16 @@ const internalPublicHrefs = [...hrefs].filter((href) => href.startsWith("/") && 
 const missing = internalPublicHrefs.filter((href) => !existsSync(path.join(root, publicRouteFile(href))));
 assert(missing.length === 0, "public navigation links", missing.length ? `Missing route files: ${missing.join(", ")}` : "All public archive links resolve to existing route files.");
 
-assert(navigation.includes("Stories and Memories") && navigation.includes("Life Lessons") && navigation.includes("About the Archive"), "information architecture", "Fallback public navigation matches the Milestone 4 route structure.");
+assert(
+  navigation.includes('label: "Biography"') &&
+  navigation.includes('label: "Timeline"') &&
+  navigation.includes('label: "Gallery"') &&
+  navigation.includes('label: "Documentary"') &&
+  navigation.includes('label: "Legacy"') &&
+  navigation.includes('label: "About"'),
+  "information architecture",
+  "Fallback public navigation matches the simplified public archive route structure."
+);
 assert(homepage.includes("Archive portrait pending"), "hero fallback", "Hero has a graceful fallback when no approved public portrait exists.");
 assert(homepage.includes("Private, draft, review-stage or unpublished media is not embedded"), "publication safeguard copy", "Documentary section explains publication safeguards.");
 assert(homepage.includes("Family and community memories will appear only after review and publication."), "memory safeguard copy", "Memory empty state is respectful and review-aware.");
