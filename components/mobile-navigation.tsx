@@ -147,7 +147,7 @@ export function MobileNavigation({ items }: { items: NavItem[] }) {
             href="/documentaries"
             onClick={() => setOpen(false)}
           >
-            Watch Film
+            Watch Documentary
           </Link>
           <Link
             className="rounded border border-archive-gold/70 px-4 py-3 text-center text-sm font-bold text-archive-gold"

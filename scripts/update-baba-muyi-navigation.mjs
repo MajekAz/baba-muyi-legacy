@@ -36,67 +36,63 @@ const desiredItems = [
     children: []
   },
   {
-    label: "His Story",
-    slug: "his-story",
+    label: "Biography",
+    slug: "biography",
     url: "/biography",
     children: [
       ["Biography", "biography", "/biography"],
-      ["Timeline", "timeline", "/timeline"],
       ["Early Life", "early-life", "/early-life"],
-      ["Journey to Bariga", "journey-to-bariga", "/journey-to-bariga"],
       ["Community Leadership", "community-leadership", "/community-leadership"]
     ]
   },
   {
-    label: "Transport Legacy",
-    slug: "transport-legacy",
-    url: "/bolekaja",
+    label: "Timeline",
+    slug: "timeline",
+    url: "/timeline",
     children: [
-      ["Bolekaja Era", "bolekaja-era", "/bolekaja"],
-      ["TIOLUWA LASE Molue Era", "tioluwa-lase-molue-era", "/tioluwa-lase-molue"],
-      ["Routes and Locations", "routes-and-locations", "/routes-and-locations"],
-      ["Transport Gallery", "transport-gallery", "/transport-gallery"]
+      ["Timeline", "timeline", "/timeline"],
+      ["Bolekaja", "bolekaja", "/bolekaja"],
+      ["TIOLUWA LASE", "tioluwa-lase", "/tioluwa-lase-molue"]
     ]
   },
   {
-    label: "Media",
-    slug: "media",
-    url: "/documentaries",
+    label: "Gallery",
+    slug: "gallery",
+    url: "/gallery",
     children: [
-      ["Documentary", "documentary", "/documentaries"],
-      ["Photo Archive", "photo-archive", "/gallery"],
-      ["Audio", "audio", "/archive"],
-      ["Historical Documents", "historical-documents", "/documents"]
+      ["Family", "family", "/family"],
+      ["Transport", "transport", "/transport-gallery"],
+      ["Documents", "documents", "/documents"]
     ]
+  },
+  {
+    label: "Documentary",
+    slug: "documentary",
+    url: "/documentaries",
+    children: []
   },
   {
     label: "Legacy",
     slug: "legacy",
-    url: "/family-tree",
+    url: "/lessons",
     children: [
-      ["Family Legacy", "family-legacy", "/family-tree"],
       ["Lessons", "lessons", "/lessons"],
-      ["Community Memories", "community-memories", "/family-memories"],
-      ["Digital Archive", "digital-archive", "/archive"]
+      ["Stories", "stories", "/stories"],
+      ["Tributes", "tributes", "/tributes"]
     ]
   },
   {
     label: "About",
     slug: "about",
-    url: "/curator",
-    children: [
-      ["About Baba Muyi", "about-baba-muyi", "/biography"],
-      ["About the Curator", "about-the-curator", "/curator"],
-      ["About the Legacy Project", "about-the-legacy-project", "/about"],
-      ["About LegacyHub", "about-legacyhub", "/legacyhub"]
-    ]
+    url: "/about",
+    children: []
   }
 ];
 
 const supabase = createClient(
   requireSecret("NEXT_PUBLIC_SUPABASE_URL"),
   requireSecret("SUPABASE_SERVICE_ROLE_KEY"),
-  { auth: { persistSession: false, autoRefreshToken: false } }
+  { auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false } }
 );
 
 const workspaceSlug = process.env.LEGACYHUB_WORKSPACE_SLUG?.trim() || "baba-muyi-family-archive";
