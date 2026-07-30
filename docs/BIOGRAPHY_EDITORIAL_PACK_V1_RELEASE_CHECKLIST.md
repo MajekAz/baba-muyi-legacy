@@ -104,6 +104,23 @@ Final publication-readiness review date: 2026-07-30
 ## Publication Approval
 
 - [x] Ready for draft pull-request review.
-- [ ] Founder and Editorial Team approve merge.
-- [ ] Deployment approved.
+- [x] Founder and Editorial Team approve merge.
+- [x] PR #12 merged into `main`.
+- [ ] Deployment approved/completed in Hostinger.
 - [ ] Post-deployment route and content smoke test completed.
+
+## Merge Record
+
+- [x] PR number recorded: #12.
+- [x] Source commit recorded: `ef38f1804ffcb2a54531c2a614cb735d036a522a`.
+- [x] Merge commit recorded: `44c6e433a2526b705269013f15e64997d115a15a`.
+- [x] Merge strategy recorded: squash merge.
+- [x] Base branch recorded: `main`.
+
+## Deployment Status
+
+- [x] Hostinger deployment workflow identified from `DEPLOYMENT_HOSTINGER.md`.
+- [x] No new hosting architecture introduced.
+- [x] No DNS, environment variable, Supabase credential, or production-secret change made.
+- [ ] `https://babamuyilegacy.com/biography` production verification completed.
+- [ ] Hostinger preview verified as serving merged Biography v1.0 content.
