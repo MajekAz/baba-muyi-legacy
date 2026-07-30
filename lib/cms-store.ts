@@ -4,6 +4,7 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { unstable_noStore as noStore } from "next/cache";
 import type { CmsCollectionSummary, CmsContentKind, CmsContentRecord, CmsMenuItem, CmsPage, CmsStore } from "@/lib/cms-types";
+import { biographyEditorialChapter, biographyEditorialPage } from "@/lib/biography-editorial-pack-v1";
 import { defaultLegacyProfileId, defaultWorkspaceId, initialCmsStore } from "@/lib/cms-seed";
 import { allowsLocalFallback, hasSupabasePublicEnv } from "@/lib/env";
 import { createClient } from "@/lib/supabase/server";
@@ -16,6 +17,13 @@ async function writeStore(store: CmsStore) {
 }
 
 function withTenancyFallback(store: CmsStore): CmsStore {
+  const hasBiographyEditorialPack = store.content.some((record) =>
+    record.workspaceId === defaultWorkspaceId &&
+    record.legacyProfileId === defaultLegacyProfileId &&
+    record.kind === "biography_chapter" &&
+    (record.id === biographyEditorialChapter.id || record.slug === biographyEditorialChapter.slug)
+  );
+
   return {
     ...store,
     version: 1,
@@ -23,17 +31,28 @@ function withTenancyFallback(store: CmsStore): CmsStore {
     activeLegacyProfileId: store.activeLegacyProfileId ?? defaultLegacyProfileId,
     workspaces: store.workspaces?.length ? store.workspaces : initialCmsStore.workspaces,
     legacyProfiles: store.legacyProfiles?.length ? store.legacyProfiles : initialCmsStore.legacyProfiles,
-    pages: store.pages.map((page) => ({
+    pages: store.pages.map((page) => page.id === biographyEditorialPage.id || page.path === biographyEditorialPage.path ? {
+      ...page,
+      ...biographyEditorialPage,
+      workspaceId: page.workspaceId ?? defaultWorkspaceId,
+      legacyProfileId: page.legacyProfileId ?? defaultLegacyProfileId,
+      slug: page.slug,
+      status: page.status,
+      visibility: page.visibility
+    } : ({
       ...page,
       workspaceId: page.workspaceId ?? defaultWorkspaceId,
       legacyProfileId: page.legacyProfileId ?? defaultLegacyProfileId
     })),
-    content: store.content.map((record) => ({
+    content: [
+      ...store.content.map((record) => ({
       ...record,
       workspaceId: record.workspaceId ?? defaultWorkspaceId,
       legacyProfileId: record.legacyProfileId ?? defaultLegacyProfileId,
       createdAt: record.createdAt ?? record.updatedAt
-    })),
+      })),
+      ...(hasBiographyEditorialPack ? [] : [biographyEditorialChapter])
+    ],
     menuItems: store.menuItems.map((item) => ({
       ...item,
       workspaceId: item.workspaceId ?? defaultWorkspaceId,
