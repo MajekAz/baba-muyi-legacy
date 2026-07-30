@@ -2,66 +2,74 @@ export const babaMuyiArchiveFacts = {
   fullName: 'Alhaji Tioluwalase "Baba Muyi" Majekodunmi',
   archiveName: "Baba Muyi Legacy",
   relationship: "A LegacyHub Digital Archive",
-  legacyLine: "A father, entrepreneur, community leader, philanthropist, and family legacy preserved for future generations.",
+  heroHeadline: 'The Legacy of Alhaji Tioluwalase "Baba Muyi" Majekodunmi',
+  legacyLine: "Entrepreneur. Community Leader. Family Patriarch. A Life Preserved for Future Generations.",
   introduction:
-    "Baba Muyi Legacy preserves the life, values, transport heritage, family story, and public memories of Alhaji Tioluwalase \"Baba Muyi\" Majekodunmi through a careful family-led archive.",
+    "Alhaji Tioluwalase \"Baba Muyi\" Majekodunmi was an entrepreneur, transport pioneer, community leader, and family patriarch whose life touched many people through generosity, leadership, and service. This archive preserves his story so future generations can understand not only what he achieved, but the values he lived by.",
+  biographyPreview:
+    "Every life has a story. Baba Muyi's story is one of enterprise, service, sacrifice, leadership, and enduring family legacy. Discover the experiences that shaped the man behind the name and continue to inspire future generations.",
+  documentaryPreview:
+    "Through documentary narration, family memories, historical records, and carefully preserved photographs, this film documents Baba Muyi's life for present and future generations.",
+  archivePurpose:
+    "Baba Muyi Legacy was established by Azeez Adeyemi Majekodunmi to preserve his father's life and make the archive accessible to children, grandchildren, future descendants, researchers, and the wider community. LegacyHub provides the platform behind the archive while Baba Muyi's story remains the centre of the experience.",
   curatorLine:
-    "The archive is documented and stewarded by Azeez Adeyemi Majekodunmi with family review, public publication controls, and respect for private records.",
+    "This archive is a continuing work shaped by family records, photographs, personal memories, documentary research, and contributions from people who knew Baba Muyi.",
   closing:
-    "This archive is being built slowly and carefully so future generations can encounter the stories, images, lessons, and community memory with dignity."
+    "This archive is being built carefully so future generations can encounter Baba Muyi's story, images, lessons, and community memory with dignity."
 } as const;
 
 export const archiveHomeCtas = [
-  { label: "Explore the biography", href: "/biography", primary: true },
-  { label: "View the timeline", href: "/timeline", primary: false }
+  { label: "Explore His Story", href: "/biography", primary: true },
+  { label: "Watch the Documentary", href: "/documentaries", primary: false },
+  { label: "Share a Memory", href: "/tributes", primary: false }
 ] as const;
 
 export const archiveJourneyPreview = [
   {
     label: "Family roots",
-    title: "Iboogun and Abeokuta roots",
+    title: "From Iboogun to Bariga",
     description: "A family-history path for approved stories about origins, upbringing, and formative influences.",
     href: "/early-life"
   },
   {
     label: "Life journey",
-    title: "Journey to Bariga",
+    title: "The Journey to Community Life",
     description: "A route for the family-reviewed account of movement, settlement, work, and community life.",
     href: "/journey-to-bariga"
   },
   {
     label: "Enterprise",
-    title: "Bolekaja transport",
+    title: "Building a Transport Legacy",
     description: "Transport history, work on the road, staff memories, and the social context of Bolekaja service.",
     href: "/bolekaja"
   },
   {
     label: "Transport heritage",
-    title: "TIOLUWA LASE Molue era",
+    title: "The TIOLUWA LASE Years",
     description: "A focused archive route for the TIOLUWA LASE bus identity, Molue memories, and published transport material.",
     href: "/tioluwa-lase-molue"
   },
   {
     label: "Community",
-    title: "Leadership and service",
+    title: "A Life of Service",
     description: "A place for reviewed public memories about counsel, community contribution, and humanitarian legacy.",
     href: "/community-leadership"
   },
   {
     label: "Legacy",
-    title: "Lessons for generations",
+    title: "Lessons for Future Generations",
     description: "Values, family stewardship, and public lessons preserved for children, grandchildren, and future readers.",
     href: "/lessons"
   }
 ] as const;
 
 export const archiveCollectionPreviews = [
-  { label: "Photographs", title: "Photo archive", href: "/gallery", description: "Published images and albums approved for public viewing." },
-  { label: "Documents", title: "Historical documents", href: "/documents", description: "Public document records when scans and permissions are ready." },
-  { label: "Transport", title: "Transport gallery", href: "/transport-gallery", description: "Bolekaja, Molue, routes, vehicles, and work memories." },
-  { label: "Stories", title: "Stories and memories", href: "/stories", description: "Reviewed public memories from the archive team." },
-  { label: "Film", title: "Documentary material", href: "/documentaries", description: "Documentary records, episodes, clips, and transcripts when published." },
-  { label: "Values", title: "Life lessons", href: "/lessons", description: "Published values, advice, and generational teaching." }
+  { label: "Photographs", title: "Historic photographs", href: "/gallery", description: "Published archive images with reviewed captions and respectful context." },
+  { label: "Family", title: "Family memories", href: "/family", description: "Photographs and memories connected to family life and future generations." },
+  { label: "Transport", title: "Transport history", href: "/transport-gallery", description: "Bolekaja, Molue, TIOLUWA LASE vehicles, routes, and work memories." },
+  { label: "Documents", title: "Historical documents", href: "/documents", description: "Public records and scans when permissions and descriptions are approved." },
+  { label: "Film", title: "Documentary material", href: "/documentaries", description: "Documentary records, chapters, clips, and transcripts when published." },
+  { label: "Stories", title: "Stories and tributes", href: "/stories", description: "Reviewed memories, tributes, corrections, and additional public context." }
 ] as const;
 
 export const transportHeritageLinks = [
@@ -72,8 +80,23 @@ export const transportHeritageLinks = [
 ] as const;
 
 export const archiveFooterCtas = [
-  { label: "Explore the biography", href: "/biography" },
-  { label: "View the timeline", href: "/timeline" },
-  { label: "Browse the gallery", href: "/gallery" },
-  { label: "Discover the transport legacy", href: "/bolekaja" }
+  { label: "Read His Biography", href: "/biography" },
+  { label: "Explore the Timeline", href: "/timeline" },
+  { label: "Visit the Gallery", href: "/gallery" },
+  { label: "Share a Memory", href: "/tributes" }
+] as const;
+
+export const archiveLessonThemes = [
+  {
+    title: "Kindness with wisdom",
+    description: "A reminder that generosity can be practiced with care, discernment, and protection for the people who depend on us."
+  },
+  {
+    title: "Family responsibility",
+    description: "The archive honours the duty to preserve family memory, strengthen future generations, and keep meaningful records safe."
+  },
+  {
+    title: "Hard work and service",
+    description: "Baba Muyi's legacy points visitors toward determination, community service, good character, and learning from sacrifice."
+  }
 ] as const;

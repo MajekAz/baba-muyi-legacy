@@ -9,14 +9,14 @@ const pageSeeds: Array<Omit<CmsPage, "id" | "workspaceId" | "legacyProfileId" | 
   {
     path: "/",
     eyebrow: "Digital legacy archive",
-    title: "Alhaji Tioluwalase \"Baba Muyi\" Majekodunmi",
-    description: "A living archive for family history, enterprise, transport heritage, public memories, documentary material, and the values Baba Muyi carried through his life.",
-    body: "This homepage introduces the archive’s purpose, principles, featured sections, and timeline preview for visitors.",
+    title: "The Legacy of Alhaji Tioluwalase \"Baba Muyi\" Majekodunmi",
+    description: "Entrepreneur. Community Leader. Family Patriarch. A Life Preserved for Future Generations.",
+    body: "Alhaji Tioluwalase \"Baba Muyi\" Majekodunmi was an entrepreneur, transport pioneer, community leader, and family patriarch whose life touched many people through generosity, leadership, and service.",
     cards: [
-      { id: "family-stewardship", title: "Family stewardship", description: "Preserving family memory with care, consent, and context." },
-      { id: "enterprise", title: "Enterprise", description: "Documenting the work, transport ventures, and people connected to the business." },
-      { id: "service", title: "Service", description: "Recording community contribution, counsel, and leadership." },
-      { id: "faith", title: "Faith", description: "Honouring values and lessons that shaped Baba Muyi's life." }
+      { id: "biography-preview", title: "The Man Behind the Legacy", description: "A concise doorway into the full biography.", href: "/biography" },
+      { id: "timeline-preview", title: "A Life Through Time", description: "Major periods and verified milestones arranged for careful exploration.", href: "/timeline" },
+      { id: "gallery-preview", title: "Moments Preserved", description: "Published photographs, documents, and archive media with reviewed context.", href: "/gallery" },
+      { id: "memory-preview", title: "Voices of Those He Touched", description: "A respectful invitation for memories, photographs, tributes, and corrections.", href: "/tributes" }
     ]
   },
   {

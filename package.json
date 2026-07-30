@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
+    "test": "pnpm test:milestone4-public-home && pnpm test:phase2-landing && pnpm test:legacyhub-multipage && pnpm test:cms-core && pnpm test:media-library && pnpm test:admin-polish",
     "bootstrap:owner": "node scripts/bootstrap-owner.mjs",
     "content:import": "node scripts/import-approved-content.mjs",
     "test:cms-core": "node scripts/test-cms-core.mjs",
