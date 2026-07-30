@@ -226,6 +226,32 @@ Review outcome:
 - No schema, migration, new CMS workflow, or homepage redesign was introduced.
 - No featured portrait was attached because no clearly approved portrait was identified.
 
+## Merge And Deployment Status
+
+PR number: #12
+
+Source commit: `ef38f1804ffcb2a54531c2a614cb735d036a522a`
+
+Merge commit: `44c6e433a2526b705269013f15e64997d115a15a`
+
+Merge date: 2026-07-30
+
+Merge strategy: squash merge into `main`
+
+Production deployment status: Pending owner/Hostinger deployment verification.
+
+Production verification date: Not completed. On 2026-07-30, `https://babamuyilegacy.com` did not resolve through DNS from the release-validation environment, and the reachable Hostinger preview URL had not yet served the merged Biography v1.0 content.
+
+Deployment note: The documented deployment workflow remains Hostinger Node.js hosting from `main`, using `pnpm install --frozen-lockfile && pnpm build` and `pnpm start`. No DNS, environment variable, Supabase credential, or Hostinger configuration change was made during this release task.
+
+Final CMS/fallback behaviour: A published Supabase Biography CMS record scoped to the active workspace and Baba Muyi legacy profile takes precedence. If no suitable live record exists, `/biography` uses the typed `BIOGRAPHY_EDITORIAL_PACK_v1.0` fallback. This fallback is isolated to the Biography collection.
+
+Featured-image status: No approved featured portrait is linked for v1.0.
+
+Known non-blocking enhancements: approved portrait, live Supabase CMS biography record, structured citations, footnotes, quick facts, pull quotes, chapter navigation, multiple inline media records, advanced source records, Yoruba biography edition, evidence attachments, and disputed-claim workflow.
+
+Rollback reference: revert merge commit `44c6e433a2526b705269013f15e64997d115a15a` before deployment, or open a focused rollback PR if already deployed. If a live CMS record is later created, archive or unpublish through the admin workflow rather than deleting remote data without Founder approval.
+
 ## Editor Update Process
 
 An editor can update the biography later by:
