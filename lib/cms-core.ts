@@ -178,13 +178,46 @@ export async function getCmsCoreRecords(collection: CmsCoreCollection, context: 
     throw new Error(`Unable to load ${config.pluralLabel.toLowerCase()}.`);
   }
 
-  return (data ?? []).map((row: Record<string, unknown>) => normalizeRecord(collection, row));
+  const records = (data ?? []).map((row: Record<string, unknown>) => normalizeRecord(collection, row));
+  if (records.length || collection !== "biography") {
+    return records;
+  }
+
+  const fallback = await getPublishedCmsContent(config.fallbackKind);
+  return fallback.map((record) => ({
+    id: record.id,
+    collection,
+    table: config.table,
+    title: record.title,
+    slug: record.slug,
+    summary: record.summary,
+    contentHtml: sanitizeRichText(record.body),
+    status: record.status as CmsWorkflowStatus,
+    visibility: record.visibility as CmsPrivacyState,
+    verificationStatus: record.verificationStatus as CmsVerificationState,
+    sortOrder: record.sortOrder,
+    author: record.author ?? "",
+    authorId: "",
+    createdBy: "",
+    lastEditorId: record.lastEditorId ?? "",
+    category: record.category ?? "",
+    tags: "",
+    location: "",
+    dateLabel: record.dateLabel ?? "",
+    eventDate: "",
+    seoTitle: record.seoTitle ?? "",
+    metaDescription: record.metaDescription ?? "",
+    scheduledPublicationDate: "",
+    publishedAt: "",
+    createdAt: record.createdAt,
+    updatedAt: record.updatedAt
+  }));
 }
 
-export async function getPublicCmsCoreRecords(collection: CmsCoreCollection): Promise<CmsCoreRecord[]> {
+export async function getPublicCmsCoreRecords(collection: CmsCoreCollection, context?: Pick<TenantContext, "workspaceId" | "legacyProfileId">): Promise<CmsCoreRecord[]> {
   noStore();
 
-  if (!hasSupabasePublicEnv()) {
+  const fallbackRecords = async () => {
     const config = cmsCoreCollections[collection];
     const fallback = await getPublishedCmsContent(config.fallbackKind);
     return fallback.map((record) => ({
@@ -202,7 +235,7 @@ export async function getPublicCmsCoreRecords(collection: CmsCoreCollection): Pr
       author: record.author ?? "",
       authorId: "",
       createdBy: "",
-      lastEditorId: "",
+      lastEditorId: record.lastEditorId ?? "",
       category: record.category ?? "",
       tags: "",
       location: "",
@@ -215,6 +248,10 @@ export async function getPublicCmsCoreRecords(collection: CmsCoreCollection): Pr
       createdAt: record.createdAt,
       updatedAt: record.updatedAt
     }));
+  };
+
+  if (!hasSupabasePublicEnv()) {
+    return fallbackRecords();
   }
 
   const config = cmsCoreCollections[collection];
@@ -225,6 +262,10 @@ export async function getPublicCmsCoreRecords(collection: CmsCoreCollection): Pr
     .eq("publish_state", "published")
     .eq("privacy_state", "public");
 
+  if (context) {
+    query = query.eq("workspace_id", context.workspaceId).eq("legacy_profile_id", context.legacyProfileId);
+  }
+
   if (collection === "stories") {
     query = query.eq("moderation_state", "approved");
   }
@@ -232,10 +273,18 @@ export async function getPublicCmsCoreRecords(collection: CmsCoreCollection): Pr
   const { data, error } = await query.order(orderColumn(collection), { ascending: collection !== "blog", nullsFirst: false });
 
   if (error) {
+    if (collection === "biography") {
+      return fallbackRecords();
+    }
     return [];
   }
 
-  return (data ?? []).map((row: Record<string, unknown>) => normalizeRecord(collection, row));
+  const records = (data ?? []).map((row: Record<string, unknown>) => normalizeRecord(collection, row));
+  if (records.length || collection !== "biography") {
+    return records;
+  }
+
+  return fallbackRecords();
 }
 
 export async function getPublicCmsCoreRecordBySlug(collection: CmsCoreCollection, slug: string) {

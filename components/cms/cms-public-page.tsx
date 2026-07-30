@@ -3,7 +3,7 @@ import Image from "next/image";
 import { PageShell } from "@/components/page-shell";
 import { StatusCard } from "@/components/status-card";
 import { getPublicCmsCoreRecords, type CmsCoreCollection } from "@/lib/cms-core";
-import { getCmsPageByPath, getPublishedCmsContent } from "@/lib/cms-store";
+import { getActiveCmsWorkspaceContext, getCmsPageByPath, getPublishedCmsContent } from "@/lib/cms-store";
 import { getPublicFeaturedMediaForContent } from "@/lib/media/queries";
 import type { CmsContentKind } from "@/lib/cms-types";
 
@@ -52,7 +52,9 @@ export async function CmsPublicPage({ path, children }: { path: string; children
   }
 
   const coreCollection = coreCollectionByPath[path];
-  const coreRecords = coreCollection ? await getPublicCmsCoreRecords(coreCollection) : [];
+  const { workspace, legacyProfile } = await getActiveCmsWorkspaceContext();
+  const tenantContext = { workspaceId: workspace.id, legacyProfileId: legacyProfile.id };
+  const coreRecords = coreCollection ? await getPublicCmsCoreRecords(coreCollection, tenantContext) : [];
   const featuredMedia = coreCollection && coreRecords.length
     ? await getPublicFeaturedMediaForContent(coreRecords[0].table, coreRecords.map((record) => record.id))
     : new Map();

@@ -13,9 +13,9 @@ export function SectionHeading({ eyebrow, title, children, inverse = false }: Se
           {eyebrow}
         </p>
       ) : null}
-      <h2 className={`mt-3 font-serif text-4xl font-semibold leading-tight sm:text-5xl ${inverse ? "text-white" : "text-archive-navy"}`}>
+      <h1 className={`mt-3 font-serif text-4xl font-semibold leading-tight sm:text-5xl ${inverse ? "text-white" : "text-archive-navy"}`}>
         {title}
-      </h2>
+      </h1>
       {children ? (
         <div className={`mt-4 text-base leading-7 ${inverse ? "text-white/74" : "text-slate-700"}`}>
           {children}
