@@ -11,7 +11,7 @@ const pageSeeds: Array<Omit<CmsPage, "id" | "workspaceId" | "legacyProfileId" | 
     eyebrow: "Digital legacy archive",
     title: "The Legacy of Alhaji Tioluwalase \"Baba Muyi\" Majekodunmi",
     description: "Entrepreneur. Community Leader. Family Patriarch. A Life Preserved for Future Generations.",
-    body: "Baba Muyi Legacy introduces the story of an entrepreneur, transport pioneer, family patriarch, and community leader remembered for generosity, courage, service, and determination.",
+    body: "Alhaji Tioluwalase \"Baba Muyi\" Majekodunmi was an entrepreneur, transport pioneer, community leader, and family patriarch whose life touched many people through generosity, leadership, and service.",
     cards: [
       { id: "biography-preview", title: "The Man Behind the Legacy", description: "A concise doorway into the full biography.", href: "/biography" },
       { id: "timeline-preview", title: "A Life Through Time", description: "Major periods and verified milestones arranged for careful exploration.", href: "/timeline" },

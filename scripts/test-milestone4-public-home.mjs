@@ -47,7 +47,8 @@ assert(adminLayout.includes("AdminShell") && !adminLayout.includes("PublicNaviga
 
 assert((homepage.match(/<h1/g) ?? []).length === 1, "single h1", "Cinematic homepage component defines exactly one h1.");
 assert(homepage.includes("break-words") && homepage.includes("motion-reduce"), "responsive safeguards", "Hero heading wraps and motion respects reduced-motion.");
-assert(!homepage.includes("dangerouslySetInnerHTML"), "safe rendering", "Homepage does not render raw unsanitised HTML.");
+assert(home.includes("type=\"application/ld+json\"") && home.includes("JSON.stringify(homepageJsonLd())"), "structured data", "Homepage emits JSON-LD through a serialized schema object.");
+assert(!homepage.includes("dangerouslySetInnerHTML"), "safe rendering", "Homepage component does not render raw unsanitised HTML.");
 assert(!/storage\/v1\/object|token=|SUPABASE_SERVICE_ROLE_KEY|LEGACYHUB_OWNER_PASSWORD/.test(homepage + archiveContent), "private media and secrets", "Homepage/content config contains no private storage URLs or secrets.");
 assert(!/register|sign up|create account|create workspace/i.test(homepage + archiveContent), "no public registration", "Homepage does not introduce public registration or workspace creation.");
 assert(

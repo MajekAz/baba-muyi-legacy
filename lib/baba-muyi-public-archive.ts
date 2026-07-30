@@ -5,11 +5,11 @@ export const babaMuyiArchiveFacts = {
   heroHeadline: 'The Legacy of Alhaji Tioluwalase "Baba Muyi" Majekodunmi',
   legacyLine: "Entrepreneur. Community Leader. Family Patriarch. A Life Preserved for Future Generations.",
   introduction:
-    "Baba Muyi Legacy preserves the story of an entrepreneur, transport pioneer, family patriarch, and community leader remembered for generosity, courage, service, and determination. The archive brings together his biography, photographs, family memories, lessons, and historical contributions so future generations can understand the life behind the name.",
+    "Alhaji Tioluwalase \"Baba Muyi\" Majekodunmi was an entrepreneur, transport pioneer, community leader, and family patriarch whose life touched many people through generosity, leadership, and service. This archive preserves his story so future generations can understand not only what he achieved, but the values he lived by.",
   biographyPreview:
-    "Alhaji Tioluwalase \"Baba Muyi\" Majekodunmi's story is being preserved through family records, personal memories, documentary research, and reviewed public contributions. This introduction offers a doorway into the man behind the archive without replacing the full biography.",
+    "Every life has a story. Baba Muyi's story is one of enterprise, service, sacrifice, leadership, and enduring family legacy. Discover the experiences that shaped the man behind the name and continue to inspire future generations.",
   documentaryPreview:
-    "The documentary record is a personal historical work created to preserve Baba Muyi's life, achievements, struggles, values, and lessons for the people who knew him and the generations still to come.",
+    "Through documentary narration, family memories, historical records, and carefully preserved photographs, this film documents Baba Muyi's life for present and future generations.",
   archivePurpose:
     "Baba Muyi Legacy was established by Azeez Adeyemi Majekodunmi to preserve his father's life and make the archive accessible to children, grandchildren, future descendants, researchers, and the wider community. LegacyHub provides the platform behind the archive while Baba Muyi's story remains the centre of the experience.",
   curatorLine:
@@ -27,37 +27,37 @@ export const archiveHomeCtas = [
 export const archiveJourneyPreview = [
   {
     label: "Family roots",
-    title: "Iboogun and Abeokuta roots",
+    title: "From Iboogun to Bariga",
     description: "A family-history path for approved stories about origins, upbringing, and formative influences.",
     href: "/early-life"
   },
   {
     label: "Life journey",
-    title: "Journey to Bariga",
+    title: "The Journey to Community Life",
     description: "A route for the family-reviewed account of movement, settlement, work, and community life.",
     href: "/journey-to-bariga"
   },
   {
     label: "Enterprise",
-    title: "Bolekaja transport",
+    title: "Building a Transport Legacy",
     description: "Transport history, work on the road, staff memories, and the social context of Bolekaja service.",
     href: "/bolekaja"
   },
   {
     label: "Transport heritage",
-    title: "TIOLUWA LASE Molue era",
+    title: "The TIOLUWA LASE Years",
     description: "A focused archive route for the TIOLUWA LASE bus identity, Molue memories, and published transport material.",
     href: "/tioluwa-lase-molue"
   },
   {
     label: "Community",
-    title: "Leadership and service",
+    title: "A Life of Service",
     description: "A place for reviewed public memories about counsel, community contribution, and humanitarian legacy.",
     href: "/community-leadership"
   },
   {
     label: "Legacy",
-    title: "Lessons for generations",
+    title: "Lessons for Future Generations",
     description: "Values, family stewardship, and public lessons preserved for children, grandchildren, and future readers.",
     href: "/lessons"
   }
