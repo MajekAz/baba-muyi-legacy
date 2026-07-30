@@ -50,6 +50,12 @@ assert(homepage.includes("break-words") && homepage.includes("motion-reduce"), "
 assert(!homepage.includes("dangerouslySetInnerHTML"), "safe rendering", "Homepage does not render raw unsanitised HTML.");
 assert(!/storage\/v1\/object|token=|SUPABASE_SERVICE_ROLE_KEY|LEGACYHUB_OWNER_PASSWORD/.test(homepage + archiveContent), "private media and secrets", "Homepage/content config contains no private storage URLs or secrets.");
 assert(!/register|sign up|create account|create workspace/i.test(homepage + archiveContent), "no public registration", "Homepage does not introduce public registration or workspace creation.");
+assert(
+  home.includes("The Life of Alhaji Tioluwalase Majekodunmi") &&
+  home.includes("Explore the life, transport history, family story, values and enduring legacy"),
+  "homepage metadata",
+  "Homepage metadata uses the approved editorial title and description."
+);
 
 const hrefs = new Set([...collectHrefs(archiveContent), ...collectHrefs(publicNavigationSource)]);
 const internalPublicHrefs = [...hrefs].filter((href) => href.startsWith("/") && !href.startsWith("/legacyhub") && href !== "/admin");
@@ -66,9 +72,22 @@ assert(
   "information architecture",
   "Fallback public navigation matches the simplified public archive route structure."
 );
-assert(homepage.includes("Archive portrait pending"), "hero fallback", "Hero has a graceful fallback when no approved public portrait exists.");
-assert(homepage.includes("Private, draft, review-stage or unpublished media is not embedded"), "publication safeguard copy", "Documentary section explains publication safeguards.");
-assert(homepage.includes("Family and community memories will appear only after review and publication."), "memory safeguard copy", "Memory empty state is respectful and review-aware.");
+assert(homepage.includes("Portrait under editorial review"), "hero fallback", "Hero has a graceful fallback when no approved public portrait exists.");
+assert(
+  archiveContent.includes("The Legacy of Alhaji Tioluwalase") &&
+  archiveContent.includes("Entrepreneur. Community Leader. Family Patriarch. A Life Preserved for Future Generations.") &&
+  homepage.includes("The Man Behind the Legacy") &&
+  homepage.includes("A Life Through Time") &&
+  homepage.includes("His Story on Film") &&
+  homepage.includes("Moments Preserved") &&
+  homepage.includes("Wisdom That Endures") &&
+  homepage.includes("Voices of Those He Touched") &&
+  homepage.includes("Preserving a Life for Future Generations"),
+  "approved editorial content",
+  "Homepage uses approved editorial section titles and hero copy."
+);
+assert(homepage.includes("The documentary area is reserved for approved film records"), "publication safeguard copy", "Documentary section explains publication safeguards.");
+assert(homepage.includes("Relatives, friends, neighbours, associates, and community members are invited"), "memory contribution copy", "Memory section invites reviewed public contributions respectfully.");
 
 assert(packageJson.includes("\"test:milestone4-public-home\""), "package script", "Milestone 4 public homepage test command is registered.");
 

@@ -3,6 +3,32 @@ import { getCmsCoreRecords } from "@/lib/cms-core";
 import { getCmsMenus, getPublishedCmsContent, getActiveCmsWorkspaceContext } from "@/lib/cms-store";
 import { getPublicMediaRecords } from "@/lib/media/queries";
 import type { CmsCoreCollection, CmsCoreRecord } from "@/lib/cms-core";
+import type { Metadata } from "next";
+
+const homepageTitle = "Baba Muyi Legacy | The Life of Alhaji Tioluwalase Majekodunmi";
+const homepageDescription =
+  "Explore the life, transport history, family story, values and enduring legacy of Alhaji Tioluwalase “Baba Muyi” Majekodunmi through biography, photographs, documentary film, memories and historical records.";
+
+export const metadata: Metadata = {
+  title: {
+    absolute: homepageTitle
+  },
+  description: homepageDescription,
+  alternates: {
+    canonical: "/"
+  },
+  openGraph: {
+    title: homepageTitle,
+    description: homepageDescription,
+    type: "website",
+    url: "/"
+  },
+  twitter: {
+    card: "summary",
+    title: homepageTitle,
+    description: homepageDescription
+  }
+};
 
 async function getHomepagePreviewRecords(collection: CmsCoreCollection, context: { workspaceId: string; legacyProfileId: string }): Promise<CmsCoreRecord[]> {
   try {
@@ -29,6 +55,7 @@ export default async function HomePage() {
   return (
     <BabaMuyiCinematicHome
       documentary={documentaries[0] ? { title: documentaries[0].title, summary: documentaries[0].summary } : undefined}
+      galleryImages={images.slice(1, 4)}
       heroImage={images[0]}
       lessons={lessons}
       navigation={navigation}
