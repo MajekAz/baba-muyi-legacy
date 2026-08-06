@@ -77,7 +77,7 @@ export const babaMuyiEditorialPageOverrides: Array<Partial<CmsPage> & { id: stri
     description:
       "Editorial lessons drawn from the approved biography, presented as reflections rather than invented quotations.",
     body:
-      "These lessons are not presented as verbatim sayings unless a source records them as direct words. They summarise themes from Baba Muyi’s life: work, service, family responsibility, kindness, discernment, documentation, and preservation.",
+      "These lessons are reflections drawn from Baba Muyi’s documented life and family history. They are not presented as his direct words unless a verified source records them as such.",
     seoTitle: "Legacy Lessons from Baba Muyi | LegacyHub",
     metaDescription:
       "Read values and lessons drawn from the approved biography of Alhaji Tioluwalase “Baba Muyi” Majekodunmi, including service, hard work, responsibility, discernment, and preservation.",
@@ -529,7 +529,7 @@ export const babaMuyiEditorialContentRecords: CmsContentRecord[] = [
     title: "Technology should support human memory and dignity",
     slug: "technology-memory-dignity",
     summary: "LegacyHub is the platform layer behind the archive, but the human story remains the reason for the technology.",
-    body: "Historical connection: the archive uses LegacyHub to preserve both achievement and adversity with editorial care. Practical lesson: technology should serve memory, dignity, culture, and humanity. Related chapter: Preserving His Story Through LegacyHub.",
+    body: "Historical connection: This lesson arises from the decision to preserve Baba Muyi’s history through LegacyHub. Technology supports the archive, but his life, character, relationships, and human influence remain at the centre of the story. Practical lesson: technology should serve memory, dignity, culture, and humanity. Related chapter: Preserving His Story Through LegacyHub.",
     status: "published",
     visibility: "public",
     verificationStatus: "family_memory",
