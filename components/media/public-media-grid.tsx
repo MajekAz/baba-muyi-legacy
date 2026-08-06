@@ -7,7 +7,7 @@ export function PublicMediaGrid({ records }: { records: MediaRecord[] }) {
     return (
       <div className="rounded border border-archive-navy/12 bg-white/80 p-6">
         <h2 className="font-serif text-2xl text-archive-navy">No public media yet</h2>
-        <p className="mt-2 text-sm leading-6 text-slate-600">Approved public media will appear here when the archive team publishes it.</p>
+        <p className="mt-2 text-sm leading-6 text-slate-600">This area remains empty until images, captions, source notes, and permissions are approved for public release.</p>
       </div>
     );
   }

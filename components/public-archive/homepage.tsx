@@ -69,9 +69,8 @@ function CinematicHero({ heroImage }: { heroImage?: MediaRecord }) {
           </div>
         </div>
 
-        <figure className="relative">
-          {heroImage?.mediaType === "image" && heroImage.signedUrl ? (
-            <>
+        {heroImage?.mediaType === "image" && heroImage.signedUrl ? (
+          <figure className="relative">
               <Image
                 priority
                 className="aspect-[4/5] w-full rounded-sm border border-white/18 object-cover shadow-2xl"
@@ -85,21 +84,8 @@ function CinematicHero({ heroImage }: { heroImage?: MediaRecord }) {
                 {heroImage.caption || heroImage.description || heroImage.title}
                 {heroImage.source ? <span className="block text-white/48">Source: {heroImage.source}</span> : null}
               </figcaption>
-            </>
-          ) : (
-            <div className="aspect-[4/5] rounded-sm border border-white/18 bg-[#1c2530] p-6 shadow-2xl">
-              <div className="flex h-full flex-col justify-between border border-archive-gold/28 p-6">
-                <p className="text-xs font-black uppercase tracking-[0.22em] text-archive-gold">Portrait under editorial review</p>
-                <div>
-                  <p className="font-serif text-4xl leading-none text-white">Baba Muyi Legacy</p>
-                  <p className="mt-4 max-w-sm text-sm leading-6 text-white/66">
-                    A public portrait will appear here only after the family archive team approves the image, caption, source, and permissions.
-                  </p>
-                </div>
-              </div>
-            </div>
-          )}
-        </figure>
+          </figure>
+        ) : null}
       </div>
     </section>
   );

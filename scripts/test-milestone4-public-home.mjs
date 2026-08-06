@@ -73,7 +73,7 @@ assert(
   "information architecture",
   "Fallback public navigation matches the simplified public archive route structure."
 );
-assert(homepage.includes("Portrait under editorial review"), "hero fallback", "Hero has a graceful fallback when no approved public portrait exists.");
+assert(!homepage.includes("Portrait under editorial review"), "hero fallback", "Hero does not render an empty portrait placeholder when no approved public portrait exists.");
 assert(
   archiveContent.includes("The Legacy of Alhaji Tioluwalase") &&
   archiveContent.includes("Entrepreneur. Community Leader. Family Patriarch. A Life Preserved for Future Generations.") &&

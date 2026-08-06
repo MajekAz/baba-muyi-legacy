@@ -164,12 +164,12 @@ const pages: CmsPage[] = [
     eyebrow,
     title,
     description,
-    body: "Approved material for this section is being prepared for publication.",
+    body: "This archive section will open after reviewed material is approved for public release.",
     cards: [
       {
         id: `${slugFromPath(path)}-cms-ready`,
-        title: "Content in preparation",
-        description: "Family-reviewed material will appear here when it is ready."
+        title: "Under editorial review",
+        description: "The archive team will publish this section when the material has context, permissions, and approval."
       }
     ]
   }))

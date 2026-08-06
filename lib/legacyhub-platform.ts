@@ -10,14 +10,14 @@ export const platformNavItems = [
 ] as const;
 
 export const missionStatement =
-  "To preserve the stories, values, achievements, and memories of individuals, families, communities, and organisations for future generations through beautiful, secure, and collaborative digital archives.";
+  "LegacyHub exists to help families, communities, founders, institutions, and organisations preserve the people, stories, values, achievements, photographs, documents, and experiences that shaped them.";
 
 export const legacyHubValues = [
-  ["Preserve before it is forgotten.", "Memories, photographs, documents, and voices can disappear quietly. LegacyHub is shaped around timely, careful preservation."],
-  ["Tell authentic stories.", "Archives should be attributed, reviewed, and honest about what is known, what is private, and what still needs context."],
-  ["Build for generations, not trends.", "The platform is designed for long-term stewardship rather than disposable pages or short campaign cycles."],
-  ["Respect history and culture.", "Each archive carries family, community, religious, cultural, and emotional meaning that must be handled with care."],
-  ["Make technology serve humanity.", "The product exists to support memory, dignity, collaboration, and responsible access."]
+  ["Memories disappear when they are not preserved.", "Stories are often held by a few people, scattered across devices, albums, boxes, conversations, and private family knowledge. LegacyHub is shaped around timely, careful preservation."],
+  ["Every life contains history.", "A digital archive can help families, communities, and institutions recognise the value of ordinary lives, public service, enterprise, culture, and family memory."],
+  ["Families need more than temporary posts.", "LegacyHub is designed for long-term stewardship rather than disposable social-media fragments or short campaign pages."],
+  ["Preservation requires structure.", "Responsible archives need roles, review, privacy, moderation, source notes, attribution, and a clear distinction between private material and public storytelling."],
+  ["Technology should serve memory and dignity.", "The product exists to support culture, humanity, collaboration, responsible access, and intergenerational understanding."]
 ] as const;
 
 export const audienceGroups = [
@@ -75,13 +75,13 @@ export const collaborationSteps = [
 ] as const;
 
 export const flagshipPreviews = [
-  ["Biography", "Structured chapters for life story material approved for public release.", "/biography"],
-  ["Historical timeline", "A public timeline for milestones and archive context.", "/timeline"],
-  ["TIOLUWA LASE transport legacy", "Transport heritage routes, stories, and public memory.", "/tioluwa-lase-molue"],
-  ["Photo archive", "Published photographs and albums from the archive team.", "/gallery"],
-  ["Documentary stories", "Documentary-related routes and production material when published.", "/documentaries"],
-  ["Family and community memories", "Reviewed memories, family history, and community reflections.", "/stories"],
-  ["Values and life lessons", "Lessons and values preserved for future generations.", "/lessons"]
+  ["Biography", "The approved biography preserves Baba Muyi’s roots, family responsibility, entrepreneurship, transport heritage, service, hardship, and enduring lessons.", "/biography"],
+  ["Historical timeline", "Broad life phases are presented honestly where exact dates are not yet verified.", "/timeline"],
+  ["TIOLUWA LASE transport legacy", "Transport heritage routes, public memory, and Bolekaja-to-Molue context are organised for careful review.", "/tioluwa-lase-molue"],
+  ["Photo archive", "Published photographs and albums appear only with reviewed captions, source notes, and permissions.", "/gallery"],
+  ["Documentary stories", "Documentary material supports the biography through narration, family memories, records, photographs, and context.", "/documentaries"],
+  ["Family and community memories", "Reviewed memories, corrections, and public tributes can deepen the archive without exposing private family material.", "/tributes"],
+  ["Values and life lessons", "Editorial lessons are drawn from Baba Muyi’s life without presenting reflections as invented quotations.", "/lessons"]
 ] as const;
 
 export const completedRoadmapStages = [

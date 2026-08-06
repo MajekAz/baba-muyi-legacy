@@ -31,7 +31,7 @@ const overviewCards = [
   {
     title: "Flagship Archive",
     href: "/legacyhub/flagship-archive",
-    body: "Baba Muyi Legacy is the first public archive demonstrating the LegacyHub platform foundation.",
+    body: "Baba Muyi Legacy is the first public digital archive powered by LegacyHub.",
     icon: BookOpen
   },
   {
@@ -88,7 +88,7 @@ export default function LegacyHubHomePage() {
               <p className="text-xs font-black uppercase tracking-[0.18em] text-amber-300">Platform relationship</p>
               <p className="mt-3 font-serif text-3xl text-white">{flagshipArchiveBrand.name}</p>
               <p className="mt-3 leading-7 text-white/72">
-                The first flagship archive powered by LegacyHub. The platform is being prepared for future families and organisations.
+                The first public digital archive powered by LegacyHub, preserving the life, family history, transport heritage, photographs, documentary materials, oral histories, and lessons of Alhaji Tioluwalase &quot;Baba Muyi&quot; Majekodunmi.
               </p>
             </div>
             <div className="grid grid-cols-2 gap-4">
