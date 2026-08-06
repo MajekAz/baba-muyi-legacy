@@ -40,6 +40,44 @@ const coreCollectionByPath: Record<string, CmsCoreCollection> = {
   "/blog": "blog"
 };
 
+type LessonSections = {
+  historicalConnection: string;
+  practicalLesson: string;
+  relatedChapter: string;
+};
+
+function plainTextFromHtml(value: string) {
+  return value
+    .replace(/<[^>]*>/g, " ")
+    .replace(/&quot;/g, "\"")
+    .replace(/&#x27;/g, "'")
+    .replace(/&#39;/g, "'")
+    .replace(/&amp;/g, "&")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function parseLessonSections(contentHtml: string): LessonSections | null {
+  const text = plainTextFromHtml(contentHtml);
+  const match = text.match(/^Historical connection:\s*(.*?)\s*Practical lesson:\s*(.*?)\s*Related chapter:\s*(.*?)\.?$/i);
+  if (!match) return null;
+
+  return {
+    historicalConnection: match[1].trim(),
+    practicalLesson: match[2].trim(),
+    relatedChapter: match[3].trim().replace(/\.$/, "")
+  };
+}
+
+function LessonSection({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <section className="rounded border border-archive-navy/10 bg-white/70 p-4">
+      <h3 className="text-xs font-bold uppercase tracking-[0.16em] text-archive-brown">{title}</h3>
+      <p className="mt-2 text-sm leading-6 text-slate-700">{children}</p>
+    </section>
+  );
+}
+
 export async function CmsPublicPage({ path, children }: { path: string; children?: React.ReactNode }) {
   const page = await getCmsPageByPath(path);
 
@@ -83,6 +121,17 @@ export async function CmsPublicPage({ path, children }: { path: string; children
           <div className="grid gap-4">
             {coreRecords.length ? coreRecords.map((record) => {
               const featured = featuredMedia.get(record.id);
+              const lessonSections = path === "/lessons" && record.contentHtml ? parseLessonSections(record.contentHtml) : null;
+              const relatedBiographyChapter = lessonSections?.relatedChapter && lessonSections.relatedChapter !== "Preserving His Story Through LegacyHub"
+                ? lessonSections.relatedChapter
+                : "";
+              const actionHref = path === "/lessons" && relatedBiographyChapter ? "/biography" : `${path}/${record.slug}`;
+              const actionLabel = path === "/lessons" && relatedBiographyChapter ? "Read related biography chapter" : path === "/lessons" ? "Explore the lesson" : "Read article";
+              const actionAriaLabel = path === "/lessons" && relatedBiographyChapter
+                ? `Read related biography chapter for ${record.title}: ${relatedBiographyChapter}`
+                : path === "/lessons"
+                  ? `Explore the lesson: ${record.title}`
+                  : `Read article: ${record.title}`;
               return (
               <article className="rounded border border-archive-navy/12 bg-white/80 p-6 shadow-sm" key={record.id}>
                 {featured?.mediaType === "image" && featured.signedUrl ? (
@@ -97,10 +146,20 @@ export async function CmsPublicPage({ path, children }: { path: string; children
                 </p>
                 <h2 className="mt-2 font-serif text-3xl text-archive-navy">{record.title}</h2>
                 <p className="mt-3 leading-7 text-slate-700">{record.summary}</p>
-                {record.contentHtml ? <div className="prose mt-4 max-w-none text-slate-700" dangerouslySetInnerHTML={{ __html: record.contentHtml }} /> : null}
+                {lessonSections ? (
+                  <div className="mt-5 grid gap-3">
+                    <LessonSection title="Historical connection">{lessonSections.historicalConnection}</LessonSection>
+                    <LessonSection title="Practical lesson">{lessonSections.practicalLesson}</LessonSection>
+                    <LessonSection title="Related chapter">{lessonSections.relatedChapter}</LessonSection>
+                  </div>
+                ) : record.contentHtml ? <div className="prose mt-4 max-w-none text-slate-700" dangerouslySetInnerHTML={{ __html: record.contentHtml }} /> : null}
                 {(path === "/lessons" || path === "/blog") && record.slug ? (
-                  <Link className="mt-4 inline-flex rounded bg-archive-navy px-4 py-2 text-sm font-semibold text-white" href={`${path}/${record.slug}`}>
-                    Read more
+                  <Link
+                    aria-label={actionAriaLabel}
+                    className="mt-4 inline-flex rounded bg-archive-navy px-4 py-2 text-sm font-semibold text-white"
+                    href={actionHref}
+                  >
+                    {actionLabel}
                   </Link>
                 ) : null}
               </article>
