@@ -1,7 +1,20 @@
+import type { Metadata } from "next";
 import { PageShell } from "@/components/page-shell";
 import { StatusCard } from "@/components/status-card";
 import { getPublicCmsCoreRecords } from "@/lib/cms-core";
+import { siteConfig } from "@/lib/site";
 import Link from "next/link";
+
+const title = "Baba Muyi Stories and Memories | LegacyHub";
+const description = "Reviewed public stories and memories connected to the Baba Muyi Legacy archive.";
+
+export const metadata: Metadata = {
+  title,
+  description,
+  alternates: { canonical: new URL("/stories", siteConfig.url).toString() },
+  openGraph: { title, description, url: new URL("/stories", siteConfig.url).toString(), siteName: siteConfig.name, type: "website" },
+  twitter: { card: "summary", title, description }
+};
 
 export default async function StoriesPage() {
   const records = await getPublicCmsCoreRecords("stories");
@@ -19,7 +32,7 @@ export default async function StoriesPage() {
             </Link>
           </article>
         )) : (
-          <StatusCard title="No public stories yet" description="Approved public stories will appear here after review." />
+          <StatusCard title="No public stories yet" description="Reviewed memories will appear here only after consent, attribution, and public-release checks are complete." />
         )}
       </div>
     </PageShell>

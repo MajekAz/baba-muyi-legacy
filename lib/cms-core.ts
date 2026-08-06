@@ -16,6 +16,7 @@ export type { CmsCoreCollection, CmsCoreRecord, CmsCoreTable, CmsPrivacyState, C
 const statusSchema = z.enum(["draft", "in_review", "scheduled", "published", "archived"]);
 const visibilitySchema = z.enum(["public", "preview", "private", "family_only", "registered", "invited", "specific_users", "password_protected"]);
 const verificationSchema = z.enum(["unverified", "family_memory", "partially_verified", "verified"]);
+const editorialFallbackCollections = new Set<CmsCoreCollection>(["biography", "timeline", "lessons"]);
 
 export const cmsCoreFormSchema = z.object({
   id: z.string().uuid().optional().or(z.literal("")),
@@ -179,7 +180,7 @@ export async function getCmsCoreRecords(collection: CmsCoreCollection, context: 
   }
 
   const records = (data ?? []).map((row: Record<string, unknown>) => normalizeRecord(collection, row));
-  if (records.length || collection !== "biography") {
+  if (records.length || !editorialFallbackCollections.has(collection)) {
     return records;
   }
 
@@ -273,14 +274,14 @@ export async function getPublicCmsCoreRecords(collection: CmsCoreCollection, con
   const { data, error } = await query.order(orderColumn(collection), { ascending: collection !== "blog", nullsFirst: false });
 
   if (error) {
-    if (collection === "biography") {
+    if (editorialFallbackCollections.has(collection)) {
       return fallbackRecords();
     }
     return [];
   }
 
   const records = (data ?? []).map((row: Record<string, unknown>) => normalizeRecord(collection, row));
-  if (records.length || collection !== "biography") {
+  if (records.length || !editorialFallbackCollections.has(collection)) {
     return records;
   }
 

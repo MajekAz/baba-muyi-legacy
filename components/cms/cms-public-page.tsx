@@ -46,7 +46,7 @@ export async function CmsPublicPage({ path, children }: { path: string; children
   if (!page) {
     return (
       <PageShell eyebrow="Archive" title="Page awaiting publication" description="This section is being prepared for public release.">
-        <StatusCard title="Content in preparation" description="Family-reviewed material will appear here when it is ready." />
+        <StatusCard title="Under editorial review" description="This archive section will open after the family archive team approves the material for public release." />
       </PageShell>
     );
   }
@@ -106,7 +106,7 @@ export async function CmsPublicPage({ path, children }: { path: string; children
               </article>
               );
             }) : (
-              <StatusCard title="No public records yet" description="Approved public records will appear here after the family archive team publishes them." />
+              <StatusCard title="No public records yet" description="This section will remain quiet until reviewed material is approved for public release." />
             )}
           </div>
         ) : related.length ? (

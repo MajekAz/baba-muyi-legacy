@@ -4,6 +4,7 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { unstable_noStore as noStore } from "next/cache";
 import type { CmsCollectionSummary, CmsContentKind, CmsContentRecord, CmsMenuItem, CmsPage, CmsStore } from "@/lib/cms-types";
+import { babaMuyiEditorialContentRecords, babaMuyiEditorialPageOverrides } from "@/lib/baba-muyi-editorial-content-v1";
 import { biographyEditorialChapter, biographyEditorialPage } from "@/lib/biography-editorial-pack-v1";
 import { defaultLegacyProfileId, defaultWorkspaceId, initialCmsStore } from "@/lib/cms-seed";
 import { allowsLocalFallback, hasSupabasePublicEnv } from "@/lib/env";
@@ -17,11 +18,22 @@ async function writeStore(store: CmsStore) {
 }
 
 function withTenancyFallback(store: CmsStore): CmsStore {
-  const hasBiographyEditorialPack = store.content.some((record) =>
+  const editorialRecords = [biographyEditorialChapter, ...babaMuyiEditorialContentRecords];
+  const pagesByPath = new Map([biographyEditorialPage, ...babaMuyiEditorialPageOverrides].map((page) => [page.path, page]));
+  const pagesById = new Map([biographyEditorialPage, ...babaMuyiEditorialPageOverrides].map((page) => [page.id, page]));
+  const content = store.content.map((record) => ({
+    ...record,
+    workspaceId: record.workspaceId ?? defaultWorkspaceId,
+    legacyProfileId: record.legacyProfileId ?? defaultLegacyProfileId,
+    createdAt: record.createdAt ?? record.updatedAt
+  }));
+  const missingEditorialRecords = editorialRecords.filter((editorial) =>
+    !content.some((record) =>
     record.workspaceId === defaultWorkspaceId &&
     record.legacyProfileId === defaultLegacyProfileId &&
-    record.kind === "biography_chapter" &&
-    (record.id === biographyEditorialChapter.id || record.slug === biographyEditorialChapter.slug)
+      record.kind === editorial.kind &&
+      (record.id === editorial.id || record.slug === editorial.slug)
+    )
   );
 
   return {
@@ -31,28 +43,23 @@ function withTenancyFallback(store: CmsStore): CmsStore {
     activeLegacyProfileId: store.activeLegacyProfileId ?? defaultLegacyProfileId,
     workspaces: store.workspaces?.length ? store.workspaces : initialCmsStore.workspaces,
     legacyProfiles: store.legacyProfiles?.length ? store.legacyProfiles : initialCmsStore.legacyProfiles,
-    pages: store.pages.map((page) => page.id === biographyEditorialPage.id || page.path === biographyEditorialPage.path ? {
+    pages: store.pages.map((page) => {
+      const editorialPage = pagesById.get(page.id) ?? pagesByPath.get(page.path);
+      return editorialPage ? {
       ...page,
-      ...biographyEditorialPage,
+        ...editorialPage,
       workspaceId: page.workspaceId ?? defaultWorkspaceId,
       legacyProfileId: page.legacyProfileId ?? defaultLegacyProfileId,
       slug: page.slug,
       status: page.status,
       visibility: page.visibility
-    } : ({
+      } : ({
       ...page,
       workspaceId: page.workspaceId ?? defaultWorkspaceId,
       legacyProfileId: page.legacyProfileId ?? defaultLegacyProfileId
-    })),
-    content: [
-      ...store.content.map((record) => ({
-      ...record,
-      workspaceId: record.workspaceId ?? defaultWorkspaceId,
-      legacyProfileId: record.legacyProfileId ?? defaultLegacyProfileId,
-      createdAt: record.createdAt ?? record.updatedAt
-      })),
-      ...(hasBiographyEditorialPack ? [] : [biographyEditorialChapter])
-    ],
+      });
+    }),
+    content: [...content, ...missingEditorialRecords],
     menuItems: store.menuItems.map((item) => ({
       ...item,
       workspaceId: item.workspaceId ?? defaultWorkspaceId,

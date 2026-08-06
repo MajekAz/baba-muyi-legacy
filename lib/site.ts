@@ -51,7 +51,7 @@ export const babaMuyiProfile: LegacyProfile = {
   honorificName: "Alhaji Tioluwalase \"Baba Muyi\" Majekodunmi",
   knownAs: "Baba Muyi",
   summary:
-    "A living archive for family history, enterprise, transport heritage, public memories, documentary material, and the values Baba Muyi carried through his life.",
+    "A respectful archive preserving family history, transport heritage, documentary material, public memories, and the values Baba Muyi carried through his life.",
   values: ["Family stewardship", "Enterprise", "Service", "Faith", "Community memory"],
   seoTitle: "Baba Muyi Legacy | Alhaji Tioluwalase Majekodunmi",
   seoDescription:
@@ -62,27 +62,27 @@ export const timelineSeed: TimelineEvent[] = [
   {
     id: "family-roots",
     year: "Early years",
-    title: "Family roots and formation",
-    location: "Nigeria",
+    title: "Birth and family roots in Abeokuta",
+    location: "Abeokuta and Iboogun",
     category: "family",
     description:
-      "A curated chapter for childhood, family lineage, education, early influences, and the people who shaped his character."
+      "The approved biography records Baba Muyi’s birth in Abeokuta and family roots connected to Iboogun."
   },
   {
     id: "transport-enterprise",
     year: "Enterprise years",
-    title: "Building transport ventures",
+    title: "From Bolekaja to TIOLUWA LASE",
     category: "transport",
     description:
-      "A dedicated record for Bolekaja history, TIOLUWA LASE Molue stories, vehicle records, routes, drivers, conductors, and community impact."
+      "His transport story includes the Bolekaja period and the TIOLUWA LASE identity associated with his bus enterprise."
   },
   {
     id: "community-service",
     year: "Community life",
-    title: "Service, counsel, and contribution",
+    title: "Community leadership and service",
     category: "community",
     description:
-      "A place for testimonies from family, neighbours, staff, passengers, business partners, faith communities, and friends."
+      "The biography remembers him as a high chief, community figure, adviser, helper, and family patriarch."
   }
 ];
 
@@ -90,26 +90,26 @@ export const publicFeatures: FeatureCard[] = [
   {
     href: "/biography",
     eyebrow: "Life Story",
-    title: "Full biography",
-    description: "Structured chapters for family roots, work, faith, entrepreneurship, and legacy."
+    title: "Official biography",
+    description: "Approved chapters covering family roots, Bariga, enterprise, transport heritage, service, family responsibility, resilience, and legacy."
   },
   {
     href: "/timeline",
     eyebrow: "Archive",
-    title: "Interactive timeline",
-    description: "Milestones, places, images, documents, and memories arranged by period."
+    title: "Historical timeline",
+    description: "Broad life phases are presented carefully where exact dates are not yet verified."
   },
   {
     href: "/documentaries",
     eyebrow: "Film",
     title: "Documentary centre",
-    description: "Episodes, transcripts, chapters, external playback IDs, and production notes."
+    description: "Documentary material connected to biography, family memories, historical records, photographs, and transport heritage."
   },
   {
     href: "/gallery",
     eyebrow: "Media",
     title: "Photo gallery",
-    description: "Albums with captions, alt text, privacy controls, and publication status."
+    description: "Published images appear with reviewed captions, source notes, permissions, privacy controls, and publication status."
   },
   {
     href: "/journey-map",
@@ -121,7 +121,7 @@ export const publicFeatures: FeatureCard[] = [
     href: "/tributes",
     eyebrow: "Memories",
     title: "Community tributes",
-    description: "Reviewed public stories, condolences, lessons, and family-approved submissions."
+    description: "Reviewed public memories, tributes, corrections, and family-approved submissions."
   }
 ];
 
