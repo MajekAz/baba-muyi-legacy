@@ -1,4 +1,4 @@
-import { CmsPublicPage } from "@/components/cms/cms-public-page";
+import { BiographyLongformPage } from "@/components/public-archive/biography-longform-page";
 import { getPublicCmsCoreRecords } from "@/lib/cms-core";
 import { getActiveCmsWorkspaceContext } from "@/lib/cms-store";
 import { getPublicFeaturedMediaForContent } from "@/lib/media/queries";
@@ -58,7 +58,7 @@ export async function BiographyPublicPage() {
         suppressHydrationWarning
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <CmsPublicPage path="/biography" />
+      <BiographyLongformPage />
     </>
   );
 }

@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "test": "pnpm test:milestone4-public-home && pnpm test:phase2-landing && pnpm test:legacyhub-multipage && pnpm test:cms-core && pnpm test:media-library && pnpm test:admin-polish",
+    "test": "pnpm test:biography-longform && pnpm test:milestone4-public-home && pnpm test:phase2-landing && pnpm test:legacyhub-multipage && pnpm test:cms-core && pnpm test:media-library && pnpm test:admin-polish",
     "bootstrap:owner": "node scripts/bootstrap-owner.mjs",
     "content:import": "node scripts/import-approved-content.mjs",
     "test:cms-core": "node scripts/test-cms-core.mjs",
@@ -18,6 +18,7 @@
     "test:phase2-landing": "node scripts/test-phase-2-landing.mjs",
     "test:legacyhub-multipage": "node scripts/test-legacyhub-multipage.mjs",
     "test:milestone4-public-home": "node scripts/test-milestone4-public-home.mjs",
+    "test:biography-longform": "node scripts/test-biography-longform.mjs",
     "test:cms-remote-roles": "node scripts/test-cms-remote-roles.mjs",
     "verify:foundation": "node scripts/verify-foundation.mjs"
   },
