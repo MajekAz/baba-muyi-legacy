@@ -28,6 +28,48 @@ a {
   text-decoration: none;
 }
 
+.biography-prose > * + * {
+  margin-top: 1.35em;
+}
+
+.biography-prose h3 {
+  margin-top: 2.2em;
+  font-family: var(--font-serif);
+  font-size: clamp(1.55rem, 1.2rem + 1vw, 2.15rem);
+  line-height: 1.18;
+  color: #071827;
+}
+
+.biography-prose p {
+  max-width: 78ch;
+}
+
+.biography-prose ul,
+.biography-prose ol {
+  display: grid;
+  gap: 0.65rem;
+  padding-left: 1.35rem;
+}
+
+.biography-prose li {
+  padding-left: 0.2rem;
+}
+
+.biography-prose blockquote {
+  margin: 2rem 0;
+  border-left: 4px solid #c6a15b;
+  background: rgba(247, 241, 228, 0.82);
+  padding: 1.1rem 1.25rem;
+  font-family: var(--font-serif);
+  font-size: clamp(1.35rem, 1.1rem + 0.8vw, 1.9rem);
+  line-height: 1.35;
+  color: #071827;
+}
+
+.biography-prose blockquote p {
+  margin: 0;
+}
+
 :focus-visible {
   outline: 3px solid #c6a15b;
   outline-offset: 4px;
