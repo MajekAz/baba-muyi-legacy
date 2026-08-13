@@ -41,14 +41,13 @@ const pageSeeds: Array<Omit<CmsPage, "id" | "workspaceId" | "legacyProfileId" | 
   },
   {
     path: "/documentaries",
-    eyebrow: "Film archive",
-    title: "Documentary centre",
-    description: "Manage documentaries, episodes, trailers, transcripts, subtitles, chapters, and streaming-provider playback IDs.",
-    body: "Documentary material will be organised here with episodes, transcripts, viewing notes, and approved playback references.",
+    eyebrow: "Documentary Archive",
+    title: "Baba Muyi Documentaries",
+    description: "Watch approved documentary records connected to Baba Muyi’s life, family memories, historical records, photographs, transport heritage, and continuing legacy archive.",
+    body: "Approved documentary recordings are available below. Additional transcripts, subtitles, clips, and supporting records will be published after verification and editorial approval.",
     cards: [
-      { id: "episodes", title: "Episodes", description: "Episode metadata, chapters, release status, thumbnails, and playback IDs.", href: "/documentary-episodes" },
-      { id: "transcripts", title: "Transcripts", description: "Searchable transcripts with timestamps and family-approved corrections.", href: "/transcripts" },
-      { id: "production-notes", title: "Production notes", description: "Interview logs, credits, contributors, permissions, and review status." }
+      { id: "documentary-biography-link", title: "Relationship to the biography", description: "The documentary work supports the approved biography by preserving narration, memories, records, photographs, and context.", href: "/biography" },
+      { id: "documentary-transcripts-link", title: "Transcripts and clips", description: "Transcripts, subtitles, trailers, and clips remain review-controlled until approved for public release.", href: "/transcripts" }
     ]
   },
   {
@@ -257,6 +256,44 @@ const content: CmsContentRecord[] = [
     sortOrder: 1,
     relatedPath: "/blog",
     category: "curator-note",
+    updatedAt: now,
+    createdAt: now
+  },
+  {
+    id: "documentary-baba-muyi-legacy",
+    workspaceId: defaultWorkspaceId,
+    legacyProfileId: defaultLegacyProfileId,
+    kind: "documentary",
+    title: "The Biography of Alhaji Tioluwalase “Baba Muyi” Majekodunmi — Humanity, Compassion and Discipline",
+    slug: "the-biography-of-alhaji-tioluwalase-baba-muyi-majekodunmi",
+    summary: "A documentary biography exploring the life, family history, entrepreneurship, community service, transport heritage, challenges, and enduring legacy of Alhaji Tioluwalase “Baba Muyi” Majekodunmi.",
+    body: "Public YouTube URL: https://www.youtube.com/watch?v=BW_t_CwFV60&t=72s",
+    status: "published",
+    visibility: "public",
+    verificationStatus: "family_memory",
+    sortOrder: 1,
+    relatedPath: "/documentaries",
+    externalUrl: "https://www.youtube.com/watch?v=BW_t_CwFV60&t=72s",
+    category: "Biography Documentary",
+    updatedAt: now,
+    createdAt: now
+  },
+  {
+    id: "documentary-baba-muyi-legacy-additional-record",
+    workspaceId: defaultWorkspaceId,
+    legacyProfileId: defaultLegacyProfileId,
+    kind: "documentary",
+    title: "The Legacy of Alhaji Tioluwalase “Baba Muyi” Majekodunmi — From Bariga Forest to Fleet",
+    slug: "the-legacy-of-alhaji-tioluwalase-baba-muyi-majekodunmi-from-bariga-forest-to-fleet",
+    summary: "An additional documentary record connected to Baba Muyi’s biography, family memories, historical experiences, and continuing legacy archive.",
+    body: "Public YouTube URL: https://www.youtube.com/watch?v=pszhSQ9SaJo&t=19s",
+    status: "published",
+    visibility: "public",
+    verificationStatus: "family_memory",
+    sortOrder: 2,
+    relatedPath: "/documentaries",
+    externalUrl: "https://www.youtube.com/watch?v=pszhSQ9SaJo&t=19s",
+    category: "Documentary Record",
     updatedAt: now,
     createdAt: now
   }
