@@ -8,6 +8,7 @@ import { babaMuyiEditorialContentRecords, babaMuyiEditorialPageOverrides } from 
 import { biographyEditorialChapter, biographyEditorialPage } from "@/lib/biography-editorial-pack-v1";
 import { defaultLegacyProfileId, defaultWorkspaceId, initialCmsStore } from "@/lib/cms-seed";
 import { allowsLocalFallback, hasSupabasePublicEnv } from "@/lib/env";
+import { isHiddenPublicNavigationHref, normalizePublicHref } from "@/lib/public-route-targets";
 import { createClient } from "@/lib/supabase/server";
 
 const storePath = path.join(process.cwd(), "data", "cms.json");
@@ -128,10 +129,7 @@ export async function getCmsMenus(location: CmsMenuItem["location"]) {
     .sort((a, b) => a.sortOrder - b.sortOrder || a.label.localeCompare(b.label));
 
   const parents = items.filter((item) => !item.parentId);
-  return parents.map((parent) => ({
-    ...parent,
-    children: items.filter((item) => item.parentId === parent.id)
-  }));
+  return normalizeMenuTree(parents, items);
 }
 
 async function getSupabaseCmsMenus(location: CmsMenuItem["location"]) {
@@ -187,10 +185,20 @@ async function getSupabaseCmsMenus(location: CmsMenuItem["location"]) {
   }));
 
   const parents = items.filter((item) => !item.parentId);
-  return parents.map((parent) => ({
-    ...parent,
-    children: items.filter((item) => item.parentId === parent.id)
-  }));
+  return normalizeMenuTree(parents, items);
+}
+
+function normalizeMenuTree(parents: CmsMenuItem[], items: CmsMenuItem[]) {
+  return parents
+    .filter((parent) => !isHiddenPublicNavigationHref(parent.href))
+    .map((parent) => ({
+      ...parent,
+      href: normalizePublicHref(parent.href),
+      children: items
+        .filter((item) => item.parentId === parent.id)
+        .filter((child) => !isHiddenPublicNavigationHref(child.href))
+        .map((child) => ({ ...child, href: normalizePublicHref(child.href) }))
+    }));
 }
 
 export async function getAllMenuItems(location?: CmsMenuItem["location"]) {

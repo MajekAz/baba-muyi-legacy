@@ -86,7 +86,7 @@ export async function DocumentariesPublicPage() {
   if (!page) {
     return (
       <PageShell eyebrow="Documentary Archive" title="Documentaries awaiting publication" description="This section is being prepared for public release.">
-        <StatusCard title="Under editorial review" description="Documentary records will appear after the archive team approves them for public release." />
+        <StatusCard title="Supporting documentary material" description="Additional documentary records will appear after context, permissions, and public-release checks are complete." />
       </PageShell>
     );
   }

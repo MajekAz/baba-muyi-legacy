@@ -84,7 +84,7 @@ export async function CmsPublicPage({ path, children }: { path: string; children
   if (!page) {
     return (
       <PageShell eyebrow="Archive" title="Page awaiting publication" description="This section is being prepared for public release.">
-        <StatusCard title="Under editorial review" description="This archive section will open after the family archive team approves the material for public release." />
+        <StatusCard title="Supporting material under review" description="Additional material will be published when context, permissions, and editorial approval are complete." />
       </PageShell>
     );
   }

@@ -4,7 +4,7 @@ type StatusCardProps = {
   status?: string;
 };
 
-export function StatusCard({ title, description, status = "Planned content model ready" }: StatusCardProps) {
+export function StatusCard({ title, description, status = "Archive note" }: StatusCardProps) {
   return (
     <article className="rounded border border-archive-navy/12 bg-white/78 p-6 shadow-sm">
       <p className="text-xs font-bold uppercase tracking-[0.16em] text-archive-brown">{status}</p>

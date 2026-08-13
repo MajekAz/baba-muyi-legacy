@@ -29,31 +29,31 @@ export const archiveJourneyPreview = [
     label: "Family roots",
     title: "From Iboogun to Bariga",
     description: "A family-history path for approved stories about origins, upbringing, and formative influences.",
-    href: "/early-life"
+    href: "/biography#early-life-the-roots-that-shaped-a-leader"
   },
   {
     label: "Life journey",
     title: "The Journey to Community Life",
     description: "A route for the family-reviewed account of movement, settlement, work, and community life.",
-    href: "/journey-to-bariga"
+    href: "/biography#from-iboogun-to-bariga-the-journey-that-changed-everything"
   },
   {
     label: "Enterprise",
     title: "Building a Transport Legacy",
     description: "Transport history, work on the road, staff memories, and the social context of Bolekaja service.",
-    href: "/bolekaja"
+    href: "/biography#from-bolekaja-to-tioluwa-lase-a-legacy-on-the-roads-of-lagos"
   },
   {
     label: "Transport heritage",
     title: "The TIOLUWA LASE Years",
     description: "A focused archive route for the TIOLUWA LASE bus identity, Molue memories, and published transport material.",
-    href: "/tioluwa-lase-molue"
+    href: "/biography#from-bolekaja-to-tioluwa-lase-a-legacy-on-the-roads-of-lagos"
   },
   {
     label: "Community",
     title: "A Life of Service",
     description: "A place for reviewed public memories about counsel, community contribution, and humanitarian legacy.",
-    href: "/community-leadership"
+    href: "/biography#beyond-business-a-leader-who-served-his-community"
   },
   {
     label: "Legacy",
@@ -65,18 +65,18 @@ export const archiveJourneyPreview = [
 
 export const archiveCollectionPreviews = [
   { label: "Photographs", title: "Historic photographs", href: "/gallery", description: "Published archive images with reviewed captions and respectful context." },
-  { label: "Family", title: "Family memories", href: "/family", description: "Photographs and memories connected to family life and future generations." },
-  { label: "Transport", title: "Transport history", href: "/transport-gallery", description: "Bolekaja, Molue, TIOLUWA LASE vehicles, routes, and work memories." },
-  { label: "Documents", title: "Historical documents", href: "/documents", description: "Public records and scans when permissions and descriptions are approved." },
+  { label: "Family", title: "Family memories", href: "/gallery", description: "Photographs and memories connected to family life and future generations." },
+  { label: "Transport", title: "Transport history", href: "/gallery", description: "Bolekaja, Molue, TIOLUWA LASE vehicles, routes, and work memories." },
+  { label: "Documents", title: "Historical documents", href: "/gallery", description: "Public records and scans when permissions and descriptions are approved." },
   { label: "Film", title: "Documentary material", href: "/documentaries", description: "Documentary records, chapters, clips, and transcripts when published." },
-  { label: "Stories", title: "Stories and tributes", href: "/stories", description: "Reviewed memories, tributes, corrections, and additional public context." }
+  { label: "Tributes", title: "Stories and tributes", href: "/tributes", description: "Reviewed memories, tributes, corrections, and additional public context." }
 ] as const;
 
 export const transportHeritageLinks = [
-  { label: "Bolekaja Era", href: "/bolekaja" },
-  { label: "TIOLUWA LASE Molue Era", href: "/tioluwa-lase-molue" },
-  { label: "Routes and Locations", href: "/routes-and-locations" },
-  { label: "Transport Gallery", href: "/transport-gallery" }
+  { label: "Bolekaja Era", href: "/biography#from-bolekaja-to-tioluwa-lase-a-legacy-on-the-roads-of-lagos" },
+  { label: "TIOLUWA LASE Molue Era", href: "/biography#from-bolekaja-to-tioluwa-lase-a-legacy-on-the-roads-of-lagos" },
+  { label: "Routes and Locations", href: "/timeline" },
+  { label: "Transport Gallery", href: "/gallery" }
 ] as const;
 
 export const archiveFooterCtas = [

@@ -1,5 +1,5 @@
-import { CmsPublicPage } from "@/components/cms/cms-public-page";
+import { permanentRedirect } from "next/navigation";
 
 export default function MolueGalleryPage() {
-  return <CmsPublicPage path="/molue-gallery" />;
+  permanentRedirect("/gallery");
 }

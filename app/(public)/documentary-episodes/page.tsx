@@ -1,5 +1,5 @@
-import { CmsPublicPage } from "@/components/cms/cms-public-page";
+import { permanentRedirect } from "next/navigation";
 
 export default function DocumentaryEpisodesPage() {
-  return <CmsPublicPage path="/documentary-episodes" />;
+  permanentRedirect("/documentaries");
 }

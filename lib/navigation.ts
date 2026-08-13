@@ -1,4 +1,5 @@
 import type { Permission } from "@/lib/permissions";
+import { biographyChapterTargets } from "@/lib/public-route-targets";
 
 export type NavItem = {
   label: string;
@@ -18,8 +19,8 @@ export const publicNavigation: NavItem[] = [
     href: "/biography",
     children: [
       { label: "Biography", href: "/biography" },
-      { label: "Early Life", href: "/early-life" },
-      { label: "Community Leadership", href: "/community-leadership" }
+      { label: "Early Life", href: biographyChapterTargets.earlyLife },
+      { label: "Community Leadership", href: biographyChapterTargets.communityLeadership }
     ]
   },
   {
@@ -27,17 +28,17 @@ export const publicNavigation: NavItem[] = [
     href: "/timeline",
     children: [
       { label: "Timeline", href: "/timeline" },
-      { label: "Bolekaja", href: "/bolekaja" },
-      { label: "TIOLUWA LASE", href: "/tioluwa-lase-molue" }
+      { label: "Bolekaja", href: biographyChapterTargets.transportLegacy },
+      { label: "TIOLUWA LASE", href: biographyChapterTargets.transportLegacy }
     ]
   },
   {
     label: "Gallery",
     href: "/gallery",
     children: [
-      { label: "Family", href: "/family" },
-      { label: "Transport", href: "/transport-gallery" },
-      { label: "Documents", href: "/documents" }
+      { label: "Family", href: "/gallery" },
+      { label: "Transport", href: "/gallery" },
+      { label: "Documents", href: "/gallery" }
     ]
   },
   {
@@ -49,7 +50,6 @@ export const publicNavigation: NavItem[] = [
     href: "/lessons",
     children: [
       { label: "Lessons", href: "/lessons" },
-      { label: "Stories", href: "/stories" },
       { label: "Tributes", href: "/tributes" }
     ]
   },

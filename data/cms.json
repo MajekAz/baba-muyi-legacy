@@ -52,13 +52,13 @@
           "id": "early-life",
           "title": "Early life and family roots",
           "description": "Birthplace, lineage, education, childhood stories, and formative influences.",
-          "href": "/early-life"
+          "href": "/biography#early-life-the-roots-that-shaped-a-leader"
         },
         {
           "id": "enterprise",
           "title": "Enterprise and transport work",
           "description": "Bolekaja, Molue history, routes, staff, and community impact.",
-          "href": "/bolekaja"
+          "href": "/biography#from-bolekaja-to-tioluwa-lase-a-legacy-on-the-roads-of-lagos"
         },
         {
           "id": "legacy",
@@ -105,7 +105,7 @@
           "id": "documentary-transcripts-link",
           "title": "Transcripts and clips",
           "description": "Transcripts, subtitles, trailers, and clips remain review-controlled until approved for public release.",
-          "href": "/transcripts"
+          "href": "/documentaries"
         }
       ],
       "id": "page-documentaries",
@@ -126,19 +126,19 @@
           "id": "portraits",
           "title": "Portraits",
           "description": "Approved portraits and captions.",
-          "href": "/portraits"
+          "href": "/gallery"
         },
         {
           "id": "family",
           "title": "Family",
           "description": "Private-first family photographs.",
-          "href": "/family"
+          "href": "/gallery"
         },
         {
           "id": "transport",
           "title": "Transport heritage",
           "description": "Bolekaja and Molue images by route, vehicle, era, and contributor.",
-          "href": "/transport-gallery"
+          "href": "/gallery"
         }
       ],
       "id": "page-gallery",
@@ -267,12 +267,12 @@
       "eyebrow": "His Life",
       "title": "Early Life",
       "description": "A dedicated section for approved early-life material once family-reviewed content is supplied.",
-      "body": "This archive section will open after reviewed material is approved for public release.",
+      "body": "Supporting archive material is being reviewed for future publication.",
       "cards": [
         {
           "id": "early-life-cms-ready",
-          "title": "Under editorial review",
-          "description": "The archive team will publish this section when the material has context, permissions, and approval."
+          "title": "Supporting material under review",
+          "description": "Additional material will be published when context, permissions, and editorial approval are complete."
         }
       ],
       "id": "page-early-life",
@@ -286,13 +286,13 @@
       "path": "/journey-to-bariga",
       "eyebrow": "His Life",
       "title": "Journey to Bariga",
-      "description": "A reusable biography landing page for the Bariga journey chapter.",
-      "body": "This archive section will open after reviewed material is approved for public release.",
+      "description": "A direct route to the approved biography chapter about the Iboogun-to-Bariga journey.",
+      "body": "Supporting archive material is being reviewed for future publication.",
       "cards": [
         {
           "id": "journey-to-bariga-cms-ready",
-          "title": "Under editorial review",
-          "description": "The archive team will publish this section when the material has context, permissions, and approval."
+          "title": "Supporting material under review",
+          "description": "Additional material will be published when context, permissions, and editorial approval are complete."
         }
       ],
       "id": "page-journey-to-bariga",
@@ -307,12 +307,12 @@
       "eyebrow": "His Life",
       "title": "Community Leadership",
       "description": "Approved stories about service, leadership, and community memory.",
-      "body": "This archive section will open after reviewed material is approved for public release.",
+      "body": "Supporting archive material is being reviewed for future publication.",
       "cards": [
         {
           "id": "community-leadership-cms-ready",
-          "title": "Under editorial review",
-          "description": "The archive team will publish this section when the material has context, permissions, and approval."
+          "title": "Supporting material under review",
+          "description": "Additional material will be published when context, permissions, and editorial approval are complete."
         }
       ],
       "id": "page-community-leadership",
@@ -327,12 +327,12 @@
       "eyebrow": "Transport history",
       "title": "Bolekaja transport history",
       "description": "Oral history, vehicles, routes, staff, photographs, and the social context of Bolekaja transport.",
-      "body": "This archive section will open after reviewed material is approved for public release.",
+      "body": "Supporting archive material is being reviewed for future publication.",
       "cards": [
         {
           "id": "bolekaja-cms-ready",
-          "title": "Under editorial review",
-          "description": "The archive team will publish this section when the material has context, permissions, and approval."
+          "title": "Supporting material under review",
+          "description": "Additional material will be published when context, permissions, and editorial approval are complete."
         }
       ],
       "id": "page-bolekaja",
@@ -347,12 +347,12 @@
       "eyebrow": "Enterprise",
       "title": "TIOLUWA LASE Molue history",
       "description": "The TIOLUWA LASE Molue story, business operations, people, and memories from the road.",
-      "body": "This archive section will open after reviewed material is approved for public release.",
+      "body": "Supporting archive material is being reviewed for future publication.",
       "cards": [
         {
           "id": "tioluwa-lase-molue-cms-ready",
-          "title": "Under editorial review",
-          "description": "The archive team will publish this section when the material has context, permissions, and approval."
+          "title": "Supporting material under review",
+          "description": "Additional material will be published when context, permissions, and editorial approval are complete."
         }
       ],
       "id": "page-tioluwa-lase-molue",
@@ -367,12 +367,12 @@
       "eyebrow": "Transport Legacy",
       "title": "Routes and Locations",
       "description": "A route-focused section for approved transport locations.",
-      "body": "This archive section will open after reviewed material is approved for public release.",
+      "body": "Supporting archive material is being reviewed for future publication.",
       "cards": [
         {
           "id": "routes-and-locations-cms-ready",
-          "title": "Under editorial review",
-          "description": "The archive team will publish this section when the material has context, permissions, and approval."
+          "title": "Supporting material under review",
+          "description": "Additional material will be published when context, permissions, and editorial approval are complete."
         }
       ],
       "id": "page-routes-and-locations",
@@ -387,12 +387,12 @@
       "eyebrow": "Transport Legacy",
       "title": "Transport Gallery",
       "description": "A gallery landing page for Bolekaja, Molue, route, and vehicle images.",
-      "body": "This archive section will open after reviewed material is approved for public release.",
+      "body": "Supporting archive material is being reviewed for future publication.",
       "cards": [
         {
           "id": "transport-gallery-cms-ready",
-          "title": "Under editorial review",
-          "description": "The archive team will publish this section when the material has context, permissions, and approval."
+          "title": "Supporting material under review",
+          "description": "Additional material will be published when context, permissions, and editorial approval are complete."
         }
       ],
       "id": "page-transport-gallery",
@@ -407,12 +407,12 @@
       "eyebrow": "Documentaries",
       "title": "English Documentary",
       "description": "A dedicated page for the approved English documentary record and playback details.",
-      "body": "This archive section will open after reviewed material is approved for public release.",
+      "body": "Supporting archive material is being reviewed for future publication.",
       "cards": [
         {
           "id": "english-documentary-cms-ready",
-          "title": "Under editorial review",
-          "description": "The archive team will publish this section when the material has context, permissions, and approval."
+          "title": "Supporting material under review",
+          "description": "Additional material will be published when context, permissions, and editorial approval are complete."
         }
       ],
       "id": "page-english-documentary",
@@ -427,12 +427,12 @@
       "eyebrow": "Documentaries",
       "title": "Episodes",
       "description": "A structured listing for documentary series episodes and chapters.",
-      "body": "This archive section will open after reviewed material is approved for public release.",
+      "body": "Supporting archive material is being reviewed for future publication.",
       "cards": [
         {
           "id": "documentary-episodes-cms-ready",
-          "title": "Under editorial review",
-          "description": "The archive team will publish this section when the material has context, permissions, and approval."
+          "title": "Supporting material under review",
+          "description": "Additional material will be published when context, permissions, and editorial approval are complete."
         }
       ],
       "id": "page-documentary-episodes",
@@ -447,12 +447,12 @@
       "eyebrow": "Documentaries",
       "title": "Trailers and Clips",
       "description": "A page for trailers, short clips, and supporting video material.",
-      "body": "This archive section will open after reviewed material is approved for public release.",
+      "body": "Supporting archive material is being reviewed for future publication.",
       "cards": [
         {
           "id": "trailer-clips-cms-ready",
-          "title": "Under editorial review",
-          "description": "The archive team will publish this section when the material has context, permissions, and approval."
+          "title": "Supporting material under review",
+          "description": "Additional material will be published when context, permissions, and editorial approval are complete."
         }
       ],
       "id": "page-trailer-clips",
@@ -467,12 +467,12 @@
       "eyebrow": "Documentaries",
       "title": "Transcripts",
       "description": "A searchable home for documentary transcripts and subtitles.",
-      "body": "This archive section will open after reviewed material is approved for public release.",
+      "body": "Supporting archive material is being reviewed for future publication.",
       "cards": [
         {
           "id": "transcripts-cms-ready",
-          "title": "Under editorial review",
-          "description": "The archive team will publish this section when the material has context, permissions, and approval."
+          "title": "Supporting material under review",
+          "description": "Additional material will be published when context, permissions, and editorial approval are complete."
         }
       ],
       "id": "page-transcripts",
@@ -487,12 +487,12 @@
       "eyebrow": "Gallery",
       "title": "Portraits",
       "description": "A focused gallery for approved portraits.",
-      "body": "This archive section will open after reviewed material is approved for public release.",
+      "body": "Supporting archive material is being reviewed for future publication.",
       "cards": [
         {
           "id": "portraits-cms-ready",
-          "title": "Under editorial review",
-          "description": "The archive team will publish this section when the material has context, permissions, and approval."
+          "title": "Supporting material under review",
+          "description": "Additional material will be published when context, permissions, and editorial approval are complete."
         }
       ],
       "id": "page-portraits",
@@ -507,12 +507,12 @@
       "eyebrow": "Gallery",
       "title": "Family",
       "description": "A private-first gallery area for approved family photographs.",
-      "body": "This archive section will open after reviewed material is approved for public release.",
+      "body": "Supporting archive material is being reviewed for future publication.",
       "cards": [
         {
           "id": "family-cms-ready",
-          "title": "Under editorial review",
-          "description": "The archive team will publish this section when the material has context, permissions, and approval."
+          "title": "Supporting material under review",
+          "description": "Additional material will be published when context, permissions, and editorial approval are complete."
         }
       ],
       "id": "page-family",
@@ -527,12 +527,12 @@
       "eyebrow": "Gallery",
       "title": "Bolekaja",
       "description": "A gallery for approved Bolekaja era photographs and captions.",
-      "body": "This archive section will open after reviewed material is approved for public release.",
+      "body": "Supporting archive material is being reviewed for future publication.",
       "cards": [
         {
           "id": "bolekaja-gallery-cms-ready",
-          "title": "Under editorial review",
-          "description": "The archive team will publish this section when the material has context, permissions, and approval."
+          "title": "Supporting material under review",
+          "description": "Additional material will be published when context, permissions, and editorial approval are complete."
         }
       ],
       "id": "page-bolekaja-gallery",
@@ -547,12 +547,12 @@
       "eyebrow": "Gallery",
       "title": "Molue",
       "description": "A gallery for TIOLUWA LASE Molue era photographs and transport memories.",
-      "body": "This archive section will open after reviewed material is approved for public release.",
+      "body": "Supporting archive material is being reviewed for future publication.",
       "cards": [
         {
           "id": "molue-gallery-cms-ready",
-          "title": "Under editorial review",
-          "description": "The archive team will publish this section when the material has context, permissions, and approval."
+          "title": "Supporting material under review",
+          "description": "Additional material will be published when context, permissions, and editorial approval are complete."
         }
       ],
       "id": "page-molue-gallery",
@@ -567,12 +567,12 @@
       "eyebrow": "Gallery",
       "title": "Community",
       "description": "A gallery for approved community and leadership photographs.",
-      "body": "This archive section will open after reviewed material is approved for public release.",
+      "body": "Supporting archive material is being reviewed for future publication.",
       "cards": [
         {
           "id": "community-gallery-cms-ready",
-          "title": "Under editorial review",
-          "description": "The archive team will publish this section when the material has context, permissions, and approval."
+          "title": "Supporting material under review",
+          "description": "Additional material will be published when context, permissions, and editorial approval are complete."
         }
       ],
       "id": "page-community-gallery",
@@ -587,12 +587,12 @@
       "eyebrow": "Gallery",
       "title": "Restored Images",
       "description": "Restored archive photographs, always linked to archival originals.",
-      "body": "This archive section will open after reviewed material is approved for public release.",
+      "body": "Supporting archive material is being reviewed for future publication.",
       "cards": [
         {
           "id": "restored-images-cms-ready",
-          "title": "Under editorial review",
-          "description": "The archive team will publish this section when the material has context, permissions, and approval."
+          "title": "Supporting material under review",
+          "description": "Additional material will be published when context, permissions, and editorial approval are complete."
         }
       ],
       "id": "page-restored-images",
@@ -607,12 +607,12 @@
       "eyebrow": "Family Legacy",
       "title": "Children",
       "description": "A privacy-protected section for approved family-member records.",
-      "body": "This archive section will open after reviewed material is approved for public release.",
+      "body": "Supporting archive material is being reviewed for future publication.",
       "cards": [
         {
           "id": "children-cms-ready",
-          "title": "Under editorial review",
-          "description": "The archive team will publish this section when the material has context, permissions, and approval."
+          "title": "Supporting material under review",
+          "description": "Additional material will be published when context, permissions, and editorial approval are complete."
         }
       ],
       "id": "page-children",
@@ -627,12 +627,12 @@
       "eyebrow": "Family Legacy",
       "title": "Grandchildren",
       "description": "A family section governed by visibility and consent settings.",
-      "body": "This archive section will open after reviewed material is approved for public release.",
+      "body": "Supporting archive material is being reviewed for future publication.",
       "cards": [
         {
           "id": "grandchildren-cms-ready",
-          "title": "Under editorial review",
-          "description": "The archive team will publish this section when the material has context, permissions, and approval."
+          "title": "Supporting material under review",
+          "description": "Additional material will be published when context, permissions, and editorial approval are complete."
         }
       ],
       "id": "page-grandchildren",
@@ -647,12 +647,12 @@
       "eyebrow": "Family Legacy",
       "title": "Family Memories",
       "description": "Reviewed family stories, audio, photographs, and recollections.",
-      "body": "This archive section will open after reviewed material is approved for public release.",
+      "body": "Supporting archive material is being reviewed for future publication.",
       "cards": [
         {
           "id": "family-memories-cms-ready",
-          "title": "Under editorial review",
-          "description": "The archive team will publish this section when the material has context, permissions, and approval."
+          "title": "Supporting material under review",
+          "description": "Additional material will be published when context, permissions, and editorial approval are complete."
         }
       ],
       "id": "page-family-memories",
@@ -667,12 +667,12 @@
       "eyebrow": "Routes",
       "title": "Interactive journey and route map",
       "description": "Journeys, routes, stops, landmarks, and transport memories.",
-      "body": "This archive section will open after reviewed material is approved for public release.",
+      "body": "Supporting archive material is being reviewed for future publication.",
       "cards": [
         {
           "id": "journey-map-cms-ready",
-          "title": "Under editorial review",
-          "description": "The archive team will publish this section when the material has context, permissions, and approval."
+          "title": "Supporting material under review",
+          "description": "Additional material will be published when context, permissions, and editorial approval are complete."
         }
       ],
       "id": "page-journey-map",
@@ -687,12 +687,12 @@
       "eyebrow": "Sources",
       "title": "Historical documents",
       "description": "A controlled document archive for scans, letters, certificates, business records, and references.",
-      "body": "This archive section will open after reviewed material is approved for public release.",
+      "body": "Supporting archive material is being reviewed for future publication.",
       "cards": [
         {
           "id": "documents-cms-ready",
-          "title": "Under editorial review",
-          "description": "The archive team will publish this section when the material has context, permissions, and approval."
+          "title": "Supporting material under review",
+          "description": "Additional material will be published when context, permissions, and editorial approval are complete."
         }
       ],
       "id": "page-documents",
@@ -707,12 +707,12 @@
       "eyebrow": "Legal",
       "title": "Privacy policy",
       "description": "Draft privacy policy for the Baba Muyi Legacy archive.",
-      "body": "This archive section will open after reviewed material is approved for public release.",
+      "body": "Supporting archive material is being reviewed for future publication.",
       "cards": [
         {
           "id": "privacy-cms-ready",
-          "title": "Under editorial review",
-          "description": "The archive team will publish this section when the material has context, permissions, and approval."
+          "title": "Supporting material under review",
+          "description": "Additional material will be published when context, permissions, and editorial approval are complete."
         }
       ],
       "id": "page-privacy",
@@ -727,12 +727,12 @@
       "eyebrow": "Legal",
       "title": "Terms",
       "description": "Draft terms for contributors and visitors.",
-      "body": "This archive section will open after reviewed material is approved for public release.",
+      "body": "Supporting archive material is being reviewed for future publication.",
       "cards": [
         {
           "id": "terms-cms-ready",
-          "title": "Under editorial review",
-          "description": "The archive team will publish this section when the material has context, permissions, and approval."
+          "title": "Supporting material under review",
+          "description": "Additional material will be published when context, permissions, and editorial approval are complete."
         }
       ],
       "id": "page-terms",
@@ -747,12 +747,12 @@
       "eyebrow": "Future SaaS",
       "title": "Legacy platform waiting list",
       "description": "The Baba Muyi archive is the proof of concept for a future family legacy platform.",
-      "body": "This archive section will open after reviewed material is approved for public release.",
+      "body": "Supporting archive material is being reviewed for future publication.",
       "cards": [
         {
           "id": "waiting-list-cms-ready",
-          "title": "Under editorial review",
-          "description": "The archive team will publish this section when the material has context, permissions, and approval."
+          "title": "Supporting material under review",
+          "description": "Additional material will be published when context, permissions, and editorial approval are complete."
         }
       ],
       "id": "page-waiting-list",
@@ -918,7 +918,7 @@
       "legacyProfileId": "legacy-profile-baba-muyi",
       "parentId": "header-biography",
       "label": "Early Life",
-      "href": "/early-life",
+      "href": "/biography#early-life-the-roots-that-shaped-a-leader",
       "slug": "early-life",
       "location": "header",
       "sortOrder": 2,
@@ -934,7 +934,7 @@
       "legacyProfileId": "legacy-profile-baba-muyi",
       "parentId": "header-biography",
       "label": "Community Leadership",
-      "href": "/community-leadership",
+      "href": "/biography#beyond-business-a-leader-who-served-his-community",
       "slug": "community-leadership",
       "location": "header",
       "sortOrder": 3,
@@ -981,7 +981,7 @@
       "legacyProfileId": "legacy-profile-baba-muyi",
       "parentId": "header-timeline",
       "label": "Bolekaja",
-      "href": "/bolekaja",
+      "href": "/biography#from-bolekaja-to-tioluwa-lase-a-legacy-on-the-roads-of-lagos",
       "slug": "bolekaja",
       "location": "header",
       "sortOrder": 2,
@@ -997,7 +997,7 @@
       "legacyProfileId": "legacy-profile-baba-muyi",
       "parentId": "header-timeline",
       "label": "TIOLUWA LASE",
-      "href": "/tioluwa-lase-molue",
+      "href": "/biography#from-bolekaja-to-tioluwa-lase-a-legacy-on-the-roads-of-lagos",
       "slug": "tioluwa-lase-molue",
       "location": "header",
       "sortOrder": 3,
@@ -1028,7 +1028,7 @@
       "legacyProfileId": "legacy-profile-baba-muyi",
       "parentId": "header-gallery",
       "label": "Family",
-      "href": "/family",
+      "href": "/gallery",
       "slug": "family",
       "location": "header",
       "sortOrder": 1,
@@ -1044,7 +1044,7 @@
       "legacyProfileId": "legacy-profile-baba-muyi",
       "parentId": "header-gallery",
       "label": "Transport",
-      "href": "/transport-gallery",
+      "href": "/gallery",
       "slug": "transport-gallery",
       "location": "header",
       "sortOrder": 2,
@@ -1060,7 +1060,7 @@
       "legacyProfileId": "legacy-profile-baba-muyi",
       "parentId": "header-gallery",
       "label": "Documents",
-      "href": "/documents",
+      "href": "/gallery",
       "slug": "documents",
       "location": "header",
       "sortOrder": 3,
@@ -1130,7 +1130,7 @@
       "visibility": "public",
       "linkType": "internal",
       "openInNewTab": false,
-      "hidden": false
+      "hidden": true
     },
     {
       "id": "header-lessons-tributes",
@@ -1215,7 +1215,7 @@
       "legacyProfileId": "legacy-profile-baba-muyi",
       "parentId": "mobile-biography",
       "label": "Early Life",
-      "href": "/early-life",
+      "href": "/biography#early-life-the-roots-that-shaped-a-leader",
       "slug": "early-life",
       "location": "mobile",
       "sortOrder": 2,
@@ -1231,7 +1231,7 @@
       "legacyProfileId": "legacy-profile-baba-muyi",
       "parentId": "mobile-biography",
       "label": "Community Leadership",
-      "href": "/community-leadership",
+      "href": "/biography#beyond-business-a-leader-who-served-his-community",
       "slug": "community-leadership",
       "location": "mobile",
       "sortOrder": 3,
@@ -1278,7 +1278,7 @@
       "legacyProfileId": "legacy-profile-baba-muyi",
       "parentId": "mobile-timeline",
       "label": "Bolekaja",
-      "href": "/bolekaja",
+      "href": "/biography#from-bolekaja-to-tioluwa-lase-a-legacy-on-the-roads-of-lagos",
       "slug": "bolekaja",
       "location": "mobile",
       "sortOrder": 2,
@@ -1294,7 +1294,7 @@
       "legacyProfileId": "legacy-profile-baba-muyi",
       "parentId": "mobile-timeline",
       "label": "TIOLUWA LASE",
-      "href": "/tioluwa-lase-molue",
+      "href": "/biography#from-bolekaja-to-tioluwa-lase-a-legacy-on-the-roads-of-lagos",
       "slug": "tioluwa-lase-molue",
       "location": "mobile",
       "sortOrder": 3,
@@ -1325,7 +1325,7 @@
       "legacyProfileId": "legacy-profile-baba-muyi",
       "parentId": "mobile-gallery",
       "label": "Family",
-      "href": "/family",
+      "href": "/gallery",
       "slug": "family",
       "location": "mobile",
       "sortOrder": 1,
@@ -1341,7 +1341,7 @@
       "legacyProfileId": "legacy-profile-baba-muyi",
       "parentId": "mobile-gallery",
       "label": "Transport",
-      "href": "/transport-gallery",
+      "href": "/gallery",
       "slug": "transport-gallery",
       "location": "mobile",
       "sortOrder": 2,
@@ -1357,7 +1357,7 @@
       "legacyProfileId": "legacy-profile-baba-muyi",
       "parentId": "mobile-gallery",
       "label": "Documents",
-      "href": "/documents",
+      "href": "/gallery",
       "slug": "documents",
       "location": "mobile",
       "sortOrder": 3,
@@ -1427,7 +1427,7 @@
       "visibility": "public",
       "linkType": "internal",
       "openInNewTab": false,
-      "hidden": false
+      "hidden": true
     },
     {
       "id": "mobile-lessons-tributes",
@@ -1512,7 +1512,7 @@
       "legacyProfileId": "legacy-profile-baba-muyi",
       "parentId": "footer-biography",
       "label": "Early Life",
-      "href": "/early-life",
+      "href": "/biography#early-life-the-roots-that-shaped-a-leader",
       "slug": "early-life",
       "location": "footer",
       "sortOrder": 2,
@@ -1528,7 +1528,7 @@
       "legacyProfileId": "legacy-profile-baba-muyi",
       "parentId": "footer-biography",
       "label": "Community Leadership",
-      "href": "/community-leadership",
+      "href": "/biography#beyond-business-a-leader-who-served-his-community",
       "slug": "community-leadership",
       "location": "footer",
       "sortOrder": 3,
@@ -1575,7 +1575,7 @@
       "legacyProfileId": "legacy-profile-baba-muyi",
       "parentId": "footer-timeline",
       "label": "Bolekaja",
-      "href": "/bolekaja",
+      "href": "/biography#from-bolekaja-to-tioluwa-lase-a-legacy-on-the-roads-of-lagos",
       "slug": "bolekaja",
       "location": "footer",
       "sortOrder": 2,
@@ -1591,7 +1591,7 @@
       "legacyProfileId": "legacy-profile-baba-muyi",
       "parentId": "footer-timeline",
       "label": "TIOLUWA LASE",
-      "href": "/tioluwa-lase-molue",
+      "href": "/biography#from-bolekaja-to-tioluwa-lase-a-legacy-on-the-roads-of-lagos",
       "slug": "tioluwa-lase-molue",
       "location": "footer",
       "sortOrder": 3,
@@ -1622,7 +1622,7 @@
       "legacyProfileId": "legacy-profile-baba-muyi",
       "parentId": "footer-gallery",
       "label": "Family",
-      "href": "/family",
+      "href": "/gallery",
       "slug": "family",
       "location": "footer",
       "sortOrder": 1,
@@ -1638,7 +1638,7 @@
       "legacyProfileId": "legacy-profile-baba-muyi",
       "parentId": "footer-gallery",
       "label": "Transport",
-      "href": "/transport-gallery",
+      "href": "/gallery",
       "slug": "transport-gallery",
       "location": "footer",
       "sortOrder": 2,
@@ -1654,7 +1654,7 @@
       "legacyProfileId": "legacy-profile-baba-muyi",
       "parentId": "footer-gallery",
       "label": "Documents",
-      "href": "/documents",
+      "href": "/gallery",
       "slug": "documents",
       "location": "footer",
       "sortOrder": 3,
@@ -1724,7 +1724,7 @@
       "visibility": "public",
       "linkType": "internal",
       "openInNewTab": false,
-      "hidden": false
+      "hidden": true
     },
     {
       "id": "footer-lessons-tributes",

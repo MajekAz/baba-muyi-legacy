@@ -40,7 +40,7 @@ export const babaMuyiEditorialPageOverrides: Array<Partial<CmsPage> & { id: stri
         id: "documentary-transcripts-link",
         title: "Transcripts and clips",
         description: "Transcripts, subtitles, trailers, and clips remain review-controlled until approved for public release.",
-        href: "/transcripts"
+        href: "/documentaries"
       }
     ],
     seoTitle: "Baba Muyi Documentaries | Baba Muyi Legacy",
@@ -60,8 +60,8 @@ export const babaMuyiEditorialPageOverrides: Array<Partial<CmsPage> & { id: stri
       "Images should appear only with approved captions, alt text, source notes, permissions, privacy review, and verification status. The archive does not use stock photographs as historical evidence.",
     cards: [
       { id: "gallery-portraits", title: "Baba Muyi portraits", description: "Approved portraits and identity images with source notes and permissions.", href: "/portraits" },
-      { id: "gallery-family", title: "Family life", description: "Family photographs published only when privacy and consent requirements are satisfied.", href: "/family" },
-      { id: "gallery-transport", title: "Transport heritage", description: "Bolekaja, TIOLUWA LASE, Molue, route, and road-memory material where evidence is available.", href: "/transport-gallery" }
+      { id: "gallery-family", title: "Family life", description: "Family photographs published only when privacy and consent requirements are satisfied.", href: "/gallery" },
+      { id: "gallery-transport", title: "Transport heritage", description: "Bolekaja, TIOLUWA LASE, Molue, route, and road-memory material where evidence is available.", href: "/gallery" }
     ],
     seoTitle: "Baba Muyi Photo Archive | LegacyHub",
     metaDescription:
