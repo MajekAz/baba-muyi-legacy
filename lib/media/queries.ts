@@ -60,6 +60,14 @@ function normalizeAlbum(row: Record<string, any>): MediaAlbum {
   };
 }
 
+function isKnownUnverifiedBabaMuyiPublicMedia(row: Record<string, any>) {
+  const title = String(row.title ?? "").trim().toLowerCase();
+  const altText = String(row.alt_text ?? "").trim().toLowerCase();
+  const bucket = String(row.storage_bucket ?? row.bucket ?? "").trim();
+
+  return title === "my pix" && altText === "my pix archive image" && bucket === "legacy-images";
+}
+
 export async function getAdminMediaRecords(context: Pick<TenantContext, "workspaceId" | "legacyProfileId">, filters: { type?: string; search?: string; visibility?: string; status?: string; verification?: string; albumId?: string } = {}) {
   noStore();
   if (!hasSupabasePublicEnv()) return [];
@@ -204,7 +212,7 @@ export async function getPublicFeaturedMediaForContent(table: CmsCoreTable, cont
   const admin = createAdminClient();
   const entries = await Promise.all((data ?? []).map(async (row: any) => {
     const media = Array.isArray(row.media_items) ? row.media_items[0] : row.media_items;
-    if (!media || media.publication_status !== "published" || media.visibility !== "public" || media.moderation_state !== "approved") return null;
+    if (!media || media.publication_status !== "published" || media.visibility !== "public" || media.moderation_state !== "approved" || isKnownUnverifiedBabaMuyiPublicMedia(media)) return null;
     const bucket = media.storage_bucket ?? media.bucket;
     const path = media.thumbnail_storage_path ?? media.web_storage_path ?? media.storage_path;
     let signedUrl = "";
@@ -253,7 +261,9 @@ export async function getPublicMediaRecords(filters: { type?: string; albumSlug?
   if (error) return [];
 
   const admin = createAdminClient();
-  return Promise.all((data ?? []).map(async (row) => {
+  const publicRows = (data ?? []).filter((row) => !isKnownUnverifiedBabaMuyiPublicMedia(row));
+
+  return Promise.all(publicRows.map(async (row) => {
     const bucket = row.storage_bucket ?? row.bucket;
     const path = row.web_storage_path ?? row.storage_path;
     let signedUrl = "";

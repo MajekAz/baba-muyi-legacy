@@ -89,7 +89,8 @@ assert.match(uploader, /Drop files here or choose files/);
 assert.match(uploader, /Upload in progress/);
 pass("upload UI exposes accessible labels and progress messaging");
 
-assert.match(publicGrid, /No public media yet/);
+assert.match(publicGrid, /Images awaiting archive approval/);
+assert.match(publicGrid, /Approved family photographs and historical images will appear here as they are reviewed, identified, and cleared for public archive use/);
 assert.match(publicGrid, /audio/);
 assert.match(publicGrid, /Open PDF preview/);
 assert.match(signedPreviewRoute, /createSignedUrl/);
