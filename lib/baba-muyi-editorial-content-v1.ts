@@ -26,9 +26,9 @@ export const babaMuyiEditorialPageOverrides: Array<Partial<CmsPage> & { id: stri
     eyebrow: "Documentary Archive",
     title: "Baba Muyi Documentaries",
     description:
-      "Documentary material connected to Baba Muyi’s life, family memories, historical records, photographs, transport heritage, and the continuing archive project.",
+      "Watch approved documentary records connected to Baba Muyi’s life, family memories, historical records, photographs, transport heritage, and continuing legacy archive.",
     body:
-      "The documentary archive is tied to the biography and family oral-history collection. Availability details, transcripts, subtitles, clips, and playback links should be published only after they are verified and approved.",
+      "Approved documentary recordings are available below. Additional transcripts, subtitles, clips, and supporting records will be published after verification and editorial approval.",
     cards: [
       {
         id: "documentary-biography-link",
@@ -43,9 +43,9 @@ export const babaMuyiEditorialPageOverrides: Array<Partial<CmsPage> & { id: stri
         href: "/transcripts"
       }
     ],
-    seoTitle: "Baba Muyi Documentaries | LegacyHub",
+    seoTitle: "Baba Muyi Documentaries | Baba Muyi Legacy",
     metaDescription:
-      "Documentary records for the Baba Muyi Legacy archive, preserving family memories, historical records, photographs, and transport heritage with editorial review.",
+      "Watch approved documentary records exploring Baba Muyi’s biography, family memories, transport heritage, community service, and enduring legacy.",
     verificationStatus: "family_memory",
     updatedAt: implementedAt
   },
@@ -544,18 +544,40 @@ export const babaMuyiEditorialContentRecords: CmsContentRecord[] = [
     workspaceId: defaultWorkspaceId,
     legacyProfileId: defaultLegacyProfileId,
     kind: "documentary",
-    title: "Documentary materials for Baba Muyi Legacy",
-    slug: "baba-muyi-legacy-documentary",
+    title: "The Biography of Alhaji Tioluwalase “Baba Muyi” Majekodunmi — Humanity, Compassion and Discipline",
+    slug: "the-biography-of-alhaji-tioluwalase-baba-muyi-majekodunmi",
     summary:
-      "Documentary material connected to Baba Muyi’s biography, family memories, historical records, photographs, and transport heritage.",
+      "A documentary biography exploring the life, family history, entrepreneurship, community service, transport heritage, challenges, and enduring legacy of Alhaji Tioluwalase “Baba Muyi” Majekodunmi.",
     body:
-      "Production note: publish playback links, transcripts, subtitles, clips, duration, and release details only when those materials are approved. The documentary record should support the biography without replacing it.",
+      "Public YouTube URL: https://www.youtube.com/watch?v=BW_t_CwFV60&t=72s",
     status: "published",
     visibility: "public",
     verificationStatus: "family_memory",
     sortOrder: 1,
     relatedPath: "/documentaries",
-    category: "Documentary materials",
+    externalUrl: "https://www.youtube.com/watch?v=BW_t_CwFV60&t=72s",
+    category: "Biography Documentary",
+    createdAt: implementedAt,
+    updatedAt: implementedAt
+  },
+  {
+    id: "documentary-baba-muyi-legacy-additional-record",
+    workspaceId: defaultWorkspaceId,
+    legacyProfileId: defaultLegacyProfileId,
+    kind: "documentary",
+    title: "The Legacy of Alhaji Tioluwalase “Baba Muyi” Majekodunmi — From Bariga Forest to Fleet",
+    slug: "the-legacy-of-alhaji-tioluwalase-baba-muyi-majekodunmi-from-bariga-forest-to-fleet",
+    summary:
+      "An additional documentary record connected to Baba Muyi’s biography, family memories, historical experiences, and continuing legacy archive.",
+    body:
+      "Public YouTube URL: https://www.youtube.com/watch?v=pszhSQ9SaJo&t=19s",
+    status: "published",
+    visibility: "public",
+    verificationStatus: "family_memory",
+    sortOrder: 2,
+    relatedPath: "/documentaries",
+    externalUrl: "https://www.youtube.com/watch?v=pszhSQ9SaJo&t=19s",
+    category: "Documentary Record",
     createdAt: implementedAt,
     updatedAt: implementedAt
   },
