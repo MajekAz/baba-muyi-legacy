@@ -22,6 +22,7 @@ const bannedLinkedRoutes = [
   "/transport-gallery",
   "/documents",
   "/family",
+  "/archive/documents",
   "/stories",
   "/journey-map",
   "/routes-and-locations",
@@ -100,8 +101,17 @@ for (const route of bannedLinkedRoutes) {
   assert(!visibleMenuItems.some((item) => item.href === route), `menu excludes ${route}`, `No visible public CMS menu item links directly to ${route}.`);
 }
 
+for (const location of ["header", "mobile", "footer"]) {
+  for (const label of ["Family", "Transport", "Documents"]) {
+    const matches = visibleMenuItems.filter((item) => item.location === location && item.label === label);
+    assert(matches.length > 0, `${location} gallery label ${label}`, `${label} is present in the ${location} Gallery navigation.`);
+    assert(matches.every((item) => item.href === "/gallery"), `${location} gallery target ${label}`, `${label} points to /gallery in ${location} navigation.`);
+  }
+}
+
 assert((data.menuItems ?? []).filter((item) => item.label === "Stories" && ["header", "mobile", "footer"].includes(item.location)).every((item) => item.hidden), "stories hidden", "Stories remains available as a route but is removed from public navigation until populated.");
 assert(!navigation.includes('href: "/stories"'), "static navigation stories", "Static public navigation does not expose the empty Stories route.");
+assert(navigation.includes('{ label: "Family", href: "/gallery" }') && navigation.includes('{ label: "Transport", href: "/gallery" }') && navigation.includes('{ label: "Documents", href: "/gallery" }'), "static gallery navigation", "Static Gallery dropdown sends Family, Transport, and Documents to /gallery.");
 assert(archiveContent.includes('href: "/tributes"') && !archiveContent.includes('href: "/stories"'), "homepage stories card", "Homepage stories/tributes preview points to Tributes instead of the empty Stories page.");
 
 assert(!homepageRoute.includes("heroImage={images[0]}"), "hero portrait removed", "Homepage no longer uses the first public media item as the Baba Muyi hero portrait.");
@@ -114,7 +124,7 @@ for (const phrase of ["PLANNED CONTENT MODEL READY", "planned content model", "U
   assert(!sourceBundle.toLowerCase().includes(phrase.toLowerCase()), `phrase removed: ${phrase}`, `${phrase} is absent from public fallback/rendering sources.`);
 }
 
-for (const route of ["/documents", "/bolekaja", "/tioluwa-lase-molue", "/journey-map", "/family-tree", "/waiting-list"]) {
+for (const route of ["/documents", "/archive/documents", "/transport-gallery", "/bolekaja", "/tioluwa-lase-molue", "/journey-map", "/family-tree", "/waiting-list"]) {
   assert(!sitemap.includes(`"${route}"`), `sitemap excludes ${route}`, `${route} is not advertised as an independent public sitemap destination.`);
 }
 
