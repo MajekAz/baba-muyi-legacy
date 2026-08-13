@@ -39,6 +39,8 @@ const archiveContent = read("lib/baba-muyi-public-archive.ts");
 const cmsStore = read("lib/cms-store.ts");
 const cmsSeed = read("lib/cms-seed.ts");
 const statusCard = read("components/status-card.tsx");
+const publicMediaGrid = read("components/media/public-media-grid.tsx");
+const mediaQueries = read("lib/media/queries.ts");
 const sitemap = read("app/sitemap.ts");
 const editorialContent = read("lib/baba-muyi-editorial-content-v1.ts");
 const documentaryPage = read("components/public-archive/documentaries-public-page.tsx");
@@ -104,6 +106,9 @@ assert(archiveContent.includes('href: "/tributes"') && !archiveContent.includes(
 
 assert(!homepageRoute.includes("heroImage={images[0]}"), "hero portrait removed", "Homepage no longer uses the first public media item as the Baba Muyi hero portrait.");
 assert(!homepageRoute.includes("openGraphImage") && !homepageRoute.includes("summary_large_image"), "homepage social image removed", "Homepage metadata no longer uses an unverified first media item as OG/Twitter image.");
+assert(homepageRoute.includes("galleryImages={images.slice(0, 3)}"), "homepage gallery slice", "Homepage gallery previews use the filtered public media set.");
+assert(mediaQueries.includes("isKnownUnverifiedBabaMuyiPublicMedia") && mediaQueries.includes('title === "my pix"') && mediaQueries.includes('altText === "my pix archive image"') && mediaQueries.includes("48497ddc-9fec-42d2-974b-eb87569a5c3f-my-pix.jpeg"), "my pix filter", "Known unverified My Pix media is excluded from public media rendering before signed URLs are created.");
+assert(publicMediaGrid.includes("Images awaiting archive approval") && publicMediaGrid.includes("Approved family photographs and historical images will appear here as they are reviewed, identified, and cleared for public archive use."), "gallery empty state", "Gallery empty state remains dignified when no approved public images are available.");
 
 for (const phrase of ["PLANNED CONTENT MODEL READY", "planned content model", "Under editorial review", "reusable biography landing page", "archive section will open", "model ready"]) {
   assert(!sourceBundle.toLowerCase().includes(phrase.toLowerCase()), `phrase removed: ${phrase}`, `${phrase} is absent from public fallback/rendering sources.`);

@@ -6,8 +6,8 @@ export function PublicMediaGrid({ records }: { records: MediaRecord[] }) {
   if (!records.length) {
     return (
       <div className="rounded border border-archive-navy/12 bg-white/80 p-6">
-        <h2 className="font-serif text-2xl text-archive-navy">No public media yet</h2>
-        <p className="mt-2 text-sm leading-6 text-slate-600">This area remains empty until images, captions, source notes, and permissions are approved for public release.</p>
+        <h2 className="font-serif text-2xl text-archive-navy">Images awaiting archive approval</h2>
+        <p className="mt-2 text-sm leading-6 text-slate-600">Approved family photographs and historical images will appear here as they are reviewed, identified, and cleared for public archive use.</p>
       </div>
     );
   }
