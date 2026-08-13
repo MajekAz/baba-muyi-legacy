@@ -1,5 +1,6 @@
-import { CmsPublicPage } from "@/components/cms/cms-public-page";
+import { permanentRedirect } from "next/navigation";
+import { biographyChapterTargets } from "@/lib/public-route-targets";
 
 export default function CommunityLeadershipPage() {
-  return <CmsPublicPage path="/community-leadership" />;
+  permanentRedirect(biographyChapterTargets.communityLeadership);
 }

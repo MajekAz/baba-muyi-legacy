@@ -1,5 +1,6 @@
-import { CmsPublicPage } from "@/components/cms/cms-public-page";
+import { permanentRedirect } from "next/navigation";
+import { biographyChapterTargets } from "@/lib/public-route-targets";
 
 export default function BolekajaPage() {
-  return <CmsPublicPage path="/bolekaja" />;
+  permanentRedirect(biographyChapterTargets.transportLegacy);
 }

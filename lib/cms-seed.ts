@@ -1,4 +1,5 @@
 import { publicNavigation } from "@/lib/navigation";
+import { biographyChapterTargets } from "@/lib/public-route-targets";
 import type { CmsContentRecord, CmsMenuItem, CmsPage, CmsStore } from "@/lib/cms-types";
 
 const now = "2026-07-14T00:00:00.000Z";
@@ -26,8 +27,8 @@ const pageSeeds: Array<Omit<CmsPage, "id" | "workspaceId" | "legacyProfileId" | 
     description: "A chapter-led biography prepared for family-approved writing, photographs, source notes, and documentary references.",
     body: "Biography chapters are being carefully prepared for publication with source notes, family review, and appropriate permissions.",
     cards: [
-      { id: "early-life", title: "Early life and family roots", description: "Birthplace, lineage, education, childhood stories, and formative influences.", href: "/early-life" },
-      { id: "enterprise", title: "Enterprise and transport work", description: "Bolekaja, Molue history, routes, staff, and community impact.", href: "/bolekaja" },
+      { id: "early-life", title: "Early life and family roots", description: "Birthplace, lineage, education, childhood stories, and formative influences.", href: biographyChapterTargets.earlyLife },
+      { id: "enterprise", title: "Enterprise and transport work", description: "Bolekaja, Molue history, routes, staff, and community impact.", href: biographyChapterTargets.transportLegacy },
       { id: "legacy", title: "Later years and legacy", description: "Family reflections, values, faith, counsel, and future lessons.", href: "/lessons" }
     ]
   },
@@ -47,7 +48,7 @@ const pageSeeds: Array<Omit<CmsPage, "id" | "workspaceId" | "legacyProfileId" | 
     body: "Approved documentary recordings are available below. Additional transcripts, subtitles, clips, and supporting records will be published after verification and editorial approval.",
     cards: [
       { id: "documentary-biography-link", title: "Relationship to the biography", description: "The documentary work supports the approved biography by preserving narration, memories, records, photographs, and context.", href: "/biography" },
-      { id: "documentary-transcripts-link", title: "Transcripts and clips", description: "Transcripts, subtitles, trailers, and clips remain review-controlled until approved for public release.", href: "/transcripts" }
+      { id: "documentary-transcripts-link", title: "Transcripts and clips", description: "Transcripts, subtitles, trailers, and clips remain review-controlled until approved for public release.", href: "/documentaries" }
     ]
   },
   {
@@ -57,9 +58,9 @@ const pageSeeds: Array<Omit<CmsPage, "id" | "workspaceId" | "legacyProfileId" | 
     description: "Albums organise portraits, family images, transport photographs, scanned documents, and community submissions.",
     body: "Every image should have caption, alt text, copyright owner, privacy state, verification status, and source notes before publication.",
     cards: [
-      { id: "portraits", title: "Portraits", description: "Approved portraits and captions.", href: "/portraits" },
-      { id: "family", title: "Family", description: "Private-first family photographs.", href: "/family" },
-      { id: "transport", title: "Transport heritage", description: "Bolekaja and Molue images by route, vehicle, era, and contributor.", href: "/transport-gallery" }
+      { id: "portraits", title: "Portraits", description: "Approved portraits and captions.", href: "/gallery" },
+      { id: "family", title: "Family", description: "Private-first family photographs.", href: "/gallery" },
+      { id: "transport", title: "Transport heritage", description: "Bolekaja and Molue images by route, vehicle, era, and contributor.", href: "/gallery" }
     ]
   },
   {
@@ -126,7 +127,7 @@ const pageSeeds: Array<Omit<CmsPage, "id" | "workspaceId" | "legacyProfileId" | 
 
 const simplePages = [
   ["/early-life", "His Life", "Early Life", "A dedicated section for approved early-life material once family-reviewed content is supplied."],
-  ["/journey-to-bariga", "His Life", "Journey to Bariga", "A reusable biography landing page for the Bariga journey chapter."],
+  ["/journey-to-bariga", "His Life", "Journey to Bariga", "A direct route to the approved biography chapter about the Iboogun-to-Bariga journey."],
   ["/community-leadership", "His Life", "Community Leadership", "Approved stories about service, leadership, and community memory."],
   ["/bolekaja", "Transport history", "Bolekaja transport history", "Oral history, vehicles, routes, staff, photographs, and the social context of Bolekaja transport."],
   ["/tioluwa-lase-molue", "Enterprise", "TIOLUWA LASE Molue history", "The TIOLUWA LASE Molue story, business operations, people, and memories from the road."],
@@ -153,7 +154,9 @@ const simplePages = [
 ] as const;
 
 function slugFromPath(path: string) {
-  return path === "/" ? "home" : path.replace(/^\//, "").replace(/\//g, "-");
+  const [pathname, hash] = path.split("#");
+  const base = pathname === "/" ? "home" : pathname.replace(/^\//, "").replace(/\//g, "-");
+  return hash ? `${base}-${hash}` : base;
 }
 
 const pages: CmsPage[] = [
@@ -163,12 +166,12 @@ const pages: CmsPage[] = [
     eyebrow,
     title,
     description,
-    body: "This archive section will open after reviewed material is approved for public release.",
+    body: "Supporting archive material is being reviewed for future publication.",
     cards: [
       {
         id: `${slugFromPath(path)}-cms-ready`,
-        title: "Under editorial review",
-        description: "The archive team will publish this section when the material has context, permissions, and approval."
+        title: "Supporting material under review",
+        description: "Additional material will be published when context, permissions, and editorial approval are complete."
       }
     ]
   }))
@@ -319,8 +322,9 @@ function flattenMenu(items: typeof publicNavigation, location: CmsMenuItem["loca
       hidden: false
     });
     item.children?.forEach((child, childIndex) => {
+      const childLabelSlug = child.label.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
       flattened.push({
-        id: `${id}-${slugFromPath(child.href)}`,
+        id: `${id}-${childLabelSlug || childIndex + 1}`,
         workspaceId: defaultWorkspaceId,
         legacyProfileId: defaultLegacyProfileId,
         parentId: id,

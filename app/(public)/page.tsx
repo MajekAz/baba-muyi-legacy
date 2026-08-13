@@ -14,11 +14,6 @@ function getSiteUrl() {
 }
 
 export async function generateMetadata(): Promise<Metadata> {
-  const [image] = await getPublicMediaRecords({ type: "image" });
-  const openGraphImage = image?.signedUrl
-    ? [{ url: image.signedUrl, alt: image.altText || image.title || "Baba Muyi Legacy archive image" }]
-    : undefined;
-
   return {
     title: {
       absolute: homepageTitle
@@ -31,14 +26,12 @@ export async function generateMetadata(): Promise<Metadata> {
       title: homepageTitle,
       description: homepageDescription,
       type: "website",
-      url: "/",
-      images: openGraphImage
+      url: "/"
     },
     twitter: {
-      card: openGraphImage ? "summary_large_image" : "summary",
+      card: "summary",
       title: homepageTitle,
-      description: homepageDescription,
-      images: openGraphImage?.map((item) => item.url)
+      description: homepageDescription
     }
   };
 }
@@ -102,7 +95,6 @@ export default async function HomePage() {
       <BabaMuyiCinematicHome
         documentary={documentaries[0] ? { title: documentaries[0].title, summary: documentaries[0].summary } : undefined}
         galleryImages={images.slice(1, 4)}
-        heroImage={images[0]}
         lessons={lessons}
         navigation={navigation}
         stories={stories}

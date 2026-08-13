@@ -8,19 +8,12 @@ const paths = [
   "/documentaries",
   "/gallery",
   "/archive",
-  "/documents",
-  "/bolekaja",
-  "/tioluwa-lase-molue",
-  "/journey-map",
-  "/family-tree",
   "/lessons",
   "/tributes",
-  "/blog",
-  "/curator",
+  "/about",
   "/contact",
   "/privacy",
-  "/terms",
-  "/waiting-list"
+  "/terms"
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

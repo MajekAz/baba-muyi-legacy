@@ -14,8 +14,9 @@ function assert(condition, label, detail) {
 }
 
 function publicRouteFile(href) {
-  if (href === "/") return "app/(public)/page.tsx";
-  return `app/(public)${href}/page.tsx`;
+  const pathname = href.split("#")[0];
+  if (pathname === "/") return "app/(public)/page.tsx";
+  return `app/(public)${pathname}/page.tsx`;
 }
 
 function collectHrefs(source) {

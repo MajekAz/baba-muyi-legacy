@@ -1,5 +1,5 @@
-import { CmsPublicPage } from "@/components/cms/cms-public-page";
+import { permanentRedirect } from "next/navigation";
 
 export default function DocumentsPage() {
-  return <CmsPublicPage path="/documents" />;
+  permanentRedirect("/gallery");
 }

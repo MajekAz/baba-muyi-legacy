@@ -1,5 +1,5 @@
-import { CmsPublicPage } from "@/components/cms/cms-public-page";
+import { permanentRedirect } from "next/navigation";
 
 export default function BolekajaGalleryPage() {
-  return <CmsPublicPage path="/bolekaja-gallery" />;
+  permanentRedirect("/gallery");
 }

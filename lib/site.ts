@@ -112,10 +112,10 @@ export const publicFeatures: FeatureCard[] = [
     description: "Published images appear with reviewed captions, source notes, permissions, privacy controls, and publication status."
   },
   {
-    href: "/journey-map",
+    href: "/timeline",
     eyebrow: "Routes",
-    title: "Journey and route map",
-    description: "Transport routes, landmarks, vehicle stories, and historical context."
+    title: "Journey and route context",
+    description: "Transport routes, landmarks, vehicle stories, and historical context belong with approved timeline and biography records."
   },
   {
     href: "/tributes",
