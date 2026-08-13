@@ -94,7 +94,7 @@ export default async function HomePage() {
       />
       <BabaMuyiCinematicHome
         documentary={documentaries[0] ? { title: documentaries[0].title, summary: documentaries[0].summary } : undefined}
-        galleryImages={images.slice(1, 4)}
+        galleryImages={images.slice(0, 3)}
         lessons={lessons}
         navigation={navigation}
         stories={stories}
