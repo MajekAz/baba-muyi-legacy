@@ -196,8 +196,8 @@ export const biographyEditorialChapter: CmsContentRecord = {
 <p>My father was naturally generous, trusting and deeply committed to family. He believed that people who shared blood, history and responsibility should also share loyalty. Because of that belief, he often placed great confidence in members of his extended family and expected the same honesty from them that he showed to others.</p>
 <p>In some cases, he entrusted important property documents to close relatives for safekeeping. To him, this was not carelessness. It was an expression of trust.</p>
 <p>He did not expect that documents handed over in good faith could later become connected to disputes over property, ownership and family responsibility.</p>
-<p>According to family recollections, several landed properties were later allegedly taken over, transferred or sold without his consent. These accounts form part of the family’s oral history and should be treated carefully, especially where complete documentary records have not yet been independently reviewed.</p>
-<p>One of the most serious disputes reportedly involved an elder sibling and developed into a legal battle during the 1980s. Family accounts also recall that the matter attracted public and media attention at the time.</p>
+<p>Several landed properties were later allegedly taken over, transferred or sold without his consent.</p>
+<p>One of the most serious disputes reportedly involved an elder sibling and developed into a legal battle during the 1980s. The matter attracted public and media attention at the time.</p>
 <p>The consequences were not simply financial.</p>
 <p>The loss of property represented years of hard work, sacrifice and planning. These were not things that appeared overnight. They were connected to the effort of a man who had worked from a young age, built businesses, invested in property and tried to create security for a very large family.</p>
 <p>When property is lost, the financial value can sometimes be calculated.</p>
