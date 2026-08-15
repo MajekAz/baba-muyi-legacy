@@ -190,17 +190,58 @@ export const biographyEditorialChapter: CmsContentRecord = {
 <p>Within the family, he was remembered as a provider, adviser, disciplinarian, protector, and central figure. People came to him for help, counsel, and support. This made family leadership a daily responsibility rather than a ceremonial role.</p>
 <p>The chapter also preserves the sacrifice that came with such responsibility. A large family and an open-handed approach to relatives and community required time, resources, patience, and emotional strength. His desire for family unity remains one of the key values the archive preserves, even while acknowledging that family relationships can be complicated and must be remembered with honesty.</p>
 
-<h2>Chapter Eight: The Price of Blind Trust</h2>
-<p>Baba Muyi’s generosity and loyalty to family were among his greatest strengths.</p>
-<p>They also exposed him to serious personal and economic risks.</p>
-<p>He often trusted people close to him and expected them to protect his interests with the same sincerity that he showed toward them.</p>
-<p>However, his life demonstrated that goodwill alone is not always enough to protect businesses, property, documents, or family relationships.</p>
-<p>Some of the most painful experiences associated with his later life concerned trust, responsibility, business decline, disputed interests, and the loss of things he had worked hard to build.</p>
-<p>These experiences form part of the family’s oral history and should be examined carefully alongside surviving documents and additional testimony.</p>
-<p>They should not be presented as settled legal conclusions where independent evidence has not yet been reviewed.</p>
-<p>The public archive preserves this theme carefully. It does not name alleged wrongdoers, sensationalise family conflict, or present disputed matters as legal conclusions. Instead, it records the broader lesson that emerges from the approved biography: generosity needs wisdom, accountability, documentation, and proper protection.</p>
-<p>This balance is important because Baba Muyi should not be reduced to a victim of disappointment. His trust and kindness were part of his humanity. The lesson is not that kindness was wrong, but that kindness must be joined with discernment, records, advice, and structures that protect family welfare.</p>
-<p>For future generations, this chapter is one of the most practical parts of the biography. It teaches that love for family, support for others, and confidence in relationships should be accompanied by responsibility and care. That lesson honours both his generosity and the difficulties that later shaped the family’s memory of his life.</p>
+<h2>Chapter Eight: When Blind Trust Became the Price of Doing Good</h2>
+<p>Perhaps one of the greatest lessons my father unknowingly taught us was this:</p>
+<p><strong>Kindness without wisdom can become dangerous.</strong></p>
+<p>My father was naturally generous, trusting and deeply committed to family. He believed that people who shared blood, history and responsibility should also share loyalty. Because of that belief, he often placed great confidence in members of his extended family and expected the same honesty from them that he showed to others.</p>
+<p>In some cases, he entrusted important property documents to close relatives for safekeeping. To him, this was not carelessness. It was an expression of trust.</p>
+<p>He did not expect that documents handed over in good faith could later become connected to disputes over property, ownership and family responsibility.</p>
+<p>According to family recollections, several landed properties were later allegedly taken over, transferred or sold without his consent. These accounts form part of the family’s oral history and should be treated carefully, especially where complete documentary records have not yet been independently reviewed.</p>
+<p>One of the most serious disputes reportedly involved an elder sibling and developed into a legal battle during the 1980s. Family accounts also recall that the matter attracted public and media attention at the time.</p>
+<p>The consequences were not simply financial.</p>
+<p>The loss of property represented years of hard work, sacrifice and planning. These were not things that appeared overnight. They were connected to the effort of a man who had worked from a young age, built businesses, invested in property and tried to create security for a very large family.</p>
+<p>When property is lost, the financial value can sometimes be calculated.</p>
+<p>But the emotional cost of betrayal is much harder to measure.</p>
+<p>For my father, the deepest wound was not only the possibility of losing land or property.</p>
+<p>It was the collapse of trust.</p>
+<p>He had spent much of his life helping people, supporting relatives and believing strongly in family responsibility. To discover that trust could become a source of vulnerability must have been deeply painful.</p>
+<p>Yet I do not believe the lesson of his experience is that generosity was a mistake.</p>
+<p>His kindness was part of who he was.</p>
+<p>His willingness to help people was one of the qualities for which many remembered him.</p>
+<p>The greater lesson is that <strong>good intentions need protection</strong>.</p>
+<p>Trust should be accompanied by proper documentation.</p>
+<p>Property should be legally protected.</p>
+<p>Important documents should be securely retained.</p>
+<p>Family arrangements should be clearly recorded.</p>
+<p>Business interests should not depend only on verbal promises or personal relationships.</p>
+<p>And generosity should never remove the need for accountability.</p>
+<p>My father came from a generation in which trust, family honour and personal relationships often carried enormous weight. A handshake, a promise or the word of a respected relative could sometimes be treated as stronger than formal documentation.</p>
+<p>But society changes.</p>
+<p>Families grow.</p>
+<p>Interests change.</p>
+<p>Memories differ.</p>
+<p>And circumstances can expose weaknesses that were never anticipated.</p>
+<p>That is why this part of his story remains one of the most practical lessons for future generations.</p>
+<p>Love your family.</p>
+<p>Support people when you can.</p>
+<p>Be generous.</p>
+<p>But also protect what you have worked for.</p>
+<p>Keep records.</p>
+<p>Seek proper advice.</p>
+<p>Understand what you sign.</p>
+<p>Know where your documents are.</p>
+<p>Make ownership clear.</p>
+<p>And never assume that affection alone is enough to protect important family or business interests.</p>
+<p>There is a Yoruba wisdom behind this lesson: kindness and wisdom must walk together.</p>
+<p>A good heart should never be abandoned.</p>
+<p>But a good heart also needs good judgement.</p>
+<p>Looking back, I believe the most painful price my father paid was not measured only in money, buildings or land.</p>
+<p><strong>The greatest wound was not losing property.</strong></p>
+<p><strong>It was losing trust.</strong></p>
+<p>And perhaps that is why this lesson deserves to be remembered by every generation that comes after him:</p>
+<blockquote><p><strong>Do good, but be wise.<br>Help people, but protect what you have built.<br>Trust people, but keep proper records.<br>Love your family, but never abandon accountability.</strong></p></blockquote>
+<p>That is not a rejection of kindness.</p>
+<p>It is kindness strengthened by wisdom.</p>
 
 <h2>Chapter Nine: Later Years: Resilience Through Change</h2>
 <p>Over time, Baba Muyi experienced the decline or loss of many assets connected with his years of work.</p>

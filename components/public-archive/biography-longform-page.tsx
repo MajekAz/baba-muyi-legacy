@@ -11,7 +11,7 @@ const expectedBiographyChapters = [
   "From Bolekaja to TIOLUWA LASE: A Legacy on the Roads of Lagos",
   "Beyond Business: A Leader Who Served His Community",
   "Family, Responsibility and Sacrifice",
-  "The Price of Blind Trust",
+  "When Blind Trust Became the Price of Doing Good",
   "Later Years: Resilience Through Change",
   "An Enduring Legacy"
 ] as const;
@@ -87,7 +87,7 @@ function parseBiographyChapters(record: CmsCoreRecord): BiographyChapter[] {
     const title = normalizeChapterTitle(headingText);
 
     return {
-      id: slugifyAnchor(title),
+      id: expectedBiographyAnchorIds[index] ?? slugifyAnchor(title),
       label: `Chapter ${index + 1}`,
       title,
       bodyHtml: contentHtml.slice(start, next).trim()

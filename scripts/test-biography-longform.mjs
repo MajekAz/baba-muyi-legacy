@@ -44,7 +44,7 @@ const expectedChapters = [
   "From Bolekaja to TIOLUWA LASE: A Legacy on the Roads of Lagos",
   "Beyond Business: A Leader Who Served His Community",
   "Family, Responsibility and Sacrifice",
-  "The Price of Blind Trust",
+  "When Blind Trust Became the Price of Doing Good",
   "Later Years: Resilience Through Change",
   "An Enduring Legacy"
 ];
@@ -58,8 +58,9 @@ for (const chapter of expectedChapters) {
 }
 
 const expectedAnchors = expectedChapters.map(slugify);
+expectedAnchors[7] = "the-price-of-blind-trust";
 for (const anchor of expectedAnchors) {
-  assert(component.includes(anchor), `chapter anchor: ${anchor}`, "Stable chapter anchor is generated from the approved chapter title.");
+  assert(component.includes(anchor), `chapter anchor: ${anchor}`, "Stable chapter anchor is preserved for approved chapter navigation.");
 }
 
 assert(wrapper.includes("BiographyLongformPage") && !wrapper.includes("<CmsPublicPage path=\"/biography\""), "route renderer", "Biography route uses the long-form renderer instead of the generic CMS card renderer.");
