@@ -5,7 +5,7 @@ import { siteConfig } from "@/lib/site";
 export async function generateMetadata() {
   const path = "/documentaries";
   const page = await getCmsPageByPath(path);
-  const title = page?.seoTitle || page?.title || "Baba Muyi Documentaries | Baba Muyi Legacy";
+  const title = page?.seoTitle || page?.title || "Baba Muyi Documentaries | Tioluwalase Majekodunmi";
   const description = page?.metaDescription || page?.description || "Watch approved documentary records exploring Baba Muyi’s biography, family memories, transport heritage, community service, and enduring legacy.";
   const url = new URL(path, siteConfig.url).toString();
 

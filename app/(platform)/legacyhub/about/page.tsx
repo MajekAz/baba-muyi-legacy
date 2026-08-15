@@ -3,7 +3,7 @@ import { Breadcrumbs, PlatformCTA, PlatformPageHero, PlatformSection } from "@/c
 import { siteConfig } from "@/lib/site";
 
 const title = "About LegacyHub - Preserving Human History One Legacy at a Time";
-const description = "About LegacyHub, the platform inspired by the Baba Muyi Legacy flagship archive.";
+const description = "About LegacyHub, the platform inspired by the Tioluwalase Majekodunmi flagship archive.";
 
 export const metadata: Metadata = {
   title: { absolute: title },
@@ -18,12 +18,12 @@ export default function AboutPage() {
     <main className="bg-[#f8f3e8] text-slate-950">
       <Breadcrumbs items={[{ label: "About" }]} />
       <PlatformPageHero eyebrow="About LegacyHub" title="From one archive into a reusable platform.">
-        <p>LegacyHub was shaped by the work of building Baba Muyi Legacy as a serious family and public archive.</p>
+        <p>LegacyHub was shaped by the work of building Tioluwalase Majekodunmi as a serious family and public archive.</p>
       </PlatformPageHero>
       <PlatformSection title="Why LegacyHub was created">
         <div className="grid gap-5 lg:grid-cols-2">
           <article className="rounded border border-stone-300 bg-white p-6">
-            <h2 className="font-serif text-3xl font-semibold">Baba Muyi Legacy inspired the platform.</h2>
+            <h2 className="font-serif text-3xl font-semibold">Tioluwalase Majekodunmi inspired the platform.</h2>
             <p className="mt-3 leading-8 text-slate-700">The flagship archive showed that family history, public memory, transport heritage, values, media, and documentary material need a structured and respectful home.</p>
           </article>
           <article className="rounded border border-stone-300 bg-white p-6">

@@ -5,12 +5,12 @@ import { getPublicMediaRecords } from "@/lib/media/queries";
 import type { CmsCoreCollection, CmsCoreRecord } from "@/lib/cms-core";
 import type { Metadata } from "next";
 
-const homepageTitle = "Baba Muyi Legacy | The Life of Alhaji Tioluwalase Majekodunmi";
+const homepageTitle = "Tioluwalase Majekodunmi | The Life & Legacy of Baba Muyi";
 const homepageDescription =
   "Explore the life, transport history, family story, values and enduring legacy of Alhaji Tioluwalase “Baba Muyi” Majekodunmi through biography, photographs, documentary film, memories and historical records.";
 
 function getSiteUrl() {
-  return process.env.NEXT_PUBLIC_SITE_URL ?? "https://babamuyilegacy.com";
+  return process.env.NEXT_PUBLIC_SITE_URL ?? "https://tioluwalasemajekodunmi.com";
 }
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -52,7 +52,7 @@ function homepageJsonLd() {
       {
         "@type": "WebSite",
         "@id": `${siteUrl}/#website`,
-        name: "Baba Muyi Legacy",
+        name: "Tioluwalase Majekodunmi",
         url: siteUrl,
         description: homepageDescription,
         about: {

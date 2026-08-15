@@ -102,7 +102,7 @@ expect(
 );
 expect(
   "public route group owns public chrome",
-  publicLayout.includes("PublicNavigation") && publicLayout.includes("Baba Muyi Legacy") && publicLayout.includes("Footer navigation"),
+  publicLayout.includes("PublicNavigation") && publicLayout.includes("ArchiveLogo") && publicLayout.includes("Footer navigation"),
   "Public route-group layout owns the Baba Muyi public header and footer."
 );
 expect(

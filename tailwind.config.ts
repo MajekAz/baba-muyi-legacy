@@ -5,13 +5,28 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        heritage: {
+          navy: "#0B1D33"
+        },
+        legacy: {
+          gold: "#D4AF37"
+        },
+        ink: {
+          charcoal: "#1A1A1A"
+        },
+        silver: {
+          grey: "#8C8C8C"
+        },
         archive: {
-          ink: "#111827",
-          navy: "#08131f",
-          charcoal: "#151515",
-          gold: "#c6a15b",
-          cream: "#f7f1e4",
-          paper: "#fffaf0",
+          ink: "#1A1A1A",
+          navy: "#0B1D33",
+          charcoal: "#1A1A1A",
+          gold: "#D4AF37",
+          cream: "#F7F4EC",
+          paper: "#F7F4EC",
+          ivory: "#F7F4EC",
+          stone: "#D9D2C4",
+          grey: "#8C8C8C",
           brown: "#6c4b2a",
           moss: "#556b4d"
         }

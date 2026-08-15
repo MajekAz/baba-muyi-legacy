@@ -6,7 +6,7 @@ import { siteConfig } from "@/lib/site";
 
 const title = "Baba Muyi Photo Archive | LegacyHub";
 const description =
-  "Explore approved Baba Muyi Legacy photographs and albums, including family life, transport heritage, Bariga, Iboogun, Abeokuta roots, and documentary preservation materials.";
+  "Explore approved Tioluwalase Majekodunmi archive photographs and albums, including family life, transport heritage, Bariga, Iboogun, Abeokuta roots, and documentary preservation materials.";
 
 export const metadata: Metadata = {
   title,
@@ -33,7 +33,7 @@ export default async function GalleryPage() {
   ]);
 
   return (
-    <PageShell eyebrow="Gallery" title="Photo archive" description="Published and approved public images from the Baba Muyi Legacy archive.">
+    <PageShell eyebrow="Gallery" title="Photo archive" description="Published and approved public images from the Tioluwalase Majekodunmi archive.">
       <div className="grid gap-8">
         <PublicAlbumGrid albums={albums} />
         <PublicMediaGrid records={images} />

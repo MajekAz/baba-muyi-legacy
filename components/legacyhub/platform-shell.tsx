@@ -28,7 +28,7 @@ export function PlatformFooter() {
         </div>
         <nav aria-label="LegacyHub footer navigation" className="flex flex-wrap gap-3 lg:justify-end">
           <Link className="rounded px-3 py-2 text-sm font-bold text-white/74 hover:bg-white/10 hover:text-white" href="/legacyhub/mission">Mission</Link>
-          <Link className="rounded px-3 py-2 text-sm font-bold text-white/74 hover:bg-white/10 hover:text-white" href="/">Baba Muyi Legacy</Link>
+          <Link className="rounded px-3 py-2 text-sm font-bold text-white/74 hover:bg-white/10 hover:text-white" href="/">Tioluwalase Majekodunmi</Link>
           <Link className="rounded px-3 py-2 text-sm font-bold text-white/74 hover:bg-white/10 hover:text-white" href="/legacyhub/privacy">Privacy</Link>
           <Link className="rounded px-3 py-2 text-sm font-bold text-white/74 hover:bg-white/10 hover:text-white" href="/legacyhub/contact">Contact</Link>
           <Link className="rounded px-3 py-2 text-sm font-bold text-white/74 hover:bg-white/10 hover:text-white" href="/login">Sign In</Link>

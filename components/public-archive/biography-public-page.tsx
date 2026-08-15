@@ -33,7 +33,7 @@ async function biographyJsonLd() {
       {
         "@type": "WebPage",
         "@id": `${url}#webpage`,
-        name: "Baba Muyi Legacy Biography",
+        name: "Tioluwalase Majekodunmi Biography",
         url,
         isPartOf: {
           "@type": "WebSite",

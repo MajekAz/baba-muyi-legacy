@@ -6,7 +6,7 @@ export const generateMetadata = () =>
   publicCmsPageMetadata({
     path: "/tributes",
     fallbackTitle: "Share a Memory of Baba Muyi | LegacyHub",
-    fallbackDescription: "Submit a reviewed memory, tribute, correction, photograph lead, or context note for the Baba Muyi Legacy archive."
+    fallbackDescription: "Submit a reviewed memory, tribute, correction, photograph lead, or context note for the Tioluwalase Majekodunmi archive."
   });
 
 export default function TributesPage() {

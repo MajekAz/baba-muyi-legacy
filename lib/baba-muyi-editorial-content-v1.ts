@@ -43,7 +43,7 @@ export const babaMuyiEditorialPageOverrides: Array<Partial<CmsPage> & { id: stri
         href: "/documentaries"
       }
     ],
-    seoTitle: "Baba Muyi Documentaries | Baba Muyi Legacy",
+    seoTitle: "Baba Muyi Documentaries | Tioluwalase Majekodunmi",
     metaDescription:
       "Watch approved documentary records exploring Baba Muyi’s biography, family memories, transport heritage, community service, and enduring legacy.",
     verificationStatus: "family_memory",
@@ -65,7 +65,7 @@ export const babaMuyiEditorialPageOverrides: Array<Partial<CmsPage> & { id: stri
     ],
     seoTitle: "Baba Muyi Photo Archive | LegacyHub",
     metaDescription:
-      "Explore approved Baba Muyi Legacy photographs and albums, including family life, transport heritage, Bariga, Iboogun, Abeokuta roots, and documentary preservation materials.",
+      "Explore approved Tioluwalase Majekodunmi archive photographs and albums, including family life, transport heritage, Bariga, Iboogun, Abeokuta roots, and documentary preservation materials.",
     verificationStatus: "family_memory",
     updatedAt: implementedAt
   },
@@ -95,7 +95,7 @@ export const babaMuyiEditorialPageOverrides: Array<Partial<CmsPage> & { id: stri
       "No public tribute is published automatically. Submissions are reviewed for consent, privacy, attribution, relevance, and family sensitivity before they appear in the public archive.",
     seoTitle: "Share a Memory of Baba Muyi | LegacyHub",
     metaDescription:
-      "Submit a reviewed memory, tribute, correction, photograph lead, or context note for the Baba Muyi Legacy archive.",
+      "Submit a reviewed memory, tribute, correction, photograph lead, or context note for the Tioluwalase Majekodunmi archive.",
     verificationStatus: "family_memory",
     updatedAt: implementedAt
   },
@@ -103,11 +103,11 @@ export const babaMuyiEditorialPageOverrides: Array<Partial<CmsPage> & { id: stri
     id: "page-curator",
     path: "/curator",
     eyebrow: "About the Archive",
-    title: "About Baba Muyi Legacy",
+    title: "About Tioluwalase Majekodunmi",
     description:
       "A concise introduction to Alhaji Tioluwalase “Baba Muyi” Majekodunmi, the purpose of the archive, and the role of LegacyHub.",
     body:
-      "Baba Muyi Legacy preserves the life of Alhaji Tioluwalase “Baba Muyi” Majekodunmi: an entrepreneur, transport pioneer, father of twenty-seven children, family patriarch, community figure, high chief, and humanitarian whose story is rooted in Abeokuta, Iboogun, Bariga, family responsibility, service, and transport enterprise. The archive was initiated by Azeez Adeyemi Majekodunmi to protect family recollections, documentary material, photographs, and public memory for future generations.",
+      "Tioluwalase Majekodunmi preserves the life of Alhaji Tioluwalase “Baba Muyi” Majekodunmi: an entrepreneur, transport pioneer, father of twenty-seven children, family patriarch, community figure, high chief, and humanitarian whose story is rooted in Abeokuta, Iboogun, Bariga, family responsibility, service, and transport enterprise. The archive was initiated by Azeez Adeyemi Majekodunmi to protect family recollections, documentary material, photographs, and public memory for future generations.",
     cards: [
       {
         id: "about-baba-muyi",
@@ -118,7 +118,7 @@ export const babaMuyiEditorialPageOverrides: Array<Partial<CmsPage> & { id: stri
       {
         id: "about-legacyhub",
         title: "Powered by LegacyHub",
-        description: "LegacyHub provides the reusable platform architecture while Baba Muyi Legacy remains the flagship archive.",
+        description: "LegacyHub provides the reusable platform architecture while Tioluwalase Majekodunmi remains the flagship archive.",
         href: "/legacyhub/flagship-archive"
       },
       {
@@ -130,7 +130,7 @@ export const babaMuyiEditorialPageOverrides: Array<Partial<CmsPage> & { id: stri
     ],
     seoTitle: "About Alhaji Tioluwalase “Baba Muyi” Majekodunmi",
     metaDescription:
-      "Learn about Baba Muyi Legacy, the archive preserving Alhaji Tioluwalase “Baba Muyi” Majekodunmi’s life, family history, transport heritage, community service, and documentary materials.",
+      "Learn about Tioluwalase Majekodunmi, the archive preserving Alhaji Tioluwalase “Baba Muyi” Majekodunmi’s life, family history, transport heritage, community service, and documentary materials.",
     verificationStatus: "family_memory",
     updatedAt: implementedAt
   },
@@ -138,7 +138,7 @@ export const babaMuyiEditorialPageOverrides: Array<Partial<CmsPage> & { id: stri
     id: "page-contact",
     path: "/contact",
     eyebrow: "Contact",
-    title: "Contact Baba Muyi Legacy",
+    title: "Contact Tioluwalase Majekodunmi",
     description:
       "Contact the archive team about family memories, photographs, documentary material, corrections, source notes, permissions, or LegacyHub platform enquiries.",
     body:
@@ -511,7 +511,7 @@ export const babaMuyiEditorialContentRecords: CmsContentRecord[] = [
     title: "History must be preserved before memories disappear",
     slug: "history-must-be-preserved",
     summary: "The biography explains that important family history can be forgotten or rewritten without records, photographs, oral testimonies, and verification.",
-    body: "Historical connection: Baba Muyi Legacy exists to gather biography, family memories, photographs, documents, oral histories, and documentary material. Practical lesson: preserve meaningful records while people can still explain them. Related chapter: An Enduring Legacy.",
+    body: "Historical connection: the Tioluwalase Majekodunmi archive exists to gather biography, family memories, photographs, documents, oral histories, and documentary material. Practical lesson: preserve meaningful records while people can still explain them. Related chapter: An Enduring Legacy.",
     status: "published",
     visibility: "public",
     verificationStatus: "family_memory",

@@ -1,9 +1,10 @@
 export const babaMuyiArchiveFacts = {
   fullName: 'Alhaji Tioluwalase "Baba Muyi" Majekodunmi',
-  archiveName: "Baba Muyi Legacy",
-  relationship: "A LegacyHub Digital Archive",
-  heroHeadline: 'The Legacy of Alhaji Tioluwalase "Baba Muyi" Majekodunmi',
-  legacyLine: "Entrepreneur. Community Leader. Family Patriarch. A Life Preserved for Future Generations.",
+  archiveName: "Tioluwalase Majekodunmi",
+  relationship: "Digital Heritage Archive",
+  heroHeadline: 'The Life and Legacy of Alhaji Tioluwalase "Baba Muyi" Majekodunmi',
+  legacyLine: "Entrepreneur. Family Man. Humanitarian. Community Leader.",
+  tagline: "Legacy of Kindness. Lessons for Generations.",
   introduction:
     "Alhaji Tioluwalase \"Baba Muyi\" Majekodunmi was an entrepreneur, transport pioneer, community leader, and family patriarch whose life touched many people through generosity, leadership, and service. This archive preserves his story so future generations can understand not only what he achieved, but the values he lived by.",
   biographyPreview:
@@ -11,7 +12,7 @@ export const babaMuyiArchiveFacts = {
   documentaryPreview:
     "Through documentary narration, family memories, historical records, and carefully preserved photographs, this film documents Baba Muyi's life for present and future generations.",
   archivePurpose:
-    "Baba Muyi Legacy was established by Azeez Adeyemi Majekodunmi to preserve his father's life and make the archive accessible to children, grandchildren, future descendants, researchers, and the wider community. LegacyHub provides the platform behind the archive while Baba Muyi's story remains the centre of the experience.",
+    "The Tioluwalase Majekodunmi archive was established by Azeez Adeyemi Majekodunmi to preserve his father's life and make the archive accessible to children, grandchildren, future descendants, researchers, and the wider community. LegacyHub provides the platform behind the archive while Baba Muyi's story remains the centre of the experience.",
   curatorLine:
     "This archive is a continuing work shaped by family records, photographs, personal memories, documentary research, and contributions from people who knew Baba Muyi.",
   closing:

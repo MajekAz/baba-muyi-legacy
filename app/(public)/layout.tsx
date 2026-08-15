@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { ArchiveLogo } from "@/components/public-archive/archive-logo";
 import { PublicNavigation } from "@/components/public-navigation";
 import { flagshipArchiveBrand, platformBrand } from "@/lib/brand";
 import { getCmsMenus } from "@/lib/cms-store";
@@ -35,7 +36,7 @@ export default async function PublicLayout({ children }: Readonly<{ children: Re
         <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-[minmax(16rem,24rem)_1fr]">
             <div>
-              <p className="font-serif text-3xl font-semibold leading-none text-archive-gold">Baba Muyi Legacy</p>
+              <ArchiveLogo className="max-w-sm" />
               <p className="mt-4 max-w-sm text-sm leading-6 text-white/72">{flagshipArchiveBrand.description}</p>
               <div className="mt-6 border-l border-archive-gold/40 pl-4">
                 <p className="text-xs font-bold uppercase tracking-[0.16em] text-archive-gold">
@@ -74,7 +75,7 @@ export default async function PublicLayout({ children }: Readonly<{ children: Re
           </div>
 
           <div className="mt-12 flex flex-col gap-4 border-t border-white/10 pt-6 text-sm text-white/58 sm:flex-row sm:items-center sm:justify-between">
-            <p>© {new Date().getFullYear()} Baba Muyi Legacy.</p>
+            <p>© {new Date().getFullYear()} {flagshipArchiveBrand.name}.</p>
             <div className="flex flex-wrap gap-x-5 gap-y-2">
               <span aria-disabled="true" className="text-white/42">
                 Create a Legacy

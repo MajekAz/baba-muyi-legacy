@@ -5,6 +5,7 @@ import { ChevronDown } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
 import { MobileNavigation } from "@/components/mobile-navigation";
+import { ArchiveLogo } from "@/components/public-archive/archive-logo";
 import { flagshipArchiveBrand } from "@/lib/brand";
 import type { NavItem } from "@/lib/navigation";
 
@@ -52,11 +53,12 @@ export function PublicHeaderClient({ items, mobileItems }: { items: NavItem[]; m
   return (
     <header className={`sticky top-0 z-[1000] border-b border-white/10 bg-archive-navy/95 text-white backdrop-blur transition-[padding,background-color] motion-reduce:transition-none ${scrolled ? "shadow-sm" : ""}`}>
       <div className={`mx-auto grid max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-4 px-4 sm:px-6 lg:px-8 ${scrolled ? "py-3" : "py-4"}`}>
-        <Link href="/" className="grid min-w-0 gap-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-archive-gold">
-          <span className="whitespace-nowrap font-serif text-[1.65rem] font-semibold leading-none text-archive-gold">
-            {flagshipArchiveBrand.name}
-          </span>
-          <span className="whitespace-nowrap text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-white/64">{flagshipArchiveBrand.descriptor}</span>
+        <Link
+          aria-label={`${flagshipArchiveBrand.name} home`}
+          href="/"
+          className="min-w-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-archive-gold"
+        >
+          <ArchiveLogo className="w-[min(17rem,calc(100vw-8rem))] sm:w-auto sm:max-w-sm" />
         </Link>
 
         <nav ref={navRef} className="hidden items-center justify-center gap-1 min-[1080px]:flex" aria-label="Primary navigation">

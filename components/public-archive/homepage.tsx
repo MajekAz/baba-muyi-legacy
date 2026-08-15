@@ -55,6 +55,7 @@ function CinematicHero({ heroImage }: { heroImage?: MediaRecord }) {
             {babaMuyiArchiveFacts.heroHeadline}
           </h1>
           <p className="mt-6 max-w-2xl text-xl leading-8 text-white/82">{babaMuyiArchiveFacts.legacyLine}</p>
+          <p className="mt-3 max-w-2xl font-serif text-2xl leading-8 text-archive-gold">{babaMuyiArchiveFacts.tagline}</p>
           <div className="mt-8 flex flex-wrap gap-3">
             {archiveHomeCtas.map((cta) => (
               <ArchiveButton href={cta.href} key={cta.href} primary={cta.primary} inverse={!cta.primary}>
@@ -200,7 +201,7 @@ function CollectionPreview({ galleryImages }: { galleryImages: MediaRecord[] }) 
                   <Image
                     className="aspect-[4/3] w-full rounded-sm object-cover"
                     src={image.signedUrl}
-                    alt={image.altText || image.title || "Published Baba Muyi Legacy archive image"}
+                    alt={image.altText || image.title || "Published Tioluwalase Majekodunmi archive image"}
                     width={640}
                     height={480}
                     sizes="(min-width: 1024px) 30vw, (min-width: 768px) 45vw, 100vw"
@@ -309,7 +310,7 @@ function CuratorNote() {
             <p>{babaMuyiArchiveFacts.curatorLine}</p>
           </blockquote>
           <p className="mt-5 font-serif text-2xl font-semibold text-archive-navy">Azeez Adeyemi Majekodunmi</p>
-          <p className="text-sm font-bold text-archive-brown">Founder, Baba Muyi Legacy</p>
+          <p className="text-sm font-bold text-archive-brown">Founder, Tioluwalase Majekodunmi Archive</p>
         </div>
       </div>
     </section>
