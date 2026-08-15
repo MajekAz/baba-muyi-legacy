@@ -4,36 +4,29 @@ import { flagshipArchiveBrand } from "@/lib/brand";
 type ArchiveLogoProps = {
   className?: string;
   compact?: boolean;
-  inverse?: boolean;
 };
 
-export function ArchiveLogo({ className = "", compact = false, inverse = true }: ArchiveLogoProps) {
+export function ArchiveLogo({ className = "", compact = false }: ArchiveLogoProps) {
   return (
     <span
-      aria-label={flagshipArchiveBrand.assets.alt}
-      className={`inline-flex min-w-0 items-center gap-3 ${className}`}
-      role="img"
+      className={`inline-flex min-w-0 items-center gap-3 sm:gap-4 ${className}`}
     >
-      <span className="relative flex size-12 shrink-0 items-center justify-center overflow-hidden rounded-full border border-archive-gold/45 bg-archive-navy/80 sm:size-14">
+      <span className="relative block size-14 shrink-0 sm:size-16 xl:size-[4.75rem]">
         <Image
-          alt=""
-          className="h-full w-full object-cover object-top"
-          height={512}
+          alt="Tioluwalase Majekodunmi crest"
+          className="object-contain object-left"
+          fill
           priority
+          sizes="(min-width: 1280px) 76px, (min-width: 640px) 64px, 56px"
           src={flagshipArchiveBrand.assets.mark}
-          width={398}
         />
       </span>
-      <span aria-hidden="true" className="grid min-w-0 gap-0.5">
-        <span
-          className={`truncate font-serif text-[1.22rem] font-semibold leading-none tracking-wide sm:text-[1.48rem] ${
-            inverse ? "text-archive-gold" : "text-archive-navy"
-          }`}
-        >
+      <span className={`min-w-0 ${compact ? "max-[360px]:sr-only" : ""}`}>
+        <span className="block whitespace-normal font-serif text-lg font-semibold leading-[1.02] tracking-normal text-archive-gold sm:text-2xl xl:text-[1.75rem]">
           {flagshipArchiveBrand.name}
         </span>
         {!compact ? (
-          <span className={`truncate text-[0.58rem] font-black uppercase tracking-[0.14em] sm:text-[0.68rem] ${inverse ? "text-white/70" : "text-slate-600"}`}>
+          <span className="mt-1 hidden text-[0.66rem] font-black uppercase leading-none tracking-[0.18em] text-white/72 xl:block xl:text-xs">
             {flagshipArchiveBrand.descriptor}
           </span>
         ) : null}

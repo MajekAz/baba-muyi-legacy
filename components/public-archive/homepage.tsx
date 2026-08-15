@@ -22,12 +22,17 @@ type HomePageProps = {
   navigation: CmsMenuItem[];
 };
 
-export function BabaMuyiCinematicHome({ heroImage, timeline, lessons, stories, documentary, galleryImages, navigation }: HomePageProps) {
+const restoredPortrait = {
+  src: "/brand/baba-muyi-restored-portrait-cutout.png",
+  alt: "Restored portrait of Alhaji Tioluwalase Baba Muyi Majekodunmi"
+};
+
+export function BabaMuyiCinematicHome({ timeline, lessons, stories, documentary, galleryImages, navigation }: HomePageProps) {
   const featuredNavigation = navigation.filter((item) => item.href !== "/").slice(0, 8);
 
   return (
     <main className="bg-[#f8f3e8] text-archive-navy">
-      <CinematicHero heroImage={heroImage} />
+      <CinematicHero />
       <ArchiveIntroduction featuredNavigation={featuredNavigation} />
       <BiographyPreview />
       <LifeJourneyPreview timeline={timeline} />
@@ -42,7 +47,7 @@ export function BabaMuyiCinematicHome({ heroImage, timeline, lessons, stories, d
   );
 }
 
-function CinematicHero({ heroImage }: { heroImage?: MediaRecord }) {
+function CinematicHero() {
   return (
     <section className="relative isolate overflow-hidden bg-archive-charcoal text-white">
       <div className="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_80%_10%,rgba(198,161,91,.22),transparent_34%),linear-gradient(135deg,#07131d,#111111_58%,#201a12)]" />
@@ -70,23 +75,19 @@ function CinematicHero({ heroImage }: { heroImage?: MediaRecord }) {
           </div>
         </div>
 
-        {heroImage?.mediaType === "image" && heroImage.signedUrl ? (
-          <figure className="relative">
-              <Image
-                priority
-                className="aspect-[4/5] w-full rounded-sm border border-white/18 object-cover shadow-2xl"
-                src={heroImage.signedUrl}
-                alt={heroImage.altText || heroImage.title}
-                width={960}
-                height={1200}
-                sizes="(min-width: 1024px) 42vw, 100vw"
-              />
-              <figcaption className="mt-3 text-sm leading-6 text-white/68">
-                {heroImage.caption || heroImage.description || heroImage.title}
-                {heroImage.source ? <span className="block text-white/48">Source: {heroImage.source}</span> : null}
-              </figcaption>
-          </figure>
-        ) : null}
+        <figure className="relative mx-auto flex w-full max-w-md items-center justify-center self-center lg:max-w-none lg:justify-self-center">
+          <div className="absolute bottom-6 left-1/2 -z-10 h-[78%] w-[82%] -translate-x-1/2 rounded-full border border-archive-gold/30 bg-archive-gold/10 blur-[1px]" />
+          <div className="absolute bottom-0 left-1/2 -z-20 h-2/3 w-full -translate-x-1/2 bg-[radial-gradient(circle_at_center,rgba(198,161,91,.24),transparent_68%)]" />
+          <Image
+            priority
+            className="h-auto w-full max-w-[36rem] object-contain object-center drop-shadow-[0_2rem_2.5rem_rgba(0,0,0,.5)]"
+            src={restoredPortrait.src}
+            alt={restoredPortrait.alt}
+            width={1254}
+            height={1254}
+            sizes="(min-width: 1024px) 38vw, (min-width: 640px) 70vw, 92vw"
+          />
+        </figure>
       </div>
     </section>
   );

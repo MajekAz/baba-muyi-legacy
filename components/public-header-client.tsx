@@ -52,16 +52,16 @@ export function PublicHeaderClient({ items, mobileItems }: { items: NavItem[]; m
 
   return (
     <header className={`sticky top-0 z-[1000] border-b border-white/10 bg-archive-navy/95 text-white backdrop-blur transition-[padding,background-color] motion-reduce:transition-none ${scrolled ? "shadow-sm" : ""}`}>
-      <div className={`mx-auto grid max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-4 px-4 sm:px-6 lg:px-8 ${scrolled ? "py-3" : "py-4"}`}>
+      <div className={`mx-auto grid max-w-[112rem] grid-cols-[auto_1fr_auto] items-center gap-4 px-4 sm:px-6 lg:px-8 ${scrolled ? "py-3" : "py-4"}`}>
         <Link
           aria-label={`${flagshipArchiveBrand.name} home`}
           href="/"
           className="min-w-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-archive-gold"
         >
-          <ArchiveLogo className="w-[min(17rem,calc(100vw-8rem))] sm:w-auto sm:max-w-sm" />
+          <ArchiveLogo className="w-[min(22rem,calc(100vw-6.5rem))] sm:w-[24rem] xl:w-[25rem] 2xl:w-[28rem]" />
         </Link>
 
-        <nav ref={navRef} className="hidden items-center justify-center gap-1 min-[1080px]:flex" aria-label="Primary navigation">
+        <nav ref={navRef} className="hidden items-center justify-center gap-0.5 min-[1440px]:flex" aria-label="Primary navigation">
           {items.map((item) => {
             const panelId = `${menuBaseId}-${item.label.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
             const isOpen = openMenu === item.label;
@@ -70,7 +70,7 @@ export function PublicHeaderClient({ items, mobileItems }: { items: NavItem[]; m
               return (
                 <Link
                   aria-current={active ? "page" : undefined}
-                  className={`whitespace-nowrap rounded px-3 py-2 text-sm font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-archive-gold ${active ? activeClass : inactiveClass}`}
+                  className={`whitespace-nowrap rounded px-2.5 py-2 text-sm font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-archive-gold ${active ? activeClass : inactiveClass}`}
                   href={item.href}
                   key={item.label}
                 >
@@ -84,7 +84,7 @@ export function PublicHeaderClient({ items, mobileItems }: { items: NavItem[]; m
                 <button
                   aria-controls={panelId}
                   aria-expanded={isOpen}
-                  className={`inline-flex min-h-10 items-center gap-1 whitespace-nowrap rounded px-3 py-2 text-sm font-semibold transition hover:bg-white/10 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-archive-gold ${active ? activeClass : inactiveClass}`}
+                  className={`inline-flex min-h-10 items-center gap-1 whitespace-nowrap rounded px-2.5 py-2 text-sm font-semibold transition hover:bg-white/10 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-archive-gold ${active ? activeClass : inactiveClass}`}
                   onClick={() => setOpenMenu((current) => current === item.label ? null : item.label)}
                   type="button"
                 >
@@ -125,16 +125,16 @@ export function PublicHeaderClient({ items, mobileItems }: { items: NavItem[]; m
           })}
         </nav>
 
-        <div className="hidden items-center justify-end gap-2 min-[1080px]:flex">
-          <Link className="whitespace-nowrap rounded bg-archive-gold px-3.5 py-2 text-sm font-bold text-archive-navy transition hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-archive-gold" href="/documentaries">
+        <div className="hidden items-center justify-end gap-2 min-[1440px]:flex">
+          <Link className="whitespace-nowrap rounded bg-archive-gold px-3 py-2 text-sm font-bold text-archive-navy transition hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-archive-gold" href="/documentaries">
             Watch Documentary
           </Link>
-          <Link className="whitespace-nowrap rounded border border-archive-gold/70 px-3.5 py-2 text-sm font-bold text-archive-gold transition hover:bg-archive-gold hover:text-archive-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-archive-gold" href="/tributes">
+          <Link className="whitespace-nowrap rounded border border-archive-gold/70 px-3 py-2 text-sm font-bold text-archive-gold transition hover:bg-archive-gold hover:text-archive-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-archive-gold" href="/tributes">
             Share a Memory
           </Link>
         </div>
 
-        <div className="justify-self-end min-[1080px]:hidden">
+        <div className="justify-self-end min-[1440px]:hidden">
           <MobileNavigation items={mobileItems} />
         </div>
       </div>
