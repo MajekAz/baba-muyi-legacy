@@ -32,7 +32,7 @@ export default function MissionPage() {
             ["Memories disappear when they are not preserved", "Stories are often held by a few people, scattered across devices, albums, boxes, conversations, and private family knowledge. When they are not gathered with care, they can fade."],
             ["Every life contains history", "Families, founders, communities, and institutions carry stories that future generations deserve to understand through attributed and responsibly preserved records."],
             ["Families need more than temporary posts", "A lasting archive needs roles, review, privacy, attribution, source notes, and a clear distinction between private material and public storytelling."],
-            ["Baba Muyi Legacy is the first flagship archive", "Baba Muyi Legacy is the first working example through which LegacyHub’s preservation, moderation, media, CMS, and multi-workspace capabilities are being developed."]
+            ["Tioluwalase Majekodunmi is the first flagship archive", "Tioluwalase Majekodunmi is the first working example through which LegacyHub’s preservation, moderation, media, CMS, and multi-workspace capabilities are being developed."]
           ].map(([heading, body]) => (
             <article className="rounded border border-stone-300 bg-white p-6" key={heading}>
               <h2 className="font-serif text-3xl font-semibold">{heading}</h2>

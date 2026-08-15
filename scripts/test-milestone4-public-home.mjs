@@ -53,7 +53,7 @@ assert(!homepage.includes("dangerouslySetInnerHTML"), "safe rendering", "Homepag
 assert(!/storage\/v1\/object|token=|SUPABASE_SERVICE_ROLE_KEY|LEGACYHUB_OWNER_PASSWORD/.test(homepage + archiveContent), "private media and secrets", "Homepage/content config contains no private storage URLs or secrets.");
 assert(!/register|sign up|create account|create workspace/i.test(homepage + archiveContent), "no public registration", "Homepage does not introduce public registration or workspace creation.");
 assert(
-  home.includes("The Life of Alhaji Tioluwalase Majekodunmi") &&
+  home.includes("Tioluwalase Majekodunmi | The Life & Legacy of Baba Muyi") &&
   home.includes("Explore the life, transport history, family story, values and enduring legacy"),
   "homepage metadata",
   "Homepage metadata uses the approved editorial title and description."
@@ -76,8 +76,9 @@ assert(
 );
 assert(!homepage.includes("Portrait under editorial review"), "hero fallback", "Hero does not render an empty portrait placeholder when no approved public portrait exists.");
 assert(
-  archiveContent.includes("The Legacy of Alhaji Tioluwalase") &&
-  archiveContent.includes("Entrepreneur. Community Leader. Family Patriarch. A Life Preserved for Future Generations.") &&
+  archiveContent.includes("The Life and Legacy of Alhaji Tioluwalase") &&
+  archiveContent.includes("Entrepreneur. Family Man. Humanitarian. Community Leader.") &&
+  archiveContent.includes("Legacy of Kindness. Lessons for Generations.") &&
   homepage.includes("The Man Behind the Legacy") &&
   homepage.includes("A Life Through Time") &&
   homepage.includes("His Story on Film") &&

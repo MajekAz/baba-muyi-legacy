@@ -50,7 +50,7 @@ assert(!combined.includes("Transcript available") && !combined.includes("Subtitl
 assert(!combined.includes("signedUrl") && !combined.includes("supabase.co/storage"), "no signed storage URLs", "Documentary embed work does not use signed Supabase storage URLs.");
 assert(!combined.includes("BIOGRAPHY_EDITORIAL_PACK_v2"), "no biography v2 work", "Biography v2 work was not started.");
 assert(!combined.includes("supabase/migrations") && !/create table|alter table/i.test(combined), "no schema work", "Documentary embed files contain no schema or migration work.");
-assert(source.includes("Baba Muyi Documentaries | Baba Muyi Legacy"), "metadata title", "Documentary metadata uses the approved Baba Muyi title.");
+assert(source.includes("Baba Muyi Documentaries | Tioluwalase Majekodunmi"), "metadata title", "Documentary metadata uses the approved Baba Muyi title.");
 assert(source.includes("Watch approved documentary records exploring Baba Muyi’s biography"), "metadata description", "Documentary metadata uses the approved description.");
 
 if (process.exitCode) {

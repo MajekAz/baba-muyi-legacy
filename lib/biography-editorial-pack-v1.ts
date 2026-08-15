@@ -47,7 +47,7 @@ export const biographyEditorialPage: Partial<CmsPage> & { id: string; path: stri
   ],
   seoTitle: "Alhaji Tioluwalase “Baba Muyi” Majekodunmi | Official Biography",
   metaDescription:
-    "Explore the life, entrepreneurial journey, family values, community service, and enduring legacy of Alhaji Tioluwalase “Baba Muyi” Majekodunmi, preserved by the LegacyHub Digital Museum.",
+    "Explore the life, entrepreneurial journey, family values, community service, and enduring legacy of Alhaji Tioluwalase “Baba Muyi” Majekodunmi, preserved in the Tioluwalase Majekodunmi archive.",
   verificationStatus: "family_memory",
   updatedAt: implementedAt
 };
@@ -324,7 +324,7 @@ export const biographyEditorialChapter: CmsContentRecord = {
 <p>It is being preserved to create an honest, respectful, and educational historical record.</p>
 
 <h3>Preserving His Story Through LegacyHub</h3>
-<p>The LegacyHub Digital Museum has been created to preserve the life and legacy of Baba Muyi in a permanent and accessible form.</p>
+<p>The Tioluwalase Majekodunmi archive has been created to preserve the life and legacy of Baba Muyi in a permanent and accessible form.</p>
 <p>The museum will bring together:</p>
 <ul>
 <li>His official biography</li>
@@ -388,7 +388,7 @@ export const biographyEditorialChapter: CmsContentRecord = {
   author: "Azeez Adeyemi Majekodunmi",
   seoTitle: "Alhaji Tioluwalase “Baba Muyi” Majekodunmi | Official Biography",
   metaDescription:
-    "Explore the life, entrepreneurial journey, family values, community service, and enduring legacy of Alhaji Tioluwalase “Baba Muyi” Majekodunmi, preserved by the LegacyHub Digital Museum.",
+    "Explore the life, entrepreneurial journey, family values, community service, and enduring legacy of Alhaji Tioluwalase “Baba Muyi” Majekodunmi, preserved in the Tioluwalase Majekodunmi archive.",
   createdAt: implementedAt,
   updatedAt: implementedAt,
   lastEditorId: "BIOGRAPHY_EDITORIAL_PACK_v1.0"

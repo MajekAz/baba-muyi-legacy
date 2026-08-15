@@ -6,7 +6,7 @@ import { siteConfig } from "@/lib/site";
 import Link from "next/link";
 
 const title = "Baba Muyi Stories and Memories | LegacyHub";
-const description = "Reviewed public stories and memories connected to the Baba Muyi Legacy archive.";
+const description = "Reviewed public stories and memories connected to the Tioluwalase Majekodunmi archive.";
 
 export const metadata: Metadata = {
   title,

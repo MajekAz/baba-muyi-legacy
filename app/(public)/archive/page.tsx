@@ -6,7 +6,7 @@ export default async function ArchivePage() {
   const records = await getPublicMediaRecords();
 
   return (
-    <PageShell eyebrow="Archive" title="Digital archive" description="Approved public media records from the Baba Muyi Legacy archive.">
+    <PageShell eyebrow="Archive" title="Digital archive" description="Approved public media records from the Tioluwalase Majekodunmi archive.">
       <PublicMediaGrid records={records} />
     </PageShell>
   );

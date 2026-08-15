@@ -5,6 +5,7 @@ import { ChevronDown, Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import { ArchiveLogo } from "@/components/public-archive/archive-logo";
 import { flagshipArchiveBrand } from "@/lib/brand";
 import type { NavItem } from "@/lib/navigation";
 
@@ -80,10 +81,7 @@ export function MobileNavigation({ items }: { items: NavItem[] }) {
     >
       <div ref={panelRef} className="flex h-dvh flex-col">
         <div className="flex items-center justify-between border-b border-white/10 px-4 py-4">
-          <div className="grid gap-0.5">
-            <p className="font-serif text-3xl font-semibold leading-none text-archive-gold">{flagshipArchiveBrand.name}</p>
-            <p className="text-xs font-semibold uppercase tracking-[0.12em] text-white/70">{flagshipArchiveBrand.descriptor}</p>
-          </div>
+          <ArchiveLogo className="max-w-[17rem]" />
           <button
             aria-label="Close navigation menu"
             className="inline-flex min-h-12 min-w-12 items-center justify-center rounded border border-white/15 bg-white/5"

@@ -31,7 +31,7 @@ const overviewCards = [
   {
     title: "Flagship Archive",
     href: "/legacyhub/flagship-archive",
-    body: "Baba Muyi Legacy is the first public digital archive powered by LegacyHub.",
+    body: "Tioluwalase Majekodunmi is the first public digital archive powered by LegacyHub.",
     icon: BookOpen
   },
   {
@@ -77,7 +77,7 @@ export default function LegacyHubHomePage() {
               LegacyHub helps families, communities, institutions, and organisations preserve meaningful histories through beautiful, secure, and collaborative digital archives.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <PlatformCTA href="/">Explore Baba Muyi Legacy</PlatformCTA>
+              <PlatformCTA href="/">Explore Tioluwalase Majekodunmi</PlatformCTA>
               <Link className="rounded border border-white/28 px-5 py-3 text-center text-sm font-black text-white transition hover:bg-white hover:text-slate-950" href="/legacyhub/early-access">
                 Join the Early Access List
               </Link>

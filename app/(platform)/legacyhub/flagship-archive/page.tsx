@@ -6,7 +6,7 @@ import { siteConfig } from "@/lib/site";
 
 const title = "The Legacy of Alhaji Tioluwalase “Baba Muyi” Majekodunmi";
 const description =
-  "Baba Muyi Legacy is the first public digital archive powered by LegacyHub, preserving the life, family history, transport heritage, documentary materials, oral histories, photographs, and lessons of Alhaji Tioluwalase “Baba Muyi” Majekodunmi.";
+  "Tioluwalase Majekodunmi is the first public digital archive powered by LegacyHub, preserving the life, family history, transport heritage, documentary materials, oral histories, photographs, and lessons of Alhaji Tioluwalase “Baba Muyi” Majekodunmi.";
 
 export const metadata: Metadata = {
   title: { absolute: title },
@@ -22,7 +22,7 @@ export default function FlagshipArchivePage() {
       <Breadcrumbs items={[{ label: "Flagship Archive" }]} />
       <PlatformPageHero eyebrow="The first LegacyHub flagship archive" title="The Legacy of Alhaji Tioluwalase “Baba Muyi” Majekodunmi">
         <p>
-          Baba Muyi Legacy is the first public digital archive powered by LegacyHub. It preserves the life, entrepreneurial journey, family history, transport heritage, community service, photographs, documentary materials, oral histories, and enduring lessons of Alhaji Tioluwalase &quot;Baba Muyi&quot; Majekodunmi.
+          Tioluwalase Majekodunmi is the first public digital archive powered by LegacyHub. It preserves the life, entrepreneurial journey, family history, transport heritage, community service, photographs, documentary materials, oral histories, and enduring lessons of Alhaji Tioluwalase &quot;Baba Muyi&quot; Majekodunmi.
         </p>
       </PlatformPageHero>
       <PlatformSection title="A real archive demonstrating a reusable platform.">
@@ -41,7 +41,7 @@ export default function FlagshipArchivePage() {
       </PlatformSection>
       <PlatformSection dark title="Explore the flagship archive">
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          <ArchiveLink href="/biography" label="Explore Baba Muyi Legacy" />
+          <ArchiveLink href="/biography" label="Explore Tioluwalase Majekodunmi" />
           <ArchiveLink href="/timeline" label="Explore the timeline" />
           <ArchiveLink href="/gallery" label="Explore the photo archive" />
           <ArchiveLink href="/tioluwa-lase-molue" label="Discover the transport legacy" />

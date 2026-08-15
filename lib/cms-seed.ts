@@ -114,9 +114,9 @@ const pageSeeds: Array<Omit<CmsPage, "id" | "workspaceId" | "legacyProfileId" | 
   {
     path: "/curator",
     eyebrow: "Flagship archive",
-    title: "About Baba Muyi Legacy and LegacyHub",
-    description: "Baba Muyi Legacy is the first flagship archive created with LegacyHub.",
-    body: "Baba Muyi Legacy is the first flagship archive created with LegacyHub, a platform designed to help families, communities and institutions preserve and share meaningful histories.",
+    title: "About Tioluwalase Majekodunmi and LegacyHub",
+    description: "Tioluwalase Majekodunmi is the first flagship archive created with LegacyHub.",
+    body: "Tioluwalase Majekodunmi is the first flagship archive created with LegacyHub, a platform designed to help families, communities and institutions preserve and share meaningful histories.",
     cards: [
       { id: "families", title: "Family histories", description: "LegacyHub supports family histories, parents, grandparents, and multi-generational memories." },
       { id: "leaders", title: "Leaders and founders", description: "Archive community leaders, entrepreneurs, founders, veterans, and cultural contributors." },
@@ -148,7 +148,7 @@ const simplePages = [
   ["/family-memories", "Family Legacy", "Family Memories", "Reviewed family stories, audio, photographs, and recollections."],
   ["/journey-map", "Routes", "Interactive journey and route map", "Journeys, routes, stops, landmarks, and transport memories."],
   ["/documents", "Sources", "Historical documents", "A controlled document archive for scans, letters, certificates, business records, and references."],
-  ["/privacy", "Legal", "Privacy policy", "Draft privacy policy for the Baba Muyi Legacy archive."],
+  ["/privacy", "Legal", "Privacy policy", "Draft privacy policy for the Tioluwalase Majekodunmi archive."],
   ["/terms", "Legal", "Terms", "Draft terms for contributors and visitors."],
   ["/waiting-list", "Future SaaS", "Legacy platform waiting list", "The Baba Muyi archive is the proof of concept for a future family legacy platform."]
 ] as const;

@@ -6,7 +6,7 @@ import { getPublicFeaturedMediaForContent } from "@/lib/media/queries";
 import { siteConfig } from "@/lib/site";
 
 const fallbackTitle = "Alhaji Tioluwalase “Baba Muyi” Majekodunmi | Official Biography";
-const fallbackDescription = "Family-reviewed biography chapters from Baba Muyi Legacy will appear here when they are ready for public release.";
+const fallbackDescription = "Family-reviewed biography chapters from the Tioluwalase Majekodunmi archive will appear here when they are ready for public release.";
 
 export async function generateMetadata(): Promise<Metadata> {
   const [{ workspace, legacyProfile }, page] = await Promise.all([
@@ -23,7 +23,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const url = new URL("/biography", siteConfig.url).toString();
   const image = [...featuredMedia.values()].find((item) => item.mediaType === "image" && item.signedUrl);
   const openGraphImage = image?.signedUrl
-    ? [{ url: image.signedUrl, alt: image.altText || image.title || "Baba Muyi Legacy biography image" }]
+    ? [{ url: image.signedUrl, alt: image.altText || image.title || "Tioluwalase Majekodunmi biography image" }]
     : undefined;
 
   return {

@@ -5,18 +5,32 @@ export const platformBrand = {
 };
 
 export const flagshipArchiveBrand = {
-  name: "Baba Muyi Legacy",
+  name: "Tioluwalase Majekodunmi",
   relationship: "Powered by LegacyHub",
-  descriptor: "A LegacyHub Digital Archive",
-  description: "A respectful digital archive preserving family history, transport heritage, documentary material and public memories."
+  descriptor: "The Life & Legacy of Baba Muyi",
+  archiveDescriptor: "Digital Heritage Archive",
+  tagline: "Legacy of Kindness. Lessons for Generations.",
+  description:
+    "A digital heritage archive preserving the life, values, family history, entrepreneurial journey and enduring legacy of Alhaji Tioluwalase “Baba Muyi” Majekodunmi.",
+  purpose:
+    "Preserve the life, values, entrepreneurial history, family memory, community contribution, photographs, documentaries, lessons and enduring legacy of Alhaji Tioluwalase “Baba Muyi” Majekodunmi for future generations.",
+  assets: {
+    logo: "/brand/tioluwalase-majekodunmi-logo.png",
+    logoDark: "/brand/tioluwalase-majekodunmi-logo-dark.png",
+    mark: "/brand/tioluwalase-majekodunmi-mark.png",
+    alt: "Tioluwalase Majekodunmi — The Life and Legacy of Baba Muyi"
+  }
 };
 
 export const workspaceBrandTokens = {
   defaultTheme: "archive",
   colorRoles: {
-    primary: "archive-navy",
-    accent: "archive-gold",
-    surface: "archive-cream"
+    primary: "heritage-navy",
+    accent: "legacy-gold",
+    surface: "archive-ivory",
+    text: "ink-charcoal",
+    muted: "silver-grey",
+    border: "archive-stone"
   }
 };
 

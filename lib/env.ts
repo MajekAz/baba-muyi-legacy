@@ -8,7 +8,7 @@ const placeholderValues = new Set([
 ]);
 
 const publicEnvSchema = z.object({
-  NEXT_PUBLIC_SITE_URL: z.string().url().default("https://babamuyilegacy.com"),
+  NEXT_PUBLIC_SITE_URL: z.string().url().default("https://tioluwalasemajekodunmi.com"),
   NEXT_PUBLIC_SUPABASE_URL: z.string().url().optional(),
   NEXT_PUBLIC_SUPABASE_ANON_KEY: z.string().min(20).optional()
 });
@@ -24,7 +24,7 @@ function cleanEnvValue(value: string | undefined) {
 
 export function getPublicEnv() {
   return publicEnvSchema.parse({
-    NEXT_PUBLIC_SITE_URL: cleanEnvValue(process.env.NEXT_PUBLIC_SITE_URL) ?? "https://babamuyilegacy.com",
+    NEXT_PUBLIC_SITE_URL: cleanEnvValue(process.env.NEXT_PUBLIC_SITE_URL) ?? "https://tioluwalasemajekodunmi.com",
     NEXT_PUBLIC_SUPABASE_URL: cleanEnvValue(process.env.NEXT_PUBLIC_SUPABASE_URL),
     NEXT_PUBLIC_SUPABASE_ANON_KEY: cleanEnvValue(process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY)
   });

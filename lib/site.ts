@@ -3,10 +3,9 @@ import { flagshipArchiveBrand } from "@/lib/brand";
 
 export const siteConfig = {
   name: flagshipArchiveBrand.name,
-  domain: "babamuyilegacy.com",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://babamuyilegacy.com",
-  description:
-    "A premium digital legacy, documentary archive, and family-history website preserving the life and values of Alhaji Tioluwalase \"Baba Muyi\" Majekodunmi. Powered by LegacyHub.",
+  domain: "tioluwalasemajekodunmi.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://tioluwalasemajekodunmi.com",
+  description: flagshipArchiveBrand.description,
   curator: "The Majekodunmi Family"
 };
 
@@ -53,7 +52,7 @@ export const babaMuyiProfile: LegacyProfile = {
   summary:
     "A respectful archive preserving family history, transport heritage, documentary material, public memories, and the values Baba Muyi carried through his life.",
   values: ["Family stewardship", "Enterprise", "Service", "Faith", "Community memory"],
-  seoTitle: "Baba Muyi Legacy | Alhaji Tioluwalase Majekodunmi",
+  seoTitle: "Tioluwalase Majekodunmi | The Life & Legacy of Baba Muyi",
   seoDescription:
     "Preserving the life, work, transport history, family story, and lessons of Alhaji Tioluwalase \"Baba Muyi\" Majekodunmi."
 };
