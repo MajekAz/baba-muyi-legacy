@@ -25,19 +25,36 @@ export function AuthForm({ mode }: AuthFormProps) {
         </div>
       ) : null}
       {mode !== "reset" ? (
-        <div className="grid gap-2">
-          <label className="text-sm font-semibold text-archive-navy" htmlFor="password">
-            Password
-          </label>
-          <input
-            className="rounded border border-slate-300 px-3 py-2"
-            id="password"
-            minLength={8}
-            name="password"
-            required
-            type="password"
-          />
-        </div>
+        <>
+          <div className="grid gap-2">
+            <label className="text-sm font-semibold text-archive-navy" htmlFor="password">
+              {mode === "update" ? "New password" : "Password"}
+            </label>
+            <input
+              className="rounded border border-slate-300 px-3 py-2"
+              id="password"
+              minLength={8}
+              name="password"
+              required
+              type="password"
+            />
+          </div>
+          {mode === "update" ? (
+            <div className="grid gap-2">
+              <label className="text-sm font-semibold text-archive-navy" htmlFor="confirmPassword">
+                Confirm new password
+              </label>
+              <input
+                className="rounded border border-slate-300 px-3 py-2"
+                id="confirmPassword"
+                minLength={8}
+                name="confirmPassword"
+                required
+                type="password"
+              />
+            </div>
+          ) : null}
+        </>
       ) : null}
       <button className="rounded bg-archive-navy px-5 py-3 text-sm font-semibold text-white" disabled={pending} type="submit">
         {pending ? "Working..." : mode === "login" ? "Sign in" : mode === "reset" ? "Send reset link" : "Update password"}

@@ -23,10 +23,16 @@ const rootLayout = read("app/layout.tsx");
 const publicLayout = read("app/(public)/layout.tsx");
 const adminLayout = read("app/admin/layout.tsx");
 const adminShell = read("components/admin/admin-shell.tsx");
+const authActions = read("lib/auth-actions.ts");
+const authCallback = read("app/auth/callback/route.ts");
+const authForm = read("components/auth-form.tsx");
 const navigation = read("lib/navigation.ts");
+const homePage = read("app/(public)/page.tsx");
+const loginPage = read("app/login/page.tsx");
 const contentList = read("app/admin/content/[collection]/page.tsx");
 const mediaLibrary = read("components/admin/media-library.tsx");
 const confirmButton = read("components/admin/confirm-submit-button.tsx");
+const updatePasswordPage = read("app/update-password/page.tsx");
 const adminDocs = read("docs/ADMIN_UX_GUIDE.md");
 const decisions = read("docs/PRODUCT_DECISIONS.md");
 
@@ -109,6 +115,26 @@ expect(
   "root layout is shell-neutral",
   !rootLayout.includes("PublicSiteChrome") && !rootLayout.includes("getCmsMenus") && rootLayout.includes("<body className=\"font-sans\">{children}</body>"),
   "Root layout only provides html/body and does not wrap admin routes with public chrome."
+);
+expect(
+  "password recovery uses callback exchange",
+  authActions.includes('new URL("/auth/callback"') && authActions.includes('callbackUrl.searchParams.set("next", "/update-password")') && authCallback.includes("exchangeCodeForSession"),
+  "Password reset emails route through the Supabase code-exchange callback before the update screen."
+);
+expect(
+  "root recovery code fallback",
+  homePage.includes("searchParams") && homePage.includes("/auth/callback?code=") && homePage.includes("next=/update-password"),
+  "Root homepage redirects accidental ?code recovery links to the callback route."
+);
+expect(
+  "password update requires active session",
+  updatePasswordPage.includes("supabase.auth.getUser()") && updatePasswordPage.includes("hasRecoverySession") && updatePasswordPage.includes("Request a fresh reset link"),
+  "Update-password screen requires a valid exchanged recovery session."
+);
+expect(
+  "password confirmation required",
+  authForm.includes("confirmPassword") && authActions.includes("Passwords must match.") && authActions.includes("/login?password=updated") && loginPage.includes("Password updated. Sign in with your new password."),
+  "Password update form requires confirmation and redirects to login with safe success copy."
 );
 
 for (const check of checks) {
