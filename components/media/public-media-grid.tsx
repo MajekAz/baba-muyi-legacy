@@ -4,7 +4,16 @@ import { galleryImageTypes } from "@/lib/media/config";
 import type { MediaAlbum, MediaRecord } from "@/lib/media/types";
 
 function imageTypeLabel(value: string) {
+  if (value === "ai_assisted_heritage_reconstruction") return "Heritage reconstruction";
   return galleryImageTypes[value as keyof typeof galleryImageTypes] ?? "";
+}
+
+function publicCardDescription(record: MediaRecord) {
+  const text = record.caption || record.description || "";
+  return text
+    .replace(/\bAI-assisted heritage reconstruction\.\s*/gi, "")
+    .replace(/\bInterpretive image, not an original family photograph\.\s*/gi, "")
+    .trim();
 }
 
 function groupedByCategory(records: MediaRecord[]) {
@@ -46,13 +55,8 @@ export function PublicMediaGrid({ records }: { records: MediaRecord[] }) {
                   {record.imageType ? <span className="rounded-full bg-archive-navy/8 px-3 py-1 text-xs font-semibold text-archive-navy">{imageTypeLabel(record.imageType)}</span> : null}
                 </div>
                 <h3 className="mt-3 font-serif text-2xl text-archive-navy">{record.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-slate-600">{record.caption || record.description}</p>
+                {publicCardDescription(record) ? <p className="mt-2 text-sm leading-6 text-slate-600">{publicCardDescription(record)}</p> : null}
                 {record.contributorCredit ? <p className="mt-3 text-xs font-semibold uppercase tracking-[0.12em] text-slate-500">Credit: {record.contributorCredit}</p> : null}
-                {record.imageType === "ai_assisted_heritage_reconstruction" ? (
-                  <p className="mt-3 rounded border border-amber-200 bg-amber-50 px-3 py-2 text-sm text-amber-900">
-                    AI-assisted heritage reconstruction. Interpretive image, not an original family photograph.
-                  </p>
-                ) : null}
               </article>
             ))}
           </div>
