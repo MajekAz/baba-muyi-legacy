@@ -15,7 +15,7 @@ LegacyHub media is workspace-aware and legacy-profile-aware. The Baba Muyi Famil
 
 ## Supported Initial File Types
 
-- Images: JPEG, PNG, WebP, AVIF.
+- Images: JPEG, PNG, WebP.
 - Documents: PDF.
 - Audio: MP3, WAV, M4A.
 - Short video clips: MP4, WebM.

@@ -10,6 +10,7 @@ import { requireLegacyProfilePermission } from "@/lib/tenant-context";
 import { roleHasPermission, type UserRole } from "@/lib/permissions";
 import { bucketForMediaType, createStoragePath, safeFilename } from "@/lib/media/storage";
 import { validateMediaUpload } from "@/lib/media/validation";
+import { galleryApprovalStatuses, galleryCategories, galleryImageTypes } from "@/lib/media/config";
 
 type ActionState = {
   ok: boolean;
@@ -23,18 +24,34 @@ const metadataSchema = z.object({
   description: z.string().trim().max(1000).optional(),
   caption: z.string().trim().max(500).optional(),
   altText: z.string().trim().max(300).optional(),
+  galleryCategory: z.enum(galleryCategories).optional().or(z.literal("")),
+  imageType: z.enum(Object.keys(galleryImageTypes) as [keyof typeof galleryImageTypes, ...(keyof typeof galleryImageTypes)[]]).optional().or(z.literal("")),
   approximateDate: z.string().trim().max(120).optional(),
   datePrecision: z.enum(["unknown", "year", "month", "day", "circa", "range"]),
   location: z.string().trim().max(180).optional(),
   peopleShown: z.string().trim().max(600).optional(),
+  tags: z.string().trim().max(600).optional(),
   source: z.string().trim().max(300).optional(),
+  contributorCredit: z.string().trim().max(180).optional(),
   copyrightOwner: z.string().trim().max(180).optional(),
   licence: z.string().trim().max(180).optional(),
   verificationStatus: z.enum(["unverified", "family_memory", "partially_verified", "verified"]),
+  galleryApprovalStatus: z.enum(Object.keys(galleryApprovalStatuses) as [keyof typeof galleryApprovalStatuses, ...(keyof typeof galleryApprovalStatuses)[]]),
+  verificationNote: z.string().trim().max(600).optional(),
   visibility: z.enum(["public", "preview", "private", "family_only", "registered", "invited", "specific_users", "password_protected"]),
   publicationStatus: z.enum(["draft", "scheduled", "published", "archived", "in_review"]),
   moderationStatus: z.enum(["pending", "approved", "rejected", "hidden"]),
+  sortOrder: z.coerce.number().int().min(0).max(100000).default(0),
+  featured: z.boolean().default(false),
   albumId: z.string().uuid().optional().or(z.literal(""))
+});
+
+const uploadMetadataSchema = z.object({
+  galleryCategory: z.enum(galleryCategories).optional().or(z.literal("")),
+  imageType: z.enum(Object.keys(galleryImageTypes) as [keyof typeof galleryImageTypes, ...(keyof typeof galleryImageTypes)[]]).optional().or(z.literal("")),
+  galleryApprovalStatus: z.enum(Object.keys(galleryApprovalStatuses) as [keyof typeof galleryApprovalStatuses, ...(keyof typeof galleryApprovalStatuses)[]]).default("unreviewed"),
+  contributorCredit: z.string().trim().max(180).optional(),
+  source: z.string().trim().max(300).optional()
 });
 
 const albumSchema = z.object({
@@ -222,6 +239,14 @@ export async function uploadMediaFiles(_: ActionState, formData: FormData): Prom
 
   const files = formData.getAll("files").filter((item): item is File => item instanceof File && item.size > 0);
   if (!files.length) return { ok: false, message: "Choose at least one file to upload." };
+  const uploadMetadata = uploadMetadataSchema.safeParse({
+    galleryCategory: text(formData, "galleryCategory"),
+    imageType: text(formData, "imageType"),
+    galleryApprovalStatus: text(formData, "galleryApprovalStatus") || "unreviewed",
+    contributorCredit: text(formData, "contributorCredit"),
+    source: text(formData, "source")
+  });
+  if (!uploadMetadata.success) return { ok: false, message: "Check the gallery metadata fields before uploading." };
 
   let uploaded = 0;
   const failures: string[] = [];
@@ -233,6 +258,11 @@ export async function uploadMediaFiles(_: ActionState, formData: FormData): Prom
     if (!validation.ok) {
       failures.push(`${file.name}: ${validation.message}`);
       await writeMediaAudit("media_upload_failed", null, { filename: file.name, reason: validation.message });
+      continue;
+    }
+    if (validation.mediaType === "image" && (!uploadMetadata.data.galleryCategory || !uploadMetadata.data.imageType)) {
+      failures.push(`${file.name}: choose a gallery category and image type for archive images`);
+      await writeMediaAudit("media_upload_failed", null, { filename: file.name, reason: "missing_gallery_metadata" });
       continue;
     }
 
@@ -284,6 +314,12 @@ export async function uploadMediaFiles(_: ActionState, formData: FormData): Prom
         publish_state: workflow.publicationStatus,
         publication_status: workflow.publicationStatus,
         original_checksum: checksum(bytes),
+        gallery_category: validation.mediaType === "image" ? uploadMetadata.data.galleryCategory : null,
+        image_type: validation.mediaType === "image" ? uploadMetadata.data.imageType : null,
+        gallery_approval_status: uploadMetadata.data.galleryApprovalStatus,
+        contributor_credit: uploadMetadata.data.contributorCredit,
+        source: uploadMetadata.data.source,
+        source_reference: uploadMetadata.data.source,
         scan_status: "not_scanned"
       })
       .select("id")
@@ -332,17 +368,25 @@ export async function updateMediaItem(formData: FormData) {
     description: text(formData, "description"),
     caption: text(formData, "caption"),
     altText: text(formData, "altText"),
+    galleryCategory: text(formData, "galleryCategory"),
+    imageType: text(formData, "imageType"),
     approximateDate: text(formData, "approximateDate"),
     datePrecision: text(formData, "datePrecision") || "unknown",
     location: text(formData, "location"),
     peopleShown: text(formData, "peopleShown"),
+    tags: text(formData, "tags"),
     source: text(formData, "source"),
+    contributorCredit: text(formData, "contributorCredit"),
     copyrightOwner: text(formData, "copyrightOwner"),
     licence: text(formData, "licence"),
     verificationStatus: text(formData, "verificationStatus"),
+    galleryApprovalStatus: text(formData, "galleryApprovalStatus") || "unreviewed",
+    verificationNote: text(formData, "verificationNote"),
     visibility: text(formData, "visibility"),
     publicationStatus: text(formData, "publicationStatus"),
     moderationStatus: text(formData, "moderationStatus"),
+    sortOrder: text(formData, "sortOrder") || "0",
+    featured: formData.get("featured") === "on",
     albumId: text(formData, "albumId")
   });
 
@@ -357,7 +401,7 @@ export async function updateMediaItem(formData: FormData) {
   } = await supabase.auth.getUser();
   const { data: existing } = await supabase
     .from("media_items")
-    .select("visibility, publication_status, storage_bucket, bucket, storage_path")
+    .select("visibility, publication_status, media_type, kind, storage_bucket, bucket, storage_path")
     .eq("id", id)
     .eq("workspace_id", context.workspaceId)
     .eq("legacy_profile_id", context.legacyProfileId)
@@ -376,6 +420,9 @@ export async function updateMediaItem(formData: FormData) {
   if (workflow.publicationStatus === "published") {
     if (!parsed.data.title) redirect(`/admin/media/${id}?toast=title-required`);
     if (!parsed.data.altText) redirect(`/admin/media/${id}?toast=alt-text-required`);
+    if ((existing.media_type ?? existing.kind) === "image" && (!parsed.data.galleryCategory || !parsed.data.imageType)) {
+      redirect(`/admin/media/${id}?toast=gallery-metadata-required`);
+    }
     const exists = await storageObjectExists(existing.storage_bucket ?? existing.bucket ?? "", existing.storage_path ?? "");
     if (!exists) redirect(`/admin/media/${id}?toast=storage-object-missing`);
   }
@@ -392,22 +439,30 @@ export async function updateMediaItem(formData: FormData) {
       description: parsed.data.description,
       caption: parsed.data.caption,
       alt_text: parsed.data.altText,
+      gallery_category: parsed.data.galleryCategory || null,
+      image_type: parsed.data.imageType || null,
       approximate_date: parsed.data.approximateDate,
       date_precision: parsed.data.datePrecision,
       location: parsed.data.location,
       people_shown: parsed.data.peopleShown ? parsed.data.peopleShown.split(",").map((item) => item.trim()).filter(Boolean) : [],
+      tags: parsed.data.tags ? parsed.data.tags.split(",").map((item) => item.trim()).filter(Boolean) : [],
       source: parsed.data.source,
       source_reference: parsed.data.source,
+      contributor_credit: parsed.data.contributorCredit,
       copyright_owner: parsed.data.copyrightOwner,
       licence: parsed.data.licence,
       copyright_status: parsed.data.licence,
       verification_state: workflow.verificationStatus,
+      gallery_approval_status: parsed.data.galleryApprovalStatus,
+      verification_note: parsed.data.verificationNote,
       privacy_state: workflow.visibility,
       visibility: workflow.visibility,
       publish_state: workflow.publicationStatus,
       publication_status: workflow.publicationStatus,
       moderation_state: workflow.moderationStatus,
       album_id: parsed.data.albumId || null,
+      sort_order: parsed.data.sortOrder,
+      featured: parsed.data.featured,
       ...(workflow.publishedAt !== undefined ? { published_at: workflow.publishedAt } : {}),
       ...(workflow.archivedAt !== undefined ? { archived_at: workflow.archivedAt } : {}),
       last_editor_id: user?.id ?? null
@@ -421,7 +476,10 @@ export async function updateMediaItem(formData: FormData) {
     workflowAction,
     visibility: workflow.visibility,
     publicationStatus: workflow.publicationStatus,
-    moderationStatus: workflow.moderationStatus
+    moderationStatus: workflow.moderationStatus,
+    galleryCategory: parsed.data.galleryCategory,
+    imageType: parsed.data.imageType,
+    galleryApprovalStatus: parsed.data.galleryApprovalStatus
   });
 
   if (existing?.visibility && existing.visibility !== workflow.visibility) {

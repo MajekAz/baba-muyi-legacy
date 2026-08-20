@@ -5,6 +5,8 @@ export type MediaRecord = {
   description: string;
   caption: string;
   altText: string;
+  galleryCategory: string;
+  imageType: string;
   mediaType: string;
   mimeType: string;
   fileSize: number;
@@ -18,13 +20,19 @@ export type MediaRecord = {
   datePrecision: string;
   location: string;
   peopleShown: string[];
+  tags: string[];
   source: string;
+  contributorCredit: string;
   copyrightOwner: string;
   licence: string;
   verificationStatus: string;
+  galleryApprovalStatus: string;
+  verificationNote: string;
   moderationStatus: string;
   visibility: string;
   publicationStatus: string;
+  sortOrder: number;
+  featured: boolean;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;

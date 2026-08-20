@@ -1,6 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
+import { galleryImageTypes } from "@/lib/media/config";
 import type { MediaAlbum, MediaRecord } from "@/lib/media/types";
+
+function imageTypeLabel(value: string) {
+  return galleryImageTypes[value as keyof typeof galleryImageTypes] ?? "";
+}
+
+function groupedByCategory(records: MediaRecord[]) {
+  return records.reduce<Record<string, MediaRecord[]>>((groups, record) => {
+    const category = record.galleryCategory || (record.mediaType === "image" ? "Uncategorised archive images" : "Archive media");
+    groups[category] = [...(groups[category] ?? []), record];
+    return groups;
+  }, {});
+}
 
 export function PublicMediaGrid({ records }: { records: MediaRecord[] }) {
   if (!records.length) {
@@ -12,20 +25,38 @@ export function PublicMediaGrid({ records }: { records: MediaRecord[] }) {
     );
   }
 
+  const groups = groupedByCategory(records);
+
   return (
-    <div className="grid gap-5 md:grid-cols-3">
-      {records.map((record) => (
-        <article className="rounded border border-archive-navy/12 bg-white/85 p-4 shadow-sm" key={record.id}>
-          {record.mediaType === "image" && record.signedUrl ? (
-            <Image className="aspect-[4/3] rounded object-cover" src={record.signedUrl} alt={record.altText || record.title} width={800} height={600} sizes="(min-width: 768px) 33vw, 100vw" />
-          ) : null}
-          {record.mediaType === "audio" && record.signedUrl ? <audio className="mt-2 w-full" controls src={record.signedUrl} /> : null}
-          {record.mediaType === "video_clip" && record.signedUrl ? <video className="mt-2 aspect-video w-full rounded" controls src={record.signedUrl} /> : null}
-          {record.mediaType === "document" && record.signedUrl ? <Link className="mt-2 inline-flex rounded bg-archive-navy px-4 py-2 text-sm font-semibold text-white" href={record.signedUrl}>Open PDF preview</Link> : null}
-          <p className="mt-4 text-xs font-bold uppercase tracking-[0.14em] text-archive-brown">{record.mediaType.replace("_", " ")}</p>
-          <h2 className="mt-1 font-serif text-2xl text-archive-navy">{record.title}</h2>
-          <p className="mt-2 text-sm leading-6 text-slate-600">{record.caption || record.description}</p>
-        </article>
+    <div className="grid gap-8">
+      {Object.entries(groups).map(([category, items]) => (
+        <section className="grid gap-4" key={category} aria-labelledby={`gallery-category-${category.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}>
+          <h2 className="font-serif text-2xl text-archive-navy" id={`gallery-category-${category.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}>{category}</h2>
+          <div className="grid gap-5 md:grid-cols-3">
+            {items.map((record) => (
+              <article className="rounded border border-archive-navy/12 bg-white/85 p-4 shadow-sm" key={record.id}>
+                {record.mediaType === "image" && record.signedUrl ? (
+                  <Image className="aspect-[4/3] rounded object-cover" src={record.signedUrl} alt={record.altText || record.title} width={800} height={600} sizes="(min-width: 768px) 33vw, 100vw" />
+                ) : null}
+                {record.mediaType === "audio" && record.signedUrl ? <audio className="mt-2 w-full" controls src={record.signedUrl} /> : null}
+                {record.mediaType === "video_clip" && record.signedUrl ? <video className="mt-2 aspect-video w-full rounded" controls src={record.signedUrl} /> : null}
+                {record.mediaType === "document" && record.signedUrl ? <Link className="mt-2 inline-flex rounded bg-archive-navy px-4 py-2 text-sm font-semibold text-white" href={record.signedUrl}>Open PDF preview</Link> : null}
+                <div className="mt-4 flex flex-wrap gap-2">
+                  <span className="rounded-full bg-archive-cream px-3 py-1 text-xs font-bold uppercase tracking-[0.12em] text-archive-brown">{record.mediaType.replace("_", " ")}</span>
+                  {record.imageType ? <span className="rounded-full bg-archive-navy/8 px-3 py-1 text-xs font-semibold text-archive-navy">{imageTypeLabel(record.imageType)}</span> : null}
+                </div>
+                <h3 className="mt-3 font-serif text-2xl text-archive-navy">{record.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-slate-600">{record.caption || record.description}</p>
+                {record.contributorCredit ? <p className="mt-3 text-xs font-semibold uppercase tracking-[0.12em] text-slate-500">Credit: {record.contributorCredit}</p> : null}
+                {record.imageType === "ai_assisted_heritage_reconstruction" ? (
+                  <p className="mt-3 rounded border border-amber-200 bg-amber-50 px-3 py-2 text-sm text-amber-900">
+                    AI-assisted heritage reconstruction. Interpretive image, not an original family photograph.
+                  </p>
+                ) : null}
+              </article>
+            ))}
+          </div>
+        </section>
       ))}
     </div>
   );

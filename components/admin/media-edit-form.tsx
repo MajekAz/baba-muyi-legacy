@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRef, useState } from "react";
 import { ConfirmSubmitButton } from "@/components/admin/confirm-submit-button";
 import { updateMediaItem } from "@/lib/media/actions";
+import { galleryApprovalStatuses, galleryCategories, galleryImageTypes } from "@/lib/media/config";
 import type { MediaAlbum, MediaRecord } from "@/lib/media/types";
 
 type MediaWorkflowAction = {
@@ -42,6 +43,14 @@ const visibilityLabels: Record<string, string> = {
   specific_users: "Specific users",
   password_protected: "Password protected"
 };
+
+function galleryImageTypeLabel(value: string) {
+  return galleryImageTypes[value as keyof typeof galleryImageTypes] ?? "Not set";
+}
+
+function galleryApprovalLabel(value: string) {
+  return galleryApprovalStatuses[value as keyof typeof galleryApprovalStatuses] ?? value;
+}
 
 function workflowActions(status: string): MediaWorkflowAction[] {
   if (status === "archived") {
@@ -154,6 +163,70 @@ export function MediaEditForm({ record, albums }: { record: MediaRecord; albums:
         <label className="grid gap-1 text-sm font-semibold text-archive-navy">Caption<textarea className="min-h-20 rounded border border-slate-300 px-3 py-2 font-normal" name="caption" defaultValue={record.caption} /></label>
         <label className="grid gap-1 text-sm font-semibold text-archive-navy">Alt text<textarea className="min-h-20 rounded border border-slate-300 px-3 py-2 font-normal" name="altText" defaultValue={record.altText} /></label>
       </div>
+      {record.mediaType === "image" ? (
+        <fieldset className="grid gap-4 rounded border border-archive-navy/12 bg-archive-cream/40 p-4">
+          <legend className="px-1 text-sm font-bold uppercase tracking-[0.14em] text-archive-brown">Gallery curation</legend>
+          <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+            <label className="grid gap-1 text-sm font-semibold text-archive-navy">
+              Gallery category
+              <select className="rounded border border-slate-300 px-3 py-2 font-normal" name="galleryCategory" defaultValue={record.galleryCategory} required>
+                <option value="">Choose category</option>
+                {galleryCategories.map((category) => <option key={category} value={category}>{category}</option>)}
+              </select>
+            </label>
+            <label className="grid gap-1 text-sm font-semibold text-archive-navy">
+              Image type
+              <select className="rounded border border-slate-300 px-3 py-2 font-normal" name="imageType" defaultValue={record.imageType} required>
+                <option value="">Choose image type</option>
+                {Object.entries(galleryImageTypes).map(([value, label]) => <option key={value} value={value}>{label}</option>)}
+              </select>
+            </label>
+            <label className="grid gap-1 text-sm font-semibold text-archive-navy">
+              Approval status
+              <select className="rounded border border-slate-300 px-3 py-2 font-normal" name="galleryApprovalStatus" defaultValue={record.galleryApprovalStatus || "unreviewed"}>
+                {Object.entries(galleryApprovalStatuses).map(([value, label]) => <option key={value} value={value}>{label}</option>)}
+              </select>
+            </label>
+            <label className="grid gap-1 text-sm font-semibold text-archive-navy">
+              Sort order
+              <input className="rounded border border-slate-300 px-3 py-2 font-normal" name="sortOrder" type="number" min={0} defaultValue={record.sortOrder} />
+            </label>
+          </div>
+          <div className="grid gap-3 md:grid-cols-2">
+            <label className="grid gap-1 text-sm font-semibold text-archive-navy">
+              Tags
+              <input className="rounded border border-slate-300 px-3 py-2 font-normal" name="tags" defaultValue={record.tags.join(", ")} placeholder="family, transport, Bariga" />
+            </label>
+            <label className="grid gap-1 text-sm font-semibold text-archive-navy">
+              Contributor / credit
+              <input className="rounded border border-slate-300 px-3 py-2 font-normal" name="contributorCredit" defaultValue={record.contributorCredit} />
+            </label>
+          </div>
+          <label className="grid gap-1 text-sm font-semibold text-archive-navy">
+            Verification note
+            <textarea className="min-h-20 rounded border border-slate-300 px-3 py-2 font-normal" name="verificationNote" defaultValue={record.verificationNote} />
+          </label>
+          <label className="inline-flex items-center gap-2 text-sm font-semibold text-archive-navy">
+            <input className="size-4 rounded border-slate-300" name="featured" type="checkbox" defaultChecked={record.featured} />
+            Feature this image in gallery ordering
+          </label>
+          {record.imageType === "ai_assisted_heritage_reconstruction" ? (
+            <p className="rounded border border-amber-200 bg-amber-50 px-3 py-2 text-sm text-amber-900">
+              This image is labelled as AI-assisted heritage reconstruction and must remain clearly disclosed anywhere it is published.
+            </p>
+          ) : null}
+        </fieldset>
+      ) : (
+        <>
+          <input type="hidden" name="galleryCategory" value="" />
+          <input type="hidden" name="imageType" value="" />
+          <input type="hidden" name="galleryApprovalStatus" value={record.galleryApprovalStatus || "unreviewed"} />
+          <input type="hidden" name="tags" value={record.tags.join(", ")} />
+          <input type="hidden" name="contributorCredit" value={record.contributorCredit} />
+          <input type="hidden" name="verificationNote" value={record.verificationNote} />
+          <input type="hidden" name="sortOrder" value={record.sortOrder} />
+        </>
+      )}
       <div className="grid gap-3 md:grid-cols-4">
         <label className="grid gap-1 text-sm font-semibold text-archive-navy">Date<input className="rounded border border-slate-300 px-3 py-2 font-normal" name="approximateDate" defaultValue={record.approximateDate} /></label>
         <label className="grid gap-1 text-sm font-semibold text-archive-navy">Precision<select className="rounded border border-slate-300 px-3 py-2 font-normal" name="datePrecision" defaultValue={record.datePrecision}>
@@ -187,6 +260,13 @@ export function MediaEditForm({ record, albums }: { record: MediaRecord; albums:
         <div><dt className="font-semibold text-archive-navy">Publication</dt><dd>{statusLabels[record.publicationStatus] ?? record.publicationStatus}</dd></div>
         <div><dt className="font-semibold text-archive-navy">Review</dt><dd>{moderationLabels[record.moderationStatus] ?? record.moderationStatus}</dd></div>
         <div><dt className="font-semibold text-archive-navy">Visibility</dt><dd>{visibilityLabels[record.visibility] ?? record.visibility}</dd></div>
+        {record.mediaType === "image" ? (
+          <>
+            <div><dt className="font-semibold text-archive-navy">Gallery category</dt><dd>{record.galleryCategory || "Not set"}</dd></div>
+            <div><dt className="font-semibold text-archive-navy">Image type</dt><dd>{galleryImageTypeLabel(record.imageType)}</dd></div>
+            <div><dt className="font-semibold text-archive-navy">Gallery approval</dt><dd>{galleryApprovalLabel(record.galleryApprovalStatus)}</dd></div>
+          </>
+        ) : null}
       </dl>
       <div aria-label="Media workflow actions" className="flex flex-wrap items-center gap-3">
         {actions.map((action) => action.confirm ? (

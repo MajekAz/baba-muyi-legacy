@@ -81,7 +81,7 @@ export const adminNavigation: NavItem[] = [
     children: [
       { label: "All Media", href: "/admin/media" },
       { label: "Upload", href: "/admin/media/upload" },
-      { label: "Images", href: "/admin/media/images" },
+      { label: "Gallery", href: "/admin/media/images" },
       { label: "Video", href: "/admin/media/video" },
       { label: "Audio", href: "/admin/media/audio" },
       { label: "Documents", href: "/admin/media/documents" },
