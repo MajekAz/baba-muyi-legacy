@@ -1710,6 +1710,7 @@ export type Database = {
           archived_at: string | null
           bucket: string | null
           caption: string | null
+          contributor_credit: string | null
           copyright_owner: string | null
           copyright_status: string | null
           created_at: string
@@ -1720,11 +1721,15 @@ export type Database = {
           duration_seconds: number | null
           external_id: string | null
           external_provider: string | null
+          featured: boolean
           file_size: number | null
           file_size_bytes: number | null
+          gallery_approval_status: string
+          gallery_category: string | null
           generated_filename: string | null
           height: number | null
           id: string
+          image_type: string | null
           kind: Database["public"]["Enums"]["media_kind"]
           last_editor_id: string | null
           legacy_profile_id: string
@@ -1749,15 +1754,18 @@ export type Database = {
           restored_by: string | null
           restored_storage_path: string | null
           scan_status: string
+          sort_order: number
           source: string | null
           source_reference: string | null
           stable_id: string | null
           storage_bucket: string | null
           storage_path: string | null
+          tags: string[]
           thumbnail_storage_path: string | null
           title: string
           updated_at: string
           uploaded_by: string | null
+          verification_note: string | null
           verification_state: Database["public"]["Enums"]["verification_state"]
           visibility: Database["public"]["Enums"]["privacy_state"]
           web_storage_path: string | null
@@ -1772,6 +1780,7 @@ export type Database = {
           archived_at?: string | null
           bucket?: string | null
           caption?: string | null
+          contributor_credit?: string | null
           copyright_owner?: string | null
           copyright_status?: string | null
           created_at?: string
@@ -1782,11 +1791,15 @@ export type Database = {
           duration_seconds?: number | null
           external_id?: string | null
           external_provider?: string | null
+          featured?: boolean
           file_size?: number | null
           file_size_bytes?: number | null
+          gallery_approval_status?: string
+          gallery_category?: string | null
           generated_filename?: string | null
           height?: number | null
           id?: string
+          image_type?: string | null
           kind: Database["public"]["Enums"]["media_kind"]
           last_editor_id?: string | null
           legacy_profile_id: string
@@ -1811,15 +1824,18 @@ export type Database = {
           restored_by?: string | null
           restored_storage_path?: string | null
           scan_status?: string
+          sort_order?: number
           source?: string | null
           source_reference?: string | null
           stable_id?: string | null
           storage_bucket?: string | null
           storage_path?: string | null
+          tags?: string[]
           thumbnail_storage_path?: string | null
           title: string
           updated_at?: string
           uploaded_by?: string | null
+          verification_note?: string | null
           verification_state?: Database["public"]["Enums"]["verification_state"]
           visibility: Database["public"]["Enums"]["privacy_state"]
           web_storage_path?: string | null
@@ -1834,6 +1850,7 @@ export type Database = {
           archived_at?: string | null
           bucket?: string | null
           caption?: string | null
+          contributor_credit?: string | null
           copyright_owner?: string | null
           copyright_status?: string | null
           created_at?: string
@@ -1844,11 +1861,15 @@ export type Database = {
           duration_seconds?: number | null
           external_id?: string | null
           external_provider?: string | null
+          featured?: boolean
           file_size?: number | null
           file_size_bytes?: number | null
+          gallery_approval_status?: string
+          gallery_category?: string | null
           generated_filename?: string | null
           height?: number | null
           id?: string
+          image_type?: string | null
           kind?: Database["public"]["Enums"]["media_kind"]
           last_editor_id?: string | null
           legacy_profile_id?: string
@@ -1873,15 +1894,18 @@ export type Database = {
           restored_by?: string | null
           restored_storage_path?: string | null
           scan_status?: string
+          sort_order?: number
           source?: string | null
           source_reference?: string | null
           stable_id?: string | null
           storage_bucket?: string | null
           storage_path?: string | null
+          tags?: string[]
           thumbnail_storage_path?: string | null
           title?: string
           updated_at?: string
           uploaded_by?: string | null
+          verification_note?: string | null
           verification_state?: Database["public"]["Enums"]["verification_state"]
           visibility?: Database["public"]["Enums"]["privacy_state"]
           web_storage_path?: string | null

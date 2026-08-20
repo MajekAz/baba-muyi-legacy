@@ -5,14 +5,17 @@ const migration = readFileSync("supabase/migrations/0011_media_library_foundatio
 const storagePolicyMigration = readFileSync("supabase/migrations/0012_storage_policy_hardening.sql", "utf8");
 const mediaRlsMigration = readFileSync("supabase/migrations/0013_media_upload_rls_alignment.sql", "utf8");
 const versionRlsMigration = readFileSync("supabase/migrations/0014_media_version_upload_rls_alignment.sql", "utf8");
+const galleryMetadataMigration = readFileSync("supabase/migrations/0016_gallery_metadata_fields.sql", "utf8");
 const actions = readFileSync("lib/media/actions.ts", "utf8");
 const validation = readFileSync("lib/media/validation.ts", "utf8");
 const storage = readFileSync("lib/media/storage.ts", "utf8");
 const config = readFileSync("lib/media/config.ts", "utf8");
 const uploader = readFileSync("components/admin/media-uploader.tsx", "utf8");
 const mediaEditor = readFileSync("components/admin/media-edit-form.tsx", "utf8");
+const mediaLibrary = readFileSync("components/admin/media-library.tsx", "utf8");
 const publicGrid = readFileSync("components/media/public-media-grid.tsx", "utf8");
 const signedPreviewRoute = readFileSync("app/admin/media/[id]/view/route.ts", "utf8");
+const galleryPage = readFileSync("app/admin/media/images/page.tsx", "utf8");
 
 function pass(name) {
   console.log(`PASS ${name}`);
@@ -100,3 +103,38 @@ pass("public media rendering supports images, audio, video and documents");
 assert.match(versionRlsMigration, /version_type = 'original'/);
 assert.match(versionRlsMigration, /m\.uploaded_by = auth\.uid\(\)/);
 pass("uploaders can create only their own original media version rows");
+
+assert.match(galleryMetadataMigration, /gallery_category text/);
+assert.match(galleryMetadataMigration, /image_type text/);
+assert.match(galleryMetadataMigration, /gallery_approval_status text not null default 'unreviewed'/);
+assert.match(galleryMetadataMigration, /Family/);
+assert.match(galleryMetadataMigration, /Bolekaja \/ Transport/);
+assert.match(galleryMetadataMigration, /ai_assisted_heritage_reconstruction/);
+pass("gallery-specific metadata fields and checks are modelled");
+
+assert.match(uploader, /Gallery metadata for images/);
+assert.match(uploader, /name="galleryCategory"/);
+assert.match(uploader, /name="imageType"/);
+assert.match(uploader, /AI-assisted reconstructions must be identified clearly/);
+assert.match(actions, /choose a gallery category and image type for archive images/);
+pass("image uploads require gallery category and image type");
+
+assert.match(mediaEditor, /Gallery curation/);
+assert.match(mediaEditor, /Feature this image in gallery ordering/);
+assert.match(mediaEditor, /AI-assisted heritage reconstruction and must remain clearly disclosed/);
+assert.match(actions, /gallery-metadata-required/);
+assert.match(actions, /gallery_approval_status/);
+pass("image editor captures curation fields before publication");
+
+assert.match(galleryPage, /Gallery Management/);
+assert.match(galleryPage, /type: "image"/);
+assert.match(mediaLibrary, /name="category"/);
+assert.match(mediaLibrary, /name="imageType"/);
+assert.match(mediaLibrary, /name="approval"/);
+pass("admin gallery page provides image-only management filters");
+
+assert.match(publicGrid, /groupedByCategory/);
+assert.match(publicGrid, /AI-assisted heritage reconstruction/);
+assert.match(publicGrid, /Interpretive image, not an original family photograph/);
+assert.match(actions, /revalidatePath\("\/gallery"\)/);
+pass("public gallery renders category and image provenance labels");

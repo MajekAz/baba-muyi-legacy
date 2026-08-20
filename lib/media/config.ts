@@ -6,14 +6,14 @@ export const mediaSizeLimits = {
 } as const;
 
 export const mediaMimeTypes = {
-  image: ["image/jpeg", "image/png", "image/webp", "image/avif"],
+  image: ["image/jpeg", "image/png", "image/webp"],
   document: ["application/pdf"],
   audio: ["audio/mpeg", "audio/wav", "audio/mp4", "audio/x-m4a"],
   video_clip: ["video/mp4", "video/webm"]
 } as const;
 
 export const mediaExtensions = {
-  image: [".jpg", ".jpeg", ".png", ".webp", ".avif"],
+  image: [".jpg", ".jpeg", ".png", ".webp"],
   document: [".pdf"],
   audio: [".mp3", ".wav", ".m4a"],
   video_clip: [".mp4", ".webm"]
@@ -35,3 +35,34 @@ export const mediaTypeLabels = {
 } as const;
 
 export type UploadableMediaType = keyof typeof mediaSizeLimits;
+
+export const galleryCategories = [
+  "Family",
+  "Early Life",
+  "Bariga & Community",
+  "Bolekaja / Transport",
+  "TIOLUWA LASE",
+  "Leadership & Community Service",
+  "Later Years",
+  "Memorial / Legacy"
+] as const;
+
+export const galleryImageTypes = {
+  original_family_photograph: "Original family photograph",
+  restored_family_photograph: "Restored family photograph",
+  documentary_still: "Documentary still",
+  ai_assisted_heritage_reconstruction: "AI-assisted heritage reconstruction"
+} as const;
+
+export const galleryApprovalStatuses = {
+  unreviewed: "Unreviewed",
+  family_approved: "Family approved",
+  editorial_review: "Editorial review",
+  verified_family_memory: "Verified from family memory",
+  verified_document_source: "Verified from document/source",
+  ai_assisted_interpretive: "AI-assisted / interpretive"
+} as const;
+
+export type GalleryCategory = (typeof galleryCategories)[number];
+export type GalleryImageType = keyof typeof galleryImageTypes;
+export type GalleryApprovalStatus = keyof typeof galleryApprovalStatuses;

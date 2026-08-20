@@ -11,8 +11,7 @@ const signatures: Record<UploadableMediaType, Array<{ mimeType: string; test: (b
   image: [
     { mimeType: "image/jpeg", test: (bytes) => bytes[0] === 0xff && bytes[1] === 0xd8 && bytes[2] === 0xff },
     { mimeType: "image/png", test: (bytes) => bytes[0] === 0x89 && bytes[1] === 0x50 && bytes[2] === 0x4e && bytes[3] === 0x47 },
-    { mimeType: "image/webp", test: (bytes) => text(bytes, 0, 4) === "RIFF" && text(bytes, 8, 12) === "WEBP" },
-    { mimeType: "image/avif", test: (bytes) => text(bytes, 4, 12).includes("ftypavif") || text(bytes, 4, 12).includes("ftypavis") }
+    { mimeType: "image/webp", test: (bytes) => text(bytes, 0, 4) === "RIFF" && text(bytes, 8, 12) === "WEBP" }
   ],
   document: [
     { mimeType: "application/pdf", test: (bytes) => text(bytes, 0, 5) === "%PDF-" }

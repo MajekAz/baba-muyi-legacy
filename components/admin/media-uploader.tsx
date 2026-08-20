@@ -3,6 +3,7 @@
 import { FileAudio, FileText, ImageIcon, RotateCcw, Upload, Video, X } from "lucide-react";
 import { useActionState, useMemo, useRef, useState } from "react";
 import { uploadMediaFiles } from "@/lib/media/actions";
+import { galleryApprovalStatuses, galleryCategories, galleryImageTypes } from "@/lib/media/config";
 import { validateMediaUpload } from "@/lib/media/validation";
 
 type QueuedFile = {
@@ -67,6 +68,42 @@ export function MediaUploader() {
           Files are private by default and enter review before publication. Originals are preserved; later versions are recorded separately.
         </p>
       </div>
+      <fieldset className="grid gap-4 rounded border border-archive-navy/12 bg-archive-cream/40 p-4">
+        <legend className="px-1 text-sm font-bold uppercase tracking-[0.14em] text-archive-brown">Gallery metadata for images</legend>
+        <p className="text-sm leading-6 text-slate-600">
+          Choose a category and image type before uploading archive images. AI-assisted reconstructions must be identified clearly and never presented as original family photographs.
+        </p>
+        <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+          <label className="grid gap-1 text-sm font-semibold text-archive-navy">
+            Gallery category
+            <select className="rounded border border-slate-300 px-3 py-2 font-normal" name="galleryCategory" defaultValue="">
+              <option value="">Choose category</option>
+              {galleryCategories.map((category) => <option key={category} value={category}>{category}</option>)}
+            </select>
+          </label>
+          <label className="grid gap-1 text-sm font-semibold text-archive-navy">
+            Image type
+            <select className="rounded border border-slate-300 px-3 py-2 font-normal" name="imageType" defaultValue="">
+              <option value="">Choose image type</option>
+              {Object.entries(galleryImageTypes).map(([value, label]) => <option key={value} value={value}>{label}</option>)}
+            </select>
+          </label>
+          <label className="grid gap-1 text-sm font-semibold text-archive-navy">
+            Approval status
+            <select className="rounded border border-slate-300 px-3 py-2 font-normal" name="galleryApprovalStatus" defaultValue="unreviewed">
+              {Object.entries(galleryApprovalStatuses).map(([value, label]) => <option key={value} value={value}>{label}</option>)}
+            </select>
+          </label>
+          <label className="grid gap-1 text-sm font-semibold text-archive-navy">
+            Contributor / credit
+            <input className="rounded border border-slate-300 px-3 py-2 font-normal" name="contributorCredit" placeholder="Family source or contributor" />
+          </label>
+        </div>
+        <label className="grid gap-1 text-sm font-semibold text-archive-navy">
+          Source note
+          <input className="rounded border border-slate-300 px-3 py-2 font-normal" name="source" placeholder="Optional source, album, or document reference" />
+        </label>
+      </fieldset>
       <label
         className="grid min-h-48 cursor-pointer place-items-center rounded border-2 border-dashed border-archive-navy/20 bg-archive-cream/50 p-8 text-center transition hover:border-archive-gold"
         onDragOver={(event) => event.preventDefault()}
@@ -77,7 +114,7 @@ export function MediaUploader() {
       >
         <Upload className="text-archive-brown" aria-hidden="true" />
         <span className="mt-3 block font-semibold text-archive-navy">Drop files here or choose files</span>
-        <span className="mt-1 block text-sm text-slate-600">JPEG, PNG, WebP, AVIF, PDF, MP3, WAV, M4A, MP4, WebM</span>
+        <span className="mt-1 block text-sm text-slate-600">JPEG, PNG, WebP, PDF, MP3, WAV, M4A, MP4, WebM</span>
         <input
           className="sr-only"
           multiple
@@ -85,7 +122,7 @@ export function MediaUploader() {
           onChange={(event) => void addFiles(event.target.files)}
           ref={inputRef}
           type="file"
-          accept=".jpg,.jpeg,.png,.webp,.avif,.mp4,.webm,.mp3,.wav,.m4a,.pdf"
+          accept=".jpg,.jpeg,.png,.webp,.mp4,.webm,.mp3,.wav,.m4a,.pdf"
         />
       </label>
 

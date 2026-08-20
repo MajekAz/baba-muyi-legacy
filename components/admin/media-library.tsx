@@ -3,7 +3,7 @@ import { Archive, FileAudio, FileText, ImageIcon, Video } from "lucide-react";
 import { AdminEmptyState } from "@/components/admin/admin-empty-state";
 import { ConfirmSubmitButton } from "@/components/admin/confirm-submit-button";
 import { addMediaToAlbum, archiveMediaAlbum, archiveMediaItem, createMediaAlbum, removeMediaFromAlbum, updateMediaAlbum } from "@/lib/media/actions";
-import { mediaTypeLabels } from "@/lib/media/config";
+import { galleryApprovalStatuses, galleryCategories, galleryImageTypes, mediaTypeLabels } from "@/lib/media/config";
 import type { MediaAlbum, MediaAlbumItem, MediaRecord } from "@/lib/media/types";
 
 function IconForType({ type }: { type: string }) {
@@ -13,21 +13,54 @@ function IconForType({ type }: { type: string }) {
   return <FileText aria-hidden="true" className="size-5" />;
 }
 
-export function MediaFilters({ albums }: { albums: MediaAlbum[] }) {
+function imageTypeLabel(value: string) {
+  return galleryImageTypes[value as keyof typeof galleryImageTypes] ?? "Not set";
+}
+
+function approvalLabel(value: string) {
+  return galleryApprovalStatuses[value as keyof typeof galleryApprovalStatuses] ?? value;
+}
+
+export function MediaFilters({ albums, fixedType }: { albums: MediaAlbum[]; fixedType?: string }) {
   return (
-    <form className="grid gap-3 rounded border border-archive-navy/12 bg-white p-4 shadow-sm md:grid-cols-6">
+    <form className="grid gap-3 rounded border border-archive-navy/12 bg-white p-4 shadow-sm md:grid-cols-2 xl:grid-cols-8">
       <label className="grid gap-1 text-sm font-semibold text-archive-navy">
         Search
         <input className="rounded border border-slate-300 px-3 py-2 font-normal" name="search" placeholder="Title" />
       </label>
+      {fixedType ? (
+        <input type="hidden" name="type" value={fixedType} />
+      ) : (
+        <label className="grid gap-1 text-sm font-semibold text-archive-navy">
+          Type
+          <select className="rounded border border-slate-300 px-3 py-2 font-normal" name="type">
+            <option value="">All</option>
+            <option value="image">Images</option>
+            <option value="document">Documents</option>
+            <option value="audio">Audio</option>
+            <option value="video_clip">Video</option>
+          </select>
+        </label>
+      )}
       <label className="grid gap-1 text-sm font-semibold text-archive-navy">
-        Type
-        <select className="rounded border border-slate-300 px-3 py-2 font-normal" name="type">
+        Category
+        <select className="rounded border border-slate-300 px-3 py-2 font-normal" name="category">
           <option value="">All</option>
-          <option value="image">Images</option>
-          <option value="document">Documents</option>
-          <option value="audio">Audio</option>
-          <option value="video_clip">Video</option>
+          {galleryCategories.map((category) => <option key={category} value={category}>{category}</option>)}
+        </select>
+      </label>
+      <label className="grid gap-1 text-sm font-semibold text-archive-navy">
+        Image type
+        <select className="rounded border border-slate-300 px-3 py-2 font-normal" name="imageType">
+          <option value="">All</option>
+          {Object.entries(galleryImageTypes).map(([value, label]) => <option key={value} value={value}>{label}</option>)}
+        </select>
+      </label>
+      <label className="grid gap-1 text-sm font-semibold text-archive-navy">
+        Approval
+        <select className="rounded border border-slate-300 px-3 py-2 font-normal" name="approval">
+          <option value="">All</option>
+          {Object.entries(galleryApprovalStatuses).map(([value, label]) => <option key={value} value={value}>{label}</option>)}
         </select>
       </label>
       <label className="grid gap-1 text-sm font-semibold text-archive-navy">
@@ -77,6 +110,12 @@ export function MediaLibraryGrid({ records }: { records: MediaRecord[] }) {
     <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
       {records.map((record) => (
         <article className="rounded border border-archive-navy/12 bg-white p-4 shadow-sm" key={record.id}>
+          {record.mediaType === "image" && record.signedUrl ? (
+            <div className="mb-4 overflow-hidden rounded border border-archive-navy/10 bg-archive-cream">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img alt={record.altText || record.title} className="aspect-[4/3] w-full object-cover" src={record.signedUrl} />
+            </div>
+          ) : null}
           <div className="flex items-start justify-between gap-4">
             <div className="flex items-center gap-3">
               <span className="grid size-10 place-items-center rounded bg-archive-cream text-archive-brown"><IconForType type={record.mediaType} /></span>
@@ -92,6 +131,13 @@ export function MediaLibraryGrid({ records }: { records: MediaRecord[] }) {
             <div><dt className="text-slate-500">Visibility</dt><dd className="font-semibold text-archive-navy">{record.visibility}</dd></div>
             <div><dt className="text-slate-500">Review</dt><dd className="font-semibold text-archive-navy">{record.moderationStatus}</dd></div>
             <div><dt className="text-slate-500">Album</dt><dd className="font-semibold text-archive-navy">{record.albumTitle || "Unassigned"}</dd></div>
+            {record.mediaType === "image" ? (
+              <>
+                <div><dt className="text-slate-500">Category</dt><dd className="font-semibold text-archive-navy">{record.galleryCategory || "Not set"}</dd></div>
+                <div><dt className="text-slate-500">Image type</dt><dd className="font-semibold text-archive-navy">{imageTypeLabel(record.imageType)}</dd></div>
+                <div className="col-span-2"><dt className="text-slate-500">Gallery approval</dt><dd className="font-semibold text-archive-navy">{approvalLabel(record.galleryApprovalStatus)}</dd></div>
+              </>
+            ) : null}
           </dl>
           <div className="mt-4 flex flex-wrap gap-2">
             <Link className="rounded bg-archive-navy px-3 py-2 text-sm font-semibold text-white" href={`/admin/media/${record.id}`}>Edit</Link>

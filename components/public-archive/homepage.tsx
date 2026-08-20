@@ -10,6 +10,7 @@ import {
   babaMuyiArchiveFacts,
 } from "@/lib/baba-muyi-public-archive";
 import type { CmsMenuItem } from "@/lib/cms-types";
+import { galleryImageTypes } from "@/lib/media/config";
 import type { MediaRecord } from "@/lib/media/types";
 
 type HomePageProps = {
@@ -209,7 +210,9 @@ function CollectionPreview({ galleryImages }: { galleryImages: MediaRecord[] }) 
                   />
                 ) : null}
                 <figcaption className="mt-3 text-sm leading-6 text-slate-600">
+                  {image.galleryCategory ? <span className="mb-2 block text-xs font-black uppercase tracking-[0.14em] text-archive-brown">{image.galleryCategory}</span> : null}
                   {image.caption || image.description || image.title || "Published archive image. Editorial review may add more identifying context."}
+                  {image.imageType ? <span className="mt-2 block text-xs font-semibold text-slate-500">{galleryImageTypes[image.imageType as keyof typeof galleryImageTypes]}</span> : null}
                 </figcaption>
               </figure>
             ))}

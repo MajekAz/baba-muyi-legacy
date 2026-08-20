@@ -22,7 +22,10 @@ export default async function AdminMediaPage({ searchParams }: AdminMediaPagePro
     visibility: value(params.visibility),
     status: value(params.status),
     verification: value(params.verification),
-    albumId: value(params.albumId)
+    albumId: value(params.albumId),
+    category: value(params.category),
+    imageType: value(params.imageType),
+    approval: value(params.approval)
   });
 
   return (

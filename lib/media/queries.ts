@@ -16,6 +16,8 @@ function normalizeMedia(row: Record<string, any>, signedUrl?: string): MediaReco
     description: row.description ?? "",
     caption: row.caption ?? "",
     altText: row.alt_text ?? "",
+    galleryCategory: row.gallery_category ?? "",
+    imageType: row.image_type ?? "",
     mediaType: row.media_type ?? row.kind,
     mimeType: row.mime_type ?? "",
     fileSize: Number(row.file_size ?? row.file_size_bytes ?? 0),
@@ -29,13 +31,19 @@ function normalizeMedia(row: Record<string, any>, signedUrl?: string): MediaReco
     datePrecision: row.date_precision ?? "unknown",
     location: row.location ?? "",
     peopleShown: row.people_shown ?? [],
+    tags: row.tags ?? [],
     source: row.source ?? row.source_reference ?? "",
+    contributorCredit: row.contributor_credit ?? "",
     copyrightOwner: row.copyright_owner ?? "",
     licence: row.licence ?? row.copyright_status ?? "",
     verificationStatus: row.verification_state ?? "unverified",
+    galleryApprovalStatus: row.gallery_approval_status ?? "unreviewed",
+    verificationNote: row.verification_note ?? "",
     moderationStatus: row.moderation_state ?? "pending",
     visibility: row.visibility ?? row.privacy_state ?? "private",
     publicationStatus: row.publication_status ?? row.publish_state ?? "draft",
+    sortOrder: row.sort_order ?? 0,
+    featured: row.featured ?? false,
     createdAt: row.created_at,
     updatedAt: row.updated_at,
     publishedAt: row.published_at ?? "",
@@ -74,7 +82,7 @@ function isKnownUnverifiedBabaMuyiPublicMedia(row: Record<string, any>) {
   );
 }
 
-export async function getAdminMediaRecords(context: Pick<TenantContext, "workspaceId" | "legacyProfileId">, filters: { type?: string; search?: string; visibility?: string; status?: string; verification?: string; albumId?: string } = {}) {
+export async function getAdminMediaRecords(context: Pick<TenantContext, "workspaceId" | "legacyProfileId">, filters: { type?: string; search?: string; visibility?: string; status?: string; verification?: string; albumId?: string; category?: string; imageType?: string; approval?: string } = {}) {
   noStore();
   if (!hasSupabasePublicEnv()) return [];
 
@@ -93,11 +101,24 @@ export async function getAdminMediaRecords(context: Pick<TenantContext, "workspa
   if (filters.status) query = query.eq("publication_status", filters.status as never);
   if (filters.verification) query = query.eq("verification_state", filters.verification as never);
   if (filters.albumId) query = query.eq("album_id", filters.albumId);
+  if (filters.category) query = query.eq("gallery_category", filters.category);
+  if (filters.imageType) query = query.eq("image_type", filters.imageType);
+  if (filters.approval) query = query.eq("gallery_approval_status", filters.approval);
   if (filters.search) query = query.ilike("title", `%${filters.search}%`);
 
   const { data, error } = await query;
   if (error) throw new Error("Unable to load media records.");
-  return (data ?? []).map((row) => normalizeMedia(row));
+  const admin = createAdminClient();
+  return Promise.all((data ?? []).map(async (row) => {
+    const bucket = row.storage_bucket ?? row.bucket;
+    const path = row.thumbnail_storage_path ?? row.web_storage_path ?? row.storage_path;
+    let signedUrl = "";
+    if (bucket && path && (row.media_type ?? row.kind) === "image") {
+      const { data: urlData } = await admin.storage.from(bucket).createSignedUrl(path, 60 * 20);
+      signedUrl = urlData?.signedUrl ?? "";
+    }
+    return normalizeMedia(row, signedUrl);
+  }));
 }
 
 export async function getAdminMediaRecord(context: Pick<TenantContext, "workspaceId" | "legacyProfileId">, id: string) {
@@ -258,6 +279,8 @@ export async function getPublicMediaRecords(filters: { type?: string; albumSlug?
     .eq("visibility", "public")
     .eq("moderation_state", "approved")
     .is("deleted_at", null)
+    .order("featured", { ascending: false })
+    .order("sort_order", { ascending: true })
     .order("published_at", { ascending: false, nullsFirst: false });
 
   if (filters.type) query = query.eq("media_type", filters.type as never);
