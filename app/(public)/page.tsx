@@ -4,6 +4,7 @@ import { getCmsMenus, getPublishedCmsContent, getActiveCmsWorkspaceContext } fro
 import { getPublicMediaRecords } from "@/lib/media/queries";
 import type { CmsCoreCollection, CmsCoreRecord } from "@/lib/cms-core";
 import type { Metadata } from "next";
+import { redirect } from "next/navigation";
 
 const homepageTitle = "Tioluwalase Majekodunmi | The Life & Legacy of Baba Muyi";
 const homepageDescription =
@@ -71,7 +72,12 @@ async function getHomepagePreviewRecords(collection: CmsCoreCollection, context:
   }
 }
 
-export default async function HomePage() {
+export default async function HomePage({ searchParams }: { searchParams?: Promise<{ code?: string }> }) {
+  const params = await searchParams;
+  if (params?.code) {
+    redirect(`/auth/callback?code=${encodeURIComponent(params.code)}&next=/update-password`);
+  }
+
   const [{ workspace, legacyProfile }, navigation, images, documentaries] = await Promise.all([
     getActiveCmsWorkspaceContext(),
     getCmsMenus("header"),

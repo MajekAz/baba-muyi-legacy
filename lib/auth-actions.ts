@@ -2,11 +2,20 @@
 
 import { redirect } from "next/navigation";
 import { z } from "zod";
-import { hasSupabasePublicEnv } from "@/lib/env";
+import { getPublicEnv, hasSupabasePublicEnv } from "@/lib/env";
 import { createClient } from "@/lib/supabase/server";
 
 const emailSchema = z.string().trim().email();
 const passwordSchema = z.string().min(8);
+const updatePasswordSchema = z
+  .object({
+    password: passwordSchema,
+    confirmPassword: passwordSchema
+  })
+  .refine((value) => value.password === value.confirmPassword, {
+    message: "Passwords must match.",
+    path: ["confirmPassword"]
+  });
 
 function setupRequired() {
   return {
@@ -61,8 +70,12 @@ export async function requestPasswordReset(_: unknown, formData: FormData) {
   }
 
   const supabase = await createClient();
+  const siteUrl = getPublicEnv().NEXT_PUBLIC_SITE_URL;
+  const callbackUrl = new URL("/auth/callback", siteUrl);
+  callbackUrl.searchParams.set("next", "/update-password");
+
   const { error } = await supabase.auth.resetPasswordForEmail(email.data, {
-    redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"}/update-password`
+    redirectTo: callbackUrl.toString()
   });
 
   if (error) {
@@ -77,20 +90,23 @@ export async function updatePassword(_: unknown, formData: FormData) {
     return setupRequired();
   }
 
-  const password = passwordSchema.safeParse(formData.get("password"));
+  const passwords = updatePasswordSchema.safeParse({
+    password: formData.get("password"),
+    confirmPassword: formData.get("confirmPassword")
+  });
 
-  if (!password.success) {
-    return { ok: false, message: "Use a password with at least 8 characters." };
+  if (!passwords.success) {
+    return { ok: false, message: passwords.error.issues[0]?.message ?? "Use matching passwords with at least 8 characters." };
   }
 
   const supabase = await createClient();
   const { error } = await supabase.auth.updateUser({
-    password: password.data
+    password: passwords.data.password
   });
 
   if (error) {
     return { ok: false, message: "Password update failed. Request a fresh reset link and try again." };
   }
 
-  return { ok: true, message: "Password updated. You can now access the admin area." };
+  redirect("/login?password=updated");
 }
