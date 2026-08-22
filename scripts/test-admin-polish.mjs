@@ -23,9 +23,11 @@ const rootLayout = read("app/layout.tsx");
 const publicLayout = read("app/(public)/layout.tsx");
 const adminLayout = read("app/admin/layout.tsx");
 const adminShell = read("components/admin/admin-shell.tsx");
-const authActions = read("lib/auth-actions.ts");
 const authCallback = read("app/auth/callback/route.ts");
 const authForm = read("components/auth-form.tsx");
+const authLoginRoute = read("app/api/auth/login/route.ts");
+const authResetRoute = read("app/api/auth/reset-password/route.ts");
+const authUpdateRoute = read("app/api/auth/update-password/route.ts");
 const navigation = read("lib/navigation.ts");
 const homePage = read("app/(public)/page.tsx");
 const loginPage = read("app/login/page.tsx");
@@ -118,7 +120,7 @@ expect(
 );
 expect(
   "password recovery uses callback exchange",
-  authActions.includes('new URL("/auth/callback"') && authActions.includes('callbackUrl.searchParams.set("next", "/update-password")') && authCallback.includes("exchangeCodeForSession"),
+  authResetRoute.includes('new URL("/auth/callback"') && authResetRoute.includes('callbackUrl.searchParams.set("next", "/update-password")') && authCallback.includes("exchangeCodeForSession"),
   "Password reset emails route through the Supabase code-exchange callback before the update screen."
 );
 expect(
@@ -133,8 +135,39 @@ expect(
 );
 expect(
   "password confirmation required",
-  authForm.includes("confirmPassword") && authActions.includes("Passwords must match.") && authActions.includes("/login?password=updated") && loginPage.includes("Password updated. Sign in with your new password."),
+  authForm.includes("confirmPassword") && authUpdateRoute.includes("Passwords must match.") && authUpdateRoute.includes("/login?password=updated") && loginPage.includes("Password updated. Sign in with your new password."),
   "Password update form requires confirmation and redirects to login with safe success copy."
+);
+expect(
+  "auth forms use stable route handlers",
+  !authForm.includes("useActionState") &&
+    authForm.includes("/api/auth/login") &&
+    authForm.includes("/api/auth/reset-password") &&
+    authForm.includes("/api/auth/update-password") &&
+    authLoginRoute.includes("signInWithPassword") &&
+    authResetRoute.includes("resetPasswordForEmail") &&
+    authUpdateRoute.includes("updateUser"),
+  "Login, reset, and update-password forms post to stable API routes instead of Server Actions."
+);
+expect(
+  "auth API responses are not cached",
+  authLoginRoute.includes("Cache-Control") && authResetRoute.includes("Cache-Control") && authUpdateRoute.includes("Cache-Control"),
+  "Auth route handlers return no-store responses."
+);
+expect(
+  "auth API errors are contained",
+  authLoginRoute.includes("try {") &&
+    authResetRoute.includes("try {") &&
+    authUpdateRoute.includes("try {") &&
+    authLoginRoute.includes("unexpected error") &&
+    authResetRoute.includes("unexpected error") &&
+    authUpdateRoute.includes("unexpected error"),
+  "Malformed auth submissions and unexpected Supabase errors return structured JSON instead of the global error boundary."
+);
+expect(
+  "password reset avoids email enumeration",
+  authResetRoute.includes("resetMessage") && !authResetRoute.includes("Password reset could not be sent. Try again later."),
+  "Valid-looking reset requests receive the same public response whether Supabase sends a message or returns a safe logged error."
 );
 
 for (const check of checks) {

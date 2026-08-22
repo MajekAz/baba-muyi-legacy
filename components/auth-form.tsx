@@ -1,7 +1,6 @@
 "use client";
 
-import { useActionState } from "react";
-import { signInWithPassword, requestPasswordReset, updatePassword } from "@/lib/auth-actions";
+import { useState, type FormEvent } from "react";
 
 const initialState = { ok: false, message: "" };
 
@@ -9,13 +8,49 @@ type AuthFormProps = {
   mode: "login" | "reset" | "update";
 };
 
+const authEndpoints = {
+  login: "/api/auth/login",
+  reset: "/api/auth/reset-password",
+  update: "/api/auth/update-password"
+} as const;
+
 export function AuthForm({ mode }: AuthFormProps) {
-  const action =
-    mode === "login" ? signInWithPassword : mode === "reset" ? requestPasswordReset : updatePassword;
-  const [state, formAction, pending] = useActionState(action, initialState);
+  const [state, setState] = useState(initialState);
+  const [pending, setPending] = useState(false);
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (pending) return;
+
+    setPending(true);
+    setState(initialState);
+
+    try {
+      const response = await fetch(authEndpoints[mode], {
+        method: "POST",
+        body: new FormData(event.currentTarget),
+        cache: "no-store"
+      });
+      const result = (await response.json()) as { ok?: boolean; message?: string; redirectTo?: string };
+
+      if (result.redirectTo && result.ok) {
+        window.location.assign(result.redirectTo);
+        return;
+      }
+
+      setState({
+        ok: Boolean(result.ok),
+        message: result.message ?? "Authentication request failed. Try again."
+      });
+    } catch {
+      setState({ ok: false, message: "Authentication request failed. Try again." });
+    } finally {
+      setPending(false);
+    }
+  }
 
   return (
-    <form action={formAction} className="grid gap-5 rounded border border-archive-navy/12 bg-white p-6 shadow-sm">
+    <form onSubmit={handleSubmit} className="grid gap-5 rounded border border-archive-navy/12 bg-white p-6 shadow-sm">
       {mode !== "update" ? (
         <div className="grid gap-2">
           <label className="text-sm font-semibold text-archive-navy" htmlFor="email">
