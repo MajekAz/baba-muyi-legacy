@@ -4,6 +4,8 @@ import { PageShell } from "@/components/page-shell";
 import { platformBrand } from "@/lib/brand";
 import type { Metadata } from "next";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: `Sign in | ${platformBrand.name}`,
   description: "Sign in to manage your digital legacy archive."

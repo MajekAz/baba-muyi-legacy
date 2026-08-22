@@ -6,6 +6,8 @@ import { createClient } from "@/lib/supabase/server";
 import type { Metadata } from "next";
 import Link from "next/link";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: `Update password | ${platformBrand.name}`,
   description: "Update your LegacyHub password."
