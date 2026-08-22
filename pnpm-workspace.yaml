@@ -1,11 +1,12 @@
+packages:
+  - "."
+
 allowBuilds:
   sharp: true
   unrs-resolver: true
+
 overrides:
-  next>postcss: 8.5.22
-  next>sharp: 0.35.0
-  minimatch@3.1.5>brace-expansion: 5.0.8
-  minimatch@10.2.5>brace-expansion: 5.0.8
-onlyBuiltDependencies:
-  - sharp
-  - unrs-resolver
+  brace-expansion: "5.0.9"
+  js-yaml: "4.3.1"
+  nanoid: "3.3.18"
+  postcss: "8.5.26"
