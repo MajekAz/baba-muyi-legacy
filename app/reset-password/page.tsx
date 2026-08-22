@@ -3,6 +3,8 @@ import { PageShell } from "@/components/page-shell";
 import { platformBrand } from "@/lib/brand";
 import type { Metadata } from "next";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: `Reset password | ${platformBrand.name}`,
   description: "Reset access to manage your digital legacy archive."

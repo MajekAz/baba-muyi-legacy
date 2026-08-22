@@ -10,6 +10,13 @@ Build command:
 pnpm install --frozen-lockfile && pnpm build
 ```
 
+For auth-related deployments, run a clean build so Hostinger cannot reuse stale
+Next.js Server Action manifests or prerendered HTML from a previous release:
+
+```bash
+rm -rf .next && pnpm install --frozen-lockfile && pnpm build
+```
+
 Start command:
 
 ```bash
@@ -59,6 +66,18 @@ https://babamuyilegacy.com/api/health
 3. Confirm Hostinger uses Node.js hosting for the `baba-muyi-legacy` app root.
 4. Add the Supabase environment variables before building.
 5. Run migrations on Supabase before testing protected admin flows.
+
+## Clean Redeploy After Auth Changes
+
+Server Action IDs are tied to a specific Next.js build. After changes to login,
+password recovery, account forms, or other Server Action-backed routes:
+
+1. Stop the Hostinger Node.js app.
+2. Remove the old `.next` output.
+3. Build from the latest `main` commit.
+4. Restart every running app process.
+5. Purge Hostinger/CDN cache for `/_next/*` and the affected auth pages.
+6. Verify `/login`, `/reset-password`, `/update-password`, and `/auth/callback`.
 
 ## Security Notes
 
