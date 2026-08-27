@@ -194,6 +194,97 @@ export type Database = {
           },
         ]
       }
+      contact_submissions: {
+        Row: {
+          admin_notes: string | null
+          attachment_bucket: string | null
+          attachment_filename: string | null
+          attachment_mime_type: string | null
+          attachment_path: string | null
+          attachment_size_bytes: number | null
+          consent_to_contact: boolean
+          created_at: string
+          id: string
+          legacy_profile_id: string
+          message: string
+          relationship: string | null
+          reviewed_at: string | null
+          reviewed_by: string | null
+          sender_email: string
+          sender_name: string
+          status: string
+          submission_type: string
+          updated_at: string
+          workspace_id: string
+        }
+        Insert: {
+          admin_notes?: string | null
+          attachment_bucket?: string | null
+          attachment_filename?: string | null
+          attachment_mime_type?: string | null
+          attachment_path?: string | null
+          attachment_size_bytes?: number | null
+          consent_to_contact?: boolean
+          created_at?: string
+          id?: string
+          legacy_profile_id: string
+          message: string
+          relationship?: string | null
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          sender_email: string
+          sender_name: string
+          status?: string
+          submission_type: string
+          updated_at?: string
+          workspace_id: string
+        }
+        Update: {
+          admin_notes?: string | null
+          attachment_bucket?: string | null
+          attachment_filename?: string | null
+          attachment_mime_type?: string | null
+          attachment_path?: string | null
+          attachment_size_bytes?: number | null
+          consent_to_contact?: boolean
+          created_at?: string
+          id?: string
+          legacy_profile_id?: string
+          message?: string
+          relationship?: string | null
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          sender_email?: string
+          sender_name?: string
+          status?: string
+          submission_type?: string
+          updated_at?: string
+          workspace_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "contact_submissions_legacy_profile_id_fkey"
+            columns: ["legacy_profile_id"]
+            isOneToOne: false
+            referencedRelation: "legacy_profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "contact_submissions_reviewed_by_fkey"
+            columns: ["reviewed_by"]
+            isOneToOne: false
+            referencedRelation: "user_profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "contact_submissions_workspace_id_fkey"
+            columns: ["workspace_id"]
+            isOneToOne: false
+            referencedRelation: "workspaces"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       biography_chapters: {
         Row: {
           author_id: string | null
