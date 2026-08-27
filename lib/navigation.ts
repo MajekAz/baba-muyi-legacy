@@ -95,7 +95,7 @@ export const adminNavigation: NavItem[] = [
     planned: true
   },
   { label: "Family", href: "/admin/family", requiredPermission: "edit_assigned_content", planned: true },
-  { label: "Contributions", href: "/admin/contributions", requiredPermission: "review_submissions", planned: true },
+  { label: "Enquiries", href: "/admin/enquiries", requiredPermission: "review_submissions" },
   { label: "Users and Access", href: "/admin/access", requiredPermission: "manage_users" },
   { label: "Menus", href: "/admin/menus", requiredPermission: "manage_menus" },
   { label: "Settings", href: "/admin/settings", requiredPermission: "change_site_settings", planned: true },

@@ -39,7 +39,7 @@ const iconMap: Record<string, React.ComponentType<{ className?: string; "aria-hi
   "Media Library": ImageIcon,
   Documentaries: Archive,
   Family: Users,
-  Contributions: FolderOpen,
+  Enquiries: FolderOpen,
   "Users and Access": ShieldCheck,
   Menus: Menu,
   Settings,
