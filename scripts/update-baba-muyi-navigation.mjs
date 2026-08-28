@@ -86,6 +86,12 @@ const desiredItems = [
     slug: "about",
     url: "/about",
     children: []
+  },
+  {
+    label: "Contact",
+    slug: "contact",
+    url: "/contact",
+    children: []
   }
 ];
 
