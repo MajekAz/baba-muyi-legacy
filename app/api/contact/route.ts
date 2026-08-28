@@ -8,6 +8,7 @@ import {
 } from "@/lib/contact/validation";
 import { getSubmissionTenant } from "@/lib/contact/queries";
 import { hasSupabasePublicEnv } from "@/lib/env";
+import { sendContactSubmissionNotification } from "@/lib/mail/archive-notifications";
 import { safeFilename } from "@/lib/media/storage";
 import { createAdminClient } from "@/lib/supabase/admin";
 
@@ -185,6 +186,17 @@ export async function POST(request: Request) {
         has_attachment: Boolean(attachmentMetadata.attachment_path),
         attachment_mime_type: attachmentMetadata.attachment_mime_type
       }
+    });
+
+    await sendContactSubmissionNotification({
+      submissionId,
+      submissionType: parsed.data.submissionType,
+      senderName: parsed.data.senderName,
+      senderEmail: parsed.data.senderEmail,
+      relationship: parsed.data.relationship || null,
+      message: parsed.data.message,
+      hasAttachment: Boolean(attachmentMetadata.attachment_path),
+      submittedAt: new Date()
     });
 
     return contactJson({
