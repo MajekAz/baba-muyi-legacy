@@ -21,6 +21,7 @@ const contactValidation = read("lib/contact/validation.ts");
 const contactMigration = read("supabase/migrations/0017_contact_submissions.sql");
 const contactQueries = read("lib/contact/queries.ts");
 const contactActions = read("lib/contact/actions.ts");
+const contactNotifications = read("lib/mail/archive-notifications.ts");
 const enquiryPage = read("app/admin/enquiries/page.tsx");
 const enquiryDetailPage = read("app/admin/enquiries/[id]/page.tsx");
 const attachmentRoute = read("app/admin/enquiries/[id]/attachment/route.ts");
@@ -50,6 +51,14 @@ expect(
     contactRoute.includes("website") &&
     contactRoute.includes("isRateLimited"),
   "The API route is no-store, validates server-side, includes honeypot/rate limiting, and uses server-only Supabase access."
+);
+
+expect(
+  "successful submission triggers notification attempt",
+  contactRoute.includes("sendContactSubmissionNotification") &&
+    contactRoute.indexOf("contact_submission_received") < contactRoute.lastIndexOf("sendContactSubmissionNotification") &&
+    contactRoute.lastIndexOf("sendContactSubmissionNotification") < contactRoute.lastIndexOf("Thank you. Your message has been received by the archive team."),
+  "The API attempts email notification only after the enquiry and audit event are saved."
 );
 
 expect(
@@ -104,6 +113,63 @@ expect(
     attachmentRoute.includes('requireLegacyProfilePermission("review_submissions")') &&
     !contactPage.includes("createSignedUrl"),
   "Private attachments are opened through a protected admin route."
+);
+
+expect(
+  "SMTP failure does not fail saved enquiry",
+  contactNotifications.includes("notification failed") &&
+    contactNotifications.includes("return { ok: false, skipped: false") &&
+    contactRoute.includes("Thank you. Your message has been received by the archive team."),
+  "Mail failures are logged safely and the public submission success response is preserved."
+);
+
+expect(
+  "missing SMTP configuration does not break submissions",
+  contactNotifications.includes("smtp-not-configured") &&
+    contactNotifications.includes("return { ok: false, skipped: true"),
+  "Missing SMTP configuration is treated as a skipped notification, not a contact-form failure."
+);
+
+expect(
+  "trusted notification recipient",
+  contactNotifications.includes("ARCHIVE_NOTIFICATION_EMAIL") &&
+    contactNotifications.includes("archive@tioluwalasemajekodunmi.com") &&
+    !contactRoute.includes("ARCHIVE_NOTIFICATION_EMAIL") &&
+    !contactForm.includes("ARCHIVE_NOTIFICATION_EMAIL"),
+  "Notification recipient comes from trusted server configuration, never public form input."
+);
+
+expect(
+  "notification email privacy",
+  contactNotifications.includes("messagePreview") &&
+    contactNotifications.includes("slice(0, 317)") &&
+    contactNotifications.includes("escapeHtml") &&
+    !contactNotifications.includes("attachment_path") &&
+    !contactNotifications.includes("signedUrl"),
+  "Email content uses a bounded preview, escapes HTML, and excludes private attachment paths or signed URLs."
+);
+
+expect(
+  "admin enquiry URL included",
+  contactNotifications.includes("/admin/enquiries/") && contactNotifications.includes("NEXT_PUBLIC_SITE_URL"),
+  "Notification email includes a protected admin enquiry URL built from trusted site configuration."
+);
+
+expect(
+  "environment placeholders documented",
+  read(".env.example").includes("SMTP_HOST=smtp.titan.email") &&
+    read(".env.example").includes("SMTP_PASSWORD=your-smtp-password") &&
+    read(".env.example").includes("ARCHIVE_NOTIFICATION_EMAIL=archive@tioluwalasemajekodunmi.com"),
+  ".env.example documents Titan SMTP variables with placeholders only."
+);
+
+expect(
+  "notification documentation",
+  docs.includes("Email Notifications") &&
+    docs.includes("Titan SMTP Setup") &&
+    docs.includes("Email delivery is deliberately secondary") &&
+    docs.includes("Never commit the real SMTP password"),
+  "Contact Centre documentation covers email flow, Titan setup, failure behaviour, and privacy."
 );
 
 expect(
