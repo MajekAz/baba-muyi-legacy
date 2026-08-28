@@ -33,6 +33,7 @@ const bannedLinkedRoutes = [
 
 const routeTargets = read("lib/public-route-targets.ts");
 const navigation = read("lib/navigation.ts");
+const navigationSync = read("scripts/update-baba-muyi-navigation.mjs");
 const homepage = read("components/public-archive/homepage.tsx");
 const homepageRoute = read("app/(public)/page.tsx");
 const archiveContent = read("lib/baba-muyi-public-archive.ts");
@@ -101,6 +102,13 @@ for (const route of bannedLinkedRoutes) {
 }
 
 assert((data.menuItems ?? []).filter((item) => item.label === "Stories" && ["header", "mobile", "footer"].includes(item.location)).every((item) => item.hidden), "stories hidden", "Stories remains available as a route but is removed from public navigation until populated.");
+const publicNavigationSource = navigation.split("export const adminNavigation")[0];
+const aboutIndex = publicNavigationSource.indexOf('label: "About"');
+const contactIndex = publicNavigationSource.indexOf('label: "Contact"');
+assert(aboutIndex > -1 && contactIndex > aboutIndex && publicNavigationSource.includes('href: "/contact"'), "contact in shared navigation", "Shared public navigation includes Contact after About.");
+assert((data.menuItems ?? []).some((item) => item.location === "header" && item.label === "Contact" && item.href === "/contact" && item.sortOrder === 8 && !item.hidden), "contact in header menu data", "Local CMS header menu includes Contact after About.");
+assert((data.menuItems ?? []).some((item) => item.location === "mobile" && item.label === "Contact" && item.href === "/contact" && item.sortOrder === 8 && !item.hidden), "contact in mobile menu data", "Local CMS mobile menu includes Contact after About.");
+assert(navigationSync.includes('label: "Contact"') && navigationSync.includes('url: "/contact"'), "contact in Supabase menu sync", "Database-backed header/mobile menu sync includes Contact.");
 assert(!navigation.includes('href: "/stories"'), "static navigation stories", "Static public navigation does not expose the empty Stories route.");
 assert(archiveContent.includes('href: "/tributes"') && !archiveContent.includes('href: "/stories"'), "homepage stories card", "Homepage stories/tributes preview points to Tributes instead of the empty Stories page.");
 

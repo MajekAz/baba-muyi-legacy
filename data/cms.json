@@ -1164,6 +1164,21 @@
       "hidden": false
     },
     {
+      "id": "header-contact",
+      "workspaceId": "workspace-baba-muyi-family-archive",
+      "legacyProfileId": "legacy-profile-baba-muyi",
+      "label": "Contact",
+      "href": "/contact",
+      "slug": "contact",
+      "location": "header",
+      "sortOrder": 8,
+      "status": "published",
+      "visibility": "public",
+      "linkType": "internal",
+      "openInNewTab": false,
+      "hidden": false
+    },
+    {
       "id": "mobile-home",
       "workspaceId": "workspace-baba-muyi-family-archive",
       "legacyProfileId": "legacy-profile-baba-muyi",
@@ -1454,6 +1469,21 @@
       "slug": "about",
       "location": "mobile",
       "sortOrder": 7,
+      "status": "published",
+      "visibility": "public",
+      "linkType": "internal",
+      "openInNewTab": false,
+      "hidden": false
+    },
+    {
+      "id": "mobile-contact",
+      "workspaceId": "workspace-baba-muyi-family-archive",
+      "legacyProfileId": "legacy-profile-baba-muyi",
+      "label": "Contact",
+      "href": "/contact",
+      "slug": "contact",
+      "location": "mobile",
+      "sortOrder": 8,
       "status": "published",
       "visibility": "public",
       "linkType": "internal",
